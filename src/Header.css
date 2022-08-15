@@ -4,6 +4,7 @@ header{
     align-items: center;
     color: #fff;
     padding: 10px;
+    padding-bottom: 0;
     background: #008000;
     border-bottom: 2px solid #ffa500;
 }
@@ -13,17 +14,33 @@ span{
 header a{
     text-decoration: none;
     font-size: 1.4em;
-    margin: 5px 15px;
+    margin: 0px 15px;
     color: #ffa500;
 }
 header a:hover{
     font-weight: 600;
 }
-.navLinks ul{
+.navLinks .dest ul{
     display: none;
+    position: absolute;
+    width: 225px;
+    top: 40px;
+    right: 13.4%;
     list-style: none;
     text-align: left;
+    background: #008000;
+    border-bottom: 2px solid #ffa500;
+    border-radius: 0px 0px 4px 4px;
+}
+.navLinks .dest:hover ul{
+    display: block;
+    font-weight: 400;
 }
 .navLinks ul li a{
+    display: block;
     font-size: .7em;
+    padding: 10px 0px;
+}
+.navLinks ul li:hover{
+    background: #fff;
 }

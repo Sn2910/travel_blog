@@ -11,16 +11,14 @@ export default function Header() {
                 <Link to="#">Home</Link>
                 <Link to="#">About</Link>
                 <Link to="#">Contact</Link>
-                <Link to="#">Destinations
-                {/* <div>
+                <Link to="#" className='dest'>Destinations
                     <ul>
-                        <li><Link to="#">Austria</Link></li>
-                        <li><Link to="#">Romania</Link></li>
-                        <li><Link to="#">Netherlands</Link></li>
-                        <li><Link to="#">France</Link></li>
-                        <li><Link to="#">Germany</Link></li>
+                        <li><Link to="#">France - Paris</Link></li>
+                        <li><Link to="#">Austria - Vienna</Link></li>
+                        <li><Link to="#">Germany - Berlin</Link></li>
+                        <li><Link to="#">Romania - Bucharest</Link></li>
+                        <li><Link to="#">Netherlands - Amsterdam</Link></li>
                     </ul>
-                </div> */}
                 </Link>
             </nav>
         </header>
