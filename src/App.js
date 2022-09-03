@@ -1,7 +1,6 @@
-
-import './App.css';
-import {useState, useEffect} from 'react'
-import Map from './Components/Map/Map';
+import "./App.css";
+import { useState, useEffect } from "react";
+import Map from "./Components/Map/Map";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer'
