@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import  {getAsset} from '../../controllers/content'
 import Header from '../Header/Header'
 import '../TravelInfo/TravelInfo.css'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 function TravelInfo() {
     const [getInfo, setGetInfo] = useState(false);
@@ -42,6 +43,9 @@ function TravelInfo() {
        {/*  <Header /> */}
         <h1>{getInfo.fields.city} in {getInfo.fields.country}</h1>
         <img className='city_bg' src={backgroundUrl} style={{width:"inherit"}} />
+        <div>
+                {documentToReactComponents(getInfo.fields.cityInfo)  }
+            </div>
       
     </div>
   )
