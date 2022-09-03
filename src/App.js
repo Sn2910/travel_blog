@@ -19,9 +19,9 @@ function App() {
          const result = await response.json()
          setGetInfo(result)
          console.log(result)
-         /* console.log("Shopping")
+       /*  console.log("Shopping")
          const destId1 ='3nZZzJ6iJ17V2wCrWySzxN'
-         console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1)) */
+         console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
     }
          
     useEffect(()=>{
