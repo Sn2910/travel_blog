@@ -79,7 +79,13 @@ function TravelInfo() {
         </h2>
         {documentToReactComponents(getInfo.fields.cityInfo)}
         <div>
-          <h2></h2>
+          <h2>Best Restaurants</h2>
+        </div>
+        <div>
+          <h2>Shopping Centers</h2>
+        </div>
+        <div>
+          <h2>Affordable Hotels</h2>
         </div>
       </div>
     </div>
