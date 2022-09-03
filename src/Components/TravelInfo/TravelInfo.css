@@ -1,7 +1,19 @@
 .cityInfoContent {
   width: 75%;
   margin: auto;
-  height: 500px;
+  min-height: 100vh;
   text-align: left;
   background: #fff;
+}
+.cityCont {
+  color: #696969;
+}
+.cityCont h2 {
+  padding-bottom: 20px;
+}
+.lang {
+  text-align: center;
+  padding: 10px;
+  font-size: 1.1em;
+  color: #696969;
 }

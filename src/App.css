@@ -1,9 +1,11 @@
 .App {
   text-align: center;
-  min-height: 100vh;
+  height: 100vh;
+  background: #fff;
 }
-.appWrap {
+.home {
   background-color: #282c34;
+  /* height: 100vh; */
 }
 
 .App-logo {
