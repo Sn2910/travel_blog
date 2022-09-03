@@ -1,14 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getAsset } from "../../controllers/content";
-import Header from "../Header/Header";
-import "../TravelInfo/TravelInfo.css";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import  {getAsset} from '../../controllers/content'
+import '../TravelInfo/TravelInfo.css'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 function TravelInfo() {
   const [getInfo, setGetInfo] = useState(false);
   const [assets, setAssets] = useState(false);
+  const[shopping,setShopping] =useState(false)
+  const[restaurant,setRestaurant] =useState(false)
   const apiHost = "https://cdn.contentful.com";
   const { id } = useParams();
 
@@ -22,7 +23,29 @@ function TravelInfo() {
     console.log("Travel");
     console.log(result);
   };
+  const getShoppingData = async () =>{ 
+    const response = await fetch(`https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?content_type=shopping&fields.destination.sys.id=${id}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`)
+    const result = await response.json()
+    console.log("Shopping")
+    setShopping(result.items)
+    console.log(result.items)
+  /* 
+    const destId1 ='3nZZzJ6iJ17V2wCrWySzxN'
+    console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
+}
+const getRestaurantData = async () =>{ 
+  const response = await fetch(`https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?content_type=restaurant&fields.destination.sys.id=${id}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`)
+  const result = await response.json()
+  console.log("Restaurant")
+  setRestaurant(result.items)
+  console.log(result.items)
+/* 
+  const destId1 ='3nZZzJ6iJ17V2wCrWySzxN'
+  console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
+}
   useEffect(() => {
+    getShoppingData();
+    getRestaurantData();
     travelInfo();
     getAsset().then((assets) => {
       setAssets(assets);
@@ -41,6 +64,8 @@ function TravelInfo() {
     return "https:" + found.fields.file.url;
   }
   const backgroundUrl = getAssetUrl(getInfo.fields.bgImg.sys.id);
+  const backgroundUrl1 = getAssetUrl(getInfo.fields.bgImg.sys.id);
+
   return (
     <div className="cityInfoContent">
       <div
@@ -87,6 +112,31 @@ function TravelInfo() {
         <div>
           <h2>Affordable Hotels</h2>
         </div>
+      </div>
+      <div className="shopping">
+        {shopping.map((shop,index)=>{
+           const shoppingUrl = getAssetUrl(shop.fields.image.sys.id);
+          return(
+
+            <div key ={index}>
+              <h1>{shop.fields.name}</h1>
+              <img src={shoppingUrl} />
+            
+            </div>
+            
+
+  
+          )
+        })}
+      </div>
+      <div className="restaurant">
+        {restaurant.map((bistro,index)=>{
+          return(
+            <div key ={index}>{bistro.fields.name}</div>
+
+  
+          )
+        })}
       </div>
     </div>
   );
