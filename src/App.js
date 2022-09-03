@@ -33,9 +33,13 @@ function App() {
       (item,index) => item.sys.contentType.sys.id === "destinations"
       
     )
+    function destinationIndex(){
+      
+    }
   return (
     <div className="App">
        <Header />
+
        <Map destinations={destinations} />
      {destinations.map((destination, id) => {
         console.log("dest", destination);
