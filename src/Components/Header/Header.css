@@ -23,7 +23,7 @@ header a:hover {
   margin-bottom: -30px;
 }
 .navLinks ul {
-  display: none;
+  /* display: none; */
   list-style: none;
   text-align: left;
 }

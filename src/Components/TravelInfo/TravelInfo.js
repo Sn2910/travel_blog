@@ -7,6 +7,8 @@ import "./TravelInfo.css";
 import Paper from "@mui/material/Paper";
 import Container from "@mui/material/Container";
 import { Padding } from "@mui/icons-material";
+import "../TravelInfo/TravelInfo.css";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 function TravelInfo() {
   const [getInfo, setGetInfo] = useState(false);
@@ -76,7 +78,9 @@ function TravelInfo() {
         <div className="lang">
           <p>Language Spoken: {getInfo.fields.cityInfo}</p>
         </div>
-        <div className="cityInfo"></div>
+        <div className="cityInfo">
+          {documentToReactComponents(getInfo.fields.cityInfo)}
+        </div>
       </Container>
     </div>
   );
