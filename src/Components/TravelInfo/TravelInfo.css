@@ -1,5 +1,7 @@
-
-.city_bg{
-    width: 500px;
-    height: 500px;
+.cityInfoContent {
+  width: 75%;
+  margin: auto;
+  height: 500px;
+  text-align: left;
+  background: #fff;
 }
