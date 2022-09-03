@@ -1,28 +1,39 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Map.css";
 
 /* const handleOnClick = () => {
   console.log("You have clicked in the specified area")
 } */
-function Map({destinations}) {
- console.log(destinations)
+function Map({ destinations }) {
+  console.log(destinations);
   return (
     <div className="large_map">
-      
-      <img src={require("../../Images/europe.jpg")} useMap="#map-europe"  />
+      <div>
+        <h2>DISCOVER THE BEST EUROPEAN TOUR</h2>
+        <p>
+          We're passionate about helping travelers to experience all the best in
+          the World. Find everything right here, from god culture, lovely
+          people, and all wonderful tourist attractions
+        </p>
+      </div>
+      <img src={require("../../Images/europe.jpg")} useMap="#map-europe" />
 
       <map name="map-europe">
-        {destinations.map((destination,index)=>{
-          return(
-            <Link to={`/travel-blog/${destination.sys.id}`}  key={index}>
-           <area alt="test" title=""  coords={destination.fields.countryCords} shape="poly" />
-           </Link>
-          )
-           
-           
+        {destinations.map((destination, index) => {
+          return (
+            <Link to={`/travel-blog/${destination.sys.id}`} key={index}>
+              <area
+                alt="test"
+                title=""
+                coords={destination.fields.countryCords}
+                shape="poly"
+              />
+            </Link>
+          );
         })}
-        
-      {/* <Link to={`/travel-blog/${destinations[4].sys.id}`}>
+
+        {/* <Link to={`/travel-blog/${destinations[4].sys.id}`}>
       <area alt="test" title=""  coords="279,286,325,342,298,406,246,396,237,338" shape="poly" />
       </Link>
       <Link to={`/travel-blog/${destinations[0].sys.id}`}>
@@ -39,7 +50,7 @@ function Map({destinations}) {
       </Link> */}
       </map>
     </div>
-  )
+  );
 }
 
-export default Map
+export default Map;
