@@ -33,12 +33,10 @@ function App() {
       (item,index) => item.sys.contentType.sys.id === "destinations"
       
     )
-    function destinationIndex(){
-      
-    }
+   
   return (
     <div className="App">
-       <Header />
+       <Header destinations={destinations} />
 
        <Map destinations={destinations} />
      {destinations.map((destination, id) => {

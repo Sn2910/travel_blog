@@ -39,7 +39,7 @@ function TravelInfo() {
       const backgroundUrl = getAssetUrl(getInfo.fields.bgImg.sys.id)
   return (
     <div>
-        <Header />
+       {/*  <Header /> */}
         <h1>{getInfo.fields.city} in {getInfo.fields.country}</h1>
         <img className='city_bg' src={backgroundUrl} style={{width:"inherit"}} />
       

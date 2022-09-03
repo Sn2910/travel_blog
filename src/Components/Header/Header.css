@@ -20,7 +20,7 @@ header a:hover{
     font-weight: 600;
 }
 .navLinks ul{
-    display: none;
+/*     display: none; */
     list-style: none;
     text-align: left;
 }
