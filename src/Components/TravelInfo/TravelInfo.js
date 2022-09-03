@@ -69,7 +69,18 @@ function TravelInfo() {
           {getInfo.fields.city} in {getInfo.fields.country}
         </h1>
       </div>
-      <div>{documentToReactComponents(getInfo.fields.cityInfo)}</div>
+      <div className="lang">
+        <p>Language Spoken: {getInfo.fields.language}</p>
+      </div>
+      <div className="cityCont">
+        <h2>
+          What to know about {getInfo.fields.country} ({getInfo.fields.city})
+        </h2>
+        {documentToReactComponents(getInfo.fields.cityInfo)}
+        <div>
+          <h2></h2>
+        </div>
+      </div>
     </div>
   );
 }
