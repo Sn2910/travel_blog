@@ -5,6 +5,10 @@ import Map from './Components/Map/Map';
 import { Routes, Route, Navigate } from "react-router-dom";
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer'
+import {Outlet} from 'react-router-dom'
+import Home from './Home'
+import TravelInfo from './Components/TravelInfo/TravelInfo'
+import Contact from '.'
 
 
 function App() {
@@ -37,12 +41,16 @@ function App() {
   return (
     <div className="App">
        <Header destinations={destinations} />
-
-       <Map destinations={destinations} />
-     {destinations.map((destination, id) => {
-        console.log("dest", destination);
-    
-      })}
+       <Routes>
+            <Route path='/' element={<Home destinations={destinations} />}/>
+           
+           {/*  <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} /> */}
+            
+            <Route path='/travel-blog/:id' element={<TravelInfo />} />
+          
+        </Routes>
+   
       <Footer />
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react'
 import './Header.css'
 import { Link } from 'react-router-dom'
 
+
  function Header({destinations}) {
     console.log(destinations)
   return (
@@ -32,6 +33,7 @@ import { Link } from 'react-router-dom'
                     </ul> 
                 </div> 
                 </Link>
+               
             </nav>
         </header>
     </div>

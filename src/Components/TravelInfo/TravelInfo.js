@@ -10,10 +10,10 @@ function TravelInfo() {
     const [getInfo, setGetInfo] = useState(false);
     const [assets, setAssets] = useState(false)
     const apiHost = "https://cdn.contentful.com";
-    const params = useParams();
-    console.log(params);
+    const {id} = useParams();
+ 
     const travelInfo = async () => {
-        const response = await fetch(`${apiHost}/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries/${params.id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`)
+        const response = await fetch(`${apiHost}/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries/${id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`)
         const result = await response.json();
         
         setGetInfo(result);
@@ -23,7 +23,7 @@ function TravelInfo() {
       useEffect(() => {
         travelInfo();
         getAsset().then((assets)=>{setAssets(assets)})
-      }, []);
+      }, [id]);
       if(!getInfo || !assets){
         return <div>Loading...</div>
       }
@@ -40,7 +40,7 @@ function TravelInfo() {
       const backgroundUrl = getAssetUrl(getInfo.fields.bgImg.sys.id)
   return (
     <div>
-       {/*  <Header /> */}
+    
         <h1>{getInfo.fields.city} in {getInfo.fields.country}</h1>
         <img className='city_bg' src={backgroundUrl} style={{width:"inherit"}} />
         <div>
