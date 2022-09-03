@@ -2,7 +2,6 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import  {getAsset} from '../../controllers/content'
-import Header from '../Header/Header'
 import '../TravelInfo/TravelInfo.css'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
