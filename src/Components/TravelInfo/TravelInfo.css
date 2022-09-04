@@ -17,3 +17,35 @@
   font-size: 1.1em;
   color: #696969;
 }
+.hotelFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hotelFlex .hotelCont {
+  width: 100%;
+}
+.hotelGrid {
+  /* width: 120%; */
+}
+.shopFlex {
+  display: flex;
+  justify-content: space-between;
+}
+.shopFlex .shopCont {
+  width: 100%;
+}
+.shopGrid {
+  width: 120%;
+}
+.restFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.restFlex .restCont {
+  width: 100%;
+}
+.restGrid {
+  width: 120%;
+}

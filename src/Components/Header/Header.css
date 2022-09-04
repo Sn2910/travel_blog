@@ -22,7 +22,7 @@ header a:hover {
 .navLinks {
   margin-bottom: -35px;
 }
-.navLinks ul {
+.dest ul {
   display: none;
   position: absolute;
   right: 17%;
@@ -35,7 +35,7 @@ header a:hover {
   padding-bottom: 5px;
   z-index: 10;
 }
-.navLinks:hover ul {
+.navLinks .dest:hover ul {
   display: block;
 }
 .navLinks ul li {

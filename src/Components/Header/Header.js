@@ -20,7 +20,7 @@ function Header({ destinations }) {
               <ul>
                 {destinations.map((destination, index) => {
                   return (
-                    <li>
+                    <li key={index}>
                       <Link
                         to={`/travel-blog/${destination.sys.id}`}
                         key={index}
