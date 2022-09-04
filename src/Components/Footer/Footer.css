@@ -5,3 +5,68 @@
   padding: 10px;
   text-align: center;
 }
+.footerFlex {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  border-top: 1px solid #696969;
+}
+.footerFlex {
+  padding: 30px 0 0;
+}
+.firstCont {
+  padding-right: 5%;
+  text-align: left;
+}
+.firstCont h2 {
+  padding-bottom: 10px;
+}
+.firstCont .email,
+.phone {
+  display: flex;
+}
+.firstCont p {
+  padding: 2px 5px;
+}
+.icons {
+  /* font-size: 1.2em; */
+  align-items: center;
+  padding-top: 10px;
+}
+.secondCont {
+  padding-left: 5%;
+  text-align: left;
+}
+.secondCont input {
+  padding: 5px;
+  font-size: 1.1em;
+  margin-top: 10px;
+}
+.secondCont #emailInput {
+  border-radius: 3px 0 0 3px;
+  border: 1px solid #696969;
+  width: 300px;
+}
+.secondCont #emailInput:focus {
+  outline: none;
+}
+.secondCont #submit {
+  border-radius: 0 3px 3px 0;
+  border: 1px solid #696969;
+  background: #696969;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.secondCont #submit:hover {
+  background: #817d7d;
+}
+.terms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+.terms p {
+  padding: 0 5px;
+}
