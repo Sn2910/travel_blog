@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import tourImage from "../../Images/tour.png";
 
 function Header({ destinations }) {
@@ -34,9 +34,9 @@ function Header({ destinations }) {
                         <li><Link to="#">Germany</Link></li> */}
             </ul>
           </Link>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
         </nav>
       </header>
     </div>

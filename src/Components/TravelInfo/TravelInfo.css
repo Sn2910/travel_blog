@@ -16,6 +16,10 @@
 .cityInfoContent h3 {
   padding-top: 5px;
   color: #696969;
+  font-size: 1em;
+}
+.cityInfoContent h4 {
+  font-size: 1.1em;
 }
 .cityInfoContent .aboutCityTitle {
   border-top: none;

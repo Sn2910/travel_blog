@@ -38,9 +38,6 @@ function TravelInfo() {
     console.log("Hotel");
     setHotel(result.items);
     console.log(result.items);
-    /* 
-    const destId1 ='3nZZzJ6iJ17V2wCrWySzxN'
-    console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
   };
   const getShoppingData = async () => {
     const response = await fetch(
@@ -50,9 +47,6 @@ function TravelInfo() {
     console.log("Shopping");
     setShopping(result.items);
     console.log(result.items);
-    /* 
-    const destId1 ='3nZZzJ6iJ17V2wCrWySzxN'
-    console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
   };
   const getRestaurantData = async () => {
     const response = await fetch(
@@ -62,9 +56,6 @@ function TravelInfo() {
     console.log("Restaurant");
     setRestaurant(result.items);
     console.log(result.items);
-    /* 
-  const destId1 ='3nZZzJ6iJ17V2wCrWySzxN'
-  console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
   };
   useEffect(() => {
     getHotelData();
@@ -341,9 +332,7 @@ function TravelInfo() {
                     >
                       <div className="visit">
                         <h4>{restaurant.fields.name}</h4>
-                        <Link to={`${restaurant.fields.url}`} target="_blank">
-                          Visit
-                        </Link>
+                        <Link to={`${restaurant.fields.url}`}>Visit</Link>
                       </div>
                       <h3>From ${restaurant.fields.price}</h3>
                     </Box>

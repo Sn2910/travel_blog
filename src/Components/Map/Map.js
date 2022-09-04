@@ -10,7 +10,7 @@ function Map({ destinations }) {
   return (
     <div className="large_map">
       <div>
-        <h2>DISCOVER THE BEST EUROPEAN TOUR</h2>
+        <h2>DISCOVER THE BEST EUROPEAN TOURS</h2>
         <p>
           We're passionate about helping travelers to experience all the best in
           the World. Find everything right here, from god culture, lovely
