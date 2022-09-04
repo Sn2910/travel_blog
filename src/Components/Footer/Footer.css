@@ -28,6 +28,10 @@
 .firstCont p {
   padding: 2px 5px;
 }
+.firstCont .p:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 .icons {
   /* font-size: 1.2em; */
   align-items: center;
@@ -69,4 +73,8 @@
 }
 .terms p {
   padding: 0 5px;
+}
+.terms p:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }

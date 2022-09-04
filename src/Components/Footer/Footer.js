@@ -14,11 +14,11 @@ export default function Footer() {
           <h2>Contact Us</h2>
           <div className="email">
             <p>Email:</p>
-            <p>snekenntravelblog@gmail.com</p>
+            <p className="p">snekenntravelblog@gmail.com</p>
           </div>
           <div className="phone">
             <p>Tel:</p>
-            <p>+49 000 123 4567</p>
+            <p className="p">+49 000 123 4567</p>
           </div>
           <div className="icons">
             <FacebookOutlinedIcon
