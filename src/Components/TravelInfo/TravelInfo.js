@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getAsset } from "../../controllers/content";
 import "../TravelInfo/TravelInfo.css";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -90,7 +90,12 @@ function TravelInfo() {
   const backgroundUrl = getAssetUrl(getInfo.fields.bgImg.sys.id);
 
   return (
-    <Container className="cityInfoContent">
+    <Container
+      className="cityInfoContent"
+      sx={{
+        paddingX: "0",
+      }}
+    >
       <Paper
         elevation={7}
         className="infoBgImage"
@@ -123,7 +128,7 @@ function TravelInfo() {
         <p>Language Spoken: {getInfo.fields.language}</p>
       </div>
       <div className="cityCont">
-        <h2>
+        <h2 className="aboutCityTitle">
           What to know about {getInfo.fields.country} ({getInfo.fields.city})
         </h2>
         {documentToReactComponents(getInfo.fields.cityInfo)}
@@ -164,17 +169,30 @@ function TravelInfo() {
                     elevation={7}
                     key={index}
                     sx={{
-                      height: "250px",
+                      height: "290px",
                       width: "100%",
+                      padding: "5px",
                     }}
                   >
                     <img src={hotelUrl} alt="" width="100%" height="70%" />
-                    <h3>{hotel.fields.name}</h3>
-                    <h3>From ${hotel.fields.price}</h3>
+                    <Box
+                      sx={{
+                        padding: "5px 0",
+                      }}
+                    >
+                      <div className="visit">
+                        <h4>{hotel.fields.name}</h4>
+                        <Link to={`${hotel.fields.url}`} target="_blank">
+                          Visit
+                        </Link>
+                      </div>
+                      <h3>From ${hotel.fields.price}</h3>
+                    </Box>
                     <Box
                       sx={{
                         display: "flex",
                         alignItems: "center",
+                        padding: "5px 0",
                       }}
                     >
                       <Rating
@@ -231,13 +249,25 @@ function TravelInfo() {
                     elevation={7}
                     key={index}
                     sx={{
-                      height: "250px",
+                      height: "290px",
                       width: "100%",
+                      padding: "5px",
                     }}
                   >
                     <img src={shoppingUrl} alt="" width="100%" height="70%" />
-                    <h3>{shop.fields.name}</h3>
-                    <h3>From ${shop.fields.price}</h3>
+                    <Box
+                      sx={{
+                        padding: "5px 0",
+                      }}
+                    >
+                      <div className="visit">
+                        <h4>{shop.fields.name}</h4>
+                        <Link to={`${shop.fields.url}`} target="_blank">
+                          Visit
+                        </Link>
+                      </div>
+                      <h3>From ${shop.fields.price}</h3>
+                    </Box>
                     <Box
                       sx={{
                         display: "flex",
@@ -257,7 +287,7 @@ function TravelInfo() {
                           marginLeft: "20px",
                         }}
                       >
-                        ({shop.fields.review} reviews)
+                        ({shop.fields.reviews} reviews)
                       </Typography>
                     </Box>
                   </Paper>
@@ -298,17 +328,30 @@ function TravelInfo() {
                     elevation={7}
                     key={index}
                     sx={{
-                      height: "250px",
+                      height: "290px",
                       width: "100%",
+                      padding: "5px",
                     }}
                   >
                     <img src={restaurantUrl} alt="" width="100%" height="70%" />
-                    <h3>{restaurant.fields.name}</h3>
-                    <h3>From ${restaurant.fields.price}</h3>
+                    <Box
+                      sx={{
+                        padding: "5px 0",
+                      }}
+                    >
+                      <div className="visit">
+                        <h4>{restaurant.fields.name}</h4>
+                        <Link to={`${restaurant.fields.url}`} target="_blank">
+                          Visit
+                        </Link>
+                      </div>
+                      <h3>From ${restaurant.fields.price}</h3>
+                    </Box>
                     <Box
                       sx={{
                         display: "flex",
                         alignItems: "center",
+                        padding: "5px 0",
                       }}
                     >
                       <Rating
@@ -324,7 +367,7 @@ function TravelInfo() {
                           marginLeft: "20px",
                         }}
                       >
-                        ({restaurant.fields.review} reviews)
+                        ({restaurant.fields.reviews} reviews)
                       </Typography>
                     </Box>
                   </Paper>

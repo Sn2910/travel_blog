@@ -1,11 +1,25 @@
+.logoWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  color: #008000;
+}
+.logoWrap img {
+  filter: brightness(200) invert(1);
+}
+.logoWrap h1 {
+  font-size: 3em;
+}
 header {
   display: flex;
   justify-content: space-around;
   align-items: center;
   color: #fff;
-  padding: 10px;
-  background: #008000;
-  border-bottom: 2px solid #ffa500;
+  padding: 15px;
+  /* background: #008000; */
+  border-top: 1px solid #292929;
+  border-bottom: 1px solid #292929;
 }
 span {
   color: #ffa500;
@@ -14,28 +28,36 @@ header a {
   text-decoration: none;
   font-size: 1.4em;
   margin: 5px 15px;
-  color: #ffa500;
+  color: #696969;
 }
 header a:hover {
   font-weight: 600;
+  border-top: 3px solid #292929;
+  padding-top: 3.5%;
+}
+header a .active {
+  border-bottom: 2px solid #292929;
 }
 .navLinks {
-  margin-bottom: -35px;
+  margin-bottom: 0px;
+  align-items: center;
 }
 .dest ul {
   display: none;
   position: absolute;
-  right: 17%;
+  /* right: 34%; */
   width: 150px;
-  background: green;
+  background: #fff;
   border-radius: 0px 0px 4px 4px;
   align-items: center;
   text-align: left;
-  margin-top: 13px;
+  padding-top: 15px;
   padding-bottom: 5px;
+  /* margin: 5px 15px; */
   z-index: 10;
+  border-bottom: 1px solid #292929;
 }
-.navLinks .dest:hover ul {
+.dest:hover ul {
   display: block;
 }
 .navLinks ul li {
@@ -43,7 +65,14 @@ header a:hover {
 }
 .navLinks ul li a {
   font-size: 0.7em;
+  transition: 0.4s ease-in-out;
+}
+.navLinks ul li:hover a {
+  color: #fff;
+  border-top: none;
+  padding-top: 0;
 }
 .navLinks ul li:hover {
-  background: #fff;
+  background: orange;
+  border-top: 1px solid #292929;
 }
