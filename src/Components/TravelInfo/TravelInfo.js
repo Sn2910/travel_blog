@@ -108,7 +108,7 @@ function TravelInfo() {
             height: "inherit",
             width: "inherit",
             color: "#fff",
-            // textShadow: "2px 2px 2px orange",
+            textShadow: "2px 2px 2px orange",
             fontSize: "3em",
           }}
         >
