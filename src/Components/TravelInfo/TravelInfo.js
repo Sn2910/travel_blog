@@ -253,7 +253,7 @@ function TravelInfo() {
                     >
                       <div className="visit">
                         <h4>{shop.fields.name}</h4>
-                        <a href ={shop.fields.url} target="_blank">
+                        <a href={shop.fields.url} target="_blank">
                           Visit
                         </a>
                       </div>
@@ -332,7 +332,9 @@ function TravelInfo() {
                     >
                       <div className="visit">
                         <h4>{restaurant.fields.name}</h4>
-                        <a href={restaurant.fields.url}>Visit</a>
+                        <a href={restaurant.fields.url} target="_blank">
+                          Visit
+                        </a>
                       </div>
                       <h3>From ${restaurant.fields.price}</h3>
                     </Box>
