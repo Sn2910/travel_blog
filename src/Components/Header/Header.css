@@ -10,6 +10,7 @@
 }
 .logoWrap h1 {
   font-size: 3em;
+  color: #292929;
 }
 header {
   display: flex;
@@ -35,12 +36,18 @@ header a:hover {
   border-top: 3px solid #292929;
   padding-top: 3.5%;
 }
-header a .active {
-  border-bottom: 2px solid #292929;
+.active {
+  font-weight: 600;
+  border-top: 3px solid #292929;
+  padding-top: 3.5%;
 }
 .navLinks {
   margin-bottom: 0px;
   align-items: center;
+}
+.dest {
+  color: #008000;
+  font-weight: 600;
 }
 .dest ul {
   display: none;
