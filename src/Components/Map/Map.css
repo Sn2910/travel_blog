@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   margin: auto;
-  color: #fff;
+  color: orange;
   padding-top: 20px;
   padding-bottom: 60px;
 }
@@ -18,13 +18,13 @@
 }
 .large_map h2 {
   font-size: 3em;
-  text-shadow: 2px 2px 2px orange;
+  text-shadow: 2px 2px 2px #292929;
 }
 .large_map p {
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: 100;
   padding: 10px 0;
   color: orange;
-  width: 75%;
+  width: 63%;
   margin: auto;
 }

@@ -14,7 +14,7 @@ function Map({ destinations }) {
         <p>
           We're passionate about helping travelers to experience all the best in
           the World. Find everything right here, from god culture, lovely
-          people, and all wonderful tourist attractions
+          people, and all wonderful tourist attractions.
         </p>
       </div>
       <img src={require("../../Images/europe.jpg")} useMap="#map-europe" />

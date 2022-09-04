@@ -5,15 +5,79 @@
   text-align: left;
   background: #fff;
 }
-.cityCont {
+.cityInfoContent {
   color: #696969;
 }
-.cityCont h2 {
-  padding-bottom: 20px;
+.cityInfoContent h2 {
+  padding: 20px 0 15px;
+  color: #696969;
+  border-top: 1px solid #ccc;
+}
+.cityInfoContent h3 {
+  padding-top: 5px;
+  color: #696969;
+}
+.cityInfoContent .aboutCityTitle {
+  border-top: none;
+}
+.cityCont {
+  padding-bottom: 30px;
 }
 .lang {
   text-align: center;
-  padding: 10px;
+  padding: 20px;
   font-size: 1.1em;
   color: #696969;
+}
+.hotelFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+}
+.hotelFlex .hotelCont {
+  width: 100%;
+  padding-right: 25px;
+}
+.hotelGrid {
+  /* width: 120%; */
+}
+.visit {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+}
+.visit a {
+  text-decoration: none;
+  color: #fff;
+  background: #292929;
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+.shopFlex {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  align-items: center;
+}
+.shopFlex .shopCont {
+  width: 100%;
+  padding-right: 25px;
+}
+.shopGrid {
+  width: 120%;
+}
+.restFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.restFlex .restCont {
+  width: 100%;
+  padding-right: 25px;
+}
+.restGrid {
+  width: 120%;
 }
