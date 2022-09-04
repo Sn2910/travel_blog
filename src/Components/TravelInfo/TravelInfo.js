@@ -173,9 +173,9 @@ function TravelInfo() {
                     >
                       <div className="visit">
                         <h4>{hotel.fields.name}</h4>
-                        <Link to={`${hotel.fields.url}`} target="_blank">
+                        <a href={hotel.fields.url} target="_blank">
                           Visit
-                        </Link>
+                        </a>
                       </div>
                       <h3>From ${hotel.fields.price}</h3>
                     </Box>
@@ -253,9 +253,9 @@ function TravelInfo() {
                     >
                       <div className="visit">
                         <h4>{shop.fields.name}</h4>
-                        <Link to={`${shop.fields.url}`} target="_blank">
+                        <a href ={shop.fields.url} target="_blank">
                           Visit
-                        </Link>
+                        </a>
                       </div>
                       <h3>From ${shop.fields.price}</h3>
                     </Box>
@@ -332,7 +332,7 @@ function TravelInfo() {
                     >
                       <div className="visit">
                         <h4>{restaurant.fields.name}</h4>
-                        <Link to={`${restaurant.fields.url}`}>Visit</Link>
+                        <a href={restaurant.fields.url}>Visit</a>
                       </div>
                       <h3>From ${restaurant.fields.price}</h3>
                     </Box>
