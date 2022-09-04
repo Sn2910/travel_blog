@@ -68,7 +68,7 @@ export default function Footer() {
       </div>
       <div className="footer">
         <p>
-          Copyright &copy; 2022 Travel<span>Blog</span>
+          Copyright &copy; 2022 Travel<span>Blog</span>. All rights reserved.
         </p>
       </div>
     </div>
