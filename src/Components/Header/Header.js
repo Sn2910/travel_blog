@@ -15,7 +15,7 @@ function Header({ destinations }) {
       </div>
       <header>
         <nav className="navLinks">
-          <Link to="" className="dest">
+          <Link to="#" className="dest">
             Destinations
             <ul>
               {destinations.map((destination, index) => {

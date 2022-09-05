@@ -7,9 +7,8 @@ import Footer from "./Components/Footer/Footer";
 import { Outlet } from "react-router-dom";
 import Home from "./Home";
 import TravelInfo from "./Components/TravelInfo/TravelInfo";
-import Contact from "./Pages/Contact";
-import About from "./Pages/About";
-
+import About from "./Components/pages/About";
+import Contact from "./Components/pages/Contact";
 function App() {
   const [getInfo, setGetInfo] = useState(false);
   const getData = async () => {
