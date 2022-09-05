@@ -91,7 +91,7 @@ function TravelInfo() {
         elevation={7}
         className="infoBgImage"
         style={{
-          height: "450px",
+          height: "350px",
           backgroundImage: `url(${backgroundUrl})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -101,10 +101,12 @@ function TravelInfo() {
       >
         <h1
           style={{
-            textAlign: "center",
+            // textAlign: "center",
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            // flexDirection: "column",
+            justifyContent: "flex-end",
+            paddingRight: "5%",
+            paddingTop: "2%",
             height: "inherit",
             width: "inherit",
             color: "#fff",
