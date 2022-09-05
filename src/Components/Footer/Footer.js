@@ -31,6 +31,7 @@ export default function Footer() {
                 marginX: "5px",
                 color: "#1c7ded",
                 cursor: "pointer",
+                "&:hover": { color: "#4497f5" },
               }}
             />
             <InstagramIcon
@@ -40,6 +41,7 @@ export default function Footer() {
                 marginX: "5px",
                 color: "#ac14a9",
                 cursor: "pointer",
+                "&:hover": { color: "#e115de" },
               }}
             />
             <TwitterIcon
@@ -49,6 +51,7 @@ export default function Footer() {
                 marginX: "5px",
                 color: "#1c7ded",
                 cursor: "pointer",
+                "&:hover": { color: "#4497f5" },
               }}
             />
           </div>
@@ -72,17 +75,20 @@ export default function Footer() {
                   marginX: "5px",
                   color: "#797979",
                   cursor: "pointer",
+                  "&:hover": { color: "#494949" },
                 }}
               />
             </Link>
             <Link to="/about">
               <PermContactCalendarIcon
+                hover="color: #fff"
                 titleAccess="About"
                 sx={{
                   fontSize: "1.5em",
                   marginX: "5px",
                   color: "#797979",
                   cursor: "pointer",
+                  "&:hover": { color: "#494949" },
                 }}
               />
             </Link>
