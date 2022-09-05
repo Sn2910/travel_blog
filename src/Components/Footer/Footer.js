@@ -4,6 +4,9 @@ import "./Footer.css";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import HomeIcon from "@mui/icons-material/Home";
+import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -22,6 +25,7 @@ export default function Footer() {
           </div>
           <div className="icons">
             <FacebookOutlinedIcon
+              titleAccess="Facebook-Link"
               sx={{
                 fontSize: "1.5em",
                 marginX: "5px",
@@ -30,6 +34,7 @@ export default function Footer() {
               }}
             />
             <InstagramIcon
+              titleAccess="Instagram-Link"
               sx={{
                 fontSize: "1.5em",
                 marginX: "5px",
@@ -38,6 +43,7 @@ export default function Footer() {
               }}
             />
             <TwitterIcon
+              titleAccess="Twitter-Link"
               sx={{
                 fontSize: "1.5em",
                 marginX: "5px",
@@ -56,6 +62,30 @@ export default function Footer() {
               id="emailInput"
             />
             <input type="submit" value="Submit" id="submit" />
+          </div>
+          <div className="homeContactIcons">
+            <Link to="/">
+              <HomeIcon
+                titleAccess="Go Home"
+                sx={{
+                  fontSize: "1.5em",
+                  marginX: "5px",
+                  color: "#797979",
+                  cursor: "pointer",
+                }}
+              />
+            </Link>
+            <Link to="/about">
+              <PermContactCalendarIcon
+                titleAccess="About"
+                sx={{
+                  fontSize: "1.5em",
+                  marginX: "5px",
+                  color: "#797979",
+                  cursor: "pointer",
+                }}
+              />
+            </Link>
           </div>
         </div>
       </div>
