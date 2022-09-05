@@ -13,7 +13,7 @@ function Map({ destinations }) {
         <h2>DISCOVER THE BEST EUROPEAN TOURS</h2>
         <p>
           We're passionate about helping travelers to experience all the best in
-          the World. Find everything right here, from god culture, lovely
+          the World. Find everything right here, from good culture, lovely
           people, and all wonderful tourist attractions.
         </p>
       </div>
