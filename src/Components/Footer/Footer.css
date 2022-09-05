@@ -37,6 +37,9 @@
   align-items: center;
   padding-top: 10px;
 }
+.homeContactIcons {
+  padding-top: 25px;
+}
 .secondCont {
   padding-left: 5%;
   text-align: left;
