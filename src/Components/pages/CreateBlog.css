@@ -1,3 +1,6 @@
+/* .blogBg {
+  background: #faf8f8;
+} */
 .blogWrap {
   display: flex;
   flex-direction: column;
@@ -34,9 +37,15 @@
   margin-top: 10px;
   border-radius: 3px;
 }
-.blogText {
+.blogTextArea {
   margin-bottom: 20px;
+}
+.blogTextArea h4 {
+  padding-bottom: 10px;
 }
 .blogText h4 {
   padding-bottom: 10px;
+}
+.textArea:focus {
+  outline: none;
 }

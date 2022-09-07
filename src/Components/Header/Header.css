@@ -81,7 +81,7 @@ header a:hover {
 }
 .navLinks ul li:hover {
   background: orange;
-  border-top: 1px solid #292929;
+  /* border-top: 1px solid #292929; */
 }
 .blog {
   border-top: none;

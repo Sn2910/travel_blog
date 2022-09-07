@@ -1,0 +1,56 @@
+.blogContWrap {
+  text-align: left;
+}
+.blogPostTitle {
+  padding: 20px 0;
+}
+.author-date {
+  display: flex;
+  align-items: center;
+  padding: 5px 0 10px;
+}
+.author-date img {
+  border-radius: 50%;
+}
+.author-date h4 {
+  margin: 0 10px;
+}
+.blogText {
+  /* width: 90%; */
+  margin-top: 10px;
+}
+.leftCont {
+  /* width: 75%; */
+}
+.blogIcons {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.peopleSays {
+  background: #ccc;
+}
+.peopleSays h2 {
+  padding: 20px 0;
+}
+.peopleWrap {
+  display: flex;
+  margin-bottom: 10px;
+}
+.peopleSays p {
+  padding: 5px 5px 15px;
+}
+.peopleGrid {
+  border: 1px solid #fff;
+  margin: 20px;
+  padding-top: 10px;
+}
+
+.peopleGrid {
+}
+.peopleGrid img {
+  border-radius: 50%;
+}
