@@ -7,11 +7,12 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import HomeIcon from "@mui/icons-material/Home";
 import PermContactCalendarIcon from "@mui/icons-material/PermContactCalendar";
 import { Link } from "react-router-dom";
+import RssFeedIcon from "@mui/icons-material/RssFeed";
 
 export default function Footer() {
   return (
     <div>
-      <Outlet />
+      {/* <Outlet /> */}
       <div className="footerFlex">
         <div className="firstCont">
           <h2>Contact Us</h2>
@@ -83,6 +84,19 @@ export default function Footer() {
               <PermContactCalendarIcon
                 hover="color: #fff"
                 titleAccess="About"
+                sx={{
+                  fontSize: "1.5em",
+                  marginX: "5px",
+                  color: "#797979",
+                  cursor: "pointer",
+                  "&:hover": { color: "#494949" },
+                }}
+              />
+            </Link>
+            <Link to="/blog">
+              <RssFeedIcon
+                hover="color: #fff"
+                titleAccess="Blog"
                 sx={{
                   fontSize: "1.5em",
                   marginX: "5px",
