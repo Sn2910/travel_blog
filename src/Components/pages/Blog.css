@@ -14,7 +14,7 @@
 }
 .allBlogsCont p a {
   text-decoration: none;
-  color: #11f011;
+  color: orange;
 }
 .allBlogsCont p a:hover {
   text-decoration: underline;
