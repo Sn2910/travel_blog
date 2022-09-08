@@ -28,11 +28,11 @@ function Blog() {
       <div
         elevation={7}
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url("https://images.unsplash.com/photo-1501886564641-e55a61b1f5da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           objectFit: "cover",
-          height: "250px",
+          height: "350px",
         }}
       >
         <div className="blogBgText">
@@ -260,7 +260,7 @@ function Blog() {
                 <img src={authorImg} alt="" width="50px" height="40px" />
                 <h4>Created by: Sneha</h4>
                 <h4>|</h4>
-                <h4>Dated: 4.06.2022</h4>
+                <h4>Dated: 17.06.2022</h4>
               </div>
               <img
                 src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
@@ -321,49 +321,6 @@ function Blog() {
               {"46"}
             </div>
           </div>
-          <div className="peopleSays">
-            <h2>What People Say About Us</h2>
-            <div className="peopleWrap">
-              <div className="peopleGrid">
-                <img src={authorImg} alt="" width="50px" height="40px" />
-                <p>
-                  The standard chunk of Lorem Ipsum used since the 1500s is
-                  reproduced below for those interested.
-                </p>
-                <p className="authorName">Markus Pfeifer</p>
-              </div>
-              <div item xs={3} className="peopleGrid">
-                <img src={authorImg} alt="" width="50px" height="40px" />
-                <p>
-                  Contrary to popular belief, Lorem Ipsum is not simply random
-                  text. It has roots in a piece of classical Latin literature
-                  from 45 BC, making it over 2000 years old.
-                </p>
-                <p className="authorName">Maxwell Gyan</p>
-              </div>
-              <div item xs={3} className="peopleGrid">
-                <img src={authorImg} alt="" width="50px" height="40px" />
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.
-                </p>
-                <p className="authorName">Noemi Ahinsah</p>
-              </div>
-              <div item xs={3} className="peopleGrid">
-                <img src={authorImg} alt="" width="50px" height="40px" />
-                <p>
-                  Many desktop publishing packages and web page editors now use
-                  Lorem Ipsum as their default model text, and a search for
-                  'lorem ipsum' will uncover many web sites still in their
-                  infancy.
-                </p>
-                <p className="authorName">Miruna Annan</p>
-              </div>
-            </div>
-          </div>
         </div>
         <Container
           sx={{
@@ -421,6 +378,51 @@ function Blog() {
           </div>
         </Container>
       </Container>
+
+      <div className="peopleSays">
+        <Container>
+          <h2>What People Say About Us</h2>
+          <div className="peopleWrap">
+            <div className="peopleGrid">
+              <img src={authorImg} alt="" width="50px" height="40px" />
+              <p>
+                The standard chunk of Lorem Ipsum used since the 1500s is
+                reproduced below for those interested.
+              </p>
+              <p className="authorName">Markus Pfeifer</p>
+            </div>
+            <div item xs={3} className="peopleGrid">
+              <img src={authorImg} alt="" width="50px" height="40px" />
+              <p>
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It has roots in a piece of classical Latin literature from
+                45 BC, making it over 2000 years old.
+              </p>
+              <p className="authorName">Maxwell Gyan</p>
+            </div>
+            <div item xs={3} className="peopleGrid">
+              <img src={authorImg} alt="" width="50px" height="40px" />
+              <p>
+                It is a long established fact that a reader will be distracted
+                by the readable content of a page when looking at its layout.
+                The point of using Lorem Ipsum is that it has a more-or-less
+                normal distribution of letters, as opposed to using 'Content
+                here, content here', making it look like readable English.
+              </p>
+              <p className="authorName">Noemi Ahinsah</p>
+            </div>
+            <div item xs={3} className="peopleGrid">
+              <img src={authorImg} alt="" width="50px" height="40px" />
+              <p>
+                Many desktop publishing packages and web page editors now use
+                Lorem Ipsum as their default model text, and a search for 'lorem
+                ipsum' will uncover many web sites still in their infancy.
+              </p>
+              <p className="authorName">Miruna Annan</p>
+            </div>
+          </div>
+        </Container>
+      </div>
     </div>
   );
 }
