@@ -4,12 +4,13 @@
   justify-content: center;
   height: inherit;
   color: #fff;
+  font-size: 1.5em;
 }
 .allBlogsCont h1 {
   padding: 20px 0;
 }
 .allBlogsCont p {
-  padding-bottom: 10px;
+  padding: 20px 0;
 }
 .allBlogsCont p a {
   text-decoration: none;

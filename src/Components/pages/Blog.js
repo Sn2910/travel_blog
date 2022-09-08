@@ -32,16 +32,16 @@ function Blog() {
           backgroundSize: "cover",
           backgroundPosition: "center",
           objectFit: "cover",
-          height: "300px",
+          height: "250px",
         }}
       >
         <div className="blogBgText">
           <h1>Featured Blogs</h1>
-          <p>
-            Create your blog <Link to="/blog/create-blog">here.</Link>
-          </p>
         </div>
       </div>
+      <p>
+        Create your blog <Link to="/blog/create-blog">here</Link>.
+      </p>
       <Container
         sx={{
           display: "flex",
@@ -88,7 +88,11 @@ function Blog() {
             <div className="blogIcons">
               <ThumbUpIcon
                 titleAccess="Like"
-                sx={{ marginRight: "5px", color: "#696969" }}
+                sx={{
+                  marginRight: "5px",
+                  color: "#696969",
+                  "&:hover": { cursor: "pointer" },
+                }}
               />
               {"433"}
               <CommentOutlinedIcon
@@ -97,6 +101,7 @@ function Blog() {
                   marginRight: "5px",
                   marginLeft: "15px",
                   color: "#696969",
+                  "&:hover": { cursor: "pointer" },
                 }}
               />{" "}
               {"309"}
@@ -106,6 +111,7 @@ function Blog() {
                   marginRight: "5px",
                   marginLeft: "15px",
                   color: "#696969",
+                  "&:hover": { cursor: "pointer" },
                 }}
               />
               {"46"}
@@ -150,7 +156,11 @@ function Blog() {
             <div className="blogIcons">
               <ThumbUpIcon
                 titleAccess="Like"
-                sx={{ marginRight: "5px", color: "#696969" }}
+                sx={{
+                  marginRight: "5px",
+                  color: "#696969",
+                  "&:hover": { cursor: "pointer" },
+                }}
               />
               {"433"}
               <CommentOutlinedIcon
@@ -159,6 +169,7 @@ function Blog() {
                   marginRight: "5px",
                   marginLeft: "15px",
                   color: "#696969",
+                  "&:hover": { cursor: "pointer" },
                 }}
               />{" "}
               {"309"}
@@ -168,6 +179,7 @@ function Blog() {
                   marginRight: "5px",
                   marginLeft: "15px",
                   color: "#696969",
+                  "&:hover": { cursor: "pointer" },
                 }}
               />
               {"46"}
@@ -212,7 +224,11 @@ function Blog() {
             <div className="blogIcons">
               <ThumbUpIcon
                 titleAccess="Like"
-                sx={{ marginRight: "5px", color: "#696969" }}
+                sx={{
+                  marginRight: "5px",
+                  color: "#696969",
+                  "&:hover": { cursor: "pointer" },
+                }}
               />
               {"433"}
               <CommentOutlinedIcon
@@ -221,6 +237,7 @@ function Blog() {
                   marginRight: "5px",
                   marginLeft: "15px",
                   color: "#696969",
+                  "&:hover": { cursor: "pointer" },
                 }}
               />{" "}
               {"309"}
@@ -230,6 +247,7 @@ function Blog() {
                   marginRight: "5px",
                   marginLeft: "15px",
                   color: "#696969",
+                  "&:hover": { cursor: "pointer" },
                 }}
               />
               {"46"}
@@ -274,7 +292,11 @@ function Blog() {
             <div className="blogIcons">
               <ThumbUpIcon
                 titleAccess="Like"
-                sx={{ marginRight: "5px", color: "#696969" }}
+                sx={{
+                  marginRight: "5px",
+                  color: "#696969",
+                  "&:hover": { cursor: "pointer" },
+                }}
               />
               {"433"}
               <CommentOutlinedIcon
@@ -283,6 +305,7 @@ function Blog() {
                   marginRight: "5px",
                   marginLeft: "15px",
                   color: "#696969",
+                  "&:hover": { cursor: "pointer" },
                 }}
               />{" "}
               {"309"}
@@ -292,6 +315,7 @@ function Blog() {
                   marginRight: "5px",
                   marginLeft: "15px",
                   color: "#696969",
+                  "&:hover": { cursor: "pointer" },
                 }}
               />
               {"46"}
