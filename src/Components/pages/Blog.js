@@ -4,7 +4,6 @@ import authorImg from "./../../../src/Images/kenn.jpg";
 import kenn from "./../../../src/Images/kenn1.jpg";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
@@ -24,7 +23,7 @@ const vd5 =
 
 function Blog() {
   return (
-    <div>
+    <div className="allBlogsCont">
       <h1>Featured Blogs</h1>
       <p>
         Create your blog <Link to="/blog/create-blog">here.</Link>
@@ -42,9 +41,10 @@ function Blog() {
               <div className="author-date">
                 <img src={authorImg} alt="" width="50px" height="40px" />
                 <h4>Created by: Sneha</h4>
+                <h4>|</h4>
                 <h4>Dated: 15.04.2022</h4>
               </div>
-              <img src={image} alt="" width="350px" height="200px" />
+              <img src={image} alt="" width="365px" height="200px" />
               <p className="blogText">
                 Contrary to popular belief, Lorem Ipsum is not simply random
                 text. It has roots in a piece of classical Latin literature from
@@ -67,22 +67,46 @@ function Blog() {
               </p>
             </div>
             <div className="blogIcons">
-              <ThumbUpIcon sx={{ margin: "px" }} />
+              <ThumbUpIcon
+                titleAccess="Like"
+                sx={{ marginRight: "5px", color: "#696969" }}
+              />
               {"433"}
-              <CommentOutlinedIcon sx={{ marginLeft: "15px" }} /> {"309"}
-              <ShareOutlinedIcon sx={{ marginLeft: "15px" }} />
+              <CommentOutlinedIcon
+                titleAccess="Comment"
+                sx={{
+                  marginRight: "5px",
+                  marginLeft: "15px",
+                  color: "#696969",
+                }}
+              />{" "}
+              {"309"}
+              <ShareOutlinedIcon
+                titleAccess="Share"
+                sx={{
+                  marginRight: "5px",
+                  marginLeft: "15px",
+                  color: "#696969",
+                }}
+              />
               {"46"}
             </div>
           </div>
           <div className="blogContWrap">
-            <h2 className="blogPostTitle">My First Tour in Europe</h2>
+            <h2 className="blogPostTitle">The Forest Adventure</h2>
             <div>
               <div className="author-date">
                 <img src={authorImg} alt="" width="50px" height="40px" />
                 <h4>Created by: Sneha</h4>
-                <h4>Dated: 15.04.2022</h4>
+                <h4>|</h4>
+                <h4>Dated: 21.05.2022</h4>
               </div>
-              <img src={image} alt="" width="350px" height="200px" />
+              <img
+                src="https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                alt=""
+                width="365px"
+                height="200px"
+              />
               <p className="blogText">
                 Contrary to popular belief, Lorem Ipsum is not simply random
                 text. It has roots in a piece of classical Latin literature from
@@ -105,22 +129,46 @@ function Blog() {
               </p>
             </div>
             <div className="blogIcons">
-              <ThumbUpIcon sx={{ margin: "px" }} />
+              <ThumbUpIcon
+                titleAccess="Like"
+                sx={{ marginRight: "5px", color: "#696969" }}
+              />
               {"433"}
-              <CommentOutlinedIcon sx={{ marginLeft: "15px" }} /> {"309"}
-              <ShareOutlinedIcon sx={{ marginLeft: "15px" }} />
+              <CommentOutlinedIcon
+                titleAccess="Comment"
+                sx={{
+                  marginRight: "5px",
+                  marginLeft: "15px",
+                  color: "#696969",
+                }}
+              />{" "}
+              {"309"}
+              <ShareOutlinedIcon
+                titleAccess="Share"
+                sx={{
+                  marginRight: "5px",
+                  marginLeft: "15px",
+                  color: "#696969",
+                }}
+              />
               {"46"}
             </div>
           </div>
           <div className="blogContWrap">
-            <h2 className="blogPostTitle">My First Tour in Europe</h2>
+            <h2 className="blogPostTitle">Let's Climb the Mountains</h2>
             <div>
               <div className="author-date">
                 <img src={authorImg} alt="" width="50px" height="40px" />
                 <h4>Created by: Sneha</h4>
-                <h4>Dated: 15.04.2022</h4>
+                <h4>|</h4>
+                <h4>Dated: 4.06.2022</h4>
               </div>
-              <img src={image} alt="" width="350px" height="200px" />
+              <img
+                src="https://images.unsplash.com/photo-1600298882283-40b4dcb8b211?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                alt=""
+                width="365px"
+                height="200px"
+              />
               <p className="blogText">
                 Contrary to popular belief, Lorem Ipsum is not simply random
                 text. It has roots in a piece of classical Latin literature from
@@ -143,10 +191,90 @@ function Blog() {
               </p>
             </div>
             <div className="blogIcons">
-              <ThumbUpIcon sx={{ margin: "px" }} />
+              <ThumbUpIcon
+                titleAccess="Like"
+                sx={{ marginRight: "5px", color: "#696969" }}
+              />
               {"433"}
-              <CommentOutlinedIcon sx={{ marginLeft: "15px" }} /> {"309"}
-              <ShareOutlinedIcon sx={{ marginLeft: "15px" }} />
+              <CommentOutlinedIcon
+                titleAccess="Comment"
+                sx={{
+                  marginRight: "5px",
+                  marginLeft: "15px",
+                  color: "#696969",
+                }}
+              />{" "}
+              {"309"}
+              <ShareOutlinedIcon
+                titleAccess="Share"
+                sx={{
+                  marginRight: "5px",
+                  marginLeft: "15px",
+                  color: "#696969",
+                }}
+              />
+              {"46"}
+            </div>
+          </div>
+          <div className="blogContWrap">
+            <h2 className="blogPostTitle">On the River</h2>
+            <div>
+              <div className="author-date">
+                <img src={authorImg} alt="" width="50px" height="40px" />
+                <h4>Created by: Sneha</h4>
+                <h4>|</h4>
+                <h4>Dated: 4.06.2022</h4>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                alt=""
+                width="365px"
+                height="200px"
+              />
+              <p className="blogText">
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It has roots in a piece of classical Latin literature from
+                45 BC, making it over 2000 years old. Richard McClintock, a
+                Latin professor at Hampden-Sydney College in Virginia, looked up
+                one of the more obscure Latin words, consectetur, from a Lorem
+                Ipsum passage, and going through the cites of the word in
+                classical literature, discovered the undoubtable source. Lorem
+                Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
+                Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
+                written in 45 BC. This book is a treatise on the theory of
+                ethics, very popular during the Renaissance. The first line of
+                Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
+                in section 1.10.32. The standard chunk of Lorem Ipsum used since
+                the 1500s is reproduced below for those interested. Sections
+                1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by
+                Cicero are also reproduced in their exact original form,
+                accompanied by English versions from the 1914 translation by H.
+                Rackham.
+              </p>
+            </div>
+            <div className="blogIcons">
+              <ThumbUpIcon
+                titleAccess="Like"
+                sx={{ marginRight: "5px", color: "#696969" }}
+              />
+              {"433"}
+              <CommentOutlinedIcon
+                titleAccess="Comment"
+                sx={{
+                  marginRight: "5px",
+                  marginLeft: "15px",
+                  color: "#696969",
+                }}
+              />{" "}
+              {"309"}
+              <ShareOutlinedIcon
+                titleAccess="Share"
+                sx={{
+                  marginRight: "5px",
+                  marginLeft: "15px",
+                  color: "#696969",
+                }}
+              />
               {"46"}
             </div>
           </div>
@@ -237,6 +365,16 @@ function Blog() {
               <LockIcon />
               <p>Secure Donation</p>
             </div>
+          </div>
+          <div className="subscribe">
+            <h3>Subscribe</h3>
+            <p>
+              Join other travelers to get the latest updates, tips & tricks, and
+              insider secrets!
+            </p>
+            <h6>Email Address</h6>
+            <input type="email" />
+            <button>Sbscribe</button>
           </div>
         </Container>
       </Container>

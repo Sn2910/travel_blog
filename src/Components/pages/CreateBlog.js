@@ -47,6 +47,9 @@ export default function CreateBlog() {
               }}
             />
           </div>
+          <div className="createBtn">
+            <button>Create</button>
+          </div>
         </div>
       </Container>
     </div>
