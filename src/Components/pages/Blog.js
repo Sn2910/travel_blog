@@ -9,6 +9,7 @@ import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import LockIcon from "@mui/icons-material/Lock";
 import "./Blog.css";
+import { Paper } from "@mui/material";
 
 const vd1 =
   "https://media.istockphoto.com/videos/aerial-flight-with-drone-over-the-famous-skogar-waterfall-iceland-video-id1031669488";
@@ -24,10 +25,23 @@ const vd5 =
 function Blog() {
   return (
     <div className="allBlogsCont">
-      <h1>Featured Blogs</h1>
-      <p>
-        Create your blog <Link to="/blog/create-blog">here.</Link>
-      </p>
+      <div
+        elevation={7}
+        style={{
+          backgroundImage: `url(${image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          objectFit: "cover",
+          height: "300px",
+        }}
+      >
+        <div className="blogBgText">
+          <h1>Featured Blogs</h1>
+          <p>
+            Create your blog <Link to="/blog/create-blog">here.</Link>
+          </p>
+        </div>
+      </div>
       <Container
         sx={{
           display: "flex",
@@ -44,7 +58,12 @@ function Blog() {
                 <h4>|</h4>
                 <h4>Dated: 15.04.2022</h4>
               </div>
-              <img src={image} alt="" width="365px" height="200px" />
+              <img
+                src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1120&q=80"
+                alt=""
+                width="365px"
+                height="200px"
+              />
               <p className="blogText">
                 Contrary to popular belief, Lorem Ipsum is not simply random
                 text. It has roots in a piece of classical Latin literature from

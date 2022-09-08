@@ -1,17 +1,22 @@
+.blogBgText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: inherit;
+  color: #fff;
+}
 .allBlogsCont h1 {
   padding: 20px 0;
-  color: #696969;
 }
 .allBlogsCont p {
   padding-bottom: 10px;
 }
 .allBlogsCont p a {
   text-decoration: none;
-  color: #008000;
+  color: #11f011;
 }
 .allBlogsCont p a:hover {
   text-decoration: underline;
-  color: #008000;
 }
 .blogContWrap {
   text-align: left;
