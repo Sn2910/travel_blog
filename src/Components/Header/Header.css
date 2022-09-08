@@ -34,15 +34,15 @@ header a {
 header a:hover {
   font-weight: 600;
   border-top: 3px solid #292929;
-  padding-top: 3.5%;
+  padding-top: 3%;
 }
 .active {
   font-weight: 600;
   border-top: 3px solid #292929;
-  padding-top: 3.5%;
+  padding-top: 3%;
 }
 .navLinks {
-  margin-bottom: 0px;
+  /* margin-top: 15px; */
   align-items: center;
 }
 .dest {
@@ -81,5 +81,24 @@ header a:hover {
 }
 .navLinks ul li:hover {
   background: orange;
-  border-top: 1px solid #292929;
+  /* border-top: 1px solid #292929; */
 }
+.blog {
+  border-top: none;
+  color: #ffa500;
+  border: 1px solid orange;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-size: 1em;
+  transition: 0.5s;
+}
+.blog:hover {
+  border: 1px solid orange;
+  padding: 2px 7px;
+  background: #ffa500;
+  color: #fff;
+}
+/* .blogBtn {
+  padding: 3px 7px;
+  margin-bottom: 55px;
+} */
