@@ -1,13 +1,26 @@
 import React from "react";
 import image from "./../../../src/Images/senya-beach.jpg";
 import authorImg from "./../../../src/Images/kenn.jpg";
+import kenn from "./../../../src/Images/kenn1.jpg";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+import LockIcon from "@mui/icons-material/Lock";
 import "./Blog.css";
+
+const vd1 =
+  "https://media.istockphoto.com/videos/aerial-flight-with-drone-over-the-famous-skogar-waterfall-iceland-video-id1031669488";
+const vd2 =
+  "https://media.istockphoto.com/videos/flock-of-flamingos-flying-at-dusk-video-id1169447272";
+const vd3 =
+  "https://media.istockphoto.com/videos/mother-and-daughter-running-to-the-sun-video-id497375361";
+const vd4 =
+  "https://media.istockphoto.com/videos/landscape-of-clear-stream-video-id699620004";
+const vd5 =
+  "https://media.istockphoto.com/videos/hand-touching-a-tree-trunk-in-the-forest-video-id1008537418";
 
 function Blog() {
   return (
@@ -139,33 +152,21 @@ function Blog() {
           </div>
           <div className="peopleSays">
             <h2>What People Say About Us</h2>
-            <div container spacing={2} className="peopleWrap">
-              <div
-                item
-                xs={3}
-                className="peopleGrid"
-                sx={{
-                  paddingX: "-16px",
-                }}
-              >
+            <div className="peopleWrap">
+              <div className="peopleGrid">
                 <img src={authorImg} alt="" width="50px" height="40px" />
                 <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.
+                  The standard chunk of Lorem Ipsum used since the 1500s is
+                  reproduced below for those interested.
                 </p>
                 <p className="authorName">Markus Pfeifer</p>
               </div>
               <div item xs={3} className="peopleGrid">
                 <img src={authorImg} alt="" width="50px" height="40px" />
                 <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.
+                  Contrary to popular belief, Lorem Ipsum is not simply random
+                  text. It has roots in a piece of classical Latin literature
+                  from 45 BC, making it over 2000 years old.
                 </p>
                 <p className="authorName">Maxwell Gyan</p>
               </div>
@@ -183,11 +184,10 @@ function Blog() {
               <div item xs={3} className="peopleGrid">
                 <img src={authorImg} alt="" width="50px" height="40px" />
                 <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more-or-less
-                  normal distribution of letters, as opposed to using 'Content
-                  here, content here', making it look like readable English.
+                  Many desktop publishing packages and web page editors now use
+                  Lorem Ipsum as their default model text, and a search for
+                  'lorem ipsum' will uncover many web sites still in their
+                  infancy.
                 </p>
                 <p className="authorName">Miruna Annan</p>
               </div>
@@ -196,10 +196,48 @@ function Blog() {
         </div>
         <Container
           sx={{
-            width: "20%",
+            width: "25%",
           }}
         >
-          <div>AsideBar</div>
+          <div className="blogVideos">
+            <h2>Featured Videos</h2>
+            <video controls width="100%">
+              <source src={vd1} type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+            <video controls width="100%">
+              <source src={vd2} type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+            <video controls width="100%">
+              <source src={vd3} type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+            <video controls width="100%">
+              <source src={vd4} type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+            <video controls width="100%">
+              <source src={vd5} type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos.
+            </video>
+            <div className="more-videos">
+              <Link to="#">
+                <button>More Videos</button>
+              </Link>
+            </div>
+          </div>
+          <div className="support">
+            <h3>Support the site!</h3>
+            <div className="line"></div>
+            <p>Buy me a coffee☕ or an appetizer with a donation here</p>
+            <img src={kenn} alt="" width="240px" height="160px" />
+            <button>Donate Now</button>
+            <div className="lock">
+              <LockIcon />
+              <p>Secure Donation</p>
+            </div>
+          </div>
         </Container>
       </Container>
     </div>

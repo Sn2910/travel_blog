@@ -20,7 +20,7 @@
   margin-top: 10px;
 }
 .leftCont {
-  /* width: 75%; */
+  width: 75%;
 }
 .blogIcons {
   display: flex;
@@ -31,14 +31,16 @@
   margin-top: 10px;
 }
 .peopleSays {
-  background: #ccc;
+  background: rgb(243, 242, 242);
 }
 .peopleSays h2 {
   padding: 20px 0;
 }
 .peopleWrap {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-bottom: 10px;
+  margin-right: 15px;
 }
 .peopleSays p {
   padding: 5px 5px 15px;
@@ -47,10 +49,76 @@
   border: 1px solid #fff;
   margin: 20px;
   padding-top: 10px;
-}
-
-.peopleGrid {
+  width: 90%;
+  height: fit-content;
 }
 .peopleGrid img {
   border-radius: 50%;
+}
+.authorName {
+  font-weight: 600;
+  color: #696969;
+}
+
+/* AsideBar */
+.blogVideos h2 {
+  padding: 20px 0;
+}
+.blogVideos video {
+  margin: 5px 0;
+}
+.more-videos button {
+  padding: 7px;
+  border: none;
+  background: #127ef9;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 1em;
+  /* transition: 1s; */
+}
+.more-videos button:hover {
+  background: #0866d1;
+}
+
+.support {
+  background: #fff;
+  margin: 100px 0 10px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 4px 1px rgb(0, 0, 0, 0.5);
+}
+.support h3 {
+  padding: 20px 0;
+}
+.line {
+  border: 2px solid #008000;
+  width: 20%;
+  margin: auto;
+}
+.support p {
+  padding: 20px 7px;
+  font-size: 0.9em;
+}
+.support img {
+  padding: 5px;
+}
+.support button {
+  padding: 7px;
+  margin: 20px 0;
+  border: none;
+  background: #008000;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 1em;
+  /* transition: 1s; */
+}
+.support button:hover {
+  background: #05bb05;
+}
+.lock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #b1b1b1;
+  border-radius: 0 0 5px 5px;
+  color: #696969;
 }
