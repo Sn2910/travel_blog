@@ -11,9 +11,13 @@ import About from "./Components/pages/About";
 import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
+import { getBlogs, postBlog } from "./controllers/api";
 
 function App() {
   const [getInfo, setGetInfo] = useState(false);
+  const [blog, setBlog] = useState({
+    blogs: [],
+  });
   const getData = async () => {
     const response = await fetch(
       `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
@@ -27,8 +31,24 @@ function App() {
          console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
   };
 
+  const readBlog = async (blog) => {
+    const blogs = await getBlogs(blog);
+    console.log(blogs);
+    setBlog((prev) => {
+      return { ...prev, blogs };
+    });
+  };
+  const addBlog = async (blog) => {
+    const blogs = await postBlog(blog);
+    console.log(blogs);
+    setBlog((prev) => {
+      return { ...prev, blogs };
+    });
+  };
+
   useEffect(() => {
     getData();
+    readBlog();
   }, []);
   if (!getInfo) {
     return <div>Loading...</div>;
@@ -52,8 +72,14 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/travel-blog/:id" element={<TravelInfo />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/create-blog" element={<CreateBlog />} />
+        <Route
+          path="/blog"
+          element={<Blog blogs={blog.blogs} addBlog={addBlog} />}
+        />
+        <Route
+          path="/blog/create-blog"
+          element={<CreateBlog blogs={blog.blogs} addBlog={addBlog} />}
+        />
       </Routes>
       <Footer />
     </div>

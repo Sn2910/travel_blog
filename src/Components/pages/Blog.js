@@ -10,6 +10,7 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import LockIcon from "@mui/icons-material/Lock";
 import "./Blog.css";
 import { Paper } from "@mui/material";
+import { useState, useEffect } from "react";
 
 const vd1 =
   "https://media.istockphoto.com/videos/aerial-flight-with-drone-over-the-famous-skogar-waterfall-iceland-video-id1031669488";
@@ -22,7 +23,65 @@ const vd4 =
 const vd5 =
   "https://media.istockphoto.com/videos/hand-touching-a-tree-trunk-in-the-forest-video-id1008537418";
 
-function Blog() {
+function Blog({ blogs = [], addBlog }) {
+  const [blogTitle, setBlogTitle] = useState("");
+  const [blogText, setBlogText] = useState("");
+
+  const blogData = blogs.map((blog, id) => {
+    return (
+      <div>
+        <div className="blogPostTitle">
+          <h2>{blog.title}</h2>
+        </div>
+        <div>
+          <div className="author-date">
+            <img src={authorImg} alt="" width="50px" height="40px" />
+            <h4>Created by: Sneha</h4>
+            <h4>|</h4>
+            <h4>Dated: 15.04.2022</h4>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1120&q=80"
+            alt=""
+            width="365px"
+            height="200px"
+          />
+          <p className="blogText">{blog.rich_text}</p>
+        </div>
+        <div className="blogIcons">
+          <ThumbUpIcon
+            titleAccess="Like"
+            sx={{
+              marginRight: "5px",
+              color: "#696969",
+              "&:hover": { cursor: "pointer" },
+            }}
+          />
+          {"433"}
+          <CommentOutlinedIcon
+            titleAccess="Comment"
+            sx={{
+              marginRight: "5px",
+              marginLeft: "15px",
+              color: "#696969",
+              "&:hover": { cursor: "pointer" },
+            }}
+          />{" "}
+          {"309"}
+          <ShareOutlinedIcon
+            titleAccess="Share"
+            sx={{
+              marginRight: "5px",
+              marginLeft: "15px",
+              color: "#696969",
+              "&:hover": { cursor: "pointer" },
+            }}
+          />
+          {"46"}
+        </div>
+      </div>
+    );
+  });
   return (
     <div className="allBlogsCont">
       <div
@@ -49,75 +108,8 @@ function Blog() {
         }}
       >
         <div className="leftCont">
-          <div className="blogContWrap">
-            <h2 className="blogPostTitle">My First Tour in Europe</h2>
-            <div>
-              <div className="author-date">
-                <img src={authorImg} alt="" width="50px" height="40px" />
-                <h4>Created by: Sneha</h4>
-                <h4>|</h4>
-                <h4>Dated: 15.04.2022</h4>
-              </div>
-              <img
-                src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1120&q=80"
-                alt=""
-                width="365px"
-                height="200px"
-              />
-              <p className="blogText">
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical Latin literature from
-                45 BC, making it over 2000 years old. Richard McClintock, a
-                Latin professor at Hampden-Sydney College in Virginia, looked up
-                one of the more obscure Latin words, consectetur, from a Lorem
-                Ipsum passage, and going through the cites of the word in
-                classical literature, discovered the undoubtable source. Lorem
-                Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-                Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
-                written in 45 BC. This book is a treatise on the theory of
-                ethics, very popular during the Renaissance. The first line of
-                Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
-                in section 1.10.32. The standard chunk of Lorem Ipsum used since
-                the 1500s is reproduced below for those interested. Sections
-                1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by
-                Cicero are also reproduced in their exact original form,
-                accompanied by English versions from the 1914 translation by H.
-                Rackham.
-              </p>
-            </div>
-            <div className="blogIcons">
-              <ThumbUpIcon
-                titleAccess="Like"
-                sx={{
-                  marginRight: "5px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />
-              {"433"}
-              <CommentOutlinedIcon
-                titleAccess="Comment"
-                sx={{
-                  marginRight: "5px",
-                  marginLeft: "15px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />{" "}
-              {"309"}
-              <ShareOutlinedIcon
-                titleAccess="Share"
-                sx={{
-                  marginRight: "5px",
-                  marginLeft: "15px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />
-              {"46"}
-            </div>
-          </div>
-          <div className="blogContWrap">
+          <div className="blogContWrap">{blogData}</div>
+          {/* <div className="blogContWrap">
             <h2 className="blogPostTitle">The Forest Adventure</h2>
             <div>
               <div className="author-date">
@@ -319,8 +311,8 @@ function Blog() {
                 }}
               />
               {"46"}
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
         <Container
           sx={{
