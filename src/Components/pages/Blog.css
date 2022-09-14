@@ -56,7 +56,7 @@
 }
 .peopleSays {
   background: #f3f2f2;
-  margin-top: -10px;
+  /* margin-top: 10px; */
 }
 .peopleSays h2 {
   padding: 20px 0;
@@ -129,7 +129,7 @@
   font-size: 0.9em;
 }
 .support img {
-  padding: 5px;
+  /* padding: 5px; */
 }
 .support button {
   padding: 7px;

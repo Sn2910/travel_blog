@@ -29,22 +29,22 @@ function Blog({ blogs = [], addBlog }) {
 
   const blogData = blogs.map((blog, id) => {
     return (
-      <div>
+      <div key={id}>
         <div className="blogPostTitle">
           <h2>{blog.title}</h2>
         </div>
         <div>
           <div className="author-date">
             <img src={authorImg} alt="" width="50px" height="40px" />
-            <h4>Created by: Sneha</h4>
+            <h4>Created by: @{blog.user_name}</h4>
             <h4>|</h4>
-            <h4>Dated: 15.04.2022</h4>
+            <h4>Dated: {blog.blog_date}.</h4>
           </div>
           <img
             src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1120&q=80"
             alt=""
-            width="365px"
-            height="200px"
+            width="465px"
+            height="250px"
           />
           <p className="blogText">{blog.rich_text}</p>
         </div>
@@ -316,7 +316,8 @@ function Blog({ blogs = [], addBlog }) {
         </div>
         <Container
           sx={{
-            width: "25%",
+            width: "30%",
+            marginBottom: "15px",
           }}
         >
           <div className="blogVideos">
@@ -351,7 +352,7 @@ function Blog({ blogs = [], addBlog }) {
             <h3>Support the site!</h3>
             <div className="line"></div>
             <p>Buy me a coffee☕ or an appetizer with a donation here</p>
-            <img src={kenn} alt="" width="240px" height="160px" />
+            <img src={kenn} alt="" width="260px" height="160px" />
             <button>Donate Now</button>
             <div className="lock">
               <LockIcon />

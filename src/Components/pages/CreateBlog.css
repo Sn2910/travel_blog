@@ -11,6 +11,25 @@
   margin: 20px 0;
   color: #696969;
 }
+.user-date {
+  display: flex;
+  margin-bottom: 20px;
+}
+.user-date h4 {
+  margin-bottom: 10px;
+}
+.user-date input {
+  display: flex;
+  width: 275px;
+  padding: 5px;
+  font-size: 1.2em;
+}
+.username {
+  margin-right: 5px;
+}
+.blogTitle h4 {
+  margin-bottom: 10px;
+}
 .blogTitle input {
   width: 275px;
   padding: 5px;
@@ -31,7 +50,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 550px;
+  width: 555px;
   height: 200px;
   border: 1px solid #696969;
   margin-top: 10px;

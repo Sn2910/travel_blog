@@ -7,15 +7,22 @@ import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
+import Moment from "moment";
 
 export default function CreateBlog({ blogs = [], addBlog }) {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogText, setBlogText] = useState("");
+  const [blogDate, setBlogDate] = useState("");
+  const [userName, setUserName] = useState("");
+
+  const date = Moment().format("MMM Do YY");
 
   console.log(blogTitle, blogText);
   function createBlog() {
     console.log();
     addBlog({
+      userName: userName,
+      blogDate: blogDate,
       title: blogTitle,
       richText: blogText,
     });
@@ -25,8 +32,25 @@ export default function CreateBlog({ blogs = [], addBlog }) {
     <div className="blogBg">
       <Container maxWidth="sm" sx={{ background: "#fff" }}>
         <div className="blogWrap">
-          {/* <div>{blogData}</div> */}
           <h2>Create a Blog</h2>
+          <div className="user-date">
+            <div className="username">
+              <h4>Username:</h4>
+              <input
+                type="text"
+                value={userName}
+                onChange={({ target }) => setUserName(target.value)}
+              />
+            </div>
+            <div>
+              <h4>Date:</h4>
+              <input
+                type="date"
+                value={blogDate}
+                onChange={() => setBlogDate(date)}
+              />
+            </div>
+          </div>
           <div className="blogTitle">
             <h4>Title:</h4>
             <input
@@ -60,7 +84,7 @@ export default function CreateBlog({ blogs = [], addBlog }) {
               value={blogText}
               onChange={({ target }) => setBlogText(target.value)}
               style={{
-                width: 550,
+                width: 555,
                 height: 300,
                 fontSize: "1.2em",
               }}
