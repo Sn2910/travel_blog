@@ -12,9 +12,10 @@ import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
 import { getBlogs, postBlog } from "./controllers/api";
+import BlogOverview from "./Components/pages/BlogOverview";
 
 function App() {
-  const [getInfo, setGetInfo] = useState(false);
+  const [getInfo, setGetInfo] = useState("");
   const [blog, setBlog] = useState({
     blogs: [],
   });
@@ -50,8 +51,8 @@ function App() {
     getData();
     readBlog();
   }, []);
-  if (!getInfo) {
-    return <div>Loading...</div>;
+  if (!getInfo || !blog) {
+    return <div className="loading">Loading...</div>;
   }
   const destinations = getInfo.items.filter(
     (item, index) => item.sys.contentType.sys.id === "destinations"
@@ -80,6 +81,7 @@ function App() {
           path="/blog/create-blog"
           element={<CreateBlog blogs={blog.blogs} addBlog={addBlog} />}
         />
+        <Route path="/blog-overview/:id" element={<BlogOverview />} />
       </Routes>
       <Footer />
     </div>

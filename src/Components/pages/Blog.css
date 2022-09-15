@@ -1,3 +1,11 @@
+.loading {
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #fff;
+  background: #000;
+  padding: 5px;
+}
 .blogBgText {
   display: flex;
   flex-direction: column;
@@ -11,10 +19,12 @@
 }
 .allBlogsCont p {
   padding: 20px 0;
+  font-size: 1.3em;
 }
 .allBlogsCont p a {
   text-decoration: none;
   color: orange;
+  font-weight: 600;
 }
 .allBlogsCont p a:hover {
   text-decoration: underline;
@@ -24,6 +34,11 @@
 }
 .blogPostTitle {
   padding: 20px 0;
+}
+.blogPostTitle a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2em;
 }
 .author-date {
   display: flex;

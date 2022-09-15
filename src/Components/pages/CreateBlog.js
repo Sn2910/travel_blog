@@ -26,6 +26,10 @@ export default function CreateBlog({ blogs = [], addBlog }) {
       title: blogTitle,
       richText: blogText,
     });
+    setBlogTitle("");
+    setBlogText("");
+    setBlogDate("");
+    setUserName("");
   }
 
   return (

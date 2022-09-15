@@ -28,10 +28,15 @@ function Blog({ blogs = [], addBlog }) {
   const [blogText, setBlogText] = useState("");
 
   const blogData = blogs.map((blog, id) => {
+    if (!blog) {
+      return <div className="loading">Loading...</div>;
+    }
     return (
       <div key={id}>
         <div className="blogPostTitle">
-          <h2>{blog.title}</h2>
+          <Link to={`/blog-overview/${blog.title}`}>
+            <h2>{blog.title}</h2>
+          </Link>
         </div>
         <div>
           <div className="author-date">

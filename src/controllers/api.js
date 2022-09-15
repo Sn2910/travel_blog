@@ -18,6 +18,14 @@ const getBlogs = async () => {
   console.log(result);
   return result;
 };
+
+async function getBlogByID() {
+  const url = `${apiHost2}/api/blog/:id`;
+  const response = fetch(url);
+  const result = (await response).json();
+  console.log(result);
+  return result;
+}
 const postBlog = async (blog) => {
   const url = `${apiHost2}/api/blog`;
   const response = fetch(url, {
@@ -32,4 +40,4 @@ const postBlog = async (blog) => {
   }
 };
 
-export { getAsset, getBlogs, postBlog };
+export { getAsset, getBlogs, postBlog, getBlogByID };
