@@ -7,15 +7,17 @@ import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
-import Moment from "moment";
+import moment from "moment";
 
-export default function CreateBlog({ blogs = [], addBlog }) {
+export default function CreateBlog({ addBlog }) {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogText, setBlogText] = useState("");
   const [blogDate, setBlogDate] = useState("");
   const [userName, setUserName] = useState("");
 
-  const date = Moment().format("MMM Do YY");
+  // const date = Moment().format("MMM Do YY");
+  // const date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+  const date = moment().format("MMM. Do YYYY. - h:mm a");
 
   console.log(blogTitle, blogText);
   function createBlog() {
@@ -53,6 +55,9 @@ export default function CreateBlog({ blogs = [], addBlog }) {
                 value={blogDate}
                 onChange={() => setBlogDate(date)}
               />
+              <p className="dateInfo">
+                <em>Just click the icon and select today!</em>
+              </p>
             </div>
           </div>
           <div className="blogTitle">

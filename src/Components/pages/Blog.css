@@ -34,6 +34,19 @@
 }
 .blogPostTitle {
   padding: 20px 0;
+  display: flex;
+  align-items: center;
+}
+.blogPostTitle p {
+  margin-bottom: -5px;
+  font-size: 1em;
+  color: #696969;
+  margin-left: 15px;
+  align-items: center;
+}
+.blogPostTitle .editBlog:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 .blogPostTitle a {
   text-decoration: none;

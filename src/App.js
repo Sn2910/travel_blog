@@ -1,10 +1,8 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import Map from "./Components/Map/Map";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
-import { Outlet } from "react-router-dom";
 import Home from "./Home";
 import TravelInfo from "./Components/TravelInfo/TravelInfo";
 import About from "./Components/pages/About";
@@ -73,13 +71,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/travel-blog/:id" element={<TravelInfo />} />
-        <Route
-          path="/blog"
-          element={<Blog blogs={blog.blogs} addBlog={addBlog} />}
-        />
+        <Route path="/blog" element={<Blog blogs={blog.blogs} />} />
         <Route
           path="/blog/create-blog"
-          element={<CreateBlog blogs={blog.blogs} addBlog={addBlog} />}
+          element={<CreateBlog addBlog={addBlog} />}
         />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
       </Routes>

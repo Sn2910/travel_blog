@@ -1,7 +1,7 @@
 import React from "react";
 import image from "./../../../src/Images/senya-beach.jpg";
 import authorImg from "./../../../src/Images/kenn.jpg";
-import kenn from "./../../../src/Images/kenn1.jpg";
+import kenn from "./../../../src/Images/kenn-pic.png";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -23,7 +23,7 @@ const vd4 =
 const vd5 =
   "https://media.istockphoto.com/videos/hand-touching-a-tree-trunk-in-the-forest-video-id1008537418";
 
-function Blog({ blogs = [], addBlog }) {
+function Blog({ blogs = [] }) {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogText, setBlogText] = useState("");
 
@@ -34,9 +34,11 @@ function Blog({ blogs = [], addBlog }) {
     return (
       <div key={id}>
         <div className="blogPostTitle">
-          <Link to={`/blog-overview/${blog.title}`}>
+          <Link to={`/blog-overview/${blog.id}`}>
             <h2>{blog.title}</h2>
           </Link>
+          <p>{"|"}</p>
+          <p className="editBlog">Edit Blog</p>
         </div>
         <div>
           <div className="author-date">
@@ -48,8 +50,8 @@ function Blog({ blogs = [], addBlog }) {
           <img
             src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1120&q=80"
             alt=""
-            width="465px"
-            height="250px"
+            width="500px"
+            height="300px"
           />
           <p className="blogText">{blog.rich_text}</p>
         </div>
