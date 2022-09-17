@@ -19,7 +19,7 @@ export default function BlogOverview() {
   console.log("params", id);
 
   async function readData() {
-    const blog = await getBlogByID();
+    const blog = await getBlogByID(id);
     console.log(blog);
     setGetData(blog);
     return blog;

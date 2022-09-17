@@ -19,8 +19,8 @@ const getBlogs = async () => {
   return result;
 };
 
-async function getBlogByID() {
-  const url = `${apiHost2}/api/blog`;
+async function getBlogByID(id) {
+  const url = `${apiHost2}/api/blog/${id}`;
   const response = await fetch(url);
   const result = await response.json();
   console.log(result);
