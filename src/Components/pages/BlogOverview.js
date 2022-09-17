@@ -8,9 +8,9 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import authorImg from "./../../../src/Images/kenn.jpg";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
-const apiHost = "http://localhost:5000";
+// const apiHost = "http://localhost:5000";
 
 export default function BlogOverview() {
   const [getData, setGetData] = useState("");
