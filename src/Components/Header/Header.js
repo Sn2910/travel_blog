@@ -15,7 +15,7 @@ function Header({ destinations }) {
       </div>
       <header>
         <nav className="navLinks">
-          <NavLink to="#" className="dest">
+          <Link to="#" className="dest">
             Destinations
             <ul>
               {destinations.map((destination, index) => {
@@ -33,11 +33,11 @@ function Header({ destinations }) {
                         <li><Link to="#">France</Link></li>
                         <li><Link to="#">Germany</Link></li> */}
             </ul>
-          </NavLink>
+          </Link>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="blog" className="blog">
+          <NavLink to="/blog" className="blog">
             BLOG
           </NavLink>
         </nav>

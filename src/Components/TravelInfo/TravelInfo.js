@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getAsset } from "../../controllers/content";
+import { getAsset } from "../../controllers/api";
 import "../TravelInfo/TravelInfo.css";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Paper from "@mui/material/Paper";

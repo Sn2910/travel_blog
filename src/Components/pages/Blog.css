@@ -1,3 +1,11 @@
+.loading {
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #fff;
+  background: #000;
+  padding: 5px;
+}
 .blogBgText {
   display: flex;
   flex-direction: column;
@@ -11,20 +19,39 @@
 }
 .allBlogsCont p {
   padding: 20px 0;
+  font-size: 1.3em;
 }
 .allBlogsCont p a {
   text-decoration: none;
   color: orange;
+  font-weight: 600;
 }
 .allBlogsCont p a:hover {
   text-decoration: underline;
 }
 .blogContWrap {
   text-align: left;
-  border-bottom: 1px solid #ccc;
 }
 .blogPostTitle {
   padding: 20px 0;
+  display: flex;
+  align-items: center;
+}
+.blogPostTitle p {
+  margin-bottom: -5px;
+  font-size: 1em;
+  color: #696969;
+  margin-left: 15px;
+  align-items: center;
+}
+.blogPostTitle .editBlog:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.blogPostTitle a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.2em;
 }
 .author-date {
   display: flex;
@@ -52,10 +79,12 @@
   align-items: center;
   margin-bottom: 20px;
   margin-top: 10px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
 }
 .peopleSays {
   background: #f3f2f2;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 .peopleSays h2 {
   padding: 20px 0;
@@ -128,7 +157,7 @@
   font-size: 0.9em;
 }
 .support img {
-  padding: 5px;
+  /* padding: 5px; */
 }
 .support button {
   padding: 7px;
