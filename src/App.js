@@ -9,11 +9,12 @@ import About from "./Components/pages/About";
 import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
-import { getBlogs, postBlog } from "./controllers/api";
+import { getBlogs, postBlog,getDestinations} from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
+  const [destinations,setDestinations] =useState("")
   const [blog, setBlog] = useState({
     blogs: [],
   });
@@ -44,10 +45,16 @@ function App() {
       return { ...prev, blogs };
     });
   };
-
+  const readDestinations = async (destinations) => {
+    const destinationArr = await getDestinations(destinations);
+    console.log(destinations);
+    setDestinations(destinationArr)
+  };
   useEffect(() => {
     getData();
     readBlog();
+    readDestinations();
+   
   }, []);
   if (!getInfo || !blog) {
     return <div className="loading">Loading...</div>;
