@@ -9,6 +9,7 @@ import About from "./Components/pages/About";
 import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
+import EditBlog from "./Components/pages/EditBlog";
 import { getBlogs, postBlog } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 
@@ -75,6 +76,10 @@ function App() {
         <Route
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}
+        />
+        <Route
+          path="/edit-blog/:id"
+          element={<EditBlog editBlog={addBlog} />}
         />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
       </Routes>

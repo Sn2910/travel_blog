@@ -8,6 +8,7 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 import moment from "moment";
+import { useParams } from "react-router-dom";
 
 export default function CreateBlog({ addBlog }) {
   const [blogTitle, setBlogTitle] = useState("");
@@ -20,8 +21,10 @@ export default function CreateBlog({ addBlog }) {
   // const date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
   const date = moment().format("MMM. Do YYYY. - h:mm a");
 
+  const { id } = useParams;
+
   console.log(blogTitle, blogText);
-  function createBlog() {
+  function editBlog() {
     console.log();
     addBlog({
       userName: userName,
@@ -108,7 +111,7 @@ export default function CreateBlog({ addBlog }) {
             />
           </div>
           <div className="createBtn">
-            <button onClick={createBlog}>Create</button>
+            <button onClick={editBlog}>Save</button>
           </div>
         </div>
       </Container>

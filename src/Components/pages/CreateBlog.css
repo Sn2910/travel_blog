@@ -32,10 +32,12 @@
 .username {
   margin-right: 5px;
 }
-.blogTitle h4 {
+.blogTitle h4,
+.imageWrap h4 {
   margin-bottom: 10px;
 }
-.blogTitle input {
+.blogTitle input,
+.imageWrap input {
   width: 275px;
   padding: 5px;
   font-size: 1.2em;
@@ -44,6 +46,10 @@
   border: 1px solid #696969;
 }
 .blogTitle input:focus {
+  outline: none;
+  width: 550px;
+}
+.imageWrap input:focus {
   outline: none;
   width: 550px;
 }
