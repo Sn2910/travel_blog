@@ -12,8 +12,8 @@ const getAsset = async () => {
 
 const getBlogs = async () => {
   const url = `${apiHost2}/api/blog`;
-  const response = fetch(url);
-  const result = (await response).json();
+  const response = await fetch(url);
+  const result = await response.json();
   console.log("Blogs");
   console.log(result);
   return result;

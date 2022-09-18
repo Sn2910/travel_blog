@@ -28,7 +28,7 @@ export default function CreateBlog({ addBlog }) {
       blogDate: blogDate,
       title: blogTitle,
       richText: blogText,
-      blog_image: blogImage,
+      blogImage: blogImage,
     });
     setBlogTitle("");
     setBlogText("");

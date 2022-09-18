@@ -22,9 +22,10 @@ export default function CreateBlog({ addBlog }) {
   const date = moment().format("MMM. Do YYYY. - h:mm a");
 
   const { id } = useParams;
+  console.log("params", id);
 
   console.log(blogTitle, blogText);
-  function editBlog() {
+  function saveEditedBlog(id) {
     console.log();
     addBlog({
       userName: userName,
@@ -32,6 +33,7 @@ export default function CreateBlog({ addBlog }) {
       title: blogTitle,
       richText: blogText,
       blog_image: blogImage,
+      id,
     });
     setBlogTitle("");
     setBlogText("");
@@ -111,7 +113,7 @@ export default function CreateBlog({ addBlog }) {
             />
           </div>
           <div className="createBtn">
-            <button onClick={editBlog}>Save</button>
+            <button onClick={() => saveEditedBlog(id)}>Save</button>
           </div>
         </div>
       </Container>
