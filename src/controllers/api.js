@@ -26,6 +26,22 @@ async function getBlogByID(id) {
   console.log(result);
   return result;
 }
+
+async function editBlogByID(id, blog) {
+  const url = `${apiHost2}/api/blog/${id}`;
+  const response = await fetch(url, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+    body: JSON.stringify(blog),
+  });
+  if (response.ok) {
+    return getBlogs();
+  }
+}
+
 const postBlog = async (blog) => {
   const url = `${apiHost2}/api/blog`;
   const response = fetch(url, {
@@ -40,4 +56,4 @@ const postBlog = async (blog) => {
   }
 };
 
-export { getAsset, getBlogs, postBlog, getBlogByID };
+export { getAsset, getBlogs, postBlog, getBlogByID, editBlogByID };

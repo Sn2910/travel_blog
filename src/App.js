@@ -13,11 +13,14 @@ import EditBlog from "./Components/pages/EditBlog";
 import { getBlogs, postBlog } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 
+const apiHost2 = "http://localhost:5000";
+
 function App() {
   const [getInfo, setGetInfo] = useState("");
   const [blog, setBlog] = useState({
     blogs: [],
   });
+  const [blogPost, setBlogPost] = useState("");
   const getData = async () => {
     const response = await fetch(
       `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
@@ -38,16 +41,32 @@ function App() {
       return { ...prev, blogs };
     });
   };
-  const addBlog = async (blog) => {
+  const addBlog = async () => {
     const blogs = await postBlog(blog);
     console.log(blogs);
-    setBlog((prev) => {
-      return { ...prev, blogs };
-    });
+    setBlog(blog);
+    return blog;
   };
+
+  // async function editBlogByID(id, blog) {
+  //   const url = `${apiHost2}/api/blog/${id}`;
+  //   const response = await fetch(url, {
+  //     method: "PATCH",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(blog),
+  //   });
+  //   if (response.ok) {
+  //     return getBlogs();
+  //   }
+  //   console.log(response);
+  // }
 
   useEffect(() => {
     getData();
+    // editBlogByID();
     readBlog();
   }, []);
   if (!getInfo || !blog) {
@@ -59,6 +78,7 @@ function App() {
   const tourInfo = getInfo.items.find(
     (item, index) => item.sys.contentType.sys.id === "travelBlog"
   );
+
   console.log("tourInfo");
   console.log(tourInfo);
   return (
@@ -79,7 +99,7 @@ function App() {
         />
         <Route
           path="/edit-blog/:id"
-          element={<EditBlog editBlog={addBlog} />}
+          element={<EditBlog editBlogItem={blog.blogs} />}
         />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
       </Routes>

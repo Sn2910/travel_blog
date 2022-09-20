@@ -11,23 +11,15 @@ import LockIcon from "@mui/icons-material/Lock";
 import "./Blog.css";
 import { Paper } from "@mui/material";
 import { useState, useEffect } from "react";
-
-const vd1 =
-  "https://media.istockphoto.com/videos/aerial-flight-with-drone-over-the-famous-skogar-waterfall-iceland-video-id1031669488";
-const vd2 =
-  "https://media.istockphoto.com/videos/flock-of-flamingos-flying-at-dusk-video-id1169447272";
-const vd3 =
-  "https://media.istockphoto.com/videos/mother-and-daughter-running-to-the-sun-video-id497375361";
-const vd4 =
-  "https://media.istockphoto.com/videos/landscape-of-clear-stream-video-id699620004";
-const vd5 =
-  "https://media.istockphoto.com/videos/hand-touching-a-tree-trunk-in-the-forest-video-id1008537418";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
+import EditBlog from "./EditBlog";
 
 function Blog({ blogs = [] }) {
-  const [blogTitle, setBlogTitle] = useState("");
-  const [blogText, setBlogText] = useState("");
-
   const blogData = blogs.map((blog, id) => {
+    console.log("Blogs", blog);
     if (!blog) {
       return <div className="loading">Loading...</div>;
     }
@@ -38,7 +30,7 @@ function Blog({ blogs = [] }) {
             <h2>{blog.title}</h2>
           </Link>
           <p>{"|"}</p>
-          <Link to={`/edit-blog/${blog.id}`} className="editBlog">
+          <Link to={`/edit-blog/${id}`} className="editBlog">
             Edit Blog
           </Link>
         </div>
@@ -327,23 +319,38 @@ function Blog({ blogs = [] }) {
           <div className="blogVideos">
             <h2>Featured Videos</h2>
             <video controls width="100%">
-              <source src={vd1} type="video/mp4" />
+              <source
+                src="https://media.istockphoto.com/videos/aerial-flight-with-drone-over-the-famous-skogar-waterfall-iceland-video-id1031669488"
+                type="video/mp4"
+              />
               Sorry, your browser doesn't support embedded videos.
             </video>
             <video controls width="100%">
-              <source src={vd2} type="video/mp4" />
+              <source
+                src="https://media.istockphoto.com/videos/flock-of-flamingos-flying-at-dusk-video-id1169447272"
+                type="video/mp4"
+              />
               Sorry, your browser doesn't support embedded videos.
             </video>
             <video controls width="100%">
-              <source src={vd3} type="video/mp4" />
+              <source
+                src="https://media.istockphoto.com/videos/mother-and-daughter-running-to-the-sun-video-id497375361"
+                type="video/mp4"
+              />
               Sorry, your browser doesn't support embedded videos.
             </video>
             <video controls width="100%">
-              <source src={vd4} type="video/mp4" />
+              <source
+                src="https://media.istockphoto.com/videos/landscape-of-clear-stream-video-id699620004"
+                type="video/mp4"
+              />
               Sorry, your browser doesn't support embedded videos.
             </video>
             <video controls width="100%">
-              <source src={vd5} type="video/mp4" />
+              <source
+                src="https://media.istockphoto.com/videos/hand-touching-a-tree-trunk-in-the-forest-video-id1008537418"
+                type="video/mp4"
+              />
               Sorry, your browser doesn't support embedded videos.
             </video>
             <div className="more-videos">

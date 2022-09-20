@@ -51,10 +51,12 @@
   color: #696969;
   margin-left: 15px;
   align-items: center;
+  transition: 0.4s;
 }
 .blogPostTitle .editBlog:hover {
   text-decoration: underline;
   cursor: pointer;
+  color: orange;
 }
 .blogPostTitle a {
   text-decoration: none;
@@ -72,6 +74,9 @@
 }
 .author-date h4 {
   margin: 0 10px;
+}
+.author-date h4:hover {
+  text-decoration: underline;
 }
 .blogText {
   /* width: 90%; */
