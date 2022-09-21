@@ -20,7 +20,6 @@ export default function CreateBlog({ addBlog }) {
   // const date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
   const date = moment().format("MMM. Do YYYY. - h:mm a");
 
-  console.log(blogTitle, blogText);
   function createBlog() {
     console.log();
     addBlog({
@@ -104,6 +103,8 @@ export default function CreateBlog({ addBlog }) {
                 width: 555,
                 height: 300,
                 fontSize: "1.2em",
+                fontFamily: "roboto",
+                color: "#696969",
               }}
             />
           </div>

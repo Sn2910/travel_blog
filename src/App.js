@@ -10,7 +10,7 @@ import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
 import EditBlog from "./Components/pages/EditBlog";
-import { getBlogs, postBlog } from "./controllers/api";
+import { getBlogs, postBlog, editBlogByID } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 
 const apiHost2 = "http://localhost:5000";
@@ -41,11 +41,18 @@ function App() {
       return { ...prev, blogs };
     });
   };
-  const addBlog = async () => {
+  const addBlog = async (blog) => {
     const blogs = await postBlog(blog);
     console.log(blogs);
     setBlog(blog);
-    return blog;
+    return blogs;
+  };
+
+  const editBlog = async (blog) => {
+    const blogs = await editBlogByID(blog);
+    console.log(blogs);
+    setBlog(blog);
+    return blogs;
   };
 
   // async function editBlogByID(id, blog) {
@@ -99,7 +106,7 @@ function App() {
         />
         <Route
           path="/edit-blog/:id"
-          element={<EditBlog editBlogItem={blog.blogs} />}
+          element={<EditBlog editBlogItem={blog.blogs} editBlog={editBlog} />}
         />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
       </Routes>

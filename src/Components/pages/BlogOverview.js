@@ -39,7 +39,7 @@ export default function BlogOverview() {
         return (
           <Container
             key={blog.id}
-            className="blogContWrap"
+            className="blogOverviewCont"
             sx={{ width: "760px" }}
           >
             <h2>{blog.title}</h2>

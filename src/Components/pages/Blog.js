@@ -30,7 +30,7 @@ function Blog({ blogs = [] }) {
             <h2>{blog.title}</h2>
           </Link>
           <p>{"|"}</p>
-          <Link to={`/edit-blog/${id}`} className="editBlog">
+          <Link to={`/edit-blog/${blog.id}`} className="editBlog">
             Edit Blog
           </Link>
         </div>
@@ -105,7 +105,9 @@ function Blog({ blogs = [] }) {
       >
         <div className="leftCont">
           <div className="blogContWrap">{blogData}</div>
-          {/* <div className="blogContWrap">
+          {/* 
+          "https://unsplash.com/photos/-87JyMb9ZfU"
+          <div className="blogContWrap">
             <h2 className="blogPostTitle">The Forest Adventure</h2>
             <div>
               <div className="author-date">
@@ -318,41 +320,107 @@ function Blog({ blogs = [] }) {
         >
           <div className="blogVideos">
             <h2>Featured Videos</h2>
-            <video controls width="100%">
-              <source
-                src="https://media.istockphoto.com/videos/aerial-flight-with-drone-over-the-famous-skogar-waterfall-iceland-video-id1031669488"
-                type="video/mp4"
-              />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-            <video controls width="100%">
-              <source
-                src="https://media.istockphoto.com/videos/flock-of-flamingos-flying-at-dusk-video-id1169447272"
-                type="video/mp4"
-              />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-            <video controls width="100%">
-              <source
-                src="https://media.istockphoto.com/videos/mother-and-daughter-running-to-the-sun-video-id497375361"
-                type="video/mp4"
-              />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-            <video controls width="100%">
-              <source
-                src="https://media.istockphoto.com/videos/landscape-of-clear-stream-video-id699620004"
-                type="video/mp4"
-              />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
-            <video controls width="100%">
-              <source
-                src="https://media.istockphoto.com/videos/hand-touching-a-tree-trunk-in-the-forest-video-id1008537418"
-                type="video/mp4"
-              />
-              Sorry, your browser doesn't support embedded videos.
-            </video>
+            <Paper
+              sx={{
+                margin: "4px 0",
+              }}
+            >
+              <video controls width="100%">
+                <source
+                  src="https://media.istockphoto.com/videos/aerial-flight-with-drone-over-the-famous-skogar-waterfall-iceland-video-id1031669488"
+                  type="video/mp4"
+                />
+                Sorry, your browser doesn't support embedded videos.
+              </video>
+              <Box
+                sx={{
+                  padding: "1px 0 4px",
+                  color: "#696969",
+                }}
+              >
+                The Waters
+              </Box>
+            </Paper>
+            <Paper
+              sx={{
+                margin: "4px 0",
+              }}
+            >
+              <video controls width="100%">
+                <source
+                  src="https://media.istockphoto.com/videos/flock-of-flamingos-flying-at-dusk-video-id1169447272"
+                  type="video/mp4"
+                />
+                Sorry, your browser doesn't support embedded videos.
+              </video>
+              <Box
+                sx={{
+                  padding: "1px 0 4px",
+                  color: "#696969",
+                }}
+              >
+                Flying Birds
+              </Box>
+            </Paper>
+            <Paper
+              sx={{
+                margin: "4px 0",
+              }}
+            >
+              <video controls width="100%">
+                <source
+                  src="https://media.istockphoto.com/videos/mother-and-daughter-running-to-the-sun-video-id497375361"
+                  type="video/mp4"
+                />
+                Sorry, your browser doesn't support embedded videos.
+              </video>
+              <Box
+                sx={{
+                  padding: "1px 0 4px",
+                  color: "#696969",
+                }}
+              >
+                I Love Nature
+              </Box>
+            </Paper>
+            <Paper>
+              <video controls width="100%">
+                <source
+                  src="https://media.istockphoto.com/videos/landscape-of-clear-stream-video-id699620004"
+                  type="video/mp4"
+                />
+                Sorry, your browser doesn't support embedded videos.
+              </video>
+              <Box
+                sx={{
+                  padding: "1px 0 4px",
+                  color: "#696969",
+                }}
+              >
+                Perfect Atmosphere
+              </Box>
+            </Paper>
+            <Paper
+              sx={{
+                margin: "4px 0",
+              }}
+            >
+              <video controls width="100%">
+                <source
+                  src="https://media.istockphoto.com/videos/hand-touching-a-tree-trunk-in-the-forest-video-id1008537418"
+                  type="video/mp4"
+                />
+                Sorry, your browser doesn't support embedded videos.
+              </video>
+              <Box
+                sx={{
+                  padding: "1px 0 4px",
+                  color: "#696969",
+                }}
+              >
+                The Biggest Tree in Europe
+              </Box>
+            </Paper>
             <div className="more-videos">
               <Link to="#">
                 <button>More Videos</button>
