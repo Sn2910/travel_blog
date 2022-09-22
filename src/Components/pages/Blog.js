@@ -327,7 +327,7 @@ function Blog({ blogs = [] }) {
             >
               <video controls width="100%">
                 <source
-                  src="https://media.istockphoto.com/videos/aerial-flight-with-drone-over-the-famous-skogar-waterfall-iceland-video-id1031669488"
+                  src="https://joy.videvo.net/videvo_files/video/free/2017-04/large_watermarked/170216A_142_WomanWatchingWaterfall2_1080p_preview.mp4"
                   type="video/mp4"
                 />
                 Sorry, your browser doesn't support embedded videos.
@@ -430,7 +430,7 @@ function Blog({ blogs = [] }) {
           <div className="support">
             <h3>Support the site!</h3>
             <div className="line"></div>
-            <p>Buy me a coffee☕ or an appetizer with a donation here</p>
+            <p>Buy me a coffee☕ or an appetizer with a donation here.</p>
             <img src={kenn} alt="" width="260px" height="160px" />
             <button>Donate Now</button>
             <div className="lock">
@@ -500,3 +500,46 @@ function Blog({ blogs = [] }) {
 }
 
 export default Blog;
+
+// [
+// 	{
+// 		"id": 1,
+// 		"user_name": "Nico",
+// 		"blog_date": "Sep. 21st 2022. - 12:38 am",
+// 		"title": "The Forest Adventure",
+// 		"rich_text": "Contrary to popular belief, Lorem Ipsum is not simply random\n                text. It has roots in a piece of classical Latin literature from\n                45 BC, making it over 2000 years old. Richard McClintock, a\n                Latin professor at Hampden-Sydney College in Virginia, looked up\n                one of the more obscure Latin words, consectetur, from a Lorem\n                Ipsum passage, and going through the cites of the word in\n                classical literature, discovered the undoubtable source. Lorem\n                Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus\n                Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero,\n                written in 45 BC. This book is a treatise on the theory of\n                ethics, very popular during the Renaissance. The first line of\n                Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line\n                in section 1.10.32. ",
+// 		"blog_image": "https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+// 	},
+// 	{
+// 		"id": 2,
+// 		"user_name": "Andres",
+// 		"blog_date": "Sep. 21st 2022. - 12:39 am",
+// 		"title": "On the River",
+// 		"rich_text": "It has roots in a piece of classical Latin literature from\n                45 BC, making it over 2000 years old. Richard McClintock, a\n                Latin professor at Hampden-Sydney College in Virginia, looked up\n                one of the more obscure Latin words, consectetur, from a Lorem\n                Ipsum passage, and going through the cites of the word in\n                classical literature, discovered the undoubtable source. Lorem\n                Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus\n                Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero,\n                written in 45 BC. This book is a treatise on the theory of\n                ethics, very popular during the Renaissance. The first line of\n                Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line\n                in section 1.10.32. The standard chunk of Lorem Ipsum used since\n                the 1500s is reproduced below for those interested. Sections\n                1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by\n                Cicero are also reproduced in their exact original form,\n                accompanied by English versions from the 1914 translation by H.\n                Rackham.",
+// 		"blog_image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+// 	},
+// 	{
+// 		"id": 3,
+// 		"user_name": "Sneha",
+// 		"blog_date": "Sep. 21st 2022. - 12:49 am",
+// 		"title": "Let's Climb the Mountains",
+// 		"rich_text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.\n",
+// 		"blog_image": "https://images.unsplash.com/photo-1600298882283-40b4dcb8b211?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+// 	},
+// 	{
+// 		"id": 7,
+// 		"user_name": "Miruna",
+// 		"blog_date": "Sep. 21st 2022. - 11:31 pm",
+// 		"title": "A Cool Winter Tour",
+// 		"rich_text": "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \\\"de Finibus Bonorum et Malorum\\\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \\\"Lorem ipsum dolor sit amet..\\\", comes from a line in section 1.10.32.\\n\\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \\\"de Finibus Bonorum et Malorum\\\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
+// 		"blog_image": "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+// 	},
+// 	{
+// 		"id": 8,
+// 		"user_name": "Markus",
+// 		"blog_date": "Sep. 21st 2022. - 11:52 pm",
+// 		"title": "Hiking as a Hobby",
+// 		"rich_text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+// 		"blog_image": "https://images.unsplash.com/photo-1493568000180-ca2fb70ddcba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+// 	}
+// ]
