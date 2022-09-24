@@ -5,14 +5,14 @@ import "./Map.css";
 /* const handleOnClick = () => {
   console.log("You have clicked in the specified area")
 } */
-function Map({ destinations, tourInfo}) {
+function Map({ destinations}) {
   console.log(destinations);
   return (
     <div className="large_map">
       <div>
-        <h2>{tourInfo.fields.title}</h2>
+        <h2></h2>
         <p>
-          {tourInfo.fields.description}
+          
         </p>
       </div>
       <img src={require("../../Images/europe.jpg")} useMap="#map-europe" />
@@ -20,11 +20,11 @@ function Map({ destinations, tourInfo}) {
       <map name="map-europe">
         {destinations.map((destination, index) => {
           return (
-            <Link to={`/travel-blog/${destination.sys.id}`} key={index}>
+            <Link to={`/travel-blog/${destination.id}`} key={index}>
               <area
                 alt="test"
                 title=""
-                coords={destination.fields.countryCords}
+                coords={destination.country_coords}
                 shape="poly"
               />
             </Link>
