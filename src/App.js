@@ -44,15 +44,17 @@ function App() {
   const addBlog = async (blog) => {
     const blogs = await postBlog(blog);
     console.log(blogs);
-    setBlog(blog);
-    return blogs;
+    setBlog((prev) => {
+      return { ...prev, blogs };
+    });
   };
 
   const editBlog = async (blog) => {
-    const blogs = await editBlogByID(blog);
+    const blogs = await editBlogByID(blog.id, blog);
     console.log(blogs);
-    setBlog(blog);
-    return blogs;
+    setBlog((prev) => {
+      return { ...prev, blogs };
+    });
   };
 
   // async function editBlogByID(id, blog) {
@@ -106,7 +108,7 @@ function App() {
         />
         <Route
           path="/edit-blog/:id"
-          element={<EditBlog editBlogItem={blog.blogs} editBlog={editBlog} />}
+          element={<EditBlog blogItems={blog.blogs} editBlog={editBlog} />}
         />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
       </Routes>

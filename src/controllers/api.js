@@ -27,7 +27,11 @@ async function getBlogByID(id) {
   return result;
 }
 
+async function editBlog(blogItem) {
+  editBlogByID(blogItem.id, blogItem);
+}
 async function editBlogByID(id, blog) {
+  console.log(id, blog);
   const url = `${apiHost2}/api/blog/${id}`;
   const response = await fetch(url, {
     method: "PATCH",
@@ -56,4 +60,4 @@ const postBlog = async (blog) => {
   }
 };
 
-export { getAsset, getBlogs, postBlog, getBlogByID, editBlogByID };
+export { getAsset, getBlogs, postBlog, getBlogByID, editBlogByID, editBlog };

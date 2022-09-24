@@ -7,29 +7,32 @@ import moment from "moment";
 import { useParams } from "react-router-dom";
 import { getBlogByID, editBlogByID } from "../../controllers/api";
 
-export default function EditBlog({ editBlogItem, editBlog }) {
+export default function EditBlog({ blogItems, editBlog }) {
   const { id } = useParams();
   console.log("params ID", id);
-  const [editTitle, setEditTitle] = useState(editBlogItem[id]?.title);
-  const [editText, setEditText] = useState(editBlogItem[id]?.rich_text);
-  const [editDate, setEditDate] = useState(editBlogItem[id]?.blog_date);
-  const [editImage, setEditImage] = useState(editBlogItem[id]?.blog_image);
-  const [editUserName, setEditUserName] = useState(editBlogItem[id]?.user_name);
 
-  console.log("editBlog", editBlogItem);
+  const blogItem = blogItems.find((e) => {
+    return e.id === parseInt(id);
+  });
+  const [editTitle, setEditTitle] = useState(blogItem.title);
+  const [editText, setEditText] = useState(blogItem.rich_text);
+  const [editDate, setEditDate] = useState(blogItem.blog_date);
+  const [editImage, setEditImage] = useState(blogItem.blog_image);
+  const [editUserName, setEditUserName] = useState(blogItem.user_name);
 
   // const date = Moment().format("MMM Do YY");
   // const date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
   const date = moment().format("MMM. Do YYYY. - h:mm a");
 
   function saveEditedBlog() {
-    // editBlog({
-    //   userName: editUserName,
-    //   blogDate: editDate,
-    //   blogTitle: editTitle,
-    //   blogText: editText,
-    //   blogImage: editImage,
-    // });
+    editBlog({
+      userName: editUserName,
+      blogDate: editDate,
+      blogTitle: editTitle,
+      blogText: editText,
+      blogImage: editImage,
+      id,
+    });
     // setEditTitle("");
     // setEditText("");
     // setEditDate("");
