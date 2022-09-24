@@ -9,8 +9,11 @@ import About from "./Components/pages/About";
 import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
+import { editBlogByID } from "./controllers/api";
 import { getBlogs, postBlog,getDestinations} from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
+
+const apiHost2 = "http://localhost:5000";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
@@ -45,6 +48,15 @@ function App() {
       return { ...prev, blogs };
     });
   };
+
+  const editBlog = async (blog) => {
+    const blogs = await editBlogByID(blog.id, blog);
+    console.log(blogs);
+    setBlog((prev) => {
+      return { ...prev, blogs };
+    });
+  };
+
   const readDestinations = async (destinations) => {
     const destinationArr = await getDestinations(destinations);
     console.log(destinationArr);
@@ -65,6 +77,7 @@ function App() {
   const tourInfo = getInfo.items.find(
     (item, index) => item.sys.contentType.sys.id === "travelBlog"
   );
+
   console.log("tourInfo");
   console.log(tourInfo); */
   return (
@@ -82,6 +95,10 @@ function App() {
         <Route
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}
+        />
+        <Route
+          path="/edit-blog/:id"
+          element={<EditBlog blogItems={blog.blogs} editBlog={editBlog} />}
         />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
       </Routes>
