@@ -10,18 +10,19 @@ import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
 import { editBlogByID } from "./controllers/api";
-import { getBlogs, postBlog,getDestinations} from "./controllers/api";
+import { getBlogs, postBlog, getDestinations } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
+import EditBlog from "./Components/pages/EditBlog";
 
 const apiHost2 = "http://localhost:5000";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
-  const [destinations,setDestinations] =useState("")
+  const [destinations, setDestinations] = useState("");
   const [blog, setBlog] = useState({
     blogs: [],
   });
-/*   const getData = async () => {
+  /*   const getData = async () => {
     const response = await fetch(
       `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
     );
@@ -60,18 +61,17 @@ function App() {
   const readDestinations = async (destinations) => {
     const destinationArr = await getDestinations(destinations);
     console.log(destinationArr);
-    setDestinations(destinationArr)
+    setDestinations(destinationArr);
   };
   useEffect(() => {
-   /*  getData(); */
+    /*  getData(); */
     readBlog();
     readDestinations();
-   
   }, []);
   if (!blog || !destinations) {
     return <div className="loading">Loading...</div>;
   }
-/*   const destinations = getInfo.items.filter(
+  /*   const destinations = getInfo.items.filter(
     (item, index) => item.sys.contentType.sys.id === "destinations"
   );
   const tourInfo = getInfo.items.find(
@@ -84,10 +84,7 @@ function App() {
     <div className="App">
       <Header destinations={destinations} />
       <Routes>
-        <Route
-          path="/"
-          element={<Home destinations={destinations}  />}
-        />
+        <Route path="/" element={<Home destinations={destinations} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/travel-blog/:id" element={<TravelInfo />} />
