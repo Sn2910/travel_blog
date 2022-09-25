@@ -9,12 +9,14 @@ import About from "./Components/pages/About";
 import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
-import { getBlogs, postBlog,getDestinations} from "./controllers/api";
+import { getBlogs, postBlog,getDestinations,postDestination} from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
+import AddCounty from "./Components/pages/AddCountry/AddCounty";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
   const [destinations,setDestinations] =useState("")
+  const [newDestination,setNewDestination]=useState("")
   const [blog, setBlog] = useState({
     blogs: [],
   });
@@ -50,6 +52,13 @@ function App() {
     console.log(destinationArr);
     setDestinations(destinationArr)
   };
+  const addDestination = async (destination) => {
+    const blogs = await postDestination(destination);
+    console.log(destination);
+    setBlog((prev) => {
+      return { ...prev, blogs };
+    });
+  };
   useEffect(() => {
    /*  getData(); */
     readBlog();
@@ -79,6 +88,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/travel-blog/:id" element={<TravelInfo />} />
         <Route path="/blog" element={<Blog blogs={blog.blogs} />} />
+        <Route path="/addcountry" element={<AddCounty/>} />
         <Route
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}

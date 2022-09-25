@@ -14,6 +14,7 @@ import {getDestinations,getDestinationsById} from '../../controllers/api'
 
 
 function TravelInfo() {
+  let backgroundUrl;
   const [getInfo, setGetInfo] = useState("");
   const [getDestinationsArr, setGetDestinationsArr] = useState([]);
   const [assets, setAssets] = useState("");
@@ -49,14 +50,20 @@ function TravelInfo() {
   }
   function getAssetUrl(assetId) {
     const found = assets.find((e) => e.id === assetId);
-   console.log(assetId) 
+    console.log(assetId)
     console.log(found.img_url);
     if (!found) {
       return "";
     }
     return found.img_url;
   }
-  const backgroundUrl = getAssetUrl(getDestinationsArr[selectedCountryIndex].background_img_id);
+  if (getDestinationsArr[selectedCountryIndex].background_img_url) {
+
+     backgroundUrl = getDestinationsArr[selectedCountryIndex].background_img_url;
+  } else {
+     backgroundUrl = getAssetUrl(getDestinationsArr[selectedCountryIndex].background_img_id);
+  }
+
 
   return (
     <Container
