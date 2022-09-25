@@ -21,8 +21,8 @@ function Header({ destinations }) {
               {destinations.map((destination, index) => {
                 return (
                   <li key={index}>
-                    <Link to={`/travel-blog/${destination.id}`} key={index}>
-                      {destination.country}
+                    <Link to={`/travel-blog/${destination.sys.id}`} key={index}>
+                      {destination.fields.country}
                     </Link>
                   </li>
                 );

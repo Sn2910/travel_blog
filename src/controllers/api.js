@@ -1,5 +1,5 @@
 const apiHost = "https://cdn.contentful.com";
-const apiHost2 = "http://localhost:3000";
+const apiHost2 = "http://localhost:5000";
 
 const getAsset = async () => {
   const url = `${apiHost}/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/assets?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`;
@@ -21,16 +21,6 @@ const getBlogs = async () => {
 
 async function getBlogByID(id) {
   const url = `${apiHost2}/api/blog/${id}`;
-  
-const getDestinations = async () => {
-  const url = `${apiHost2}/api/destinations`;
-  const response = await fetch(url);
-  const result = await response.json();
-  console.log("Destinations");
-  console.log(result);
-  return result;
-};
-
   const response = await fetch(url);
   const result = await response.json();
   console.log(result);
@@ -58,7 +48,7 @@ async function editBlogByID(id, blog) {
 
 const postBlog = async (blog) => {
   const url = `${apiHost2}/api/blog`;
-  const response =  await fetch(url, {
+  const response = fetch(url, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -71,4 +61,3 @@ const postBlog = async (blog) => {
 };
 
 export { getAsset, getBlogs, postBlog, getBlogByID, editBlogByID, editBlog };
-export { getDestinations};
