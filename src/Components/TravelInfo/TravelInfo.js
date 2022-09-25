@@ -10,75 +10,60 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import { Typography } from "@mui/material";
+import {getDestinations,getDestinationsById} from '../../controllers/api'
+
 
 function TravelInfo() {
-  const [getInfo, setGetInfo] = useState(false);
-  const [assets, setAssets] = useState(false);
-  const [shopping, setShopping] = useState(false);
-  const [restaurant, setRestaurant] = useState(false);
-  const [hotel, setHotel] = useState(false);
-  const apiHost = "https://cdn.contentful.com";
+  let backgroundUrl;
+  const [getInfo, setGetInfo] = useState("");
+  const [getDestinationsArr, setGetDestinationsArr] = useState([]);
+  const [assets, setAssets] = useState("");
+  const [selectedCountryIndex, setSelectedCountryIndex] = useState(-1)
+  
   const { id } = useParams();
 
   const travelInfo = async () => {
-    const response = await fetch(
-      `${apiHost}/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries/${id}?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
-    );
-    const result = await response.json();
-
-    setGetInfo(result);
-    console.log("Travel");
-    console.log(result);
+  
+    const countryInfo = await getDestinationsById(id)
+    console.log("countyInfo")
+    console.log(countryInfo);
+    setGetInfo(countryInfo);
+    
   };
-  const getHotelData = async () => {
-    const response = await fetch(
-      `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?content_type=hotel&fields.destination.sys.id=${id}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
-    );
-    const result = await response.json();
-    console.log("Hotel");
-    setHotel(result.items);
-    console.log(result.items);
-  };
-  const getShoppingData = async () => {
-    const response = await fetch(
-      `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?content_type=shopping&fields.destination.sys.id=${id}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
-    );
-    const result = await response.json();
-    console.log("Shopping");
-    setShopping(result.items);
-    console.log(result.items);
-  };
-  const getRestaurantData = async () => {
-    const response = await fetch(
-      `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?content_type=restaurant&fields.destination.sys.id=${id}&access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
-    );
-    const result = await response.json();
-    console.log("Restaurant");
-    setRestaurant(result.items);
-    console.log(result.items);
-  };
+  
   useEffect(() => {
-    getHotelData();
-    getShoppingData();
-    getRestaurantData();
-    travelInfo();
+     getDestinations().then((destinations) => {
+      const destinationIndex =destinations.findIndex((destination)=>destination.id === parseInt(id))
+      setGetDestinationsArr(destinations);
+      setSelectedCountryIndex(destinationIndex)
+      console.log(destinations)
+    }); 
     getAsset().then((assets) => {
       setAssets(assets);
     });
+    travelInfo();
+   
+   
   }, [id]);
-  if (!getInfo || !assets) {
+  if (!getInfo || !assets || !getDestinationsArr.length || selectedCountryIndex < 0)  {
     return <div>Loading...</div>;
   }
   function getAssetUrl(assetId) {
-    const found = assets.items.find((e) => e.sys.id === assetId);
-    /* console.log(assetId) */
-    console.log(found);
+    const found = assets.find((e) => e.id === assetId);
+    console.log(assetId)
+    console.log(found.img_url);
     if (!found) {
       return "";
     }
-    return "https:" + found.fields.file.url;
+    return found.img_url;
   }
-  const backgroundUrl = getAssetUrl(getInfo.fields.bgImg.sys.id);
+  if (getDestinationsArr[selectedCountryIndex].background_img_url) {
+
+     backgroundUrl = getDestinationsArr[selectedCountryIndex].background_img_url;
+  } else {
+     backgroundUrl = getAssetUrl(getDestinationsArr[selectedCountryIndex].background_img_id);
+  }
+
 
   return (
     <Container
@@ -114,17 +99,17 @@ function TravelInfo() {
             fontSize: "3em",
           }}
         >
-          {getInfo.fields.city} in {getInfo.fields.country}
+          {getDestinationsArr[selectedCountryIndex].city} in {getDestinationsArr[selectedCountryIndex].country}
         </h1>
       </Paper>
       <div className="lang">
-        <p>Language Spoken: {getInfo.fields.language}</p>
+        <p>Language Spoken: {getDestinationsArr[selectedCountryIndex].language}</p>
       </div>
       <div className="cityCont">
         <h2 className="aboutCityTitle">
-          What to know about {getInfo.fields.country} ({getInfo.fields.city})
+          What to know about {getDestinationsArr[selectedCountryIndex].country} ({getDestinationsArr[selectedCountryIndex].city})
         </h2>
-        {documentToReactComponents(getInfo.fields.cityInfo)}
+        {getDestinationsArr.city_info}
       </div>
       <div>
         <h2>Affordable Hotels</h2>
@@ -144,8 +129,8 @@ function TravelInfo() {
             className="hotelGrid"
             // sx={{ width: "50%" }}
           >
-            {hotel.map((hotel, index) => {
-              const hotelUrl = getAssetUrl(hotel.fields.image.sys.id);
+            {getInfo.hotels.map((hotel, index) => {
+              const hotelUrl = getAssetUrl(hotel.image_id);
               return (
                 <Grid item key={index} xs={6}>
                   <Paper
@@ -164,12 +149,12 @@ function TravelInfo() {
                       }}
                     >
                       <div className="visit">
-                        <h4>{hotel.fields.name}</h4>
-                        <a href={hotel.fields.url} target="_blank">
+                        <h4>{hotel.name}</h4>
+                        <a href={hotel.url} target="_blank">
                           Visit
                         </a>
                       </div>
-                      <h3>From ${hotel.fields.price}</h3>
+                      <h3>From ${hotel.price}</h3>
                     </Box>
                     <Box
                       sx={{
@@ -180,7 +165,7 @@ function TravelInfo() {
                     >
                       <Rating
                         name="read-only"
-                        value={hotel.fields.rating}
+                        value={hotel.rating}
                         precision={0.5}
                         size="small"
                         readOnly
@@ -191,7 +176,7 @@ function TravelInfo() {
                           marginLeft: "20px",
                         }}
                       >
-                        ({hotel.fields.review} reviews)
+                        ({hotel.reviews} reviews)
                       </Typography>
                     </Box>
                   </Paper>
@@ -201,7 +186,7 @@ function TravelInfo() {
           </Grid>
         </div>
       </div>
-      <div>
+     {/*  <div>
         <h2>Shopping Centers</h2>
         <div className="shopFlex">
           <div className="shopCont">
@@ -219,7 +204,7 @@ function TravelInfo() {
           </div>
           <Grid container spacing={2} className="shopGrid">
             {shopping.map((shop, index) => {
-              const shoppingUrl = getAssetUrl(shop.fields.image.sys.id);
+              const shoppingUrl = getAssetUrl(shop.image_id);
               return (
                 <Grid item key={index} xs={6}>
                   <Paper
@@ -238,12 +223,12 @@ function TravelInfo() {
                       }}
                     >
                       <div className="visit">
-                        <h4>{shop.fields.name}</h4>
-                        <a href={shop.fields.url} target="_blank">
+                        <h4>{shop.name}</h4>
+                        <a href={shop.url} target="_blank">
                           Visit
                         </a>
                       </div>
-                      <h3>From ${shop.fields.price}</h3>
+                      <h3>From ${shop.price}</h3>
                     </Box>
                     <Box
                       sx={{
@@ -253,7 +238,7 @@ function TravelInfo() {
                     >
                       <Rating
                         name="read-only"
-                        value={shop.fields.rating}
+                        value={shop.rating}
                         precision={0.5}
                         size="small"
                         readOnly
@@ -264,7 +249,7 @@ function TravelInfo() {
                           marginLeft: "20px",
                         }}
                       >
-                        ({shop.fields.reviews} reviews)
+                        ({shop.reviews} reviews)
                       </Typography>
                     </Box>
                   </Paper>
@@ -293,7 +278,7 @@ function TravelInfo() {
           </div>
           <Grid container spacing={2} className="restGrid">
             {restaurant.map((restaurant, index) => {
-              const restaurantUrl = getAssetUrl(restaurant.fields.image.sys.id);
+              const restaurantUrl = getAssetUrl(restaurant.image_id);
               return (
                 <Grid item key={index} xs={6}>
                   <Paper
@@ -312,12 +297,12 @@ function TravelInfo() {
                       }}
                     >
                       <div className="visit">
-                        <h4>{restaurant.fields.name}</h4>
-                        <a href={restaurant.fields.url} target="_blank">
+                        <h4>{restaurant.name}</h4>
+                        <a href={restaurant.url} target="_blank">
                           Visit
                         </a>
                       </div>
-                      <h3>From ${restaurant.fields.price}</h3>
+                      <h3>From ${restaurant.price}</h3>
                     </Box>
                     <Box
                       sx={{
@@ -328,7 +313,7 @@ function TravelInfo() {
                     >
                       <Rating
                         name="read-only"
-                        value={restaurant.fields.rating}
+                        value={restaurant.rating}
                         precision={0.5}
                         size="small"
                         readOnly
@@ -339,7 +324,7 @@ function TravelInfo() {
                           marginLeft: "20px",
                         }}
                       >
-                        ({restaurant.fields.reviews} reviews)
+                        ({restaurant.reviews} reviews)
                       </Typography>
                     </Box>
                   </Paper>
@@ -348,7 +333,7 @@ function TravelInfo() {
             })}
           </Grid>
         </div>
-      </div>
+      </div> */}
     </Container>
   );
 }
