@@ -12,11 +12,15 @@ import CreateBlog from "./Components/pages/CreateBlog";
 import { getBlogs, postBlog,getDestinations,postDestination} from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
+import ManageCountry from "./Components/pages/ManageCountry/ManageCountry";
+import AddHotel from "./Components/pages/Add Hotel/AddHotel";
+import AddRestaurant from "./Components/pages/Add Restaurant/AddRestaurant";
+import AddShop from "./Components/pages/Add Shop/AddShop";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
   const [destinations,setDestinations] =useState("")
-  const [newDestination,setNewDestination]=useState("")
+
   const [blog, setBlog] = useState({
     blogs: [],
   });
@@ -50,14 +54,12 @@ function App() {
   const readDestinations = async (destinations) => {
     const destinationArr = await getDestinations(destinations);
     console.log(destinationArr);
-    setDestinations(destinationArr)
+    setDestinations(destinationArr);
   };
   const addDestination = async (destination) => {
-    const blogs = await postDestination(destination);
-    console.log(destination);
-    setBlog((prev) => {
-      return { ...prev, blogs };
-    });
+    const newDestination = await postDestination(destination);
+    console.log(newDestination);
+    setDestinations(newDestination);
   };
   useEffect(() => {
    /*  getData(); */
@@ -87,8 +89,13 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/travel-blog/:id" element={<TravelInfo />} />
+        <Route path="/managecountry" element={< ManageCountry destinations ={destinations}/>} />
+        <Route path="/managecountry/addcountry" element={<AddCounty addDestination  ={addDestination}/>} />
+        <Route path="/managecountry/addcountry/addhotel" element={<AddHotel/>} />
+        <Route path="/managecountry/addcountry/addrestaurant" element={<AddRestaurant/>} />
+        <Route path="/managecountry/addcountry/addshop" element={<AddShop/>} />
+       
         <Route path="/blog" element={<Blog blogs={blog.blogs} />} />
-        <Route path="/addcountry" element={<AddCounty/>} />
         <Route
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}

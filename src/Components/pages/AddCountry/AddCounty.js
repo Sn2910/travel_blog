@@ -2,17 +2,28 @@ import React from 'react'
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
-function AddCounty() {
-    const [countryTitle, setCountryTitle] = useState("")
+function AddCounty({addDestination}) {
+    const [countryName, setCountryName] = useState("")
     const [cityName, setCityName] = useState("")
     const [backgroundImage, setBackgroundImage] = useState("")
     const [cityInfo, setCityInfo] = useState("")
     const [language, setLanguage] = useState("")
+    const [backgroundImgId, setBackgroundImgId] = useState(null)
     const [countryCoords, setCountryCoords] = useState("")
     const addCountry = ()=>{
-        
+        addDestination({
+            country: countryName,
+            city: cityName,
+            language: language,
+            countryCoords: countryCoords,
+            cityInfo: cityInfo,
+            backgroundImgId:backgroundImgId,
+            backgroundImgUrl: backgroundImage,
+          
+        });
     }
     return (
         <div className='addcountry'>
@@ -20,12 +31,12 @@ function AddCounty() {
                 <div className="addcountryWrap">
                     <h2>Create a Destination</h2>
 
-                    <div className="countryName">
+                    <div className="country_name">
                         <h4>Country:</h4>
                         <input
                             type="text"
-                            value={countryTitle}
-                            onChange={(event) => setCountryTitle(event.target.value)}
+                            value={countryName}
+                            onChange={(event) => setCountryName(event.target.value)}
                         />
                     </div>
                     <div className='cityName'>
@@ -84,7 +95,20 @@ function AddCounty() {
                     </div>
 
                     <div className="createBtn">
-                        <button onClick={addCountry}>Create</button>
+                        <button onClick={addCountry}>Create New Destination</button>
+    
+                    </div>
+                    <div className="createBtn">
+                    <button><Link to="/managecountry/addcountry/addhotel">Add Hotel</Link></button>
+    
+                    </div>
+                    <div className="createBtn">
+                    <button><Link to="/managecountry/addcountry/addrestaurant">Add Restaurant</Link></button>
+    
+                    </div>
+                    <div className="createBtn">
+                    <button><Link to="/managecountry/addcountry/addshop">Add Shop</Link></button>
+    
                     </div>
                 </div>
             </Container>
