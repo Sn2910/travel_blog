@@ -44,6 +44,14 @@ function Header({ destinations }) {
             Manage Country
           </NavLink>
         </nav>
+        <div className="userSigning">
+          <Link to="/sign-up">
+            <button className="signUp">Sign-Up</button>
+          </Link>
+          <Link to="/sign-in">
+            <button className="signIn">Sign-In</button>
+          </Link>
+        </div>
       </header>
     </div>
   );
