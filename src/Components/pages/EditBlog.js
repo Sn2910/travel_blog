@@ -7,6 +7,8 @@ import moment from "moment";
 import { useParams } from "react-router-dom";
 import { getBlogByID, editBlogByID } from "../../controllers/api";
 
+const apiHost = "http://localhost:3000";
+
 export default function EditBlog({ blogItems, editBlog }) {
   const { id } = useParams();
   console.log("params ID", id);
@@ -26,13 +28,25 @@ export default function EditBlog({ blogItems, editBlog }) {
 
   function saveEditedBlog() {
     editBlog({
-      userName: editUserName,
-      blogDate: editDate,
-      blogTitle: editTitle,
-      blogText: editText,
-      blogImage: editImage,
+      editUserName,
+      editDate,
+      editTitle,
+      editText,
+      editImage,
       id,
     });
+    const url = `${apiHost}/api/blog/${id}`;
+    const response = fetch(url, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify(),
+    });
+    if (response.ok) {
+      return blogItems;
+    }
     // setEditTitle("");
     // setEditText("");
     // setEditDate("");
