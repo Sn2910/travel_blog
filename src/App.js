@@ -50,7 +50,11 @@ function App() {
   };
 
   const editBlog = async (blog) => {
-    const blogs = await editBlogByID(blog.id, blog);
+    const blogCopy = {
+      ...blog,
+    };
+    delete blogCopy.id;
+    const blogs = await editBlogByID(blog.id, blogCopy);
     console.log(blogs);
     setBlog((prev) => {
       return { ...prev, blogs };

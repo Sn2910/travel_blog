@@ -28,25 +28,13 @@ export default function EditBlog({ blogItems, editBlog }) {
 
   function saveEditedBlog() {
     editBlog({
-      editUserName,
-      editDate,
-      editTitle,
-      editText,
-      editImage,
       id,
+      userName: editUserName,
+      blogDate: editDate,
+      title: editTitle,
+      richText: editText,
+      blogImage: editImage,
     });
-    const url = `${apiHost}/api/blog/${id}`;
-    const response = fetch(url, {
-      method: "PATCH",
-      headers: {
-        Accept: "application/json",
-        "content-Type": "application/json",
-      },
-      body: JSON.stringify(),
-    });
-    if (response.ok) {
-      return blogItems;
-    }
     // setEditTitle("");
     // setEditText("");
     // setEditDate("");
