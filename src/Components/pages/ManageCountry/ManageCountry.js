@@ -16,9 +16,7 @@ const Item = styled(Paper)(({ theme }) => ({
   }));
 
 function ManageCountry({ destinations,addDestination}) {
-    function callAddCountry(){
-        <AddCounty />
-    }
+   
   return (
     <div>
           {destinations.map((destination,index)=>{
