@@ -40,18 +40,7 @@ function Header({ destinations }) {
           <NavLink to="/blog" className="blog">
             BLOG
           </NavLink>
-          <NavLink to="/managecountry" className="addcountrydetails">
-            Manage Country
-          </NavLink>
         </nav>
-        <div className="userSigning">
-          <Link to="/sign-up">
-            <button className="signUp">Sign-Up</button>
-          </Link>
-          <Link to="/sign-in">
-            <button className="signIn">Sign-In</button>
-          </Link>
-        </div>
       </header>
     </div>
   );

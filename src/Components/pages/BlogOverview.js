@@ -1,4 +1,4 @@
-import { Container } from "@mui/material";
+import { Box, Container, Grid, Paper } from "@mui/material";
 import "./BlogOverview.css";
 import "./Blog.css";
 import React, { useEffect, useState } from "react";
@@ -19,7 +19,7 @@ export default function BlogOverview() {
   console.log("params", id);
 
   async function readData() {
-    const blog = await getBlogByID();
+    const blog = await getBlogByID(id);
     console.log(blog);
     setGetData(blog);
     return blog;
@@ -39,7 +39,7 @@ export default function BlogOverview() {
         return (
           <Container
             key={blog.id}
-            className="blogContWrap"
+            className="blogOverviewCont"
             sx={{ width: "760px" }}
           >
             <h2>{blog.title}</h2>
@@ -50,13 +50,115 @@ export default function BlogOverview() {
                 <h4>|</h4>
                 <h4>Dated: {blog.blog_date}.</h4>
               </div>
-              <img
-                src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1120&q=80"
-                alt=""
-                width="500px"
-                height="300px"
-              />
+              <img src={blog.blog_image} alt="" width="500px" height="300px" />
               <p className="blogText">{blog.rich_text}</p>
+            </div>
+            <div className="blogOverviewVideos">
+              <h2>Video(s)</h2>
+              <div>
+                <Grid container spacing={2}>
+                  <Grid item xs={4}>
+                    <Paper
+                      sx={{
+                        margin: "4px 0",
+                      }}
+                    >
+                      <video controls width="100%">
+                        <source
+                          src="https://videos.pond5.com/canadian-tourism-time-lapse-footage-000659007_main_xxl.mp4"
+                          type="video/mp4"
+                        />
+                        Sorry, your browser doesn't support embedded videos.
+                      </video>
+                      <Box
+                        sx={{
+                          padding: "1px 0 4px",
+                          color: "#696969",
+                          textAlign: "center",
+                          fontSize: ".9em",
+                        }}
+                      >
+                        Join The Boat
+                      </Box>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Paper
+                      sx={{
+                        margin: "4px 0",
+                      }}
+                    >
+                      <video controls width="100%">
+                        <source
+                          src="https://joy.videvo.net/videvo_files/video/free/2021-04/large_watermarked/210329_01A_Bali_4k_014_preview.mp4"
+                          type="video/mp4"
+                        />
+                        Sorry, your browser doesn't support embedded videos.
+                      </video>
+                      <Box
+                        sx={{
+                          padding: "1px 0 4px",
+                          color: "#696969",
+                          textAlign: "center",
+                          fontSize: ".9em",
+                        }}
+                      >
+                        At The Beach
+                      </Box>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Paper
+                      sx={{
+                        margin: "4px 0",
+                      }}
+                    >
+                      <video controls width="100%">
+                        <source
+                          src="https://joy.videvo.net/videvo_files/video/free/2021-04/large_watermarked/210329_01B_Bali_1080p_009_preview.mp4"
+                          type="video/mp4"
+                        />
+                        Sorry, your browser doesn't support embedded videos.
+                      </video>
+                      <Box
+                        sx={{
+                          padding: "1px 0 4px",
+                          color: "#696969",
+                          textAlign: "center",
+                          fontSize: ".9em",
+                        }}
+                      >
+                        Shot of Surfer Riding
+                      </Box>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={4}>
+                    <Paper
+                      sx={{
+                        margin: "4px 0",
+                      }}
+                    >
+                      <video controls width="100%">
+                        <source
+                          src="https://media.istockphoto.com/videos/deep-tropical-jungle-in-darkness-video-id1382928371"
+                          type="video/mp4"
+                        />
+                        Sorry, your browser doesn't support embedded videos.
+                      </video>
+                      <Box
+                        sx={{
+                          padding: "1px 0 4px",
+                          color: "#696969",
+                          textAlign: "center",
+                          fontSize: ".9em",
+                        }}
+                      >
+                        Jungle Walk
+                      </Box>
+                    </Paper>
+                  </Grid>
+                </Grid>
+              </div>
             </div>
             <div className="blogIcons">
               <ThumbUpIcon
