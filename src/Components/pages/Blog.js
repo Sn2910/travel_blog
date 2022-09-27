@@ -38,12 +38,7 @@ function Blog({ blogs = [] }) {
             <h2>{blog.title}</h2>
           </Link>
           <p>{"|"}</p>
-          <Link to={`/edit-blog/${blog.id}`} className="editBlog">
-            Edit Blog
-          </Link>
-          <Link to="#" className="deteleBlog">
-            Delete Blog
-          </Link>
+          <p className="editBlog">Edit Blog</p>
         </div>
         <div>
           <div className="author-date">
