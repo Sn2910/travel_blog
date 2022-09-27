@@ -44,9 +44,24 @@
   margin-left: 15px;
   align-items: center;
 }
+.blogPostTitle .editBlog,
+.blogPostTitle .deteleBlog {
+  margin-bottom: -7px;
+  text-decoration: none;
+  font-size: 1em;
+  color: #696969;
+  margin-left: 15px;
+  align-items: center;
+  transition: 0.4s;
+}
 .blogPostTitle .editBlog:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+.blogPostTitle .deteleBlog:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: red;
 }
 .blogPostTitle a {
   text-decoration: none;

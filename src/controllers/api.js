@@ -28,7 +28,7 @@ const getDestinationsById = async (id) => {
 };
 const postDestination = async (destination) => {
   const url = `${apiHost2}/api/destinations`;
-  const response =  await fetch(url, {
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -57,7 +57,7 @@ async function getBlogByID() {
 }
 const postBlog = async (blog) => {
   const url = `${apiHost2}/api/blog`;
-  const response =  await fetch(url, {
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -69,4 +69,12 @@ const postBlog = async (blog) => {
   }
 };
 
-export { getAsset, getBlogs, postBlog, getBlogByID,getDestinations,getDestinationsById,postDestination};
+export {
+  getAsset,
+  getBlogs,
+  postBlog,
+  getBlogByID,
+  getDestinations,
+  getDestinationsById,
+  postDestination,
+};
