@@ -13,13 +13,13 @@ export default function CreateBlog({ addBlog }) {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogText, setBlogText] = useState("");
   const [blogDate, setBlogDate] = useState("");
-  const [blogImage, setBlogImage] = useState("");
   const [userName, setUserName] = useState("");
 
   // const date = Moment().format("MMM Do YY");
   // const date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
   const date = moment().format("MMM. Do YYYY. - h:mm a");
 
+  console.log(blogTitle, blogText);
   function createBlog() {
     console.log();
     addBlog({
@@ -27,12 +27,10 @@ export default function CreateBlog({ addBlog }) {
       blogDate: blogDate,
       title: blogTitle,
       richText: blogText,
-      blogImage: blogImage,
     });
     setBlogTitle("");
     setBlogText("");
     setBlogDate("");
-    setBlogImage("");
     setUserName("");
   }
 
@@ -71,13 +69,8 @@ export default function CreateBlog({ addBlog }) {
             />
           </div>
           <div className="imageWrap">
-            <h4>Add image url:</h4>
-            <input
-              type="text"
-              value={blogImage}
-              onChange={({ target }) => setBlogImage(target.value)}
-            />
-            {/* <div className="imgUpload">
+            <h4>Add an image</h4>
+            <div className="imgUpload">
               <Stack direction="row" alignItems="center" spacing={2}>
                 <IconButton
                   color="primary"
@@ -88,7 +81,7 @@ export default function CreateBlog({ addBlog }) {
                   <PhotoCamera />
                 </IconButton>
               </Stack>
-            </div> */}
+            </div>
           </div>
           <div className="blogTextArea">
             <h4>Add your story</h4>
@@ -103,8 +96,6 @@ export default function CreateBlog({ addBlog }) {
                 width: 555,
                 height: 300,
                 fontSize: "1.2em",
-                fontFamily: "roboto",
-                color: "#696969",
               }}
             />
           </div>
