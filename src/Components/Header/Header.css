@@ -39,7 +39,7 @@ header a:hover {
 .active {
   font-weight: 600;
   border-top: 3px solid #292929;
-  padding-top: 3%;
+  padding-top: 2%;
 }
 .navLinks {
   /* margin-top: 15px; */

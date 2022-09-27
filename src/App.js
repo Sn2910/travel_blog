@@ -12,6 +12,7 @@ import CreateBlog from "./Components/pages/CreateBlog";
 import {
   getBlogs,
   postBlog,
+  editBlogByID,
   getDestinations,
   postDestination,
 } from "./controllers/api";
@@ -23,6 +24,7 @@ import AddRestaurant from "./Components/pages/Add Restaurant/AddRestaurant";
 import AddShop from "./Components/pages/Add Shop/AddShop";
 import SignUp from "./Components/pages/SignUp";
 import SignIn from "./Components/pages/SignIn";
+import EditBlog from "./Components/pages/EditBlog";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
@@ -31,6 +33,8 @@ function App() {
   const [blog, setBlog] = useState({
     blogs: [],
   });
+
+  const [blogPost, setBlogPost] = useState("");
   /*   const getData = async () => {
     const response = await fetch(
       `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
@@ -58,6 +62,19 @@ function App() {
       return { ...prev, blogs };
     });
   };
+
+  const editBlog = async (blog) => {
+    const blogCopy = {
+      ...blog,
+    };
+    delete blogCopy.id;
+    const blogs = await editBlogByID(blog.id, blogCopy);
+    console.log(blogs);
+    setBlog((prev) => {
+      return { ...prev, blogs };
+    });
+  };
+
   const readDestinations = async (destinations) => {
     const destinationArr = await getDestinations(destinations);
     console.log(destinationArr);
@@ -114,6 +131,10 @@ function App() {
         <Route
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}
+        />
+        <Route
+          path="/edit-blog/:id"
+          element={<EditBlog blogItems={blog.blogs} editBlog={editBlog} />}
         />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
         <Route path="/sign-up" element={<SignUp />} />
