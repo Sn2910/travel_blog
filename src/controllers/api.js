@@ -1,8 +1,8 @@
 const apiHost = "https://cdn.contentful.com";
-const apiHost2 = "http://localhost:3000";
+const apiHost2 = "http://localhost:5000";
 
 const getAsset = async () => {
-  const url = `${apiHost2}/api/assets`;
+  const url = `${apiHost}/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/assets?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`;
   const response = await fetch(url);
   const result = await response.json();
   console.log("Assets");
@@ -77,11 +77,7 @@ async function editBlogByID(id, blog) {
 
 const postBlog = async (blog) => {
   const url = `${apiHost2}/api/blog`;
-<<<<<<< HEAD
-  const response = fetch(url, {
-=======
   const response = await fetch(url, {
->>>>>>> parent of 842fb4d (Revert "Merge pull request #25 from Sn2910/nextBranch")
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -98,11 +94,8 @@ export {
   getBlogs,
   postBlog,
   getBlogByID,
-<<<<<<< HEAD
   editBlog,
   editBlogByID,
-=======
->>>>>>> parent of 842fb4d (Revert "Merge pull request #25 from Sn2910/nextBranch")
   getDestinations,
   getDestinationsById,
   postDestination,
