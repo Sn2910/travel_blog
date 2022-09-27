@@ -9,22 +9,29 @@ import About from "./Components/pages/About";
 import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
-import { getBlogs, postBlog,getDestinations,postDestination} from "./controllers/api";
+import {
+  getBlogs,
+  postBlog,
+  getDestinations,
+  postDestination,
+} from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
 import ManageCountry from "./Components/pages/ManageCountry/ManageCountry";
 import AddHotel from "./Components/pages/Add Hotel/AddHotel";
 import AddRestaurant from "./Components/pages/Add Restaurant/AddRestaurant";
 import AddShop from "./Components/pages/Add Shop/AddShop";
+import SignUp from "./Components/pages/SignUp";
+import SignIn from "./Components/pages/SignIn";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
-  const [destinations,setDestinations] =useState("")
+  const [destinations, setDestinations] = useState("");
 
   const [blog, setBlog] = useState({
     blogs: [],
   });
-/*   const getData = async () => {
+  /*   const getData = async () => {
     const response = await fetch(
       `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
     );
@@ -62,15 +69,14 @@ function App() {
     setDestinations(newDestination);
   };
   useEffect(() => {
-   /*  getData(); */
+    /*  getData(); */
     readBlog();
     readDestinations();
-   
   }, []);
   if (!blog || !destinations) {
     return <div className="loading">Loading...</div>;
   }
-/*   const destinations = getInfo.items.filter(
+  /*   const destinations = getInfo.items.filter(
     (item, index) => item.sys.contentType.sys.id === "destinations"
   );
   const tourInfo = getInfo.items.find(
@@ -82,25 +88,36 @@ function App() {
     <div className="App">
       <Header destinations={destinations} />
       <Routes>
-        <Route
-          path="/"
-          element={<Home destinations={destinations}  />}
-        />
+        <Route path="/" element={<Home destinations={destinations} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/travel-blog/:id" element={<TravelInfo />} />
-        <Route path="/managecountry" element={< ManageCountry destinations ={destinations}/>} />
-        <Route path="/managecountry/addcountry" element={<AddCounty addDestination  ={addDestination}/>} />
-        <Route path="/managecountry/addcountry/addhotel" element={<AddHotel/>} />
-        <Route path="/managecountry/addcountry/addrestaurant" element={<AddRestaurant/>} />
-        <Route path="/managecountry/addcountry/addshop" element={<AddShop/>} />
-       
+        <Route
+          path="/managecountry"
+          element={<ManageCountry destinations={destinations} />}
+        />
+        <Route
+          path="/managecountry/addcountry"
+          element={<AddCounty addDestination={addDestination} />}
+        />
+        <Route
+          path="/managecountry/addcountry/addhotel"
+          element={<AddHotel />}
+        />
+        <Route
+          path="/managecountry/addcountry/addrestaurant"
+          element={<AddRestaurant />}
+        />
+        <Route path="/managecountry/addcountry/addshop" element={<AddShop />} />
+
         <Route path="/blog" element={<Blog blogs={blog.blogs} />} />
         <Route
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}
         />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/sign-in" element={<SignIn />} />
       </Routes>
       <Footer />
     </div>

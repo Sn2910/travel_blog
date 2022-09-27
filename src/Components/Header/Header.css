@@ -34,7 +34,7 @@ header a {
 header a:hover {
   font-weight: 600;
   border-top: 3px solid #292929;
-  padding-top: 3%;
+  padding-top: 2%;
 }
 .active {
   font-weight: 600;
@@ -102,3 +102,27 @@ header a:hover {
   padding: 3px 7px;
   margin-bottom: 55px;
 } */
+
+.userSigning {
+  position: absolute;
+  right: 10%;
+}
+.userSigning button {
+  font-size: 0.8em;
+  border: none;
+  background: transparent;
+  color: #696969;
+}
+.userSigning button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.userSigning a:hover {
+  border-top: none;
+}
+.signUp:hover {
+  color: #ffa500;
+}
+.signIn:hover {
+  color: #0bd30b;
+}
