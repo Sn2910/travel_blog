@@ -44,9 +44,25 @@
   margin-left: 15px;
   align-items: center;
 }
+.blogPostTitle .editBlog,
+.blogPostTitle .deteleBlog {
+  margin-bottom: -7px;
+  text-decoration: none;
+  font-size: 1em;
+  color: #696969;
+  margin-left: 15px;
+  align-items: center;
+  transition: 0.4s;
+}
 .blogPostTitle .editBlog:hover {
   text-decoration: underline;
   cursor: pointer;
+  color: orange;
+}
+.blogPostTitle .deteleBlog:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: red;
 }
 .blogPostTitle a {
   text-decoration: none;
@@ -56,7 +72,7 @@
 .author-date {
   display: flex;
   align-items: center;
-  padding: 5px 0 10px;
+  padding: 5px 0 20px;
   color: #696969;
 }
 .author-date img {
@@ -64,6 +80,9 @@
 }
 .author-date h4 {
   margin: 0 10px;
+}
+.author-date h4:hover {
+  text-decoration: underline;
 }
 .blogText {
   /* width: 90%; */
@@ -154,7 +173,7 @@
 }
 .support p {
   padding: 20px 7px;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 .support img {
   /* padding: 5px; */
@@ -186,39 +205,45 @@
   margin-top: 100px;
   display: flex;
   flex-direction: column;
-  background: rgba(230, 230, 230, 0.8);
+  background: #020202cc;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0px 1px 4px 1px rgb(0, 0, 0, 0.5);
 }
 .subscribe h3 {
   padding: 20px 0;
-  color: #696969;
+  color: #fff;
+}
+.subscribe p {
+  padding: 0;
+  font-size: 1em;
+  color: #a8a8a8;
 }
 .subscribe h6 {
   text-align: left;
-  color: #696969;
+  color: #fff;
   font-size: 0.8em;
+  font-weight: 300;
   padding-top: 10px;
   padding-bottom: 5px;
 }
 .subscribe input {
-  padding: 5px;
+  padding: 8px;
   font-size: 1em;
   margin-bottom: 15px;
   border-radius: 3px;
   border: 1px solid #696969;
 }
 .subscribe input:focus {
-  outline: 1px solid #08b4f8;
-  border: none;
+  outline: none;
+  border: 1px solid #08b4f8;
 }
 .subscribe button {
-  padding: 6px;
+  padding: 8px;
   font-size: 1em;
   background: #dc0707;
   color: #fff;
-  border: none;
+  border: 1px solid red;
   border-radius: 3px;
   margin-bottom: 20px;
 }
