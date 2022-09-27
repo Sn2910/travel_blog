@@ -77,7 +77,11 @@ async function editBlogByID(id, blog) {
 
 const postBlog = async (blog) => {
   const url = `${apiHost2}/api/blog`;
+<<<<<<< HEAD
   const response = fetch(url, {
+=======
+  const response = await fetch(url, {
+>>>>>>> parent of 842fb4d (Revert "Merge pull request #25 from Sn2910/nextBranch")
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -94,8 +98,11 @@ export {
   getBlogs,
   postBlog,
   getBlogByID,
+<<<<<<< HEAD
   editBlog,
   editBlogByID,
+=======
+>>>>>>> parent of 842fb4d (Revert "Merge pull request #25 from Sn2910/nextBranch")
   getDestinations,
   getDestinationsById,
   postDestination,

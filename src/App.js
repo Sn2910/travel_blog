@@ -9,6 +9,7 @@ import About from "./Components/pages/About";
 import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
+import EditBlog from "./Components/pages/EditBlog";
 import {
   getBlogs,
   postBlog,
@@ -28,14 +29,19 @@ import EditBlog from "./Components/pages/EditBlog";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
-  const [destinations, setDestinations] = useState("");
-
   const [blog, setBlog] = useState({
     blogs: [],
   });
+<<<<<<< HEAD
 
   const [blogPost, setBlogPost] = useState("");
   /*   const getData = async () => {
+=======
+  const [blogPost, setBlogPost] = useState("");
+  const [destinations, setDestinations] = useState("");
+  const getData = async () => {
+    /*   const getData = async () => {
+>>>>>>> parent of 842fb4d (Revert "Merge pull request #25 from Sn2910/nextBranch")
     const response = await fetch(
       `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
     );
@@ -45,9 +51,9 @@ function App() {
     console.log(result);
     /*  console.log("Shopping")
          const destId1 ='3nZZzJ6iJ17V2wCrWySzxN'
-         console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  
+         console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
   };
- */
+
   const readBlog = async (blog) => {
     const blogs = await getBlogs(blog);
     console.log(blogs);
@@ -75,6 +81,30 @@ function App() {
     });
   };
 
+<<<<<<< HEAD
+=======
+  // async function editBlogByID(id, blog) {
+  //   const url = `${apiHost2}/api/blog/${id}`;
+  //   const response = await fetch(url, {
+  //     method: "PATCH",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(blog),
+  //   });
+  //   if (response.ok) {
+  //     return getBlogs();
+  //   }
+  //   console.log(response);
+  // }
+
+  useEffect(() => {
+    getData();
+    // editBlogByID();
+    readBlog();
+  }, []);
+>>>>>>> parent of 842fb4d (Revert "Merge pull request #25 from Sn2910/nextBranch")
   const readDestinations = async (destinations) => {
     const destinationArr = await getDestinations(destinations);
     console.log(destinationArr);
@@ -90,17 +120,17 @@ function App() {
     readBlog();
     readDestinations();
   }, []);
-  if (!blog || !destinations) {
+  if (!getInfo || !blog) {
     return <div className="loading">Loading...</div>;
   }
-  /*   const destinations = getInfo.items.filter(
-    (item, index) => item.sys.contentType.sys.id === "destinations"
-  );
-  const tourInfo = getInfo.items.find(
-    (item, index) => item.sys.contentType.sys.id === "travelBlog"
-  );
-  console.log("tourInfo");
-  console.log(tourInfo); */
+  //    const destinations = getInfo.items.filter(
+  //   (item, index) => item.sys.contentType.sys.id === "destinations"
+  // );
+  // const tourInfo = getInfo.items.find(
+  //   (item, index) => item.sys.contentType.sys.id === "travelBlog"
+  // );
+  // console.log("tourInfo");
+  // console.log(tourInfo);
   return (
     <div className="App">
       <Header destinations={destinations} />

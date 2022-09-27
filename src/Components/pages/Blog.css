@@ -64,6 +64,11 @@
   cursor: pointer;
   color: red;
 }
+.blogPostTitle .deteleBlog:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  color: red;
+}
 .blogPostTitle a {
   text-decoration: none;
   color: #000;
