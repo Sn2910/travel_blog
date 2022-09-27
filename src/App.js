@@ -94,6 +94,7 @@ function App() {
     getData();
     // editBlogByID();
     readBlog();
+    readDestinations();
   }, []);
   const readDestinations = async (destinations) => {
     const destinationArr = await getDestinations(destinations);
@@ -105,11 +106,7 @@ function App() {
     console.log(newDestination);
     setDestinations(newDestination);
   };
-  useEffect(() => {
-    /*  getData(); */
-    readBlog();
-    readDestinations();
-  }, []);
+
   if (!getInfo || !blog) {
     return <div className="loading">Loading...</div>;
   }
@@ -152,7 +149,10 @@ function App() {
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}
         />
-        <Route path="/blog-overview/:id" element={<BlogOverview />} />
+        <Route
+          path="/blog-overview/:id"
+          element={<BlogOverview editBlog={editBlog} />}
+        />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/sign-in" element={<SignIn />} />
       </Routes>
