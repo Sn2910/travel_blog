@@ -51,7 +51,7 @@ function TravelInfo() {
   function getAssetUrl(assetId) {
     const found = assets.find((e) => e.id === assetId);
     console.log(assetId)
-    console.log(found.img_url);
+  
     if (!found) {
       return "";
     }

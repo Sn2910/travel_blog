@@ -24,7 +24,7 @@ function ManageCountry({ destinations, addDestination }) {
           <Box sx={{ width: '100%' }}>
               <Stack spacing={2}>
               
-              <Item key= {`item_${index}`}>{destination.country}<Edit/></Item>
+              <Item key= {`item_${index}`}>{destination.country}</Item>
              
               </Stack>
             </Box>

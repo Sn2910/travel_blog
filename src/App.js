@@ -27,8 +27,6 @@ import AddShop from "./Components/pages/Add Shop/AddShop";
 import SignUp from "./Components/pages/SignUp";
 import SignIn from "./Components/pages/SignIn";
 
-const apiHost2 = "http://localhost:3000";
-
 function App() {
   const [getInfo, setGetInfo] = useState("");
   const [destinations, setDestinations] = useState("");
@@ -98,7 +96,7 @@ function App() {
     readDestinations();
   }, []);
 
-  if (!getInfo || !blog) {
+  if (!blog || !destinations) {
     return <div className="loading">Loading...</div>;
   }
   /*   const destinations = getInfo.items.filter(
