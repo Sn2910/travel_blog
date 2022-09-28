@@ -1,8 +1,8 @@
-const apiHost = "https://cdn.contentful.com";
-const apiHost2 = "http://localhost:3000";
+const contentfulApi = "https://cdn.contentful.com";
+const apiUrl = "http://localhost:3000";
 
 const getAsset = async () => {
-  const url = `${apiHost2}/api/assets`;
+  const url = `${apiUrl}/api/assets`;
   const response = await fetch(url);
   const result = await response.json();
   console.log("Assets");
@@ -11,23 +11,25 @@ const getAsset = async () => {
 };
 
 const getDestinations = async () => {
-  const url = `${apiHost2}/api/destinations`;
+  const url = `${apiUrl}/api/destinations`;
   const response = await fetch(url);
   const result = await response.json();
   console.log("Destinations");
   console.log(result);
   return result;
 };
+
 const getDestinationsById = async (id) => {
-  const url = `${apiHost2}/api/destinations/${id}`;
+  const url = `${apiUrl}/api/destinations/${id}`;
   const response = await fetch(url);
   const result = await response.json();
   console.log("DestinationsById");
   console.log(result);
   return result;
 };
+
 const postDestination = async (destination) => {
-  const url = `${apiHost2}/api/destinations`;
+  const url = `${apiUrl}/api/destinations`;
   const response =  await fetch(url, {
     method: "POST",
     headers: {
@@ -39,8 +41,29 @@ const postDestination = async (destination) => {
     return getDestinations();
   }
 };
+
+const getHotel = async () => {
+  const url = `${apiUrl}/api/hotel`;
+  const response = await fetch(url);
+  const result = await response.json();
+  console.log("Hotel");
+  console.log(result);
+  return result;
+};
+
+const postHotel = async (hotel) => {
+  const url = `${apiUrl}/api/hotel`;
+  const response =  await fetch(url, {
+    method: "POST",
+    headers: {
+      "content-Type": "application/json",
+    },
+    body: JSON.stringify(hotel),
+  });
+  return response;
+};
 const getBlogs = async () => {
-  const url = `${apiHost2}/api/blog`;
+  const url = `${apiUrl}/api/blog`;
   const response = await fetch(url);
   const result = await response.json();
   console.log("Blogs");
@@ -49,14 +72,14 @@ const getBlogs = async () => {
 };
 
 async function getBlogByID() {
-  const url = `${apiHost2}/api/blog`;
+  const url = `${apiUrl}/api/blog`;
   const response = await fetch(url);
   const result = await response.json();
   console.log(result);
   return result;
 }
 const postBlog = async (blog) => {
-  const url = `${apiHost2}/api/blog`;
+  const url = `${apiUrl}/api/blog`;
   const response =  await fetch(url, {
     method: "POST",
     headers: {
@@ -69,4 +92,4 @@ const postBlog = async (blog) => {
   }
 };
 
-export { getAsset, getBlogs, postBlog, getBlogByID,getDestinations,getDestinationsById,postDestination};
+export { getAsset, getBlogs, postBlog, getBlogByID,getDestinations,getDestinationsById,postDestination,postHotel};

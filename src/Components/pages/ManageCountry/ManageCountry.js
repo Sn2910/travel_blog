@@ -21,12 +21,12 @@ function ManageCountry({ destinations,addDestination}) {
     <div>
           {destinations.map((destination,index)=>{
                      return (
-                        <Container maxWidth="sm" sx={{ background: "#fff" }}>
+                        <Container key={`container_${index}`} maxWidth="sm" sx={{ background: "#fff" }}>
         
           <Box sx={{ width: '100%' }}>
               <Stack spacing={2}>
               
-              <Item key= {index}>{destination.country}<Edit/></Item>
+              <Item key= {`item_${index}`}>{destination.country}<Edit/></Item>
              
               </Stack>
           </Box>
