@@ -1,22 +1,20 @@
-import React from 'react'
+import React from "react";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
-import Paper from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
-import { Container } from '@mui/material';
-import { Edit, EditAttributes } from '@material-ui/icons';
-import AddCounty from '../AddCountry/AddCounty';
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import { Container } from "@mui/material";
+import AddCounty from "../AddCountry/AddCounty";
 import { Link, NavLink } from "react-router-dom";
 const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
+  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: "center",
+  color: theme.palette.text.secondary,
+}));
 
-function ManageCountry({ destinations,addDestination}) {
-   
+function ManageCountry({ destinations, addDestination }) {
   return (
     <div>
           {destinations.map((destination,index)=>{
@@ -29,21 +27,17 @@ function ManageCountry({ destinations,addDestination}) {
               <Item key= {`item_${index}`}>{destination.country}<Edit/></Item>
              
               </Stack>
-          </Box>
-        
-          
-    </Container>  
-    
-
-
-                     )
-        
-                })}
+            </Box>
+          </Container>
+        );
+      })}
       <div className="createBtn">
-              <button><Link to="/managecountry/addcountry">Add Country</Link></button>
-          </div>
+        <button>
+          <Link to="/managecountry/addcountry">Add Country</Link>
+        </button>
+      </div>
     </div>
-  )
+  );
 }
 
-export default ManageCountry
+export default ManageCountry;

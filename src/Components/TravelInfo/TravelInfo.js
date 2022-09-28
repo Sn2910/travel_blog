@@ -15,7 +15,6 @@ import {getDestinations,getDestinationsById} from '../../controllers/api'
 
 function TravelInfo() {
   let backgroundUrl;
-  let hotelUrl;
   const [getInfo, setGetInfo] = useState("");
   const [getDestinationsArr, setGetDestinationsArr] = useState([]);
   const [assets, setAssets] = useState("");
@@ -131,14 +130,7 @@ function TravelInfo() {
             // sx={{ width: "50%" }}
           >
             {getInfo.hotels.map((hotel, index) => {
-              if(hotel.image_url){
-                 hotelUrl = hotel.image_url;
-              }else{
-                 hotelUrl = getAssetUrl(hotel.image_id);
-
-              }
-              
-              
+              const hotelUrl = getAssetUrl(hotel.image_id);
               return (
                 <Grid item key={index} xs={6}>
                   <Paper

@@ -9,12 +9,14 @@ import About from "./Components/pages/About";
 import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
+import EditBlog from "./Components/pages/EditBlog";
 import {
   getBlogs,
   postBlog,
+  editBlogByID,
   getDestinations,
   postDestination,
-  postHotel,
+  postHotel
 } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
@@ -22,6 +24,10 @@ import ManageCountry from "./Components/pages/ManageCountry/ManageCountry";
 import AddHotel from "./Components/pages/Add Hotel/AddHotel";
 import AddRestaurant from "./Components/pages/Add Restaurant/AddRestaurant";
 import AddShop from "./Components/pages/Add Shop/AddShop";
+import SignUp from "./Components/pages/SignUp";
+import SignIn from "./Components/pages/SignIn";
+
+const apiHost2 = "http://localhost:3000";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
@@ -40,9 +46,9 @@ function App() {
     console.log(result);
     /*  console.log("Shopping")
          const destId1 ='3nZZzJ6iJ17V2wCrWySzxN'
-         console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  
-  };
- */
+         console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
+  // };
+
   const readBlog = async (blog) => {
     const blogs = await getBlogs(blog);
     console.log(blogs);
@@ -52,6 +58,18 @@ function App() {
   };
   const addBlog = async (blog) => {
     const blogs = await postBlog(blog);
+    console.log(blogs);
+    setBlog((prev) => {
+      return { ...prev, blogs };
+    });
+  };
+
+  const editBlog = async (blog) => {
+    const blogCopy = {
+      ...blog,
+    };
+    delete blogCopy.id;
+    const blogs = await editBlogByID(blog.id, blogCopy);
     console.log(blogs);
     setBlog((prev) => {
       return { ...prev, blogs };
@@ -79,7 +97,8 @@ function App() {
     readBlog();
     readDestinations();
   }, []);
-  if (!blog || !destinations) {
+
+  if (!getInfo || !blog) {
     return <div className="loading">Loading...</div>;
   }
   /*   const destinations = getInfo.items.filter(
@@ -121,7 +140,13 @@ function App() {
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}
         />
+        <Route
+          path="/edit-blog/:id"
+          element={<EditBlog blogItems={blog.blogs} editBlog={editBlog} />}
+        />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/sign-in" element={<SignIn />} />
       </Routes>
       <Footer />
     </div>

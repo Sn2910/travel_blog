@@ -21,8 +21,8 @@ function Header({ destinations }) {
               {destinations.map((destination, index) => {
                 return (
                   <li key={index}>
-                    <Link to={`/travel-blog/${destination.id}`} key={index}>
-                      {destination.country}
+                    <Link to={`/travel-blog/${destination.sys.id}`} key={index}>
+                      {destination.fields.country}
                     </Link>
                   </li>
                 );
@@ -44,6 +44,14 @@ function Header({ destinations }) {
             Manage Country
           </NavLink>
         </nav>
+        <div className="userSigning">
+          <Link to="/sign-up">
+            <button className="signUp">Sign-Up</button>
+          </Link>
+          <Link to="/sign-in">
+            <button className="signIn">Sign-In</button>
+          </Link>
+        </div>
       </header>
     </div>
   );
