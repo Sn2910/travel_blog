@@ -20,6 +20,7 @@ import EditBlog from "./EditBlog";
 function Blog({ blogs = [] }) {
   const blogData = blogs.map((blog, id) => {
     console.log("Blogs", blog);
+
     if (!blog) {
       return <div className="loading">Loading...</div>;
     }
@@ -81,6 +82,7 @@ function Blog({ blogs = [] }) {
       </div>
     );
   });
+
   return (
     <div className="allBlogsCont">
       <div
