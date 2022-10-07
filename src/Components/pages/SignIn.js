@@ -12,10 +12,10 @@ export default function SignIn() {
             <h4>Username:</h4>
             <input type="text" />
           </div>
-          <div>
+          {/* <div>
             <h4>Email:</h4>
             <input type="email" />
-          </div>
+          </div> */}
           <div>
             <h4>Password:</h4>
             <input type="password" />
