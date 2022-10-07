@@ -18,15 +18,21 @@ const Item = styled(Paper)(({ theme }) => ({
 function ManageCountry({ destinations, addDestination }) {
   return (
     <div>
-          {destinations.map((destination,index)=>{
-                     return (
-                        <Container key={`container_${index}`} maxWidth="sm" sx={{ background: "#fff" }}>
-        
-          <Box sx={{ width: '100%' }}>
+      {destinations.map((destination, index) => {
+        return (
+          <Container key={`container_${index}`} maxWidth="sm" sx={{ background: "#fff" }}>
+
+            <Box sx={{ width: '100%' }}>
               <Stack spacing={2}>
-              
-              <Item key= {`item_${index}`}>{destination.country}<EditIcon/></Item>
-             
+
+                <Item key={`item_${index}`}>{destination.country}
+                  <Link to={`/managecountry/editcountry/${destination.id}`} className="editBlog">
+                    <EditIcon />
+                  </Link>
+
+
+                </Item>
+
               </Stack>
             </Box>
           </Container>

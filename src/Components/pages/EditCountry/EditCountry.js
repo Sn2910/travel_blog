@@ -1,43 +1,54 @@
 import React from 'react'
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { Link } from 'react-router-dom';
 
 
-function AddCounty({addDestination}) {
-    
 
-    const createCountry = (e)=>{
-        e.preventDefault();
-        const {
-            country,
-            city,
-            language,
-            countryCoords,
-            cityInfo,
-            backgroundImgId,
-            backgroundImage
-        }= e.target;
-        console.log(e.target)
-        const newCountry={
-            country: country.value,
-            city: city.value,
-            language: language.value,
-            countryCoords: countryCoords.value,
-            cityInfo: cityInfo.value,
-            backgroundImgId:backgroundImgId,
-            backgroundImgUrl: backgroundImage.value,
-        }
-        console.log(country)
-        addDestination(newCountry)
-       
+
+function EditCountry({destinations, editDestination}) {
+    
+    const { id } = useParams();
+  console.log("params ID", id);
+
+  const destination = destinations.find((destination) => {
+    return destination.id === parseInt(id);
+});
+    const editCountry = (e)=>{
+     e.preventDefault();
+     const {
+        country,
+        city,
+        language,
+        countryCoords,
+        cityInfo,
+        backgroundImgId,
+        backgroundImage
+    }= e.target;
+    console.log(e.target)
+    const savedCountry={
+        id:id,
+        country: country.value,
+        city: city.value,
+        language: language.value,
+        countryCoords: countryCoords.value,
+        cityInfo: cityInfo.value,
+        backgroundImgId: parseInt(backgroundImgId),
+        backgroundImgUrl: backgroundImage.value,
+    }
+    console.log(cityInfo)
+    editDestination(savedCountry)
+   
+     
     }
     
     return (
         <div className='addcountry'>
             <Container maxWidth="sm" sx={{ background: "#fff" }}>
-            <form onSubmit={createCountry} className="addcountryWrap">
+            <form onSubmit ={editCountry} className="addcountryWrap">
                 
                     <h2>Create a Destination</h2>
 
@@ -46,8 +57,7 @@ function AddCounty({addDestination}) {
                         <input
                             type="text"
                             id={'country'}
-                      
-                          
+                            defaultValue ={destination.country}
                         />
                     </div>
                     <div className='cityName'>
@@ -55,6 +65,7 @@ function AddCounty({addDestination}) {
                         <input
                             type="text"
                             id={'city'}
+                            defaultValue ={destination.city}
                         />
                     </div>
 
@@ -62,7 +73,9 @@ function AddCounty({addDestination}) {
                         <h4>Background Image:</h4>
                             <input 
                             type="text"
-                            id={'backgroundImage'}    
+                            id={'backgroundImgId'} 
+                            defaultValue ={destination.background_img_id}
+                               
                              />    
                     </div>
 
@@ -79,6 +92,7 @@ function AddCounty({addDestination}) {
                                 height: 300,
                                 fontSize: "1.2em",
                             }}
+                            defaultValue ={destination.city_info}
                         />
                     </div>
                     <div className="language">
@@ -86,6 +100,8 @@ function AddCounty({addDestination}) {
                         <input
                             type="text"
                             id={'language'}
+                            defaultValue ={destination.language}
+                            
                         />
                     </div>
                     <div className="cords">
@@ -93,6 +109,7 @@ function AddCounty({addDestination}) {
                         <input
                             type="text"  
                             id={'countryCoords' }
+                            defaultValue ={destination.country_coords}
                         />
                         <p className="cordsInfo">
                             <em>generate Country Coordinates <a href='https://www.image-map.net/'>here</a>!</em>
@@ -100,25 +117,15 @@ function AddCounty({addDestination}) {
                     </div>
 
                     <div className="createBtn">
-                        <button>Create New Destination</button>
+                        <button>Save</button>
     
                     </div>
-                    <div className="createBtn">
-                    <button><Link to="/managecountry/addcountry/addhotel">Add Hotel</Link></button>
-    
-                    </div>
-                    <div className="createBtn">
-                    <button><Link to="/managecountry/addcountry/addrestaurant">Add Restaurant</Link></button>
-    
-                    </div>
-                    <div className="createBtn">
-                    <button><Link to="/managecountry/addcountry/addshop">Add Shop</Link></button>
-    
-                    </div>
+                    
+                  
                 </form>
             </Container>
         </div>
     )
 }
 
-export default AddCounty
+export default EditCountry

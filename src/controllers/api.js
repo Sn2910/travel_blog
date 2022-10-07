@@ -1,4 +1,4 @@
-const contentfulApi = "https://cdn.contentful.com";
+
 const apiUrl = "http://localhost:3000";
 
 const getAsset = async () => {
@@ -41,8 +41,27 @@ const postDestination = async (destination) => {
     return getDestinations();
   }
 };
+async function editDestination(destinationdata) {
+  editDestinationByID(destinationdata.id, destinationdata);
+}
+async function editDestinationByID(id, destination) {
+  console.log(id, destination);
+  const url = `${apiUrl}/api/destinations/${id}`;
+  const response = await fetch(url, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+    body: JSON.stringify(destination),
+  });
+  if (response.ok) {
+    return getDestinations();
+  }
+}
 
-const getHotel = async () => {
+
+/* const getHotel = async () => {
   const url = `${apiUrl}/api/hotel`;
   const response = await fetch(url);
   const result = await response.json();
@@ -50,7 +69,7 @@ const getHotel = async () => {
   console.log(result);
   return result;
 };
-
+ */
 const postHotel = async (hotel) => {
   const url = `${apiUrl}/api/hotel`;
   const response =  await fetch(url, {
@@ -62,6 +81,7 @@ const postHotel = async (hotel) => {
   });
   return response;
 };
+
 const getBlogs = async () => {
   const url = `${apiUrl}/api/blog`;
   const response = await fetch(url);
@@ -112,4 +132,4 @@ const postBlog = async (blog) => {
   }
 };
 
-export { getAsset, getBlogs, postBlog, getBlogByID,getDestinations,getDestinationsById,postDestination,postHotel,editBlogByID};
+export { getAsset, getBlogs, postBlog, getBlogByID,getDestinations,getDestinationsById,postDestination,postHotel,editBlogByID,editDestinationByID};

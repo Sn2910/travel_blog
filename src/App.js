@@ -16,7 +16,8 @@ import {
   editBlogByID,
   getDestinations,
   postDestination,
-  postHotel
+  postHotel,
+  editDestinationByID
 } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
@@ -26,6 +27,7 @@ import AddRestaurant from "./Components/pages/Add Restaurant/AddRestaurant";
 import AddShop from "./Components/pages/Add Shop/AddShop";
 import SignUp from "./Components/pages/SignUp";
 import SignIn from "./Components/pages/SignIn";
+import EditCountry from './Components/pages/EditCountry/EditCountry'
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
@@ -83,6 +85,16 @@ function App() {
     console.log(newDestination);
     setDestinations(newDestination);
   };
+  
+  const editDestination = async (destination) => {
+    const destinationCopy = {
+      ...destination,
+    };
+     delete destinationCopy.id;
+    const destinations = await editDestinationByID(destination.id, destinationCopy);
+    console.log("New Destination",destinations);
+    
+  };
   const addHotel = async (hotel) => {
     const newHotel = await postHotel(hotel);
     console.log("newHotel");
@@ -122,6 +134,10 @@ function App() {
         <Route
           path="/managecountry/addcountry"
           element={<AddCounty addDestination={addDestination} />}
+        />
+        <Route
+          path="/managecountry/editcountry/:id"
+          element={<EditCountry destinations={destinations} editDestination={editDestination}  />}
         />
         <Route
           path="/managecountry/addcountry/addhotel"
