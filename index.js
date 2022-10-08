@@ -47,7 +47,7 @@ app.post("/api/login", async (req, res) => {
 //   res.render("pages/login");
 // });
 
-// app.post("/users-list", async (req, res) => {
+// app.post("/blog", async (req, res) => {
 //   console.log(req.body);
 //   const result = await validateUser(req.body);
 //   if (!result) {
@@ -59,13 +59,13 @@ app.post("/api/login", async (req, res) => {
 //       httpOnly: true,
 //       secure: false,
 //     })
-//     .render("pages/users-list", { users });
+//     .render("pages/blog", { users });
 // });
 
-// app.get("/users-list", authenticateToken, async (req, res) => {
+// app.get("/blog", authenticateToken, async (req, res) => {
 //   const users = await getRegUsers();
 //   console.log(users);
-//   res.render("pages/users-list", { users });
+//   res.render("pages/blog", { users });
 // });
 
 app.listen(port, () => console.log(`conncted to Database at port ${port}`));

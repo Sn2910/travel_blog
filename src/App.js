@@ -30,7 +30,8 @@ import {
   validateUser,
   getVerifiedUsers,
   signUpUser,
-} from "./controlUsers/api_operations";
+} from "./controlMongodbUsers/api_operations";
+import Users from "./Components/pages/Users";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
@@ -182,7 +183,17 @@ function App() {
         />
         <Route path="/managecountry/addcountry/addshop" element={<AddShop />} />
 
-        <Route path="/blog" element={<Blog blogs={blog.blogs} />} />
+        <Route
+          path="/blog"
+          element={
+            <Blog
+              blogs={blog.blogs}
+              // getUsers={getUsers}
+              // users={data.users}
+              // token={data.token}
+            />
+          }
+        />
         <Route
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}
@@ -192,12 +203,32 @@ function App() {
           element={<EditBlog blogItems={blog.blogs} editBlog={editBlog} />}
         />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
-        <Route path="/sign-up" element={<SignUp signup={signup} />} />
-        <Route path="/sign-in" element={<SignIn signin={signin} />} />
+        <Route
+          path="/sign-up"
+          element={
+            <SignUp
+              signup={signup}
+              getUsers={getUsers}
+              users={data.users}
+              token={data.token}
+            />
+          }
+        />
         <Route
           path="/sign-in"
           element={
-            <SignIn getUsers={getUsers} users={data.users} token={data.token} />
+            <SignIn
+              signin={signin}
+              getUsers={getUsers}
+              users={data.users}
+              token={data.token}
+            />
+          }
+        />
+        <Route
+          path="/signedup-users"
+          element={
+            <Users getUsers={getUsers} users={data.users} token={data.token} />
           }
         />
       </Routes>

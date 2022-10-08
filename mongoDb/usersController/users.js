@@ -14,23 +14,24 @@ db.on("error", console.error.bind(console, "MongoDB connection failed"));
 const userSignup = ({
   firstName,
   lastName,
-  username,
+  userName,
   email,
   password,
   confirmPassword,
 }) => {
-  console.log("username", username);
+  console.log("username", userName);
   console.log("password", password);
   const passwordHash = bcrypt.hashSync(password, 10);
-  console.log("username", username);
+  const confirmPasswordHash = bcrypt.hashSync(confirmPassword, 10);
+  console.log("username", userName);
   console.log("password", password);
   VerifiedUser.create({
     firstName,
     lastName,
-    username,
+    userName,
     email,
     passwordHash,
-    confirmPassword,
+    confirmPasswordHash,
   });
 };
 

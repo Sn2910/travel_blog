@@ -37,7 +37,7 @@ export default function SignIn({ signin }) {
   const validate = () => {
     console.log(userName, password);
     signin(userName, password);
-    navigate("/blog");
+    navigate("/signedup-users");
   };
 
   return (
