@@ -16,7 +16,7 @@ import {
   editBlogByID,
   getDestinations,
   postDestination,
-  postHotel
+  postHotel,
 } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
@@ -26,6 +26,11 @@ import AddRestaurant from "./Components/pages/Add Restaurant/AddRestaurant";
 import AddShop from "./Components/pages/Add Shop/AddShop";
 import SignUp from "./Components/pages/SignUp";
 import SignIn from "./Components/pages/SignIn";
+import {
+  validateUser,
+  getVerifiedUsers,
+  signUpUser,
+} from "./controlUsers/api_operations";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
@@ -33,6 +38,10 @@ function App() {
   const [hotel, setHotel] = useState("");
   const [blog, setBlog] = useState({
     blogs: [],
+  });
+  const [data, setData] = useState({
+    users: [],
+    token: null,
   });
   /*   const getData = async () => {
     const response = await fetch(
@@ -90,6 +99,46 @@ function App() {
     setHotel(newHotel);
   };
 
+  const signin = async (username, password) => {
+    const token = await validateUser(username, password);
+    setData((prev) => ({ ...prev, token: token }));
+  };
+  const signup = async (
+    firstName,
+    lastName,
+    username,
+    email,
+    password,
+    confirmPassword
+  ) => {
+    const token = await signUpUser(
+      firstName,
+      lastName,
+      username,
+      email,
+      password,
+      confirmPassword
+    );
+    setData((prev) => ({ ...prev, token: token }));
+  };
+
+  const getUsers = async (token) => {
+    if (!token) {
+      console.log("token not ready yet");
+      return [];
+    }
+    console.log("token ready, will get users");
+    const users = await getVerifiedUsers(token);
+    if (!users) {
+      return;
+    }
+    setData((prev) => {
+      const newState = { ...prev, users };
+      console.log("newState", newState);
+      return newState;
+    });
+  };
+
   useEffect(() => {
     /*  getData(); */
     readBlog();
@@ -143,8 +192,14 @@ function App() {
           element={<EditBlog blogItems={blog.blogs} editBlog={editBlog} />}
         />
         <Route path="/blog-overview/:id" element={<BlogOverview />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp signup={signup} />} />
+        <Route path="/sign-in" element={<SignIn signin={signin} />} />
+        <Route
+          path="/sign-in"
+          element={
+            <SignIn getUsers={getUsers} users={data.users} token={data.token} />
+          }
+        />
       </Routes>
       <Footer />
     </div>

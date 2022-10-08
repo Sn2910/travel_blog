@@ -59,6 +59,10 @@
   top: 58%;
   left: 48%;
 }
+.close-password,
+.closeConfirm-password {
+  display: none;
+}
 .confirmPassword i {
   position: absolute;
   top: 58%;
