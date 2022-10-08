@@ -11,11 +11,59 @@ export default function SignUp({ signup }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
-  const showPassword = () => {};
-  const hidePassword = () => {};
-  const showConfirmPassword = () => {};
-  const hideConfirmPassword = () => {};
+
+  let open = document.querySelector(".open-password");
+  let hide = document.querySelector(".close-password");
+  let openConfirm = document.querySelector(".openConfirm-password");
+  let hideConfirm = document.querySelector(".closeConfirm-password");
+
+  const showPassword = () => {
+    const newPassword = document.getElementById("password");
+    open.style.display = "none";
+    hide.style.display = "inline-block";
+    if (newPassword.type === "password") {
+      newPassword.type = "text";
+    } else {
+      password.type = "password";
+    }
+  };
+
+  const hidePassword = () => {
+    const newPassword = document.getElementById("password");
+    // setShow((prevState) => !prevState);
+    open.style.display = "inline-block";
+    hide.style.display = "none";
+    if (newPassword.type === "text") {
+      newPassword.type = "password";
+    } else {
+      password.type = "text";
+    }
+  };
+
+  const showConfirmPassword = () => {
+    const newPassword = document.getElementById("confirmPassword");
+    // setShow((prevState) => !prevState);
+    openConfirm.style.display = "none";
+    hideConfirm.style.display = "inline-block";
+    if (newPassword.type === "password") {
+      newPassword.type = "text";
+    } else {
+      password.type = "password";
+    }
+  };
+
+  const hideConfirmPassword = () => {
+    const newPassword = document.getElementById("confirmPassword");
+    openConfirm.style.display = "inline-block";
+    hideConfirm.style.display = "none";
+    if (newPassword.type === "text") {
+      newPassword.type = "password";
+    } else {
+      password.type = "text";
+    }
+  };
 
   const createAccount = () => {
     console.log(
@@ -77,37 +125,39 @@ export default function SignUp({ signup }) {
               {/* <input type="password" /> */}
               <i
                 class="fa-solid fa-eye open-password"
-                onclick={showPassword}
+                onClick={showPassword}
               ></i>
               <i
                 class="fa-solid fa-eye-slash close-password"
-                onclick={hidePassword}
+                onClick={hidePassword}
               ></i>
               <input
-                type="password"
-                id="new-password"
+                type={show ? "text" : "password"}
+                id="password"
                 // placeholder="Password"
                 value={password}
+                name="password"
                 onChange={(e) => setPassword(e.target.value)}
                 required
-              ></input>
+              />
             </div>
             <div className="confirmPassword">
               <h4>Confirm Password:</h4>
               {/* <input type="password" /> */}
               <i
-                class="fa-solid fa-eye open-password"
-                onclick={showConfirmPassword}
+                class="fa-solid fa-eye openConfirm-password"
+                onClick={showConfirmPassword}
               ></i>
               <i
-                class="fa-solid fa-eye-slash close-password"
-                onclick={hideConfirmPassword}
+                class="fa-solid fa-eye-slash closeConfirm-password"
+                onClick={hideConfirmPassword}
               ></i>
               <input
                 type="password"
-                id="new-password"
+                id="confirmPassword"
                 // placeholder="Password"
                 value={confirmPassword}
+                name="password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               ></input>

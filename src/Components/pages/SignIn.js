@@ -9,19 +9,30 @@ export default function SignIn({ signin }) {
   const [userName, setUserName] = useState("");
   const navigate = useNavigate();
 
+  let open = document.querySelector(".open-password");
+  let hide = document.querySelector(".close-password");
   const showPassword = () => {
-    // const password = document.getElementById("new-password");
-    // let openPassword = document.getElementsByClassName(".open-password");
-    // let closePassword = document.getElementsByClassName(".close-password");
-    // closePassword.style.display = "inline-block";
-    // openPassword.style.display = "none";
-    // if (password.type === "password") {
-    //   password.type = "text";
-    // } else {
-    //   password.type = "password";
-    // }
+    const newPassword = document.getElementById("password");
+    // setShow((prevState) => !prevState);
+    open.style.display = "none";
+    hide.style.display = "inline-block";
+    if (newPassword.type === "password") {
+      newPassword.type = "text";
+    } else {
+      password.type = "password";
+    }
   };
-  const hidePassword = () => {};
+  const hidePassword = () => {
+    const newPassword = document.getElementById("password");
+    // setShow((prevState) => !prevState);
+    open.style.display = "inline-block";
+    hide.style.display = "none";
+    if (newPassword.type === "text") {
+      newPassword.type = "password";
+    } else {
+      password.type = "text";
+    }
+  };
 
   const validate = () => {
     console.log(userName, password);
@@ -53,19 +64,24 @@ export default function SignIn({ signin }) {
             <h4>Password:</h4>
             {/* <input type="password" />
              */}
-            <i class="fa-solid fa-eye open-password" onclick={showPassword}></i>
-            <i
-              class="fa-solid fa-eye-slash close-password"
-              onclick={hidePassword}
-            ></i>
             <input
               type="password"
-              id="new-password"
+              id="password"
               // placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-            ></input>
+            />
+            <div>
+              <i
+                class="fa-solid fa-eye open-password"
+                onClick={showPassword}
+              ></i>
+              <i
+                class="fa-solid fa-eye-slash close-password"
+                onClick={hidePassword}
+              ></i>
+            </div>
           </div>
           <div className="signIn-Btn">
             <button onClick={validate}>Sign-In</button>
