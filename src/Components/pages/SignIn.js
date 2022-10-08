@@ -2,31 +2,48 @@ import React from "react";
 import "./UserSigning.css";
 import { Container } from "@mui/material";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function SignIn() {
+export default function SignIn({ signin }) {
   const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const navigate = useNavigate();
+
   const showPassword = () => {
-    const password = document.getElementById("new-password");
-    let openPassword = document.getElementsByClassName(".open-password");
-    let closePassword = document.getElementsByClassName(".close-password");
-    closePassword.style.display = "inline-block";
-    openPassword.style.display = "none";
-    if (password.type === "password") {
-      password.type = "text";
-    } else {
-      password.type = "password";
-    }
+    // const password = document.getElementById("new-password");
+    // let openPassword = document.getElementsByClassName(".open-password");
+    // let closePassword = document.getElementsByClassName(".close-password");
+    // closePassword.style.display = "inline-block";
+    // openPassword.style.display = "none";
+    // if (password.type === "password") {
+    //   password.type = "text";
+    // } else {
+    //   password.type = "password";
+    // }
   };
   const hidePassword = () => {};
+
+  const validate = () => {
+    console.log(userName, password);
+    signin(userName, password);
+    navigate("/blog");
+  };
 
   return (
     <div className="singInForm-Cont">
       <Container maxWidth="sm" className="signInWrap">
         <p>Kindly fill in all fields to sign in!</p>
-        <form className="singInForm">
+        <form className="singInForm" action="/blog" method="post">
           <div>
             <h4>Username:</h4>
-            <input type="text" />
+            <input
+              type="text"
+              id="username"
+              // placeholder="Password"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              required
+            />
           </div>
           {/* <div>
             <h4>Email:</h4>
@@ -51,7 +68,7 @@ export default function SignIn() {
             ></input>
           </div>
           <div className="signIn-Btn">
-            <button>Sign-In</button>
+            <button onClick={validate}>Sign-In</button>
           </div>
         </form>
       </Container>
