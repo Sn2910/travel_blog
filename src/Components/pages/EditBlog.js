@@ -61,7 +61,7 @@ export default function EditBlog({ blogItems, editBlog }) {
               <input
                 type="date"
                 value={editDate}
-                onChange={() => setEditDate(date)}
+                onChange={(e) => setEditDate(date)}
               />
               <p className="dateInfo">
                 <em>Just click the icon and select today!</em>
