@@ -1,8 +1,15 @@
 import React from "react";
 import "./UserSigning.css";
 import { Container } from "@mui/material";
+import { useState, useEffect } from "react";
 
 export default function SignUp() {
+  const [password, setPassword] = useState("");
+  const showPassword = () => {};
+  const hidePassword = () => {};
+  const showConfirmPassword = () => {};
+  const hideConfirmPassword = () => {};
+
   return (
     <div className="singUpForm-Cont">
       <Container maxWidth="sm" className="signUpWrap">
@@ -29,13 +36,45 @@ export default function SignUp() {
             </div>
           </div>
           <div className="password">
-            <div>
+            <div className="signUp-passwords">
               <h4>Password:</h4>
-              <input type="password" />
+              {/* <input type="password" /> */}
+              <i
+                class="fa-solid fa-eye open-password"
+                onclick={showPassword}
+              ></i>
+              <i
+                class="fa-solid fa-eye-slash close-password"
+                onclick={hidePassword}
+              ></i>
+              <input
+                type="password"
+                id="new-password"
+                // placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              ></input>
             </div>
-            <div>
+            <div className="confirmPassword">
               <h4>Confirm Password:</h4>
-              <input type="password" />
+              {/* <input type="password" /> */}
+              <i
+                class="fa-solid fa-eye open-password"
+                onclick={showConfirmPassword}
+              ></i>
+              <i
+                class="fa-solid fa-eye-slash close-password"
+                onclick={hideConfirmPassword}
+              ></i>
+              <input
+                type="password"
+                id="new-password"
+                // placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              ></input>
             </div>
           </div>
           <div className="createAcc">

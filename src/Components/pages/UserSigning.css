@@ -49,6 +49,21 @@
 .singInForm input:focus {
   outline: none;
 }
+.passwords i {
+  position: absolute;
+  top: 52%;
+  left: 62%;
+}
+.signUp-passwords i {
+  position: absolute;
+  top: 58%;
+  left: 48%;
+}
+.confirmPassword i {
+  position: absolute;
+  top: 58%;
+  left: 62%;
+}
 .singUpForm h4,
 .singInForm h4 {
   padding: 15px 0 2px;
