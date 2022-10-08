@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 export default function SignUp() {
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const showPassword = () => {};
   const hidePassword = () => {};
   const showConfirmPassword = () => {};
@@ -71,8 +72,8 @@ export default function SignUp() {
                 type="password"
                 id="new-password"
                 // placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               ></input>
             </div>
