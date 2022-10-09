@@ -1,0 +1,45 @@
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const verifiedUsersBlog = require("../model/VerifiedUsersBlog");
+
+const mongodbConnection = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_URL}/test`;
+// const mongodbConnection = `mongodb+srv://Kenneford88:CodeWithKenn88.@cluster0.5p7nx7s.mongodb.net/test`;
+mongoose.connect(mongodbConnection);
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection failed"));
+
+function _makeUserBlog(dbVerifiedUsersBlog) {
+  return {
+    id: dbVerifiedUsersBlog._id.toString(),
+    userName: dbVerifiedUsersBlog.userName,
+    title: dbVerifiedUsersBlog.title,
+    richText: dbVerifiedUsersBlog.richText,
+    blogImage: dbVerifiedUsersBlog.blogImage,
+  };
+}
+
+const createBlog = ({ userName, title, richText, blogImage }) => {
+  const userBlog = verifiedUsersBlog.create({
+    userName,
+    title,
+    richText,
+    blogImage,
+  });
+  return userBlog;
+};
+
+const getUsersBlogs = async () => {
+  return verifiedUsersBlog.find({});
+};
+const getUsersBlogByID = async (id) => {
+  const blogID = verifiedUsersBlog.findOne(id);
+  return _makeUserBlog(blogID);
+};
+
+module.exports = {
+  createBlog,
+  getUsersBlogs,
+  getUsersBlogByID,
+};

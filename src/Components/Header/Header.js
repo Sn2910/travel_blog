@@ -37,11 +37,11 @@ function Header({ destinations }) {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/blog" className="blog">
-            BLOG
-          </NavLink>
           <NavLink to="/managecountry" className="addcountrydetails">
             Manage Country
+          </NavLink>
+          <NavLink to="/blog" className="blog">
+            BLOG
           </NavLink>
         </nav>
         <div className="userSigning">

@@ -1,5 +1,6 @@
 const contentfulApi = "https://cdn.contentful.com";
 const apiUrl = "http://localhost:3000";
+const apiUrl1 = "http://localhost:5000";
 
 const getAsset = async () => {
   const url = `${apiUrl}/api/assets`;
@@ -30,7 +31,7 @@ const getDestinationsById = async (id) => {
 
 const postDestination = async (destination) => {
   const url = `${apiUrl}/api/destinations`;
-  const response =  await fetch(url, {
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -53,7 +54,7 @@ const getHotel = async () => {
 
 const postHotel = async (hotel) => {
   const url = `${apiUrl}/api/hotel`;
-  const response =  await fetch(url, {
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -63,7 +64,7 @@ const postHotel = async (hotel) => {
   return response;
 };
 const getBlogs = async () => {
-  const url = `${apiUrl}/api/blog`;
+  const url = `${apiUrl1}/api/blog`;
   const response = await fetch(url);
   const result = await response.json();
   console.log("Blogs");
@@ -72,7 +73,7 @@ const getBlogs = async () => {
 };
 
 async function getBlogByID() {
-  const url = `${apiUrl}/api/blog`;
+  const url = `${apiUrl1}/api/blog`;
   const response = await fetch(url);
   const result = await response.json();
   console.log(result);
@@ -84,7 +85,7 @@ async function editBlog(blogItem) {
 }
 async function editBlogByID(id, blog) {
   console.log(id, blog);
-  const url = `${apiUrl}/api/blog/${id}`;
+  const url = `${apiUrl1}/api/blog/${id}`;
   const response = await fetch(url, {
     method: "PATCH",
     headers: {
@@ -99,8 +100,8 @@ async function editBlogByID(id, blog) {
 }
 
 const postBlog = async (blog) => {
-  const url = `${apiUrl}/api/blog`;
-  const response =  await fetch(url, {
+  const url = `${apiUrl1}/api/blog`;
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -112,4 +113,14 @@ const postBlog = async (blog) => {
   }
 };
 
-export { getAsset, getBlogs, postBlog, getBlogByID,getDestinations,getDestinationsById,postDestination,postHotel,editBlogByID};
+export {
+  getAsset,
+  getBlogs,
+  postBlog,
+  getBlogByID,
+  getDestinations,
+  getDestinationsById,
+  postDestination,
+  postHotel,
+  editBlogByID,
+};

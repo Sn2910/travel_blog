@@ -17,10 +17,10 @@ export default function EditBlog({ blogItems, editBlog }) {
     return e.id === parseInt(id);
   });
   const [editTitle, setEditTitle] = useState(blogItem.title);
-  const [editText, setEditText] = useState(blogItem.rich_text);
-  const [editDate, setEditDate] = useState(blogItem.blog_date);
-  const [editImage, setEditImage] = useState(blogItem.blog_image);
-  const [editUserName, setEditUserName] = useState(blogItem.user_name);
+  const [editText, setEditText] = useState(blogItem.richText);
+  // const [editDate, setEditDate] = useState(blogItem.blog_date);
+  const [editImage, setEditImage] = useState(blogItem.blogImage);
+  const [editUserName, setEditUserName] = useState(blogItem.userName);
 
   // const date = Moment().format("MMM Do YY");
   // const date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -30,7 +30,7 @@ export default function EditBlog({ blogItems, editBlog }) {
     editBlog({
       id,
       userName: editUserName,
-      blogDate: editDate,
+      // blogDate: editDate,
       title: editTitle,
       richText: editText,
       blogImage: editImage,
@@ -56,7 +56,7 @@ export default function EditBlog({ blogItems, editBlog }) {
                 onChange={(e) => setEditUserName(e.target.value)}
               />
             </div>
-            <div>
+            {/* <div>
               <h4>Date:</h4>
               <input
                 type="date"
@@ -66,7 +66,7 @@ export default function EditBlog({ blogItems, editBlog }) {
               <p className="dateInfo">
                 <em>Just click the icon and select today!</em>
               </p>
-            </div>
+            </div> */}
           </div>
           <form action="#">
             <div className="blogTitle">

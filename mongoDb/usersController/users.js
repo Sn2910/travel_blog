@@ -2,12 +2,13 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const VerifiedUser = require("../model/verifiedUsers");
 
 const mongodbConnection = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_URL}/test`;
 // const mongodbConnection = `mongodb+srv://Kenneford88:CodeWithKenn88.@cluster0.5p7nx7s.mongodb.net/test`;
 mongoose.connect(mongodbConnection);
 
+const VerifiedUser = require("../model/verifiedUsers");
+const verifiedUsersBlog = require("../model/VerifiedUsersBlog");
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection failed"));
 
@@ -45,7 +46,7 @@ function generateAccessToken(username) {
   });
 }
 
-const validateUser = async ({ username, password, confirmPassword }) => {
+const validateUser = async ({ username, password }) => {
   const user = await VerifiedUser.findOne({ username });
   console.log(user);
   let isValid = false;
