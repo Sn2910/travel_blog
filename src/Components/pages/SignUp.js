@@ -11,6 +11,7 @@ export default function SignUp({ signup }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [profileImage, setProfileImage] = useState("");
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
@@ -72,10 +73,31 @@ export default function SignUp({ signup }) {
       userName,
       email,
       password,
-      confirmPassword
+      confirmPassword,
+      profileImage
     );
-    signup(firstName, lastName, userName, email, password, confirmPassword);
-    navigate("/");
+    signup(
+      firstName,
+      lastName,
+      userName,
+      email,
+      password,
+      confirmPassword,
+      profileImage
+    );
+    if (
+      !firstName ||
+      !lastName ||
+      !userName ||
+      !email ||
+      !password ||
+      !confirmPassword
+    ) {
+      alert("Please complete the fields...!😒");
+      return null;
+    } else {
+      navigate("/blog");
+    }
   };
 
   const handleKeypress = (e) => {
@@ -96,6 +118,7 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={firstName}
+                name="firstName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setFirstName(e.target.value)}
               />
@@ -105,6 +128,7 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={lastName}
+                name="lastName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -116,6 +140,7 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={userName}
+                name="userName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setUserName(e.target.value)}
               />
@@ -125,6 +150,7 @@ export default function SignUp({ signup }) {
               <input
                 type="email"
                 value={email}
+                name="email"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -175,6 +201,18 @@ export default function SignUp({ signup }) {
                 required
               ></input>
             </div>
+          </div>
+          <div>
+            <h4>Profile Image Url:</h4>
+            <input
+              type="text"
+              id="profileImage"
+              // placeholder="Password"
+              value={profileImage}
+              onKeyPress={handleKeypress}
+              name="profileImage"
+              onChange={(e) => setProfileImage(e.target.value)}
+            ></input>
           </div>
           <div className="createAcc">
             <button onClick={createAccount}>Create New Account</button>

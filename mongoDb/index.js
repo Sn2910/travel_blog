@@ -72,6 +72,7 @@ app.get("/api/blog/:id", (req, res) => {
     })
     .catch((err) => sendErrorOutput(err, res));
 });
+
 app.delete("/api/blog/:id", (req, res) => {
   const { id } = req.params;
   getUsersBlogs(id)

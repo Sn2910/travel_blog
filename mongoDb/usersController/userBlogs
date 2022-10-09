@@ -12,7 +12,7 @@ db.on("error", console.error.bind(console, "MongoDB connection failed"));
 
 function _makeUserBlog(dbVerifiedUsersBlog) {
   return {
-    // id: dbVerifiedUsersBlog._id.toString(),
+    id: dbVerifiedUsersBlog._id,
     userName: dbVerifiedUsersBlog.userName,
     title: dbVerifiedUsersBlog.title,
     richText: dbVerifiedUsersBlog.richText,

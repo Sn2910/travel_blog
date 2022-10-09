@@ -37,7 +37,12 @@ export default function SignIn({ signin }) {
   const validate = () => {
     console.log(userName, password);
     signin(userName, password);
-    navigate("/signedup-users");
+    if (!userName || !password) {
+      alert("Please complete the fields...!😒");
+    } else {
+      navigate("/");
+      // navigate("/signedup-users");
+    }
   };
 
   const handleKeypress = (e) => {

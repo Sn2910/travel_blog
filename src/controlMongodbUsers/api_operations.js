@@ -1,5 +1,4 @@
 const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:5000";
-const API_ENDPOINT1 = process.env.API_ENDPOINT || "http://localhost:5000";
 
 export const validateUser = async (username, password) => {
   const response = await fetch(API_ENDPOINT + "/api/login", {
@@ -36,7 +35,7 @@ export const signUpUser = async (
   password,
   confirmPassword
 ) => {
-  const response = await fetch(API_ENDPOINT1 + "/api/signup", {
+  const response = await fetch(API_ENDPOINT + "/api/signup", {
     method: "POST",
     headers: {
       "Content-type": "application/json",
@@ -53,4 +52,10 @@ export const signUpUser = async (
   const result = await response.json();
   console.log(result.token);
   return result?.token;
+};
+
+module.exports = {
+  validateUser,
+  getVerifiedUsers,
+  signUpUser,
 };

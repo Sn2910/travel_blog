@@ -9,6 +9,7 @@ const userSchema = new Schema({
   email: String,
   passwordHash: String,
   confirmPasswordHash: String,
+  profileImage: String,
 });
 
 module.exports = mongoose.model("VerifiedUser", userSchema);

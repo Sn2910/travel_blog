@@ -19,6 +19,7 @@ const userSignup = ({
   email,
   password,
   confirmPassword,
+  profileImage,
 }) => {
   console.log("username", userName);
   console.log("password", password);
@@ -33,6 +34,7 @@ const userSignup = ({
     email,
     passwordHash,
     confirmPasswordHash,
+    profileImage,
   });
 };
 

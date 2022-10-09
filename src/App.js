@@ -32,6 +32,7 @@ import {
   signUpUser,
 } from "./controlMongodbUsers/api_operations";
 import Users from "./Components/pages/Users";
+import NotPermitted from "./Components/pages/NotPermitted";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
@@ -188,6 +189,7 @@ function App() {
           element={
             <Blog
               blogs={blog.blogs}
+              signin={signin}
               // getUsers={getUsers}
               // users={data.users}
               // token={data.token}
@@ -202,7 +204,10 @@ function App() {
           path="/edit-blog/:id"
           element={<EditBlog blogItems={blog.blogs} editBlog={editBlog} />}
         />
-        <Route path="/blog-overview/:id" element={<BlogOverview />} />
+        <Route
+          path="/blog-overview/:id"
+          element={<BlogOverview blogItems={blog.blogs} />}
+        />
         <Route
           path="/sign-up"
           element={
@@ -231,6 +236,7 @@ function App() {
             <Users getUsers={getUsers} users={data.users} token={data.token} />
           }
         />
+        <Route path="/unauthorized" element={<NotPermitted />} />
       </Routes>
       <Footer />
     </div>
