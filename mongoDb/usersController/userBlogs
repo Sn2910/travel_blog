@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
+// const bcrypt = require("bcrypt");
+// const jwt = require("jsonwebtoken");
 const verifiedUsersBlog = require("../model/VerifiedUsersBlog");
 
 const mongodbConnection = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_URL}/test`;
@@ -12,7 +12,7 @@ db.on("error", console.error.bind(console, "MongoDB connection failed"));
 
 function _makeUserBlog(dbVerifiedUsersBlog) {
   return {
-    id: dbVerifiedUsersBlog._id.toString(),
+    // id: dbVerifiedUsersBlog._id.toString(),
     userName: dbVerifiedUsersBlog.userName,
     title: dbVerifiedUsersBlog.title,
     richText: dbVerifiedUsersBlog.richText,
@@ -33,13 +33,19 @@ const createBlog = ({ userName, title, richText, blogImage }) => {
 const getUsersBlogs = async () => {
   return verifiedUsersBlog.find({});
 };
-const getUsersBlogByID = async (id) => {
-  const blogID = verifiedUsersBlog.findOne(id);
+const getBlogByID = async (id) => {
+  //   return verifiedUsersBlog.findById({ id });
+  const blogID = verifiedUsersBlog.findById(id);
+  return blogID;
+};
+const deleteBlogByID = async ({ id }) => {
+  const blogID = verifiedUsersBlog.deleteOne({ id });
   return _makeUserBlog(blogID);
 };
 
 module.exports = {
   createBlog,
   getUsersBlogs,
-  getUsersBlogByID,
+  getBlogByID,
+  deleteBlogByID,
 };

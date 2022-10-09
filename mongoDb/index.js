@@ -12,7 +12,12 @@ const {
   validateUser,
   authenticateToken,
 } = require("./usersController/users");
-const { createBlog, getUsersBlogs } = require("./usersController/userBlogs");
+const {
+  createBlog,
+  getUsersBlogs,
+  getBlogByID,
+  deleteBlogByID,
+} = require("./usersController/userBlogs");
 
 const app = express();
 
@@ -60,6 +65,14 @@ app.get("/api/blog", async (req, res) => {
   res.send(await getUsersBlogs());
 });
 app.get("/api/blog/:id", (req, res) => {
+  const { id } = req.params;
+  getBlogByID(id)
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((err) => sendErrorOutput(err, res));
+});
+app.delete("/api/blog/:id", (req, res) => {
   const { id } = req.params;
   getUsersBlogs(id)
     .then((data) => {
