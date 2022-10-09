@@ -78,6 +78,13 @@ export default function SignUp({ signup }) {
     navigate("/");
   };
 
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      createAccount();
+    }
+  };
+
   return (
     <div className="singUpForm-Cont">
       <Container maxWidth="sm" className="signUpWrap">
@@ -89,6 +96,7 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={firstName}
+                onKeyPress={handleKeypress}
                 onChange={(e) => setFirstName(e.target.value)}
               />
             </div>
@@ -97,6 +105,7 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={lastName}
+                onKeyPress={handleKeypress}
                 onChange={(e) => setLastName(e.target.value)}
               />
             </div>
@@ -107,6 +116,7 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={userName}
+                onKeyPress={handleKeypress}
                 onChange={(e) => setUserName(e.target.value)}
               />
             </div>
@@ -115,6 +125,7 @@ export default function SignUp({ signup }) {
               <input
                 type="email"
                 value={email}
+                onKeyPress={handleKeypress}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
@@ -136,6 +147,7 @@ export default function SignUp({ signup }) {
                 id="password"
                 // placeholder="Password"
                 value={password}
+                onKeyPress={handleKeypress}
                 name="password"
                 onChange={(e) => setPassword(e.target.value)}
                 required
@@ -157,6 +169,7 @@ export default function SignUp({ signup }) {
                 id="confirmPassword"
                 // placeholder="Password"
                 value={confirmPassword}
+                onKeyPress={handleKeypress}
                 name="password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required

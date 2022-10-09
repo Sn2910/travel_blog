@@ -14,23 +14,24 @@ db.on("error", console.error.bind(console, "MongoDB connection failed"));
 const userSignup = ({
   firstName,
   lastName,
-  username,
+  userName,
   email,
   password,
   confirmPassword,
 }) => {
-  console.log("username", username);
+  console.log("username", userName);
   console.log("password", password);
   const passwordHash = bcrypt.hashSync(password, 10);
-  console.log("username", username);
+  const confirmPasswordHash = bcrypt.hashSync(confirmPassword, 10);
+  console.log("username", userName);
   console.log("password", password);
   VerifiedUser.create({
     firstName,
     lastName,
-    username,
+    userName,
     email,
     passwordHash,
-    confirmPassword,
+    confirmPasswordHash,
   });
 };
 
@@ -48,7 +49,6 @@ const validateUser = async ({ username, password, confirmPassword }) => {
   const user = await VerifiedUser.findOne({ username });
   console.log(user);
   let isValid = false;
-  // let confirm = false;
   try {
     isValid = await bcrypt.compare(password, user.passwordHash);
   } catch (error) {
@@ -57,14 +57,6 @@ const validateUser = async ({ username, password, confirmPassword }) => {
   if (!isValid) {
     return null;
   }
-  // try {
-  //   confirm = await bcrypt.compare(confirmPassword, user.confirmPasswordHash);
-  // } catch (error) {
-  //   return null;
-  // }
-  // if (!confirm) {
-  //   return null;
-  // }
   return { token: generateAccessToken(username) };
 };
 
