@@ -12,7 +12,7 @@ import moment from "moment";
 export default function CreateBlog({ addBlog }) {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogText, setBlogText] = useState("");
-  const [blogDate, setBlogDate] = useState("");
+  // const [blogDate, setBlogDate] = useState("");
   const [blogImage, setBlogImage] = useState("");
   const [userName, setUserName] = useState("");
 
@@ -24,14 +24,14 @@ export default function CreateBlog({ addBlog }) {
     console.log();
     addBlog({
       userName: userName,
-      blogDate: blogDate,
+      // blogDate: blogDate,
       title: blogTitle,
       richText: blogText,
       blogImage: blogImage,
     });
     setBlogTitle("");
     setBlogText("");
-    setBlogDate("");
+    // setBlogDate("");
     setBlogImage("");
     setUserName("");
   }
@@ -50,7 +50,7 @@ export default function CreateBlog({ addBlog }) {
                 onChange={({ target }) => setUserName(target.value)}
               />
             </div>
-            <div>
+            {/* <div>
               <h4>Date:</h4>
               <input
                 type="date"
@@ -60,7 +60,7 @@ export default function CreateBlog({ addBlog }) {
               <p className="dateInfo">
                 <em>Just click the icon and select today!</em>
               </p>
-            </div>
+            </div> */}
           </div>
           <div className="blogTitle">
             <h4>Title:</h4>

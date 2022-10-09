@@ -42,12 +42,12 @@ function Blog({ blogs = [] }) {
         <div>
           <div className="author-date">
             <img src={authorImg} alt="" width="50px" height="40px" />
-            <h4>Created by: @{blog.user_name}</h4>
+            <h4>Created by: @{blog.userName}</h4>
             <h4>|</h4>
-            <h4>Dated: {blog.blog_date}.</h4>
+            <h4>Dated: {blog.created}.</h4>
           </div>
-          <img src={blog.blog_image} alt="" width="500px" height="300px" />
-          <p className="blogText">{blog.rich_text}</p>
+          <img src={blog.blogImage} alt="" width="500px" height="300px" />
+          <p className="blogText">{blog.richText}</p>
         </div>
         <div className="blogIcons">
           <ThumbUpIcon

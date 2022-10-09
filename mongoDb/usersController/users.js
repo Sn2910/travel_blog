@@ -82,25 +82,9 @@ function authenticateToken(req, res, next) {
   });
 }
 
-const createBlog = ({ userName, title, richText, blogImage }) => {
-  const userBlog = verifiedUsersBlog.create({
-    userName,
-    title,
-    richText,
-    blogImage,
-  });
-  return userBlog;
-};
-
-const getUsersBlogs = async () => {
-  return verifiedUsersBlog.find({});
-};
-
 module.exports = {
   userSignup,
   getRegUsers,
   validateUser,
   authenticateToken,
-  createBlog,
-  getUsersBlogs,
 };
