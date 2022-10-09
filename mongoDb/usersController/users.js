@@ -49,7 +49,6 @@ const validateUser = async ({ username, password, confirmPassword }) => {
   const user = await VerifiedUser.findOne({ username });
   console.log(user);
   let isValid = false;
-  // let confirm = false;
   try {
     isValid = await bcrypt.compare(password, user.passwordHash);
   } catch (error) {
@@ -58,14 +57,6 @@ const validateUser = async ({ username, password, confirmPassword }) => {
   if (!isValid) {
     return null;
   }
-  // try {
-  //   confirm = await bcrypt.compare(confirmPassword, user.confirmPasswordHash);
-  // } catch (error) {
-  //   return null;
-  // }
-  // if (!confirm) {
-  //   return null;
-  // }
   return { token: generateAccessToken(username) };
 };
 

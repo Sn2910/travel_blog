@@ -40,6 +40,13 @@ export default function SignIn({ signin }) {
     navigate("/signedup-users");
   };
 
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      validate();
+    }
+  };
+
   return (
     <div className="singInForm-Cont">
       <Container maxWidth="sm" className="signInWrap">
@@ -52,6 +59,7 @@ export default function SignIn({ signin }) {
               id="username"
               // placeholder="Password"
               value={userName}
+              onKeyPress={handleKeypress}
               onChange={(e) => setUserName(e.target.value)}
               required
             />
@@ -69,6 +77,7 @@ export default function SignIn({ signin }) {
               id="password"
               // placeholder="Password"
               value={password}
+              onKeyPress={handleKeypress}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
