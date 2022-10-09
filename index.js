@@ -11,6 +11,8 @@ const {
   getRegUsers,
   validateUser,
   authenticateToken,
+  createBlog,
+  getUsersBlogs,
 } = require("./mongoDb/usersController/users");
 
 const app = express();
@@ -41,6 +43,16 @@ app.post("/api/login", async (req, res) => {
     return;
   }
   res.send(result);
+});
+
+app.post("/api/blog", async (req, res) => {
+  console.log(req.body);
+  await createBlog(req.body);
+  res.json({ Status: "success" });
+});
+
+app.get("/api/blog", async (req, res) => {
+  res.send(await getUsersBlogs());
 });
 
 // app.get("/login", (req, res) => {
