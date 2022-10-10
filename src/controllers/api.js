@@ -63,26 +63,36 @@ const postHotel = async (hotel) => {
   });
   return response;
 };
-const getBlogs = async () => {
+
+//Token from cookies
+const getBlogs = async (token) => {
+  if (!token) {
+    console.log("!TOKEN", !token);
+    return [];
+  }
+  const userToken = new Headers({
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + token,
+  });
   const url = `${apiUrl1}/api/blog`;
-  const response = await fetch(url);
+  const response = await fetch(url, {
+    method: "GET",
+    headers: userToken,
+  });
   const result = await response.json();
   console.log("Blogs");
   console.log(result);
   return result;
 };
 
-async function getBlogByID() {
-  const url = `${apiUrl1}/api/blog`;
+async function getBlogByID(_id) {
+  const url = `${apiUrl1}/api/blog/${_id}`;
   const response = await fetch(url);
   const result = await response.json();
   console.log(result);
   return result;
 }
 
-async function editBlog(blogItem) {
-  editBlogByID(blogItem.id, blogItem);
-}
 async function editBlogByID(id, blog) {
   console.log(id, blog);
   const url = `${apiUrl1}/api/blog/${id}`;

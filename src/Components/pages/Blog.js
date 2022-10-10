@@ -2,7 +2,7 @@ import React from "react";
 import image from "./../../../src/Images/senya-beach.jpg";
 import authorImg from "./../../../src/Images/kenn.jpg";
 import kenn from "./../../../src/Images/kenn-pic.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
@@ -17,13 +17,13 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import EditBlog from "./EditBlog";
 
-function Blog({ blogs = [] }) {
+function Blog({ blogs = [], token }) {
+  if (!token) {
+    return <Navigate to="/sign-in" />;
+  }
+
   const blogData = blogs.map((blog, id) => {
     console.log("Blogs", blog);
-
-    if (!blog) {
-      return <div className="loading">Loading...</div>;
-    }
 
     return (
       <div key={id}>

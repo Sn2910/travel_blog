@@ -12,14 +12,14 @@ import authorImg from "./../../../src/Images/kenn.jpg";
 
 // const apiHost = "http://localhost:5000";
 
-export default function BlogOverview() {
+export default function BlogOverview({ blogItems }) {
   const [getData, setGetData] = useState("");
 
-  const { id } = useParams();
-  console.log("params", id);
+  const { _id } = useParams();
+  console.log("params", _id);
 
   async function readData() {
-    const blog = await getBlogByID(id);
+    const blog = blogItems;
     console.log(blog);
     setGetData(blog);
     return blog;

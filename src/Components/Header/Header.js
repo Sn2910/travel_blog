@@ -15,6 +15,11 @@ function Header({ destinations }) {
       </div>
       <header>
         <nav className="navLinks">
+          <div className="userLogOut">
+            <Link to="/">
+              <button className="logOut">Log Out</button>
+            </Link>
+          </div>
           <Link to="#" className="dest">
             Destinations
             <ul>

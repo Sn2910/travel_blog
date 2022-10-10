@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function SignIn({ signin }) {
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
+  // const [cookies, setCookie] = useCookies(["name"]);
   const navigate = useNavigate();
 
   let open = document.querySelector(".open-password");
@@ -37,7 +38,12 @@ export default function SignIn({ signin }) {
   const validate = () => {
     console.log(userName, password);
     signin(userName, password);
-    navigate("/signedup-users");
+    if (!userName || !password) {
+      alert("Please complete the fields...!😒");
+    } else {
+      navigate("/");
+      // navigate("/signedup-users");
+    }
   };
 
   const handleKeypress = (e) => {
@@ -57,9 +63,10 @@ export default function SignIn({ signin }) {
             <input
               type="text"
               id="username"
-              // placeholder="Password"
               value={userName}
+              name="userName"
               onKeyPress={handleKeypress}
+              autoComplete="off"
               onChange={(e) => setUserName(e.target.value)}
               required
             />
@@ -77,6 +84,7 @@ export default function SignIn({ signin }) {
               id="password"
               // placeholder="Password"
               value={password}
+              name="password"
               onKeyPress={handleKeypress}
               onChange={(e) => setPassword(e.target.value)}
               required

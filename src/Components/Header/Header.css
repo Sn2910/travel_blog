@@ -126,3 +126,26 @@ header a:hover {
 .signIn:hover {
   color: #0bd30b;
 }
+
+.userLogOut {
+  position: absolute;
+  left: 5%;
+}
+
+.userLogOut button {
+  font-size: 0.8em;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: #696969;
+  color: red;
+}
+
+.userLogOut button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.userLogOut a:hover {
+  border-top: none;
+}

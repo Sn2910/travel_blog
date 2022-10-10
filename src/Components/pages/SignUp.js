@@ -11,6 +11,8 @@ export default function SignUp({ signup }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [profileImage, setProfileImage] = useState("");
+  const [userRole, setUserRole] = useState("");
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
@@ -72,10 +74,42 @@ export default function SignUp({ signup }) {
       userName,
       email,
       password,
-      confirmPassword
+      confirmPassword,
+      profileImage,
+      userRole
     );
-    signup(firstName, lastName, userName, email, password, confirmPassword);
-    navigate("/");
+    signup(
+      firstName,
+      lastName,
+      userName,
+      email,
+      password,
+      confirmPassword,
+      profileImage,
+      userRole
+    );
+    if (
+      !firstName ||
+      !lastName ||
+      !userName ||
+      !email ||
+      !password ||
+      !confirmPassword ||
+      //|| !profileImage
+      !userRole
+    ) {
+      alert("Please complete the fields...!😒");
+      return null;
+    } else {
+      navigate("/");
+      setFirstName("");
+      setLastName("");
+      setUserName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setProfileImage("");
+    }
   };
 
   const handleKeypress = (e) => {
@@ -96,6 +130,8 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={firstName}
+                autoComplete="off"
+                name="firstName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setFirstName(e.target.value)}
               />
@@ -105,6 +141,8 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={lastName}
+                autoComplete="off"
+                name="lastName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -116,6 +154,8 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={userName}
+                autoComplete="off"
+                name="userName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setUserName(e.target.value)}
               />
@@ -125,6 +165,8 @@ export default function SignUp({ signup }) {
               <input
                 type="email"
                 value={email}
+                autoComplete="off"
+                name="email"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -173,6 +215,32 @@ export default function SignUp({ signup }) {
                 name="password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
+              ></input>
+            </div>
+          </div>
+          <div className="profile-role">
+            <div className="profileImage">
+              <h4>Profile Image Url:</h4>
+              <input
+                type="text"
+                id="profileImage"
+                value={profileImage}
+                onKeyPress={handleKeypress}
+                autoComplete="off"
+                name="profileImage"
+                onChange={(e) => setProfileImage(e.target.value)}
+              ></input>
+            </div>
+            <div className="userRole">
+              <h4>User Role:</h4>
+              <input
+                type="text"
+                id="userRole"
+                value={userRole}
+                onKeyPress={handleKeypress}
+                autoComplete="off"
+                name="userRole"
+                onChange={(e) => setUserRole(e.target.value)}
               ></input>
             </div>
           </div>
