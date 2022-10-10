@@ -33,7 +33,9 @@ export const signUpUser = async (
   userName,
   email,
   password,
-  confirmPassword
+  confirmPassword,
+  profileImage,
+  userRole
 ) => {
   const response = await fetch(API_ENDPOINT + "/api/signup", {
     method: "POST",
@@ -47,6 +49,8 @@ export const signUpUser = async (
       email,
       password,
       confirmPassword,
+      profileImage,
+      userRole,
     }),
   });
   const result = await response.json();

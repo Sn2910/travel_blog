@@ -11,13 +11,17 @@ const {
   getRegUsers,
   validateUser,
   authenticateToken,
+  logOutUser,
 } = require("./usersController/users");
 const {
   createBlog,
+  getUserByBlog,
   getUsersBlogs,
   getBlogByID,
   deleteBlogByID,
 } = require("./usersController/userBlogs");
+
+const { authRole } = require("./permissions/authUserRoles");
 
 const app = express();
 
@@ -46,24 +50,62 @@ app.get("/api/signedup-users", async (req, res) => {
   res.send(await getRegUsers());
 });
 
+//Signing In a User
 app.post("/api/login", async (req, res) => {
   const result = await validateUser(req.body);
+  console.log(result);
   if (!result) {
     res.status(403).send({ error: "Authentication failed" });
     return;
   }
   res.send(result);
 });
+app.get("/api/log-out", async (req, res) => {
+  const result = await logOutUser(req.body);
+  console.log(result);
+  if (result) {
+    return result;
+  } else {
+    res.json({ result: "ERROR", message: "User is not logged in." });
+  }
+});
 
-app.post("/api/blog", (req, res) => {
+//Posting a Blog By a Validated User
+app.post("/api/blog", async (req, res) => {
   console.log(req.body);
-  createBlog(req.body);
-  res.json({ Status: "success" });
+  const result = await validateUser(req.body);
+  if (!result) {
+    return res.send("Not Authorized!");
+  }
+  const usersBlog = await g();
+  res
+    .cookie("access_token", result, {
+      httpOnly: true,
+      secure: false,
+    })
+    .render("/blog", { usersBlog });
 });
 
-app.get("/api/blog", async (req, res) => {
-  res.send(await getUsersBlogs());
+// app.post("/blog", async (req, res) => {
+//   console.log(req.body);
+//   const result = await validateUser(req.body);
+//   if (!result) {
+//     return res.redirect("/sign-in");
+//   }
+//   const users = await getUsersBlogs();
+//   res
+//     .cookie("access_token", result, {
+//       httpOnly: true,
+//       secure: false,
+//     })
+//     .render("/blog", { users });
+// });
+
+//Getting All Blogs
+app.get("/api/blog", authenticateToken, async (req, res) => {
+  res.send(await getBlogByID());
 });
+
 app.get("/api/blog/:id", (req, res) => {
   const { id } = req.params;
   getBlogByID(id)
@@ -73,7 +115,7 @@ app.get("/api/blog/:id", (req, res) => {
     .catch((err) => sendErrorOutput(err, res));
 });
 
-app.delete("/api/blog/:id", (req, res) => {
+app.delete("/api/blog/:id", authenticateToken, (req, res) => {
   const { id } = req.params;
   deleteBlogByID(id)
     .then((data) => {
@@ -82,24 +124,14 @@ app.delete("/api/blog/:id", (req, res) => {
     .catch((err) => sendErrorOutput(err, res));
 });
 
-// app.get("/login", (req, res) => {
-//   res.render("pages/login");
-// });
-
-// app.post("/blog", async (req, res) => {
-//   console.log(req.body);
-//   const result = await validateUser(req.body);
-//   if (!result) {
-//     return res.redirect("/login");
+// app.get(
+//   "/api/managecountry",
+//   authenticateToken,
+//   authRole({ userRole: "admin" }),
+//   async (req, res) => {
+//     res.send("Manage Country Page");
 //   }
-//   const users = await getRegUsers();
-//   res
-//     .cookie("access_token", result, {
-//       httpOnly: true,
-//       secure: false,
-//     })
-//     .render("pages/blog", { users });
-// });
+// );
 
 // app.get("/blog", authenticateToken, async (req, res) => {
 //   const users = await getRegUsers();

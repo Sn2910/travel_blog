@@ -19,6 +19,7 @@ const userSignup = ({
   password,
   confirmPassword,
   profileImage,
+  userRole,
 }) => {
   console.log("username", userName);
   console.log("password", password);
@@ -34,6 +35,7 @@ const userSignup = ({
     passwordHash,
     confirmPasswordHash,
     profileImage,
+    userRole,
   });
 };
 
@@ -47,6 +49,7 @@ function generateAccessToken(username) {
   });
 }
 
+//How Users Should LogIn
 const validateUser = async ({ username, password }) => {
   const user = await VerifiedUser.findOne({ username });
   console.log(user);
@@ -59,9 +62,25 @@ const validateUser = async ({ username, password }) => {
   if (!isValid) {
     return null;
   }
-  return { token: generateAccessToken(username) };
+  return { token: generateAccessToken(username), username };
+};
+const logOutUser = async ({ username, password }) => {
+  const user = await VerifiedUser.findOne({ username });
+  console.log(user);
+  let isValid = false;
+  try {
+    isValid = await bcrypt.compare(password, user.passwordHash);
+  } catch (error) {
+    return null;
+  }
+  if (!isValid) {
+    return null;
+  }
+  return null;
+  // return { token: generateAccessToken(username), username };
 };
 
+//Check validity of a User's Identity
 function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   // const token = authHeader && authHeader.split(" ")[1];
@@ -83,9 +102,16 @@ function authenticateToken(req, res, next) {
   });
 }
 
+const authUserRole = async (role) => {
+  const userRole = await VerifiedUser.findOne({ userRole: role });
+  return userRole;
+};
+
 module.exports = {
   userSignup,
   getRegUsers,
   validateUser,
   authenticateToken,
+  authUserRole,
+  logOutUser,
 };

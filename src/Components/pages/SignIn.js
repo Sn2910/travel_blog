@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function SignIn({ signin }) {
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
+  // const [cookies, setCookie] = useCookies(["name"]);
   const navigate = useNavigate();
 
   let open = document.querySelector(".open-password");
@@ -62,7 +63,6 @@ export default function SignIn({ signin }) {
             <input
               type="text"
               id="username"
-              // placeholder="Password"
               value={userName}
               name="userName"
               onKeyPress={handleKeypress}

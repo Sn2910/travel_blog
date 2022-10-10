@@ -11,6 +11,7 @@ const userSchema = new Schema(
     passwordHash: String,
     confirmPasswordHash: String,
     profileImage: String,
+    userRole: String,
   },
   {
     timestamps: true,

@@ -13,6 +13,7 @@ import EditBlog from "./Components/pages/EditBlog";
 import {
   getBlogs,
   postBlog,
+  getBlogByID,
   editBlogByID,
   getDestinations,
   postDestination,
@@ -26,6 +27,7 @@ import AddRestaurant from "./Components/pages/Add Restaurant/AddRestaurant";
 import AddShop from "./Components/pages/Add Shop/AddShop";
 import SignUp from "./Components/pages/SignUp";
 import SignIn from "./Components/pages/SignIn";
+import ProtectedRoute from "./Components/pages/ProtectedRoutes";
 import {
   validateUser,
   getVerifiedUsers,
@@ -44,6 +46,7 @@ function App() {
   const [data, setData] = useState({
     users: [],
     token: null,
+    userName: null,
   });
   /*   const getData = async () => {
     const response = await fetch(
@@ -58,8 +61,8 @@ function App() {
          console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
   // };
 
-  const readBlog = async (blog) => {
-    const blogs = await getBlogs(blog);
+  const readBlog = async (token) => {
+    const blogs = await getBlogs(token);
     console.log(blogs);
     setBlog((prev) => {
       return { ...prev, blogs };
@@ -111,7 +114,9 @@ function App() {
     username,
     email,
     password,
-    confirmPassword
+    confirmPassword,
+    profileImage,
+    userRole
   ) => {
     const token = await signUpUser(
       firstName,
@@ -119,7 +124,9 @@ function App() {
       username,
       email,
       password,
-      confirmPassword
+      confirmPassword,
+      profileImage,
+      userRole
     );
     setData((prev) => ({ ...prev, token: token }));
   };
@@ -142,10 +149,11 @@ function App() {
   };
 
   useEffect(() => {
+    console.log("Reading Blogs");
     /*  getData(); */
-    readBlog();
+    readBlog(data.token);
     readDestinations();
-  }, []);
+  }, [data.token]);
 
   if (!blog || !destinations) {
     return <div className="loading">Loading...</div>;
@@ -162,7 +170,7 @@ function App() {
     <div className="App">
       <Header destinations={destinations} />
       <Routes>
-        <Route path="/" element={<Home destinations={destinations} />} />
+        <Route path="/*" element={<Home destinations={destinations} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/travel-blog/:id" element={<TravelInfo />} />
@@ -186,16 +194,19 @@ function App() {
 
         <Route
           path="/blog"
-          element={
-            <Blog
-              blogs={blog.blogs}
-              signin={signin}
-              // getUsers={getUsers}
-              // users={data.users}
-              // token={data.token}
-            />
-          }
+          element={<Blog blogs={blog.blogs} token={data.token} />}
         />
+        {/* <Route
+          path="/"
+          element={
+            <ProtectedRoute token={data.token}>
+              <Route
+                path="blog"
+                element={<Blog blogs={blog.blogs}/>}
+              />
+            </ProtectedRoute>
+          }
+        /> */}
         <Route
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}
@@ -205,7 +216,7 @@ function App() {
           element={<EditBlog blogItems={blog.blogs} editBlog={editBlog} />}
         />
         <Route
-          path="/blog-overview/:id"
+          path="/blog-overview/:_id"
           element={<BlogOverview blogItems={blog.blogs} />}
         />
         <Route

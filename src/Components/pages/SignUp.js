@@ -12,6 +12,7 @@ export default function SignUp({ signup }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [profileImage, setProfileImage] = useState("");
+  const [userRole, setUserRole] = useState("");
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
@@ -74,7 +75,8 @@ export default function SignUp({ signup }) {
       email,
       password,
       confirmPassword,
-      profileImage
+      profileImage,
+      userRole
     );
     signup(
       firstName,
@@ -83,7 +85,8 @@ export default function SignUp({ signup }) {
       email,
       password,
       confirmPassword,
-      profileImage
+      profileImage,
+      userRole
     );
     if (
       !firstName ||
@@ -91,8 +94,9 @@ export default function SignUp({ signup }) {
       !userName ||
       !email ||
       !password ||
-      !confirmPassword
+      !confirmPassword ||
       //|| !profileImage
+      !userRole
     ) {
       alert("Please complete the fields...!😒");
       return null;
@@ -214,17 +218,31 @@ export default function SignUp({ signup }) {
               ></input>
             </div>
           </div>
-          <div>
-            <h4>Profile Image Url:</h4>
-            <input
-              type="text"
-              id="profileImage"
-              value={profileImage}
-              onKeyPress={handleKeypress}
-              autoComplete="off"
-              name="profileImage"
-              onChange={(e) => setProfileImage(e.target.value)}
-            ></input>
+          <div className="profile-role">
+            <div className="profileImage">
+              <h4>Profile Image Url:</h4>
+              <input
+                type="text"
+                id="profileImage"
+                value={profileImage}
+                onKeyPress={handleKeypress}
+                autoComplete="off"
+                name="profileImage"
+                onChange={(e) => setProfileImage(e.target.value)}
+              ></input>
+            </div>
+            <div className="userRole">
+              <h4>User Role:</h4>
+              <input
+                type="text"
+                id="userRole"
+                value={userRole}
+                onKeyPress={handleKeypress}
+                autoComplete="off"
+                name="userRole"
+                onChange={(e) => setUserRole(e.target.value)}
+              ></input>
+            </div>
           </div>
           <div className="createAcc">
             <button onClick={createAccount}>Create New Account</button>

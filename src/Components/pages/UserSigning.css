@@ -57,9 +57,7 @@
 .singInForm input:focus {
   outline: none;
 }
-#profileImage {
-  width: 525px;
-}
+
 .passwords i {
   position: absolute;
   top: 52%;
@@ -90,12 +88,14 @@
 }
 .userFullName,
 .userName-Email,
-.password {
+.password,
+.profile-role {
   display: flex;
 }
 .userFullName div,
 .userName-Email div,
-.password div {
+.password div,
+.profile-role div {
   margin: 0 10px;
 }
 
