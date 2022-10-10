@@ -8,7 +8,6 @@ const mongodbConnection = `mongodb+srv://${process.env.MONGO_USERNAME}:${process
 mongoose.connect(mongodbConnection);
 
 const VerifiedUser = require("../model/verifiedUsers");
-const verifiedUsersBlog = require("../model/VerifiedUsersBlog");
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connection failed"));
 

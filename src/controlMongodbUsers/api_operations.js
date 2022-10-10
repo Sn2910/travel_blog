@@ -54,8 +54,4 @@ export const signUpUser = async (
   return result?.token;
 };
 
-module.exports = {
-  validateUser,
-  getVerifiedUsers,
-  signUpUser,
-};
+// export { validateUser, getVerifiedUsers, signUpUser };

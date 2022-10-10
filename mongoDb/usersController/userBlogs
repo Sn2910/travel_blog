@@ -35,12 +35,12 @@ const getUsersBlogs = async () => {
 };
 const getBlogByID = async (id) => {
   //   return verifiedUsersBlog.findById({ id });
-  const blogID = verifiedUsersBlog.findById(id);
+  const blogID = await verifiedUsersBlog.findById(id);
   return blogID;
 };
-const deleteBlogByID = async ({ id }) => {
-  const blogID = verifiedUsersBlog.deleteOne({ id });
-  return _makeUserBlog(blogID);
+const deleteBlogByID = async (id) => {
+  const blogID = await verifiedUsersBlog.deleteOne(id);
+  return blogID;
 };
 
 module.exports = {

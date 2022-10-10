@@ -39,7 +39,7 @@ function sendErrorOutput(err, res) {
 app.post("/api/signup", (req, res) => {
   console.log(req.body);
   userSignup(req.body);
-  res.sendStatus(201);
+  res.json({ Status: "You're successfully signed up!" });
 });
 
 app.get("/api/signedup-users", async (req, res) => {
@@ -75,9 +75,9 @@ app.get("/api/blog/:id", (req, res) => {
 
 app.delete("/api/blog/:id", (req, res) => {
   const { id } = req.params;
-  getUsersBlogs(id)
+  deleteBlogByID(id)
     .then((data) => {
-      res.json(data);
+      res.json({ Status: "Blog successfully deleted!" });
     })
     .catch((err) => sendErrorOutput(err, res));
 });

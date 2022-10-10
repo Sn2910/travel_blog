@@ -92,11 +92,19 @@ export default function SignUp({ signup }) {
       !email ||
       !password ||
       !confirmPassword
+      //|| !profileImage
     ) {
       alert("Please complete the fields...!😒");
       return null;
     } else {
-      navigate("/blog");
+      navigate("/");
+      setFirstName("");
+      setLastName("");
+      setUserName("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setProfileImage("");
     }
   };
 
@@ -118,6 +126,7 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={firstName}
+                autoComplete="off"
                 name="firstName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setFirstName(e.target.value)}
@@ -128,6 +137,7 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={lastName}
+                autoComplete="off"
                 name="lastName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setLastName(e.target.value)}
@@ -140,6 +150,7 @@ export default function SignUp({ signup }) {
               <input
                 type="text"
                 value={userName}
+                autoComplete="off"
                 name="userName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setUserName(e.target.value)}
@@ -150,6 +161,7 @@ export default function SignUp({ signup }) {
               <input
                 type="email"
                 value={email}
+                autoComplete="off"
                 name="email"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setEmail(e.target.value)}
@@ -207,9 +219,9 @@ export default function SignUp({ signup }) {
             <input
               type="text"
               id="profileImage"
-              // placeholder="Password"
               value={profileImage}
               onKeyPress={handleKeypress}
+              autoComplete="off"
               name="profileImage"
               onChange={(e) => setProfileImage(e.target.value)}
             ></input>
