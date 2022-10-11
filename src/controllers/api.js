@@ -10,6 +10,14 @@ const getAsset = async () => {
   console.log(result);
   return result;
 };
+const getUsers = async () => {
+  const url = `${apiUrl}/api/signedup-users`;
+  const response = await fetch(url);
+  const result = await response.json();
+  console.log("Registed Users");
+  console.log(result);
+  return result;
+};
 
 const getDestinations = async () => {
   const url = `${apiUrl}/api/destinations`;

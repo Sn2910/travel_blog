@@ -8,6 +8,7 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateBlog({ addBlog }) {
   const [blogTitle, setBlogTitle] = useState("");
@@ -20,6 +21,8 @@ export default function CreateBlog({ addBlog }) {
   // const date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
   const date = moment().format("MMM. Do YYYY. - h:mm a");
 
+  const navigate = useNavigate();
+
   function createBlog() {
     console.log();
     addBlog({
@@ -29,11 +32,15 @@ export default function CreateBlog({ addBlog }) {
       richText: blogText,
       blogImage: blogImage,
     });
+    if (!userName || !blogTitle || !blogText || !blogImage) {
+      alert("Please complete all fields!");
+    }
     setBlogTitle("");
     setBlogText("");
     // setBlogDate("");
     setBlogImage("");
     setUserName("");
+    navigate("/blog");
   }
 
   return (

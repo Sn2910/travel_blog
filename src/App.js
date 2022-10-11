@@ -35,6 +35,8 @@ import {
 } from "./controlMongodbUsers/api_operations";
 import Users from "./Components/pages/Users";
 import NotPermitted from "./Components/pages/NotPermitted";
+import axios from "axios";
+import RegistedUsers from "./Components/pages/RegistedUsers";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
@@ -168,7 +170,7 @@ function App() {
   console.log(tourInfo); */
   return (
     <div className="App">
-      <Header destinations={destinations} />
+      <Header destinations={destinations} token={data.token} />
       <Routes>
         <Route path="/*" element={<Home destinations={destinations} />} />
         <Route path="/about" element={<About />} />
@@ -176,7 +178,10 @@ function App() {
         <Route path="/travel-blog/:id" element={<TravelInfo />} />
         <Route
           path="/managecountry"
-          element={<ManageCountry destinations={destinations} />}
+          element=<ManageCountry
+            destinations={destinations}
+            token={data.token}
+          />
         />
         <Route
           path="/managecountry/addcountry"
@@ -242,12 +247,20 @@ function App() {
           }
         />
         <Route
-          path="/signedup-users"
+          path="/unauthorized"
           element={
-            <Users getUsers={getUsers} users={data.users} token={data.token} />
+            <NotPermitted
+              getUsers={getUsers}
+              users={data.users}
+              token={data.token}
+            />
           }
         />
         <Route path="/unauthorized" element={<NotPermitted />} />
+        <Route
+          path="/registed-users"
+          element={<RegistedUsers getUsers={getUsers} />}
+        />
       </Routes>
       <Footer />
     </div>

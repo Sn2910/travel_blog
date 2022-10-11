@@ -35,7 +35,8 @@ export default function SignIn({ signin }) {
     }
   };
 
-  const validate = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(userName, password);
     signin(userName, password);
     if (!userName || !password) {
@@ -49,7 +50,7 @@ export default function SignIn({ signin }) {
   const handleKeypress = (e) => {
     //it triggers by pressing the enter key
     if (e.keyCode === 13) {
-      validate();
+      handleSubmit();
     }
   };
 
@@ -57,7 +58,7 @@ export default function SignIn({ signin }) {
     <div className="singInForm-Cont">
       <Container maxWidth="sm" className="signInWrap">
         <p>Kindly fill in all fields to sign in!</p>
-        <form className="singInForm" action="/blog" method="post">
+        <form className="singInForm" onSubmit={handleSubmit}>
           <div>
             <h4>Username:</h4>
             <input
@@ -101,7 +102,7 @@ export default function SignIn({ signin }) {
             </div>
           </div>
           <div className="signIn-Btn">
-            <button onClick={validate}>Sign-In</button>
+            <button>Sign-In</button>
           </div>
         </form>
       </Container>
