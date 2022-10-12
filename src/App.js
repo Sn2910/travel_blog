@@ -89,16 +89,19 @@ function App() {
       return { ...prev, blogs };
     });
   };
+
   const readDestinations = async (destinations) => {
     const destinationArr = await getDestinations(destinations);
     console.log(destinationArr);
     setDestinations(destinationArr);
   };
+
   const addDestination = async (destination) => {
     const newDestination = await postDestination(destination);
     console.log(newDestination);
     setDestinations(newDestination);
   };
+
   const addHotel = async (hotel) => {
     const newHotel = await postHotel(hotel);
     console.log("newHotel");
@@ -221,7 +224,7 @@ function App() {
           element={<EditBlog blogItems={blog.blogs} editBlog={editBlog} />}
         />
         <Route
-          path="/blog-overview/:_id"
+          path="/blog-overview/:id"
           element={<BlogOverview blogItems={blog.blogs} />}
         />
         <Route

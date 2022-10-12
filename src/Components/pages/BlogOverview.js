@@ -10,13 +10,13 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import authorImg from "./../../../src/Images/kenn.jpg";
 // import { Link } from "react-router-dom";
 
-// const apiHost = "http://localhost:5000";
+const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:5000";
 
-export default function BlogOverview({ blogItems }) {
+export default function BlogOverview({ blogItems = [] }) {
   const [getData, setGetData] = useState("");
 
-  const { _id } = useParams();
-  console.log("params", _id);
+  const { id } = useParams();
+  console.log("params", id);
 
   async function readData() {
     const blog = blogItems;
@@ -27,6 +27,23 @@ export default function BlogOverview({ blogItems }) {
   useEffect(() => {
     readData();
   }, []);
+
+  // async function readBlog() {
+  //   try {
+  //     const response = await fetch(`${API_ENDPOINT}/api/blog/${id}`);
+
+  //     // {params: {page: currentPage, query}}
+  //     const result = await response.json();
+  //     console.log(result);
+  //     setGetData(result);
+  //     console.log(result);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+  // useEffect(() => {
+  //   readBlog();
+  // }, []);
 
   if (!getData) {
     return <div className="loading">Loading...</div>;

@@ -1,0 +1,39 @@
+.regUsersCont {
+  display: flex;
+  height: 60.1vh;
+  width: 600px;
+  flex-direction: column;
+  margin: auto;
+}
+
+.regUsersWrap {
+  display: flex;
+}
+
+.regUsersWrap img {
+  width: 100px;
+  height: 100px;
+}
+
+.userInfo {
+  display: flex;
+}
+.seperate {
+  border: 1px solid #696969;
+  width: 0.5px;
+  height: 92px;
+  margin: 0 10px;
+}
+.userInfo p {
+  text-align: left;
+}
+.userInfoText1 {
+  margin: 0 10px;
+  font-weight: 500;
+}
+.userInfoText2 {
+  font-weight: 500;
+}
+.userFlex2 p {
+  margin-left: 0;
+}
