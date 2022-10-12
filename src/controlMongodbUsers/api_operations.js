@@ -1,4 +1,5 @@
-const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:5000";
+const API_ENDPOINT =
+  process.env.API_ENDPOINT || "https://travel-blog-project-2022.herokuapp.com";
 
 export const validateUser = async (username, password) => {
   const response = await fetch(API_ENDPOINT + "/api/login", {

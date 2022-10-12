@@ -54,8 +54,9 @@ function Header({ destinations, token }) {
           </NavLink>
         </nav>
         <div className="userSigning">
-          {!token && <SignUpButton />}
-          {!token && <LoginButton />}
+          <p>{!token && <SignUpButton />}</p>
+          {!token && <div className="signLine"></div>}
+          <p>{!token && <LoginButton />}</p>
         </div>
         <div className="userLogOut">{token && <LogOut />}</div>
         <div className="regUsers">{token && <RegistedUsersButton />}</div>

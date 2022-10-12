@@ -1,20 +1,12 @@
 const contentfulApi = "https://cdn.contentful.com";
 const apiUrl = "http://localhost:3000";
-const apiUrl1 = "http://localhost:5000";
+const apiUrl1 = "https://travel-blog-project-2022.herokuapp.com";
 
 const getAsset = async () => {
   const url = `${apiUrl}/api/assets`;
   const response = await fetch(url);
   const result = await response.json();
   console.log("Assets");
-  console.log(result);
-  return result;
-};
-const getUsers = async () => {
-  const url = `${apiUrl}/api/signedup-users`;
-  const response = await fetch(url);
-  const result = await response.json();
-  console.log("Registed Users");
   console.log(result);
   return result;
 };
