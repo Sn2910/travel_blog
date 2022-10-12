@@ -1,10 +1,19 @@
 import React from "react";
 import "./Header.css";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate, Navigate } from "react-router-dom";
 import tourImage from "../../Images/tour.png";
+import { Logout } from "@mui/icons-material";
+import LogOut from "../pages/LogOut";
+import LoginButton from "../pages/LoginButton";
+import SignUpButton from "../pages/SignUpButton";
+import RegistedUsersButton from "../pages/RegistedUsersButton";
 
-function Header({ destinations }) {
+function Header({ destinations, token }) {
   console.log(destinations);
+  // if (token) {
+  //   return <LogOut />;
+  // }
+
   return (
     <div>
       <div className="logoWrap">
@@ -15,11 +24,6 @@ function Header({ destinations }) {
       </div>
       <header>
         <nav className="navLinks">
-          <div className="userLogOut">
-            <Link to="/">
-              <button className="logOut">Log Out</button>
-            </Link>
-          </div>
           <Link to="#" className="dest">
             Destinations
             <ul>
@@ -50,13 +54,11 @@ function Header({ destinations }) {
           </NavLink>
         </nav>
         <div className="userSigning">
-          <Link to="/sign-up">
-            <button className="signUp">Sign-Up</button>
-          </Link>
-          <Link to="/sign-in">
-            <button className="signIn">Sign-In</button>
-          </Link>
+          {!token && <SignUpButton />}
+          {!token && <LoginButton />}
         </div>
+        <div className="userLogOut">{token && <LogOut />}</div>
+        <div className="regUsers">{token && <RegistedUsersButton />}</div>
       </header>
     </div>
   );
