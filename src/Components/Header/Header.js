@@ -47,6 +47,9 @@ function Header({ destinations, token }) {
           <NavLink to="/managecountry" className="addcountrydetails">
             Manage Country
           </NavLink>
+          <NavLink to="/managehotel" className="addcountrydetails">
+            Manage Hotel
+          </NavLink>
           <NavLink to="/blog" className="blog">
             BLOG
           </NavLink>

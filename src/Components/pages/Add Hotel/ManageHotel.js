@@ -14,13 +14,13 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function ManageCountry({ destinations, addDestination, token }) {
+function ManageHotel({hotels}) {
   // if (!token) {
   //   return <Navigate to="/unauthorized" />;
   // }
   return (
     <div>
-      {destinations.map((destination, index) => {
+      {hotels.map((hotel, index) => {
         return (
 
           <Container
@@ -31,8 +31,8 @@ function ManageCountry({ destinations, addDestination, token }) {
             <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
                 <Item key={`item_${index}`}>
-                  {destination.country}
-                  <Link to={`/managecountry/editcountry/${destination.id}`} className="editBlog">
+                  {hotel.name}
+                  <Link to={`/managehotel/edithotel/${hotel.id}`} className="editBlog">
                     <EditIcon />
                   </Link>
                  
@@ -43,12 +43,15 @@ function ManageCountry({ destinations, addDestination, token }) {
         );
       })}
       <div className="createBtn">
-        <button>
-          <Link to="/managecountry/addcountry">Add Country</Link>
-        </button>
-      </div>   
+            <button>
+              <Link to="/managehotel/addhotel">Add Hotel</Link>
+            </button>
+            
+          </div>
+         
+         
     </div>
   );
 }
 
-export default ManageCountry;
+export default ManageHotel;

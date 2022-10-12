@@ -18,10 +18,13 @@ import {
   getDestinations,
   postDestination,
   postHotel,
+  editHotelByID,
   postRestaurant,
   postShop,
   editDestinationByID,
-  editHotelByID
+  getHotels,
+  
+  
 } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
@@ -43,11 +46,12 @@ import Users from "./Components/pages/Users";
 import NotPermitted from "./Components/pages/NotPermitted";
 import axios from "axios";
 import RegistedUsers from "./Components/pages/RegistedUsers";
+import ManageHotel from "./Components/pages/Add Hotel/ManageHotel";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
   const [destinations, setDestinations] = useState("");
-  const [hotel, setHotel] = useState("");
+  const [hotels, setHotels] = useState("");
   const [restaurant,setRestaurant]=useState("")
   const [shop,setShop]=useState("")
   const [blog, setBlog] = useState({
@@ -121,12 +125,16 @@ function App() {
     );
   
   };
- 
+  const readHotels = async () => {
+    const hotelArr = await getHotels();
+    // console.log(destinationArr);
+    setHotels(hotelArr);
+  };
   const addHotel = async (hotel) => {
     const newHotel = await postHotel(hotel);
     console.log("newHotel");
     console.log(newHotel);
-    setHotel(newHotel);
+    setHotels(newHotel);
   };
   const editHotel = async (hotel) => {
     const hotelCopy = {
@@ -138,7 +146,7 @@ function App() {
       hotelCopy
     );
     console.log("New Hotel", hotels);
-  };
+  }; 
   const addRestaurant = async (restaurant) => {
     const newRestaurant = await postRestaurant(restaurant);
     setRestaurant(
@@ -204,6 +212,7 @@ function App() {
     readBlog(data.token);
 
     readDestinations();
+    readHotels()
   }, [data.token]);
 
   if (!blog || !destinations) {
@@ -246,12 +255,22 @@ function App() {
           }
         />
         <Route
-          path="/managecountry/addcountry/addhotel"
+          path="/managehotel"
+          element={<ManageHotel
+            hotels={hotels}
+          />}
+        />
+        <Route
+          path="/managehotel/addhotel"
           element={<AddHotel addHotel={addHotel} destinations={destinations}/>}
         />
          <Route
-          path="/managecountry/addcountry/edithotel/:id"
-          element={<EditHotel editHotel ={editHotel} />}
+          path="/managehotel/edithotel/:id"
+          element={<EditHotel 
+            editHotel ={editHotel} 
+            destinations={destinations} 
+            hotels ={hotels}
+            />}
         />
         <Route
           path="/managecountry/addcountry/addrestaurant"
