@@ -1,5 +1,5 @@
 
-const apiUrl = "http://localhost:3000";
+const apiUrl = "https://travel-blog-backend-2022.herokuapp.com";
 const apiUrl1 = "http://localhost:5000";
 
 const getAsset = async () => {
