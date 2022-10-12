@@ -2,7 +2,7 @@ import React from "react";
 import image from "./../../../src/Images/senya-beach.jpg";
 import authorImg from "./../../../src/Images/kenn.jpg";
 import kenn from "./../../../src/Images/kenn-pic.png";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Container from "@mui/material/Container";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
@@ -17,12 +17,14 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import EditBlog from "./EditBlog";
 
-function Blog({ blogs = [] }) {
+function Blog({ blogs = [], token }) {
+  if (!token) {
+    return <Navigate to="/sign-in" />;
+  }
+
   const blogData = blogs.map((blog, id) => {
     console.log("Blogs", blog);
-    if (!blog) {
-      return <div className="loading">Loading...</div>;
-    }
+
     return (
       <div key={id}>
         <div className="blogPostTitle">
@@ -40,12 +42,12 @@ function Blog({ blogs = [] }) {
         <div>
           <div className="author-date">
             <img src={authorImg} alt="" width="50px" height="40px" />
-            <h4>Created by: @{blog.user_name}</h4>
+            <h4>Created by: @{blog.userName}</h4>
             <h4>|</h4>
-            <h4>Dated: {blog.blog_date}.</h4>
+            <h4>Dated: {blog.created}.</h4>
           </div>
-          <img src={blog.blog_image} alt="" width="500px" height="300px" />
-          <p className="blogText">{blog.rich_text}</p>
+          <img src={blog.blogImage} alt="" width="500px" height="300px" />
+          <p className="blogText">{blog.richText}</p>
         </div>
         <div className="blogIcons">
           <ThumbUpIcon
@@ -81,6 +83,7 @@ function Blog({ blogs = [] }) {
       </div>
     );
   });
+
   return (
     <div className="allBlogsCont">
       <div
@@ -108,212 +111,6 @@ function Blog({ blogs = [] }) {
       >
         <div className="leftCont">
           <div className="blogContWrap">{blogData}</div>
-          {/* 
-          "https://unsplash.com/photos/-87JyMb9ZfU"
-          <div className="blogContWrap">
-            <h2 className="blogPostTitle">The Forest Adventure</h2>
-            <div>
-              <div className="author-date">
-                <img src={authorImg} alt="" width="50px" height="40px" />
-                <h4>Created by: Sneha</h4>
-                <h4>|</h4>
-                <h4>Dated: 21.05.2022</h4>
-              </div>
-              <img
-                src="https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                alt=""
-                width="365px"
-                height="200px"
-              />
-              <p className="blogText">
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical Latin literature from
-                45 BC, making it over 2000 years old. Richard McClintock, a
-                Latin professor at Hampden-Sydney College in Virginia, looked up
-                one of the more obscure Latin words, consectetur, from a Lorem
-                Ipsum passage, and going through the cites of the word in
-                classical literature, discovered the undoubtable source. Lorem
-                Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-                Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
-                written in 45 BC. This book is a treatise on the theory of
-                ethics, very popular during the Renaissance. The first line of
-                Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
-                in section 1.10.32. The standard chunk of Lorem Ipsum used since
-                the 1500s is reproduced below for those interested. Sections
-                1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by
-                Cicero are also reproduced in their exact original form,
-                accompanied by English versions from the 1914 translation by H.
-                Rackham.
-              </p>
-            </div>
-            <div className="blogIcons">
-              <ThumbUpIcon
-                titleAccess="Like"
-                sx={{
-                  marginRight: "5px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />
-              {"433"}
-              <CommentOutlinedIcon
-                titleAccess="Comment"
-                sx={{
-                  marginRight: "5px",
-                  marginLeft: "15px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />{" "}
-              {"309"}
-              <ShareOutlinedIcon
-                titleAccess="Share"
-                sx={{
-                  marginRight: "5px",
-                  marginLeft: "15px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />
-              {"46"}
-            </div>
-          </div>
-          <div className="blogContWrap">
-            <h2 className="blogPostTitle">Let's Climb the Mountains</h2>
-            <div>
-              <div className="author-date">
-                <img src={authorImg} alt="" width="50px" height="40px" />
-                <h4>Created by: Sneha</h4>
-                <h4>|</h4>
-                <h4>Dated: 4.06.2022</h4>
-              </div>
-              <img
-                src="https://images.unsplash.com/photo-1600298882283-40b4dcb8b211?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                alt=""
-                width="365px"
-                height="200px"
-              />
-              <p className="blogText">
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical Latin literature from
-                45 BC, making it over 2000 years old. Richard McClintock, a
-                Latin professor at Hampden-Sydney College in Virginia, looked up
-                one of the more obscure Latin words, consectetur, from a Lorem
-                Ipsum passage, and going through the cites of the word in
-                classical literature, discovered the undoubtable source. Lorem
-                Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-                Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
-                written in 45 BC. This book is a treatise on the theory of
-                ethics, very popular during the Renaissance. The first line of
-                Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
-                in section 1.10.32. The standard chunk of Lorem Ipsum used since
-                the 1500s is reproduced below for those interested. Sections
-                1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by
-                Cicero are also reproduced in their exact original form,
-                accompanied by English versions from the 1914 translation by H.
-                Rackham.
-              </p>
-            </div>
-            <div className="blogIcons">
-              <ThumbUpIcon
-                titleAccess="Like"
-                sx={{
-                  marginRight: "5px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />
-              {"433"}
-              <CommentOutlinedIcon
-                titleAccess="Comment"
-                sx={{
-                  marginRight: "5px",
-                  marginLeft: "15px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />{" "}
-              {"309"}
-              <ShareOutlinedIcon
-                titleAccess="Share"
-                sx={{
-                  marginRight: "5px",
-                  marginLeft: "15px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />
-              {"46"}
-            </div>
-          </div>
-          <div className="blogContWrap">
-            <h2 className="blogPostTitle">On the River</h2>
-            <div>
-              <div className="author-date">
-                <img src={authorImg} alt="" width="50px" height="40px" />
-                <h4>Created by: Sneha</h4>
-                <h4>|</h4>
-                <h4>Dated: 17.06.2022</h4>
-              </div>
-              <img
-                src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                alt=""
-                width="365px"
-                height="200px"
-              />
-              <p className="blogText">
-                Contrary to popular belief, Lorem Ipsum is not simply random
-                text. It has roots in a piece of classical Latin literature from
-                45 BC, making it over 2000 years old. Richard McClintock, a
-                Latin professor at Hampden-Sydney College in Virginia, looked up
-                one of the more obscure Latin words, consectetur, from a Lorem
-                Ipsum passage, and going through the cites of the word in
-                classical literature, discovered the undoubtable source. Lorem
-                Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus
-                Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero,
-                written in 45 BC. This book is a treatise on the theory of
-                ethics, very popular during the Renaissance. The first line of
-                Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line
-                in section 1.10.32. The standard chunk of Lorem Ipsum used since
-                the 1500s is reproduced below for those interested. Sections
-                1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by
-                Cicero are also reproduced in their exact original form,
-                accompanied by English versions from the 1914 translation by H.
-                Rackham.
-              </p>
-            </div>
-            <div className="blogIcons">
-              <ThumbUpIcon
-                titleAccess="Like"
-                sx={{
-                  marginRight: "5px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />
-              {"433"}
-              <CommentOutlinedIcon
-                titleAccess="Comment"
-                sx={{
-                  marginRight: "5px",
-                  marginLeft: "15px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />{" "}
-              {"309"}
-              <ShareOutlinedIcon
-                titleAccess="Share"
-                sx={{
-                  marginRight: "5px",
-                  marginLeft: "15px",
-                  color: "#696969",
-                  "&:hover": { cursor: "pointer" },
-                }}
-              />
-              {"46"}
-            </div> */}
-          {/* </div> */}
         </div>
         <Container
           sx={{
@@ -503,46 +300,3 @@ function Blog({ blogs = [] }) {
 }
 
 export default Blog;
-
-// [
-// 	{
-// 		"id": 1,
-// 		"user_name": "Nico",
-// 		"blog_date": "Sep. 21st 2022. - 12:38 am",
-// 		"title": "The Forest Adventure",
-// 		"rich_text": "Contrary to popular belief, Lorem Ipsum is not simply random\n                text. It has roots in a piece of classical Latin literature from\n                45 BC, making it over 2000 years old. Richard McClintock, a\n                Latin professor at Hampden-Sydney College in Virginia, looked up\n                one of the more obscure Latin words, consectetur, from a Lorem\n                Ipsum passage, and going through the cites of the word in\n                classical literature, discovered the undoubtable source. Lorem\n                Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus\n                Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero,\n                written in 45 BC. This book is a treatise on the theory of\n                ethics, very popular during the Renaissance. The first line of\n                Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line\n                in section 1.10.32. ",
-// 		"blog_image": "https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-// 	},
-// 	{
-// 		"id": 2,
-// 		"user_name": "Andres",
-// 		"blog_date": "Sep. 21st 2022. - 12:39 am",
-// 		"title": "On the River",
-// 		"rich_text": "It has roots in a piece of classical Latin literature from\n                45 BC, making it over 2000 years old. Richard McClintock, a\n                Latin professor at Hampden-Sydney College in Virginia, looked up\n                one of the more obscure Latin words, consectetur, from a Lorem\n                Ipsum passage, and going through the cites of the word in\n                classical literature, discovered the undoubtable source. Lorem\n                Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus\n                Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero,\n                written in 45 BC. This book is a treatise on the theory of\n                ethics, very popular during the Renaissance. The first line of\n                Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line\n                in section 1.10.32. The standard chunk of Lorem Ipsum used since\n                the 1500s is reproduced below for those interested. Sections\n                1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by\n                Cicero are also reproduced in their exact original form,\n                accompanied by English versions from the 1914 translation by H.\n                Rackham.",
-// 		"blog_image": "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-// 	},
-// 	{
-// 		"id": 3,
-// 		"user_name": "Sneha",
-// 		"blog_date": "Sep. 21st 2022. - 12:49 am",
-// 		"title": "Let's Climb the Mountains",
-// 		"rich_text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.\n",
-// 		"blog_image": "https://images.unsplash.com/photo-1600298882283-40b4dcb8b211?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-// 	},
-// 	{
-// 		"id": 7,
-// 		"user_name": "Miruna",
-// 		"blog_date": "Sep. 21st 2022. - 11:31 pm",
-// 		"title": "A Cool Winter Tour",
-// 		"rich_text": "It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \\\"de Finibus Bonorum et Malorum\\\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \\\"Lorem ipsum dolor sit amet..\\\", comes from a line in section 1.10.32.\\n\\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \\\"de Finibus Bonorum et Malorum\\\" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
-// 		"blog_image": "https://images.unsplash.com/photo-1491555103944-7c647fd857e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-// 	},
-// 	{
-// 		"id": 8,
-// 		"user_name": "Markus",
-// 		"blog_date": "Sep. 21st 2022. - 11:52 pm",
-// 		"title": "Hiking as a Hobby",
-// 		"rich_text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
-// 		"blog_image": "https://images.unsplash.com/photo-1493568000180-ca2fb70ddcba?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-// 	}
-// ]

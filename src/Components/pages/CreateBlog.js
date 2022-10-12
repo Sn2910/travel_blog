@@ -8,11 +8,12 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import Stack from "@mui/material/Stack";
 import { useState, useEffect } from "react";
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateBlog({ addBlog }) {
   const [blogTitle, setBlogTitle] = useState("");
   const [blogText, setBlogText] = useState("");
-  const [blogDate, setBlogDate] = useState("");
+  // const [blogDate, setBlogDate] = useState("");
   const [blogImage, setBlogImage] = useState("");
   const [userName, setUserName] = useState("");
 
@@ -20,20 +21,26 @@ export default function CreateBlog({ addBlog }) {
   // const date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
   const date = moment().format("MMM. Do YYYY. - h:mm a");
 
+  const navigate = useNavigate();
+
   function createBlog() {
     console.log();
     addBlog({
       userName: userName,
-      blogDate: blogDate,
+      // blogDate: blogDate,
       title: blogTitle,
       richText: blogText,
       blogImage: blogImage,
     });
+    if (!userName || !blogTitle || !blogText || !blogImage) {
+      alert("Please complete all fields!");
+    }
     setBlogTitle("");
     setBlogText("");
-    setBlogDate("");
+    // setBlogDate("");
     setBlogImage("");
     setUserName("");
+    navigate("/blog");
   }
 
   return (
@@ -50,7 +57,7 @@ export default function CreateBlog({ addBlog }) {
                 onChange={({ target }) => setUserName(target.value)}
               />
             </div>
-            <div>
+            {/* <div>
               <h4>Date:</h4>
               <input
                 type="date"
@@ -60,7 +67,7 @@ export default function CreateBlog({ addBlog }) {
               <p className="dateInfo">
                 <em>Just click the icon and select today!</em>
               </p>
-            </div>
+            </div> */}
           </div>
           <div className="blogTitle">
             <h4>Title:</h4>

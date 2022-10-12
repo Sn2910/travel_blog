@@ -1,10 +1,17 @@
 import React from "react";
 import "./Header.css";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate, Navigate } from "react-router-dom";
 import tourImage from "../../Images/tour.png";
+import { Logout } from "@mui/icons-material";
+import LogOut from "../pages/LogOut";
+import LoginButton from "../pages/LoginButton";
+import SignUpButton from "../pages/SignUpButton";
+import RegistedUsersButton from "../pages/RegistedUsersButton";
 
-function Header({ destinations }) {
-  // console.log(destinations);
+
+function Header({ destinations, token }) {
+  console.log(destinations);
+
   return (
     <div>
       <div className="logoWrap">
@@ -37,21 +44,19 @@ function Header({ destinations }) {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/about">About</NavLink>
           <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/blog" className="blog">
-            BLOG
-          </NavLink>
           <NavLink to="/managecountry" className="addcountrydetails">
             Manage Country
           </NavLink>
+          <NavLink to="/blog" className="blog">
+            BLOG
+          </NavLink>
         </nav>
         <div className="userSigning">
-          <Link to="/sign-up">
-            <button className="signUp">Sign-Up</button>
-          </Link>
-          <Link to="/sign-in">
-            <button className="signIn">Sign-In</button>
-          </Link>
+          {!token && <SignUpButton />}
+          {!token && <LoginButton />}
         </div>
+        <div className="userLogOut">{token && <LogOut />}</div>
+        <div className="regUsers">{token && <RegistedUsersButton />}</div>
       </header>
     </div>
   );

@@ -104,6 +104,7 @@ header a:hover {
 } */
 
 .userSigning {
+  display: flex;
   position: absolute;
   right: 10%;
 }
@@ -125,4 +126,50 @@ header a:hover {
 }
 .signIn:hover {
   color: #0bd30b;
+}
+
+.userLogOut {
+  position: absolute;
+  right: 12%;
+}
+
+.userLogOut button {
+  font-size: 0.8em;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: #696969;
+  color: red;
+}
+
+.userLogOut button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.userLogOut a:hover {
+  border-top: none;
+}
+
+.regUsers {
+  position: absolute;
+  left: 12%;
+}
+
+.regUsers button {
+  font-size: 0.8em;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: #696969;
+  color: orange;
+}
+
+.regUsers button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.regUsers a:hover {
+  border-top: none;
 }

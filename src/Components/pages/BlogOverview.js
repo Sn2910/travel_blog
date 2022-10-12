@@ -10,16 +10,16 @@ import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import authorImg from "./../../../src/Images/kenn.jpg";
 // import { Link } from "react-router-dom";
 
-// const apiHost = "http://localhost:5000";
+const API_ENDPOINT = process.env.API_ENDPOINT || "http://localhost:5000";
 
-export default function BlogOverview() {
+export default function BlogOverview({ blogItems = [] }) {
   const [getData, setGetData] = useState("");
 
   const { id } = useParams();
   console.log("params", id);
 
   async function readData() {
-    const blog = await getBlogByID(id);
+    const blog = blogItems;
     console.log(blog);
     setGetData(blog);
     return blog;
@@ -27,6 +27,23 @@ export default function BlogOverview() {
   useEffect(() => {
     readData();
   }, []);
+
+  // async function readBlog() {
+  //   try {
+  //     const response = await fetch(`${API_ENDPOINT}/api/blog/${id}`);
+
+  //     // {params: {page: currentPage, query}}
+  //     const result = await response.json();
+  //     console.log(result);
+  //     setGetData(result);
+  //     console.log(result);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
+  // useEffect(() => {
+  //   readBlog();
+  // }, []);
 
   if (!getData) {
     return <div className="loading">Loading...</div>;
@@ -46,12 +63,12 @@ export default function BlogOverview() {
             <div>
               <div className="author-date">
                 <img src={authorImg} alt="" width="50px" height="40px" />
-                <h4>Created by: @{blog.user_name}</h4>
+                <h4>Created by: @{blog.userName}</h4>
                 <h4>|</h4>
-                <h4>Dated: {blog.blog_date}.</h4>
+                <h4>Dated: {blog.created}.</h4>
               </div>
-              <img src={blog.blog_image} alt="" width="500px" height="300px" />
-              <p className="blogText">{blog.rich_text}</p>
+              <img src={blog.blogImage} alt="" width="500px" height="300px" />
+              <p className="blogText">{blog.richText}</p>
             </div>
             <div className="blogOverviewVideos">
               <h2>Video(s)</h2>

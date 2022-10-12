@@ -13,6 +13,7 @@ import EditBlog from "./Components/pages/EditBlog";
 import {
   getBlogs,
   postBlog,
+  getBlogByID,
   editBlogByID,
   getDestinations,
   postDestination,
@@ -31,6 +32,16 @@ import AddShop from "./Components/pages/Add Shop/AddShop";
 import SignUp from "./Components/pages/SignUp";
 import SignIn from "./Components/pages/SignIn";
 import EditCountry from "./Components/pages/EditCountry/EditCountry";
+import ProtectedRoute from "./Components/pages/ProtectedRoutes";
+import {
+  validateUser,
+  getVerifiedUsers,
+  signUpUser,
+} from "./controlMongodbUsers/api_operations";
+import Users from "./Components/pages/Users";
+import NotPermitted from "./Components/pages/NotPermitted";
+import axios from "axios";
+import RegistedUsers from "./Components/pages/RegistedUsers";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
@@ -39,7 +50,11 @@ function App() {
   const [blog, setBlog] = useState({
     blogs: [],
   });
-
+  const [data, setData] = useState({
+    users: [],
+    token: null,
+    userName: null,
+  });
   /*   const getData = async () => {
     const response = await fetch(
       `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
@@ -53,8 +68,8 @@ function App() {
          console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
   // };
 
-  const readBlog = async (blog) => {
-    const blogs = await getBlogs(blog);
+  const readBlog = async (token) => {
+    const blogs = await getBlogs(token);
     console.log(blogs);
     setBlog((prev) => {
       return { ...prev, blogs };
@@ -79,11 +94,13 @@ function App() {
       return { ...prev, blogs };
     });
   };
+
   const readDestinations = async (destinations) => {
     const destinationArr = await getDestinations(destinations);
     // console.log(destinationArr);
     setDestinations(destinationArr);
   };
+
   const addDestination = async (destination) => {
     const newDestination = await postDestination(destination);
     console.log(newDestination);
@@ -122,12 +139,58 @@ function App() {
     console.log("New Hotel", hotels);
   };
 
-  useEffect(() => {
-    /*  getData(); */
+  const signin = async (username, password) => {
+    const token = await validateUser(username, password);
+    setData((prev) => ({ ...prev, token: token }));
+  };
+  const signup = async (
+    firstName,
+    lastName,
+    username,
+    email,
+    password,
+    confirmPassword,
+    profileImage,
+    userRole
+  ) => {
+    const token = await signUpUser(
+      firstName,
+      lastName,
+      username,
+      email,
+      password,
+      confirmPassword,
+      profileImage,
+      userRole
+    );
+    setData((prev) => ({ ...prev, token: token }));
+  };
 
+  const getUsers = async (token) => {
+    if (!token) {
+      console.log("token not ready yet");
+      return [];
+    }
+    console.log("token ready, will get users");
+    const users = await getVerifiedUsers(token);
+    if (!users) {
+      return;
+    }
+    setData((prev) => {
+      const newState = { ...prev, users };
+      console.log("newState", newState);
+      return newState;
+    });
+  };
+
+  useEffect(() => {
+    console.log("Reading Blogs");
+   /*  getData(); */
     readBlog();
+    readBlog(data.token);
+
     readDestinations();
-  }, []);
+  }, [data.token]);
 
   if (!blog || !destinations) {
     return <div className="loading">Loading...</div>;
@@ -142,15 +205,18 @@ function App() {
   console.log(tourInfo); */
   return (
     <div className="App">
-      <Header destinations={destinations} />
+      <Header destinations={destinations} token={data.token} />
       <Routes>
-        <Route path="/" element={<Home destinations={destinations} />} />
+        <Route path="/*" element={<Home destinations={destinations} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/travel-blog/:id" element={<TravelInfo />} />
         <Route
           path="/managecountry"
-          element={<ManageCountry destinations={destinations} />}
+          element=<ManageCountry
+            destinations={destinations}
+            token={data.token}
+          />
         />
         <Route
           path="/managecountry/addcountry"
@@ -179,7 +245,21 @@ function App() {
         />
         <Route path="/managecountry/addcountry/addshop" element={<AddShop />} />
 
-        <Route path="/blog" element={<Blog blogs={blog.blogs} />} />
+        <Route
+          path="/blog"
+          element={<Blog blogs={blog.blogs} token={data.token} />}
+        />
+        {/* <Route
+          path="/"
+          element={
+            <ProtectedRoute token={data.token}>
+              <Route
+                path="blog"
+                element={<Blog blogs={blog.blogs}/>}
+              />
+            </ProtectedRoute>
+          }
+        /> */}
         <Route
           path="/blog/create-blog"
           element={<CreateBlog addBlog={addBlog} />}
@@ -188,9 +268,47 @@ function App() {
           path="/edit-blog/:id"
           element={<EditBlog blogItems={blog.blogs} editBlog={editBlog} />}
         />
-        <Route path="/blog-overview/:id" element={<BlogOverview />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/sign-in" element={<SignIn />} />
+        <Route
+          path="/blog-overview/:id"
+          element={<BlogOverview blogItems={blog.blogs} />}
+        />
+        <Route
+          path="/sign-up"
+          element={
+            <SignUp
+              signup={signup}
+              getUsers={getUsers}
+              users={data.users}
+              token={data.token}
+            />
+          }
+        />
+        <Route
+          path="/sign-in"
+          element={
+            <SignIn
+              signin={signin}
+              getUsers={getUsers}
+              users={data.users}
+              token={data.token}
+            />
+          }
+        />
+        <Route
+          path="/unauthorized"
+          element={
+            <NotPermitted
+              getUsers={getUsers}
+              users={data.users}
+              token={data.token}
+            />
+          }
+        />
+        <Route path="/unauthorized" element={<NotPermitted />} />
+        <Route
+          path="/registed-users"
+          element={<RegistedUsers getUsers={getUsers} />}
+        />
       </Routes>
       <Footer />
     </div>

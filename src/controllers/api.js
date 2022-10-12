@@ -1,10 +1,19 @@
 
 const apiUrl = "http://localhost:3000";
+const apiUrl1 = "http://localhost:5000";
 
 const getAsset = async () => {
   const url = `${apiUrl}/api/assets`;
   const response = await fetch(url);
   const result = await response.json();
+  return result;
+};
+const getUsers = async () => {
+  const url = `${apiUrl}/api/signedup-users`;
+  const response = await fetch(url);
+  const result = await response.json();
+  console.log("Registed Users");
+  console.log(result);
   return result;
 };
 
@@ -24,7 +33,7 @@ const getDestinationsById = async (id) => {
 
 const postDestination = async (destination) => {
   const url = `${apiUrl}/api/destinations`;
-  const response =  await fetch(url, {
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -84,7 +93,7 @@ const deleteDestinationsById = async (id) => {
 
 const postHotel = async (hotel) => {
   const url = `${apiUrl}/api/hotel`;
-  const response =  await fetch(url, {
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -113,24 +122,38 @@ async function editHotelByID(id, hotel) {
 const getBlogs = async () => {
   const url = `${apiUrl}/api/blog`;
   const response = await fetch(url);
+
+//Token from cookies
+const getBlogs = async (token) => {
+  if (!token) {
+    console.log("!TOKEN", !token);
+    return [];
+  }
+  const userToken = new Headers({
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + token,
+  });
+  const url = `${apiUrl1}/api/blog`;
+  const response = await fetch(url, {
+    method: "GET",
+    headers: userToken,
+  });
+
   const result = await response.json();
   return result;
 };
 
-async function getBlogByID() {
-  const url = `${apiUrl}/api/blog`;
+async function getBlogByID(_id) {
+  const url = `${apiUrl1}/api/blog/${_id}`;
   const response = await fetch(url);
   const result = await response.json();
   console.log(result);
   return result;
 }
 
-async function editBlog(blogItem) {
-  editBlogByID(blogItem.id, blogItem);
-}
 async function editBlogByID(id, blog) {
   console.log(id, blog);
-  const url = `${apiUrl}/api/blog/${id}`;
+  const url = `${apiUrl1}/api/blog/${id}`;
   const response = await fetch(url, {
     method: "PATCH",
     headers: {
@@ -145,8 +168,8 @@ async function editBlogByID(id, blog) {
 }
 
 const postBlog = async (blog) => {
-  const url = `${apiUrl}/api/blog`;
-  const response =  await fetch(url, {
+  const url = `${apiUrl1}/api/blog`;
+  const response = await fetch(url, {
     method: "POST",
     headers: {
       "content-Type": "application/json",
@@ -159,3 +182,4 @@ const postBlog = async (blog) => {
 };
 
 export { getAsset, getBlogs, postBlog, getBlogByID,getDestinations,getDestinationsById,postDestination,postHotel,editHotelByID,editBlogByID,editDestinationByID,deleteDestinationsById};
+

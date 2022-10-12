@@ -5,8 +5,8 @@ import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import { Container } from "@mui/material";
 import AddCounty from "../AddCountry/AddCounty";
-import EditIcon from '@mui/icons-material/Edit';
-import { Link, NavLink } from "react-router-dom";
+import EditIcon from "@mui/icons-material/Edit";
+import { Link, NavLink, Navigate } from "react-router-dom";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -15,24 +15,26 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function ManageCountry({ destinations, addDestination }) {
+function ManageCountry({ destinations, addDestination, token }) {
+  // if (!token) {
+  //   return <Navigate to="/unauthorized" />;
+  // }
   return (
     <div>
       {destinations.map((destination, index) => {
         return (
-          <Container key={`container_${index}`} maxWidth="sm" sx={{ background: "#fff" }}>
 
-            <Box sx={{ width: '100%' }}>
+          <Container
+            key={`container_${index}`}
+            maxWidth="sm"
+            sx={{ background: "#fff" }}
+          >
+            <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
-
-                <Item key={`item_${index}`}>{destination.country}
-                  <Link to={`/managecountry/editcountry/${destination.id}`} className="editBlog">
-                    <EditIcon />
-                  </Link>
-
-
+                <Item key={`item_${index}`}>
+                  {destination.country}
+                  <EditIcon />
                 </Item>
-
               </Stack>
             </Box>
           </Container>
