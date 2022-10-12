@@ -8,11 +8,9 @@ import LoginButton from "../pages/LoginButton";
 import SignUpButton from "../pages/SignUpButton";
 import RegistedUsersButton from "../pages/RegistedUsersButton";
 
+
 function Header({ destinations, token }) {
   console.log(destinations);
-  // if (token) {
-  //   return <LogOut />;
-  // }
 
   return (
     <div>

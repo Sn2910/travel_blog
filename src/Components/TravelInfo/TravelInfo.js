@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAsset } from "../../controllers/api";
 import "../TravelInfo/TravelInfo.css";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -34,7 +33,9 @@ function TravelInfo() {
   
   useEffect(() => {
      getDestinations().then((destinations) => {
-      const destinationIndex =destinations.findIndex((destination)=>destination.id === parseInt(id))
+   
+      const destinationIndex =destinations.findIndex((destination)=>destination.id ===parseInt(id))
+    
       setGetDestinationsArr(destinations);
       setSelectedCountryIndex(destinationIndex)
       console.log(destinations)
@@ -130,7 +131,7 @@ function TravelInfo() {
             className="hotelGrid"
             // sx={{ width: "50%" }}
           >
-            {getInfo.hotels.map((hotel, index) => {
+            {getInfo.hotels?.map((hotel, index) => {
               if(hotel.image_url){
                 hotelUrl = hotel.image_url;
              }else{

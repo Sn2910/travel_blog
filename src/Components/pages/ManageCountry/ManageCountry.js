@@ -23,6 +23,7 @@ function ManageCountry({ destinations, addDestination, token }) {
     <div>
       {destinations.map((destination, index) => {
         return (
+
           <Container
             key={`container_${index}`}
             maxWidth="sm"
