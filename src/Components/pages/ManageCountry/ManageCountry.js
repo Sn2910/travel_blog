@@ -4,7 +4,6 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import { Container } from "@mui/material";
-import AddCounty from "../AddCountry/AddCounty";
 import EditIcon from "@mui/icons-material/Edit";
 import { Link, NavLink, Navigate } from "react-router-dom";
 const Item = styled(Paper)(({ theme }) => ({
@@ -23,6 +22,7 @@ function ManageCountry({ destinations, addDestination, token }) {
     <div>
       {destinations.map((destination, index) => {
         return (
+
           <Container
             key={`container_${index}`}
             maxWidth="sm"
@@ -32,7 +32,9 @@ function ManageCountry({ destinations, addDestination, token }) {
               <Stack spacing={2}>
                 <Item key={`item_${index}`}>
                   {destination.country}
-                  <EditIcon />
+                  <Link to={`/managecountry/editcountry/${destination.id}`} className="editBlog">
+                    <EditIcon />
+                  </Link>
                 </Item>
               </Stack>
             </Box>
@@ -44,6 +46,23 @@ function ManageCountry({ destinations, addDestination, token }) {
           <Link to="/managecountry/addcountry">Add Country</Link>
         </button>
       </div>
+      <div className="createBtn">
+            <button>
+              <Link to="/managecountry/addcountry/addhotel">Add Hotel</Link>
+            </button>
+          </div>
+          <div className="createBtn">
+            <button>
+              <Link to="/managecountry/addcountry/addrestaurant">
+                Add Restaurant
+              </Link>
+            </button>
+          </div>
+          <div className="createBtn">
+            <button>
+              <Link to="/managecountry/addcountry/addshop">Add Shop</Link>
+            </button>
+          </div>
     </div>
   );
 }

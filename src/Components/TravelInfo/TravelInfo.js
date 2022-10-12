@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAsset } from "../../controllers/api";
 import "../TravelInfo/TravelInfo.css";
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
@@ -16,6 +15,8 @@ import {getDestinations,getDestinationsById} from '../../controllers/api'
 function TravelInfo() {
   let backgroundUrl;
   let hotelUrl;
+  let shoppingUrl;
+  let restaurantUrl;
   const [getInfo, setGetInfo] = useState("");
   const [getDestinationsArr, setGetDestinationsArr] = useState([]);
   const [assets, setAssets] = useState("");
@@ -34,7 +35,9 @@ function TravelInfo() {
   
   useEffect(() => {
      getDestinations().then((destinations) => {
+   
       const destinationIndex =destinations.findIndex((destination)=>destination.id === parseInt(id))
+    
       setGetDestinationsArr(destinations);
       setSelectedCountryIndex(destinationIndex)
       console.log(destinations)
@@ -130,7 +133,7 @@ function TravelInfo() {
             className="hotelGrid"
             // sx={{ width: "50%" }}
           >
-            {getInfo.hotels.map((hotel, index) => {
+            {getInfo.hotels?.map((hotel, index) => {
               if(hotel.image_url){
                 hotelUrl = hotel.image_url;
              }else{
@@ -156,7 +159,7 @@ function TravelInfo() {
                     >
                       <div className="visit">
                         <h4>{hotel.name}</h4>
-                        <a href={hotel.url} target="_blank">
+                        <a href={hotel.url} target="_blank" rel="noopener noreferrer">
                           Visit
                         </a>
                       </div>
@@ -192,7 +195,7 @@ function TravelInfo() {
           </Grid>
         </div>
       </div>
-     {/*  <div>
+       <div>
         <h2>Shopping Centers</h2>
         <div className="shopFlex">
           <div className="shopCont">
@@ -209,8 +212,14 @@ function TravelInfo() {
             Renaissance.
           </div>
           <Grid container spacing={2} className="shopGrid">
-            {shopping.map((shop, index) => {
-              const shoppingUrl = getAssetUrl(shop.image_id);
+            {getInfo.shops.map((shop, index) => {
+               if(shop.image_url){
+                shoppingUrl = shop.image_url;
+             }else{
+              shoppingUrl = getAssetUrl(shop.image_id);
+
+             }
+           
               return (
                 <Grid item key={index} xs={6}>
                   <Paper
@@ -230,7 +239,7 @@ function TravelInfo() {
                     >
                       <div className="visit">
                         <h4>{shop.name}</h4>
-                        <a href={shop.url} target="_blank">
+                        <a href={shop.url} target="_blank" rel="noopener noreferrer">
                           Visit
                         </a>
                       </div>
@@ -283,8 +292,14 @@ function TravelInfo() {
             amet..", comes from a line in section 1.10.32.
           </div>
           <Grid container spacing={2} className="restGrid">
-            {restaurant.map((restaurant, index) => {
-              const restaurantUrl = getAssetUrl(restaurant.image_id);
+            {getInfo.restaurants?.map((restaurant, index) => {
+                 if(restaurant.image_url){
+                  restaurantUrl = restaurant.image_url;
+               }else{
+                restaurantUrl = getAssetUrl(restaurant.image_id);
+  
+               }
+             
               return (
                 <Grid item key={index} xs={6}>
                   <Paper
@@ -304,7 +319,7 @@ function TravelInfo() {
                     >
                       <div className="visit">
                         <h4>{restaurant.name}</h4>
-                        <a href={restaurant.url} target="_blank">
+                        <a href={restaurant.url} target="_blank" rel="noopener noreferrer">
                           Visit
                         </a>
                       </div>
@@ -339,7 +354,7 @@ function TravelInfo() {
             })}
           </Grid>
         </div>
-      </div> */}
+      </div> 
     </Container>
   );
 }

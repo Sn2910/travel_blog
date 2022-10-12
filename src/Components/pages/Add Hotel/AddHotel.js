@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import Container from "@mui/material/Container";
+import {Link} from "react-router-dom"
+import EditIcon from '@mui/icons-material/Edit';
 
 function AddHotel({ destinations, addHotel }) {
   const [value, setValue] = useState("");
@@ -42,6 +44,7 @@ function AddHotel({ destinations, addHotel }) {
       <Container maxWidth="sm" sx={{ background: "#fff" }}>
         <form onSubmit={createHotel} className="addhotelWrap">
           <h2>Add Hotel Details</h2>
+         
 
           <div className="hotel_name">
             <h4>Name:</h4>
@@ -76,7 +79,7 @@ function AddHotel({ destinations, addHotel }) {
             <input type="number" id={'price'} />
           </div>
           <div className="hotel_url">
-            <h4>Url:</h4>
+            <h4> Hotel Url:</h4>
             <input type="text" id={'url'} />
           </div>
           <div className="hotel_rating">
@@ -89,13 +92,15 @@ function AddHotel({ destinations, addHotel }) {
           </div>
 
           <div className="hotelBackgroungImg">
-            <h4>Background Image:</h4>
+            <h4>Hotel Image:</h4>
             <input type="text" id={'backgroundImage'} />
           </div>
 
           <div className="createBtn">
             <button type="submit">Create Hotel</button>
           </div>
+         
+        
         </form>
       </Container>
     </div>

@@ -2,13 +2,11 @@ import React from "react";
 import { useState } from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import Container from "@mui/material/Container";
-import {Link} from "react-router-dom"
-import EditIcon from '@mui/icons-material/Edit';
 
-function AddShop({ destinations, addShop }) {
+function EditHotel({editHotel,destinations}) {
   const [value, setValue] = useState("");
 
-  const createShop = (e) => {
+  const editdestinationHotel = (e) => {
     e.preventDefault();
     const {
       name,
@@ -22,7 +20,7 @@ function AddShop({ destinations, addShop }) {
       backgroundImage,
     } = e.target;
 
-    const newShop = {
+    const newHotel = {
       name: name.value,
       description: description.value,
       price: price.value,
@@ -34,17 +32,16 @@ function AddShop({ destinations, addShop }) {
       imageUrl: backgroundImage.value,
     };
 
- 
+    console.log(destination.value);
 
-    addShop(newShop);
+    editHotel(newHotel);
   };
 
   return (
-    <div className="addshop">
+    <div className="addhotel">
       <Container maxWidth="sm" sx={{ background: "#fff" }}>
-        <form onSubmit={createShop} className="addhotelWrap">
-          <h2>Add Shop Details</h2>
-         
+        <form onSubmit={editdestinationHotel} className="addhotelWrap">
+          <h2>Edit Hotel Details</h2>
 
           <div className="hotel_name">
             <h4>Name:</h4>
@@ -52,8 +49,8 @@ function AddShop({ destinations, addShop }) {
           </div>
           <div className="destination_dropdown">
             <select id={'destination'}>
-              {destinations.map((destination,index) => (
-                <option key= {index} value={destination.id}>
+              {destinations.map((destination) => (
+                <option value={destination.id}>
                   {destination.country}
                 </option>
               ))}
@@ -79,7 +76,7 @@ function AddShop({ destinations, addShop }) {
             <input type="number" id={'price'} />
           </div>
           <div className="hotel_url">
-            <h4> Shop Url:</h4>
+            <h4>Url:</h4>
             <input type="text" id={'url'} />
           </div>
           <div className="hotel_rating">
@@ -92,21 +89,17 @@ function AddShop({ destinations, addShop }) {
           </div>
 
           <div className="hotelBackgroungImg">
-            <h4>Shop Image:</h4>
+            <h4>Background Image:</h4>
             <input type="text" id={'backgroundImage'} />
           </div>
 
           <div className="createBtn">
-            <button type="submit">Create Shop</button>
+            <button type="submit">Create Hotel</button>
           </div>
-         
-        
         </form>
       </Container>
     </div>
   );
 }
 
-
-
-export default AddShop
+export default EditHotel;
