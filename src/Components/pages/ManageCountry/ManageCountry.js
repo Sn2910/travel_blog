@@ -16,9 +16,9 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function ManageCountry({ destinations, addDestination, token }) {
-  if (!token) {
-    return <Navigate to="/unauthorized" />;
-  }
+  // if (!token) {
+  //   return <Navigate to="/unauthorized" />;
+  // }
   return (
     <div>
       {destinations.map((destination, index) => {

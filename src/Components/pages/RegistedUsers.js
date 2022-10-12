@@ -25,7 +25,7 @@ export default function RegistedUsers() {
       {user.map((user, id) => {
         return (
           <div key={id}>
-            <img src={user.profileImage} />
+            <img src={user.profileImage} alt="" />
             <p>First Name: {user.firstName}</p>
             <p>Last Name: {user.lastName}</p>
             <p>Username: @{user.userName}</p>
