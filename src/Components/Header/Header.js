@@ -4,7 +4,7 @@ import { NavLink, Link } from "react-router-dom";
 import tourImage from "../../Images/tour.png";
 
 function Header({ destinations }) {
-  console.log(destinations);
+  // console.log(destinations);
   return (
     <div>
       <div className="logoWrap">

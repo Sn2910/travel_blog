@@ -2,13 +2,11 @@ import React from "react";
 import { useState } from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import Container from "@mui/material/Container";
-import {Link} from "react-router-dom"
-import EditIcon from '@mui/icons-material/Edit';
 
-function AddHotel({ destinations, addHotel }) {
+function EditHotel({editHotel,destinations}) {
   const [value, setValue] = useState("");
 
-  const createHotel = (e) => {
+  const editdestinationHotel = (e) => {
     e.preventDefault();
     const {
       name,
@@ -36,15 +34,14 @@ function AddHotel({ destinations, addHotel }) {
 
     console.log(destination.value);
 
-    addHotel(newHotel);
+    editHotel(newHotel);
   };
 
   return (
     <div className="addhotel">
       <Container maxWidth="sm" sx={{ background: "#fff" }}>
-        <form onSubmit={createHotel} className="addhotelWrap">
-          <h2>Add Hotel Details</h2>
-         
+        <form onSubmit={editdestinationHotel} className="addhotelWrap">
+          <h2>Edit Hotel Details</h2>
 
           <div className="hotel_name">
             <h4>Name:</h4>
@@ -79,7 +76,7 @@ function AddHotel({ destinations, addHotel }) {
             <input type="number" id={'price'} />
           </div>
           <div className="hotel_url">
-            <h4> Hotel Url:</h4>
+            <h4>Url:</h4>
             <input type="text" id={'url'} />
           </div>
           <div className="hotel_rating">
@@ -92,19 +89,17 @@ function AddHotel({ destinations, addHotel }) {
           </div>
 
           <div className="hotelBackgroungImg">
-            <h4>Hotel Image:</h4>
+            <h4>Background Image:</h4>
             <input type="text" id={'backgroundImage'} />
           </div>
 
           <div className="createBtn">
             <button type="submit">Create Hotel</button>
           </div>
-         
-        
         </form>
       </Container>
     </div>
   );
 }
 
-export default AddHotel;
+export default EditHotel;

@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Home";
@@ -16,18 +16,21 @@ import {
   editBlogByID,
   getDestinations,
   postDestination,
+  getDestinationHotel,
   postHotel,
-  editDestinationByID
+  editDestinationByID,
+  editHotelByID
 } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
 import ManageCountry from "./Components/pages/ManageCountry/ManageCountry";
 import AddHotel from "./Components/pages/Add Hotel/AddHotel";
+import EditHotel from "./Components/pages/Add Hotel/EditHotel"
 import AddRestaurant from "./Components/pages/Add Restaurant/AddRestaurant";
 import AddShop from "./Components/pages/Add Shop/AddShop";
 import SignUp from "./Components/pages/SignUp";
 import SignIn from "./Components/pages/SignIn";
-import EditCountry from './Components/pages/EditCountry/EditCountry'
+import EditCountry from "./Components/pages/EditCountry/EditCountry";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
@@ -36,6 +39,7 @@ function App() {
   const [blog, setBlog] = useState({
     blogs: [],
   });
+
   /*   const getData = async () => {
     const response = await fetch(
       `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
@@ -77,7 +81,7 @@ function App() {
   };
   const readDestinations = async (destinations) => {
     const destinationArr = await getDestinations(destinations);
-    console.log(destinationArr);
+    // console.log(destinationArr);
     setDestinations(destinationArr);
   };
   const addDestination = async (destination) => {
@@ -85,25 +89,42 @@ function App() {
     console.log(newDestination);
     setDestinations(newDestination);
   };
-  
+
   const editDestination = async (destination) => {
     const destinationCopy = {
       ...destination,
     };
-     delete destinationCopy.id;
-    const destinations = await editDestinationByID(destination.id, destinationCopy);
-    console.log("New Destination",destinations);
-    
+    delete destinationCopy.id;
+    const destinations = await editDestinationByID(
+      destination.id,
+      destinationCopy
+    );
+  
   };
+ 
   const addHotel = async (hotel) => {
     const newHotel = await postHotel(hotel);
     console.log("newHotel");
     console.log(newHotel);
-    setHotel(newHotel);
+    setHotel((prev) => {
+      return { ...prev, newHotel };
+    });
+  };
+  const editHotel = async (hotel) => {
+    const hotelCopy = {
+      ...hotel,
+    };
+    delete hotelCopy.id;
+    const hotels = await editHotelByID(
+      hotel.id,
+      hotelCopy
+    );
+    console.log("New Hotel", hotels);
   };
 
   useEffect(() => {
     /*  getData(); */
+
     readBlog();
     readDestinations();
   }, []);
@@ -133,15 +154,24 @@ function App() {
         />
         <Route
           path="/managecountry/addcountry"
-          element={<AddCounty addDestination={addDestination} />}
+          element={<AddCounty destinations={destinations} addDestination={addDestination} />}
         />
         <Route
           path="/managecountry/editcountry/:id"
-          element={<EditCountry destinations={destinations} editDestination={editDestination}  />}
+          element={
+            <EditCountry
+              destinations={destinations}
+              editDestination={editDestination}
+            />
+          }
         />
         <Route
           path="/managecountry/addcountry/addhotel"
-          element={<AddHotel addHotel={addHotel} destinations={destinations} />}
+          element={<AddHotel addHotel={addHotel} destinations={destinations}/>}
+        />
+         <Route
+          path="/managecountry/addcountry/edithotel/:id"
+          element={<EditHotel editHotel ={editHotel} />}
         />
         <Route
           path="/managecountry/addcountry/addrestaurant"

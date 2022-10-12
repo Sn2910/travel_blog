@@ -5,8 +5,6 @@ const getAsset = async () => {
   const url = `${apiUrl}/api/assets`;
   const response = await fetch(url);
   const result = await response.json();
-  console.log("Assets");
-  console.log(result);
   return result;
 };
 
@@ -14,8 +12,6 @@ const getDestinations = async () => {
   const url = `${apiUrl}/api/destinations`;
   const response = await fetch(url);
   const result = await response.json();
-  console.log("Destinations");
-  console.log(result);
   return result;
 };
 
@@ -23,8 +19,6 @@ const getDestinationsById = async (id) => {
   const url = `${apiUrl}/api/destinations/${id}`;
   const response = await fetch(url);
   const result = await response.json();
-  console.log("DestinationsById");
-  console.log(result);
   return result;
 };
 
@@ -47,19 +41,36 @@ async function editDestination(destinationdata) {
 async function editDestinationByID(id, destination) {
   console.log(id, destination);
   const url = `${apiUrl}/api/destinations/${id}`;
+  const replacerFunc = () => {
+    const visited = new WeakSet();
+    return (key, value) => {
+      if (typeof value === "object" && value !== null) {
+        if (visited.has(value)) {
+          return;
+        }
+        visited.add(value);
+      }
+      return value;
+    };
+  };
   const response = await fetch(url, {
     method: "PATCH",
     headers: {
       Accept: "application/json",
       "content-Type": "application/json",
     },
-    body: JSON.stringify(destination),
+    body: JSON.stringify(destination,replacerFunc()),
   });
   if (response.ok) {
     return getDestinations();
   }
 }
-
+const deleteDestinationsById = async (id) => {
+  const url = `${apiUrl}/api/destinations/${id}`;
+  const response = await fetch(url);
+  const result = await response.json();
+  return result;
+}; 
 
 /* const getHotel = async () => {
   const url = `${apiUrl}/api/hotel`;
@@ -70,6 +81,7 @@ async function editDestinationByID(id, destination) {
   return result;
 };
  */
+
 const postHotel = async (hotel) => {
   const url = `${apiUrl}/api/hotel`;
   const response =  await fetch(url, {
@@ -82,12 +94,26 @@ const postHotel = async (hotel) => {
   return response;
 };
 
+async function editHotelByID(id, hotel) {
+
+  const url = `${apiUrl}/api/hotel/${id}`;
+  const response = await fetch(url, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+    body: JSON.stringify(hotel),
+  });
+  console.log(response)
+  return response
+ 
+}
+
 const getBlogs = async () => {
   const url = `${apiUrl}/api/blog`;
   const response = await fetch(url);
   const result = await response.json();
-  console.log("Blogs");
-  console.log(result);
   return result;
 };
 
@@ -132,4 +158,4 @@ const postBlog = async (blog) => {
   }
 };
 
-export { getAsset, getBlogs, postBlog, getBlogByID,getDestinations,getDestinationsById,postDestination,postHotel,editBlogByID,editDestinationByID};
+export { getAsset, getBlogs, postBlog, getBlogByID,getDestinations,getDestinationsById,postDestination,postHotel,editHotelByID,editBlogByID,editDestinationByID,deleteDestinationsById};
