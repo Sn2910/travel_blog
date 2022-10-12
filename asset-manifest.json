@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/travel_blog/static/css/main.bc5a512d.css",
-    "main.js": "/travel_blog/static/js/main.28418003.js",
+    "main.css": "/travel_blog/static/css/main.a77acc80.css",
+    "main.js": "/travel_blog/static/js/main.1052ce85.js",
+    "static/media/kenn-pic.png": "/travel_blog/static/media/kenn-pic.caf2addef6498204c271.png",
     "static/media/tour.png": "/travel_blog/static/media/tour.93137f3162cd2f6befc8.png",
+    "static/media/senya-beach.jpg": "/travel_blog/static/media/senya-beach.10e4eeede6a23fb426c3.jpg",
     "static/media/europe.jpg": "/travel_blog/static/media/europe.dcd8d8fb952bc7c96340.jpg",
+    "static/media/kenn.jpg": "/travel_blog/static/media/kenn.43c705369fab1b1d8761.jpg",
     "index.html": "/travel_blog/index.html",
-    "main.bc5a512d.css.map": "/travel_blog/static/css/main.bc5a512d.css.map",
-    "main.28418003.js.map": "/travel_blog/static/js/main.28418003.js.map"
+    "main.a77acc80.css.map": "/travel_blog/static/css/main.a77acc80.css.map",
+    "main.1052ce85.js.map": "/travel_blog/static/js/main.1052ce85.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc5a512d.css",
-    "static/js/main.28418003.js"
+    "static/css/main.a77acc80.css",
+    "static/js/main.1052ce85.js"
   ]
 }
