@@ -1,6 +1,4 @@
-
 const contentfulApi = "https://cdn.contentful.com";
-const apiUrl = "http://localhost:3000";
 
 const apiUrl = "https://travel-blog-backend-2022.herokuapp.com";
 const apiUrl1 = "http://localhost:5000";
@@ -63,7 +61,7 @@ async function editDestinationByID(id, destination) {
       Accept: "application/json",
       "content-Type": "application/json",
     },
-    body: JSON.stringify(destination,replacerFunc()),
+    body: JSON.stringify(destination, replacerFunc()),
   });
   if (response.ok) {
     return getDestinations();
@@ -74,7 +72,7 @@ const deleteDestinationsById = async (id) => {
   const response = await fetch(url);
   const result = await response.json();
   return result;
-}; 
+};
 
 /* const getHotel = async () => {
   const url = `${apiUrl}/api/hotel`;
@@ -99,7 +97,6 @@ const postHotel = async (hotel) => {
 };
 
 async function editHotelByID(id, hotel) {
-
   const url = `${apiUrl}/api/hotel/${id}`;
   const response = await fetch(url, {
     method: "PATCH",
@@ -109,9 +106,8 @@ async function editHotelByID(id, hotel) {
     },
     body: JSON.stringify(hotel),
   });
-  console.log(response)
-  return response
- 
+  console.log(response);
+  return response;
 }
 
 const postRestaurant = async (restaurant) => {
@@ -199,10 +195,10 @@ const postBlog = async (blog) => {
   }
 };
 
-export { 
-  getAsset, 
-  getBlogs, 
-  postBlog, 
+export {
+  getAsset,
+  getBlogs,
+  postBlog,
   getBlogByID,
   getDestinations,
   getDestinationsById,
@@ -213,6 +209,5 @@ export {
   postShop,
   editBlogByID,
   editDestinationByID,
-  deleteDestinationsById
+  deleteDestinationsById,
 };
-
