@@ -119,6 +119,29 @@ async function editHotelByID(id, hotel) {
  
 }
 
+const postRestaurant = async (restaurant) => {
+  const url = `${apiUrl}/api/restaurant`;
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "content-Type": "application/json",
+    },
+    body: JSON.stringify(restaurant),
+  });
+  return response;
+};
+const postShop = async (shop) => {
+  const url = `${apiUrl}/api/shop`;
+  const response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "content-Type": "application/json",
+    },
+    body: JSON.stringify(shop),
+  });
+  return response;
+};
+
 /* const getBlogs = async () => {
   const url = `${apiUrl}/api/blog`;
   const response = await fetch(url); */
@@ -181,5 +204,20 @@ const postBlog = async (blog) => {
   }
 };
 
-export { getAsset, getBlogs, postBlog, getBlogByID,getDestinations,getDestinationsById,postDestination,postHotel,editHotelByID,editBlogByID,editDestinationByID,deleteDestinationsById};
+export { 
+  getAsset, 
+  getBlogs, 
+  postBlog, 
+  getBlogByID,
+  getDestinations,
+  getDestinationsById,
+  postDestination,
+  postHotel,
+  editHotelByID,
+  postRestaurant,
+  postShop,
+  editBlogByID,
+  editDestinationByID,
+  deleteDestinationsById
+};
 

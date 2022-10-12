@@ -91,23 +91,7 @@ function AddCounty({ addDestination, destinations }) {
           <div className="createBtn">
             <button>Create New Destination</button>
           </div>
-          <div className="createBtn">
-            <button>
-              <Link to="/managecountry/addcountry/addhotel">Add Hotel</Link>
-            </button>
-          </div>
-          <div className="createBtn">
-            <button>
-              <Link to="/managecountry/addcountry/addrestaurant">
-                Add Restaurant
-              </Link>
-            </button>
-          </div>
-          <div className="createBtn">
-            <button>
-              <Link to="/managecountry/addcountry/addshop">Add Shop</Link>
-            </button>
-          </div>
+        
         </form>
       </Container>
     </div>
