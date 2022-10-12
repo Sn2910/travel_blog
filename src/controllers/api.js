@@ -119,9 +119,7 @@ async function editHotelByID(id, hotel) {
  
 }
 
-const getBlogs = async () => {
-  const url = `${apiUrl}/api/blog`;
-  const response = await fetch(url);
+
 
 //Token from cookies
 const getBlogs = async (token) => {
