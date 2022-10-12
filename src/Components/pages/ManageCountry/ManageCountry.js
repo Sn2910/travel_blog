@@ -20,49 +20,44 @@ function ManageCountry({ destinations, addDestination, token }) {
   // }
   return (
     <div>
-      {destinations.map((destination, index) => {
-        return (
-
-          <Container
-            key={`container_${index}`}
-            maxWidth="sm"
-            sx={{ background: "#fff" }}
-          >
-            <Box sx={{ width: "100%" }}>
-              <Stack spacing={2}>
-                <Item key={`item_${index}`}>
-                  {destination.country}
-                  <Link to={`/managecountry/editcountry/${destination.id}`} className="editBlog">
-                    <EditIcon />
-                  </Link>
-                </Item>
-              </Stack>
-            </Box>
-          </Container>
-        );
-      })}
       <div className="createBtn">
         <button>
           <Link to="/managecountry/addcountry">Add Country</Link>
         </button>
+        <Link to="/all_countries" className="editBlog" title="Edit a country">
+          <EditIcon />
+        </Link>
       </div>
       <div className="createBtn">
-            <button>
-              <Link to="/managecountry/addcountry/addhotel">Add Hotel</Link>
-            </button>
-          </div>
-          <div className="createBtn">
-            <button>
-              <Link to="/managecountry/addcountry/addrestaurant">
-                Add Restaurant
-              </Link>
-            </button>
-          </div>
-          <div className="createBtn">
-            <button>
-              <Link to="/managecountry/addcountry/addshop">Add Shop</Link>
-            </button>
-          </div>
+        <button>
+          <Link to="/managecountry/addcountry/addhotel">Add Hotel</Link>
+        </button>
+        <Link to="/all_hotels" className="editBlog" title="Edit a hotel">
+          <EditIcon />
+        </Link>
+      </div>
+      <div className="createBtn">
+        <button>
+          <Link to="/managecountry/addcountry/addrestaurant">
+            Add Restaurant
+          </Link>
+          <Link
+            to="/all_restaurants"
+            className="editBlog"
+            title="Edit a restaurant"
+          >
+            <EditIcon />
+          </Link>
+        </button>
+      </div>
+      <div className="createBtn">
+        <button>
+          <Link to="/managecountry/addcountry/addshop">Add Shop</Link>
+        </button>
+        <Link to="/all_shops" className="editBlog" title="Edit a shop">
+          <EditIcon />
+        </Link>
+      </div>
     </div>
   );
 }
