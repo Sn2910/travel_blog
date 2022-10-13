@@ -23,6 +23,7 @@ export default function RegistedUsers() {
   }
 
   return (
+
     <div className="overFlowControl">
       <div className="regUsersCont">
         {user.map((user, id) => {

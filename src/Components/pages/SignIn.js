@@ -92,11 +92,11 @@ export default function SignIn({ signin }) {
             />
             <div>
               <i
-                class="fa-solid fa-eye open-password"
+                className="fa-solid fa-eye open-password"
                 onClick={showPassword}
               ></i>
               <i
-                class="fa-solid fa-eye-slash close-password"
+                className="fa-solid fa-eye-slash close-password"
                 onClick={hidePassword}
               ></i>
             </div>

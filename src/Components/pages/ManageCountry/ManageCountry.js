@@ -6,6 +6,8 @@ import { styled } from "@mui/material/styles";
 import { Container } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import { Link, NavLink, Navigate } from "react-router-dom";
+import "./ManageCountry.css";
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -19,50 +21,89 @@ function ManageCountry({ destinations, addDestination, token }) {
   //   return <Navigate to="/unauthorized" />;
   // }
   return (
-    <div>
-      {destinations.map((destination, index) => {
-        return (
-
-          <Container
-            key={`container_${index}`}
-            maxWidth="sm"
-            sx={{ background: "#fff" }}
-          >
-            <Box sx={{ width: "100%" }}>
-              <Stack spacing={2}>
-                <Item key={`item_${index}`}>
-                  {destination.country}
-                  <Link to={`/managecountry/editcountry/${destination.id}`} className="editBlog">
-                    <EditIcon />
-                  </Link>
-                </Item>
-              </Stack>
-            </Box>
-          </Container>
-        );
-      })}
-      <div className="createBtn">
-        <button>
-          <Link to="/managecountry/addcountry">Add Country</Link>
-        </button>
+    <div className="manageCountryWrap">
+      <h1>Country Management Zone</h1>
+      <p>Please double check your work before saving!</p>
+      <div className="placeCenter">
+        <div className="manageCountryBTN">
+          <button>
+            <Link to="/managecountry/addcountry">Add Country</Link>
+          </button>
+          <div className="link">
+            <Link
+              to="/all_countries"
+              className="manageCountryEditBTN"
+              title="Edit a country"
+            >
+              <EditIcon
+                sx={{
+                  fontSize: "2.5em",
+                  color: "#696969",
+                }}
+              />
+            </Link>
+          </div>
+        </div>
+        <div className="manageCountryBTN">
+          <button>
+            <Link to="/managehotel/addhotel">Add Hotel</Link>
+          </button>
+          <div className="link">
+            <Link
+              to="/all_hotels"
+              className="manageCountryEditBTN"
+              title="Edit a hotel"
+            >
+              <EditIcon
+                sx={{
+                  fontSize: "2.5em",
+                  color: "#696969",
+                }}
+              />
+            </Link>
+          </div>
+        </div>
+        <div className="manageCountryBTN">
+          <button>
+            <Link to="/manageshop/addshop">Add Shop</Link>
+          </button>
+          <div className="link">
+            <Link
+              to="/all_shops"
+              className="manageCountryEditBTN"
+              title="Edit a shop"
+            >
+              <EditIcon
+                sx={{
+                  fontSize: "2.5em",
+                  color: "#696969",
+                }}
+              />
+            </Link>
+          </div>
+        </div>
+        <div className="manageCountryBTN">
+          <button>
+            <Link to="/managerestaurant/addrestaurant">
+              Add Restaurant
+            </Link>
+          </button>
+          <div className="link">
+            <Link
+              to="/all_restaurants"
+              className="manageCountryEditBTN"
+              title="Edit a restaurant"
+            >
+              <EditIcon
+                sx={{
+                  fontSize: "2.5em",
+                  color: "#696969",
+                }}
+              />
+            </Link>
+          </div>
+        </div>
       </div>
-      <div className="createBtn">
-            <button>
-              <Link to="/managecountry/addcountry/addhotel">Add Hotel</Link>
-            </button>
-          </div>
-          <div className="createBtn">
-            <button>
-              <Link to="/managecountry/addcountry/addrestaurant">
-                Add Restaurant
-              </Link>
-            </button>
-          </div>
-          <div className="createBtn">
-            <button>
-              <Link to="/managecountry/addcountry/addshop">Add Shop</Link>
-            </button>
-          </div>
     </div>
   );
 }
