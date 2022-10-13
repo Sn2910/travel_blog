@@ -106,7 +106,11 @@ header a:hover {
 .userSigning {
   display: flex;
   position: absolute;
-  right: 10%;
+  right: 5%;
+  align-items: center;
+}
+.userSigning p {
+  margin: -20px;
 }
 .userSigning button {
   font-size: 0.8em;
@@ -127,10 +131,15 @@ header a:hover {
 .signIn:hover {
   color: #0bd30b;
 }
+.signLine {
+  border: 1px solid #696969;
+  height: 20px;
+  margin: 0 10px;
+}
 
 .userLogOut {
   position: absolute;
-  right: 12%;
+  right: 50px;
 }
 
 .userLogOut button {
@@ -153,7 +162,7 @@ header a:hover {
 
 .regUsers {
   position: absolute;
-  left: 12%;
+  left: 50px;
 }
 
 .regUsers button {
