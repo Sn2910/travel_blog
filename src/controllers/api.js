@@ -1,5 +1,9 @@
+
+const contentfulApi = "https://cdn.contentful.com";
+
 const apiUrl = "https://travel-blog-backend-2022.herokuapp.com";
 const apiUrl1 = "https://travel-blog-project-2022.herokuapp.com";
+
 
 const getAsset = async () => {
   const url = `${apiUrl}/api/assets`;
@@ -67,6 +71,7 @@ async function editDestinationByID(id, destination) {
 }
 const deleteDestinationsById = async (id) => {
   const url = `${apiUrl}/api/destinations/${id}`;
+
   const response = await fetch(url, {
     method: "DELETE",
     headers: {
@@ -79,6 +84,7 @@ const deleteDestinationsById = async (id) => {
   if (response.ok) {
     return getDestinations();
   }
+
 };
 
 const getHotels = async () => {
@@ -101,7 +107,6 @@ const postHotel = async (hotel) => {
 };
 
  async function editHotelByID(id, hotel) {
-
   const url = `${apiUrl}/api/hotel/${id}`;
   const replacerFunc = () => {
     const visited = new WeakSet();
@@ -135,7 +140,6 @@ const getRestaurants = async () => {
   const result = await response.json();
   return result;
 };
-
 
 const postRestaurant = async (restaurant) => {
   const url = `${apiUrl}/api/restaurant`;
@@ -224,8 +228,8 @@ const getBlogs = async (token) => {
   return result;
 };
 
-async function getBlogByID(_id) {
-  const url = `${apiUrl1}/api/blog/${_id}`;
+async function getBlogByID(id) {
+  const url = `${apiUrl1}/api/blog/${id}`;
   const response = await fetch(url);
   const result = await response.json();
   console.log(result);

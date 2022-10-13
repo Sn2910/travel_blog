@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import moment from "moment";
 import { useParams } from "react-router-dom";
 import { getBlogByID, editBlogByID } from "../../controllers/api";
+import { Link, Navigate } from "react-router-dom";
 
 const apiHost = "http://localhost:3000";
 
@@ -14,7 +15,7 @@ export default function EditBlog({ blogItems, editBlog }) {
   console.log("params ID", id);
 
   const blogItem = blogItems.find((e) => {
-    return e.id === parseInt(id);
+    return e._id === id;
   });
   const [editTitle, setEditTitle] = useState(blogItem.title);
   const [editText, setEditText] = useState(blogItem.richText);
@@ -28,13 +29,16 @@ export default function EditBlog({ blogItems, editBlog }) {
 
   function saveEditedBlog() {
     editBlog({
-      id,
+      _id: id,
       userName: editUserName,
       // blogDate: editDate,
       title: editTitle,
       richText: editText,
       blogImage: editImage,
     });
+    if (editBlog) {
+      return <Navigate to="/blog" />;
+    }
     // setEditTitle("");
     // setEditText("");
     // setEditDate("");
@@ -68,7 +72,7 @@ export default function EditBlog({ blogItems, editBlog }) {
               </p>
             </div> */}
           </div>
-          <form action="#">
+          <div>
             <div className="blogTitle">
               <h4>Title:</h4>
               <input
@@ -118,7 +122,7 @@ export default function EditBlog({ blogItems, editBlog }) {
             <div className="createBtn">
               <button onClick={saveEditedBlog}>Save</button>
             </div>
-          </form>
+          </div>
         </div>
       </Container>
     </div>

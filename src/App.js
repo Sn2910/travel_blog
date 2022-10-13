@@ -26,11 +26,10 @@ import {
   editRestaurantByID,
   getShops,
   postShop,
+  editDestinationByID,
+  editHotelByID,
   editShopByID,
   deleteDestinationsById,
- 
- 
- 
  
 } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
@@ -63,9 +62,9 @@ import EditShop from "./Components/pages/Add Shop/EditShop";
 function App() {
   const [getInfo, setGetInfo] = useState("");
   const [destinations, setDestinations] = useState("");
-  const [hotels, setHotels] = useState("");
-  const [restaurants, setRestaurants] = useState("");
-  const [shops, setShops] = useState("");
+  const [hotel, setHotel] = useState("");
+  const [restaurant, setRestaurant] = useState("");
+  const [shop, setShop] = useState("");
   const [blog, setBlog] = useState({
     blogs: [],
   });
@@ -96,7 +95,7 @@ function App() {
       ...blog,
     };
     delete blogCopy.id;
-    const blogs = await editBlogByID(blog.id, blogCopy);
+    const blogs = await editBlogByID(blog._id, blogCopy);
     console.log(blogs);
     setBlog((prev) => {
       return { ...prev, blogs };
@@ -148,6 +147,18 @@ function App() {
     const hotelCopy = {
       ...hotel,
     };
+    
+    delete hotelCopy.id;
+    const hotels = await editHotelByID(hotel.id, hotelCopy);
+    console.log("New Hotel", hotels);
+  };
+  const addRestaurant = async (restaurant) => {
+    const newRestaurant = await postRestaurant(restaurant);
+    setRestaurant(newRestaurant);
+  };
+  const addShop = async (shop) => {
+    const newShop = await postShop(shop);
+    setShop(newShop);
     console.log(hotelCopy)
     delete hotelCopy.id
     const updatehotel = await editHotelByID(hotel.id ,hotelCopy);
@@ -190,6 +201,7 @@ function App() {
     delete shopCopy.id
     const updateShop = await editShopByID(shop.id ,shopCopy);
     console.log("New Shop", updateShop);
+
   };
 
   const signin = async (username, password) => {
@@ -325,6 +337,15 @@ function App() {
         />
         
         <Route
+          path="/managecountry/addcountry/addrestaurant"
+          element={
+            <AddRestaurant
+              addRestaurant={addRestaurant}
+              destinations={destinations}
+            />
+          }
+        />
+        <Route
           path="/manageshop/addshop"
           element={<AddShop addShop={addShop} destinations={destinations} />}
         />
@@ -332,7 +353,6 @@ function App() {
           path="/manageshop/addshop/:id"
           element={<EditShop shops={shops} destinations={destinations} editShop={editShop} />}
         />
-        
 
         <Route
           path="/blog"
