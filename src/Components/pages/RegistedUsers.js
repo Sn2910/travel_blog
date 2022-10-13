@@ -37,7 +37,7 @@ export default function RegistedUsers() {
             <img src={user.profileImage} alt="" />
             <div className="userInfo">
               <div className="userFlex1">
-                <p>
+                <p className="addPadding">
                   <strong className="userInfoText1">First Name:</strong>{" "}
                   {user.firstName}
                 </p>
@@ -52,7 +52,7 @@ export default function RegistedUsers() {
               </div>
               <div className="seperate"></div>
               <div className="userFlex2">
-                <p>
+                <p className="addPadding">
                   <strong className="userInfoText2">Email:</strong> {user.email}
                 </p>
                 <p>
