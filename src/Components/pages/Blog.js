@@ -28,11 +28,11 @@ function Blog({ blogs = [], token }) {
     return (
       <div key={id}>
         <div className="blogPostTitle">
-          <Link to={`/blog-overview/${blog.id}`}>
+          <Link to={`/blog-overview/${blog._id}`}>
             <h2>{blog.title}</h2>
           </Link>
           <p>{"|"}</p>
-          <Link to={`/edit-blog/${blog.id}`} className="editBlog">
+          <Link to={`/edit-blog/${blog._id}`} className="editBlog">
             Edit Blog
           </Link>
           <Link to="#" className="deteleBlog">

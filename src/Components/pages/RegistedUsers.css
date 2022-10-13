@@ -1,3 +1,9 @@
+.overFlowControl {
+  display: flex;
+  height: 60.1vh;
+  flex-direction: column;
+  overflow-y: scroll;
+}
 .regUsersCont {
   display: flex;
   height: 60.1vh;
