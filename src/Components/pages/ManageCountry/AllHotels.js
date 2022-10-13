@@ -29,9 +29,9 @@ export default function AllHotels({ hotels }) {
             <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
                 <Item key={`item_${index}`}>
-                  {hotel.country}
+                  {hotel.name} 
                   <Link
-                    to={`/managecountry/editcountry/${hotel.id}`}
+                    to={`/managehotel/edithotel/${hotel.id}`}
                     className="editBlog"
                     title="Edit"
                   >

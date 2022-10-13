@@ -21,8 +21,8 @@ import {
   editHotelByID,
   postRestaurant,
   postShop,
+  getHotels,
   editDestinationByID,
-  editHotelByID,
 } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
@@ -52,7 +52,7 @@ import AllShops from "./Components/pages/ManageCountry/AllShops";
 function App() {
   const [getInfo, setGetInfo] = useState("");
   const [destinations, setDestinations] = useState("");
-  const [hotels, setHotel] = useState("");
+  const [hotels, setHotels] = useState("");
   const [restaurants, setRestaurant] = useState("");
   const [shops, setShop] = useState("");
   const [blog, setBlog] = useState({
@@ -112,6 +112,11 @@ function App() {
       destination.id,
       destinationCopy
     );
+  };
+  const readHotels = async() => {
+    const hotelArr = await getHotels();
+    // console.log(destinationArr);
+    setHotels(hotelArr);
   };
   const addHotel = async (hotel) => {
     const newHotel = await postHotel(hotel);
@@ -216,15 +221,7 @@ function App() {
             <ManageCountry destinations={destinations} token={data.token} />
           }
         />
-        <Route
-          path="/managecountry/addcountry"
-          element={
-            <AddCounty
-              destinations={destinations}
-              addDestination={addDestination}
-            />
-          }
-        />
+        
         <Route
           path="/all_countries"
           element={<AllCountries destinations={destinations} />}
@@ -236,6 +233,15 @@ function App() {
         />
         <Route path="/all_shops" element={<AllShops shops={shops} />} />
         <Route
+          path="/managecountry/addcountry"
+          element={
+            <AddCounty
+              destinations={destinations}
+              addDestination={addDestination}
+            />
+          }
+        />
+        <Route
           path="/managecountry/editcountry/:id"
           element={
             <EditCountry
@@ -245,15 +251,15 @@ function App() {
           }
         />
         <Route
-          path="/managecountry/addcountry/addhotel"
+          path="/managehotel/addhotel"
           element={<AddHotel addHotel={addHotel} destinations={destinations} />}
         />
         <Route
-          path="/managecountry/addcountry/edithotel/:id"
-          element={<EditHotel editHotel={editHotel} />}
+          path="/managehotel/edithotel/:id"
+          element={<EditHotel hotels ={hotels} destinations={destinations} editHotel={editHotel} />}
         />
         <Route
-          path="/managecountry/addcountry/addrestaurant"
+          path="/managerestaurant/addrestaurant"
           element={
             <AddRestaurant
               addRestaurant={addRestaurant}
@@ -262,7 +268,7 @@ function App() {
           }
         />
         <Route
-          path="/managecountry/addcountry/addshop"
+          path="/manageshop/addshop"
           element={<AddShop addShop={addShop} destinations={destinations} />}
         />
 
