@@ -62,18 +62,6 @@ function App() {
     token: null,
     userName: null,
   });
-  /*   const getData = async () => {
-    const response = await fetch(
-      `https://cdn.contentful.com/spaces/${process.env.REACT_APP_SPACE_ID}/environments/${process.env.REACT_APP_ENVIRONMENT}/entries?access_token=${process.env.REACT_APP_ACCESS_TOKEN}`
-    );
-    const result = await response.json();
-    setGetInfo(result);
-    console.log("start");
-    console.log(result);
-    /*  console.log("Shopping")
-         const destId1 ='3nZZzJ6iJ17V2wCrWySzxN'
-         console.log(result.items.filter((item)=>item.sys.contentType.sys.id === 'shopping' && item.fields.destination.sys.id === destId1))  */
-  // };
 
   const readBlog = async (token) => {
     const blogs = await getBlogs(token);
@@ -125,9 +113,9 @@ function App() {
     );
   
   };
-  const readHotels = async () => {
-    const hotelArr = await getHotels();
-    // console.log(destinationArr);
+   const readHotels = async (hotels) => {
+    const hotelArr = await getHotels(hotels);
+    console.log(hotelArr);
     setHotels(hotelArr);
   };
   const addHotel = async (hotel) => {
@@ -137,15 +125,17 @@ function App() {
     setHotels(newHotel);
   };
   const editHotel = async (hotel) => {
+    
     const hotelCopy = {
       ...hotel,
     };
-    delete hotelCopy.id;
+    console.log(hotelCopy)
+   
     const hotels = await editHotelByID(
       hotel.id,
       hotelCopy
     );
-    console.log("New Hotel", hotels);
+    console.log("New Hotel", hotel.id);
   }; 
   const addRestaurant = async (restaurant) => {
     const newRestaurant = await postRestaurant(restaurant);
@@ -212,10 +202,10 @@ function App() {
     readBlog(data.token);
 
     readDestinations();
-    readHotels()
+    readHotels() 
   }, [data.token]);
 
-  if (!blog || !destinations) {
+  if (!blog || !destinations || !hotels) {
     return <div className="loading">Loading...</div>;
   }
   /*   const destinations = getInfo.items.filter(
