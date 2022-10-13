@@ -16,10 +16,10 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function AllRestaurants({ restuarants }) {
+export default function AllRestaurants({ restaurants }) {
   return (
     <div>
-      {restuarants.map((restaurant, index) => {
+      {restaurants.map((restaurant, index) => {
         return (
           <Container
             key={`container_${index}`}
@@ -29,9 +29,9 @@ export default function AllRestaurants({ restuarants }) {
             <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
                 <Item key={`item_${index}`}>
-                  {restaurant.country}
+                  {restaurant.name}
                   <Link
-                    to={`/managecountry/editcountry/${restaurant.id}`}
+                    to={`/managerestaurant/editrestaurant/${restaurant.id}`}
                     className="editBlog"
                     title="Edit"
                   >

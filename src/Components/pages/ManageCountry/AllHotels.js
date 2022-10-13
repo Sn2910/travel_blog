@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from '@mui/icons-material/Delete';
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -29,9 +30,9 @@ export default function AllHotels({ hotels }) {
             <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
                 <Item key={`item_${index}`}>
-                  {hotel.country}
+                  {hotel.name} 
                   <Link
-                    to={`/managecountry/editcountry/${hotel.id}`}
+                    to={`/managehotel/edithotel/${hotel.id}`}
                     className="editBlog"
                     title="Edit"
                   >
