@@ -1,5 +1,5 @@
 const apiUrl = "https://travel-blog-backend-2022.herokuapp.com";
-const apiUrl1 = "http://localhost:5000";
+const apiUrl1 = "https://travel-blog-project-2022.herokuapp.com";
 
 const getAsset = async () => {
   const url = `${apiUrl}/api/assets`;
@@ -67,9 +67,18 @@ async function editDestinationByID(id, destination) {
 }
 const deleteDestinationsById = async (id) => {
   const url = `${apiUrl}/api/destinations/${id}`;
-  const response = await fetch(url);
-  const result = await response.json();
-  return result;
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+   
+  });
+  console.log(response)
+  if (response.ok) {
+    return getDestinations();
+  }
 };
 
 const getHotels = async () => {

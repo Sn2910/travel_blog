@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from '@mui/icons-material/Delete';
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -16,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function AllCountries({ destinations }) {
+export default function AllCountries({ destinations ,deleteDestination }) {
   return (
     <div>
       {destinations.map((destination, index) => {
@@ -37,6 +38,7 @@ export default function AllCountries({ destinations }) {
                   >
                     <EditIcon />
                   </Link>
+                  <DeleteIcon onClick={()=>deleteDestination(destination.id)}/>
                 </Item>
               </Stack>
             </Box>

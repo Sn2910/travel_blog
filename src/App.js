@@ -27,6 +27,7 @@ import {
   getShops,
   postShop,
   editShopByID,
+  deleteDestinationsById,
  
  
  
@@ -125,6 +126,12 @@ function App() {
       destinationCopy
     );
   };
+  const deleteDestination =async(id)=>{
+  
+    const destinationsafterdelete = await deleteDestinationsById(id)
+    setDestinations(destinationsafterdelete)
+    console.log(destinationsafterdelete)
+  }
   const readHotels = async() => {
     const hotelArr = await getHotels();
     // console.log(destinationArr);
@@ -269,7 +276,7 @@ function App() {
         
         <Route
           path="/all_countries"
-          element={<AllCountries destinations={destinations} />}
+          element={<AllCountries destinations={destinations} deleteDestination ={deleteDestination} />}
         />
         <Route path="/all_hotels" element={<AllHotels hotels={hotels} />} />
         <Route

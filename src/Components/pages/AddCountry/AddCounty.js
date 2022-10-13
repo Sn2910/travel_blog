@@ -36,6 +36,7 @@ function AddCounty({ addDestination, destinations }) {
     };
     console.log(country);
     addDestination(newCountry);
+    alert("Form Submitted Successfully")
   };
 
   return (
@@ -46,7 +47,7 @@ function AddCounty({ addDestination, destinations }) {
 
           <div className="country_name">
             <h4>Country:</h4>
-            <input type="text" id={"country"} />
+            <input type="text" id={"country"} required/>
           </div>
           <div className="cityName">
             <h4>City:</h4>
@@ -54,8 +55,8 @@ function AddCounty({ addDestination, destinations }) {
           </div>
 
           <div className="countryBackgroungImg">
-            <h4>Background Image:</h4>
-            <input type="text" id={"backgroundImage"} />
+            <h4>Background Image Url:</h4>
+            <input type="text" id={"backgroundImage"} required/>
           </div>
 
           <div className="cityInfoTextArea">
@@ -75,11 +76,11 @@ function AddCounty({ addDestination, destinations }) {
           </div>
           <div className="language">
             <h4>Language:</h4>
-            <input type="text" id={"language"} />
+            <input type="text" id={"language"} required />
           </div>
           <div className="cords">
             <h4>County cords:</h4>
-            <input type="text" id={"countryCoords"} />
+            <input type="text" id={"countryCoords"} required/>
             <p className="cordsInfo">
               <em>
                 generate Country Coordinates{" "}

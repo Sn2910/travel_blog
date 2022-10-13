@@ -65,7 +65,7 @@ function ManageCountry({ destinations, addDestination, token }) {
         </div>
         <div className="manageCountryBTN">
           <button>
-            <Link to="/managecountry/addcountry/addshop">Add Shop</Link>
+            <Link to="/manageshop/addshop">Add Shop</Link>
           </button>
           <div className="link">
             <Link
@@ -84,7 +84,7 @@ function ManageCountry({ destinations, addDestination, token }) {
         </div>
         <div className="manageCountryBTN">
           <button>
-            <Link to="/managecountry/addcountry/addrestaurant">
+            <Link to="/managerestaurant/addrestaurant">
               Add Restaurant
             </Link>
           </button>
