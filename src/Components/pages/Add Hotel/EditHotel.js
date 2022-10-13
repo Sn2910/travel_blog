@@ -1,10 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
+import { useParams } from "react-router-dom";
 import Container from "@mui/material/Container";
 
-function EditHotel({editHotel,destinations}) {
+function EditHotel({editHotel,destinations,hotels}) {
+  const { id } = useParams();
+  console.log(id)
   const [value, setValue] = useState("");
+  const hotel = hotels.find((hotel) => {
+    return hotel.id === parseInt(id);
+  });
 
   const editdestinationHotel = (e) => {
     e.preventDefault();
@@ -16,8 +22,7 @@ function EditHotel({editHotel,destinations}) {
       rating,
       review,
       destination,
-      imageID,
-      backgroundImage,
+      backgroundImgField,
     } = e.target;
 
     const newHotel = {
@@ -28,16 +33,15 @@ function EditHotel({editHotel,destinations}) {
       rating: rating.value,
       reviews: review.value,
       destinationID: destination.value,
-      imageID: imageID,
-      imageUrl: backgroundImage.value,
+      imageID: hotel.image_id ? backgroundImgField.value :null,
+      imageUrl: hotel.image_id === null ? backgroundImgField.value : "",
     };
-
-    console.log(destination.value);
 
     editHotel(newHotel);
   };
 
   return (
+  
     <div className="addhotel">
       <Container maxWidth="sm" sx={{ background: "#fff" }}>
         <form onSubmit={editdestinationHotel} className="addhotelWrap">
@@ -45,10 +49,15 @@ function EditHotel({editHotel,destinations}) {
 
           <div className="hotel_name">
             <h4>Name:</h4>
-            <input type="text" id="name"/>
+            <input 
+            type="text"
+             id="name"
+             defaultValue={hotel.name}
+             
+             />
           </div>
           <div className="destination_dropdown">
-            <select id={'destination'}>
+            <select id={'destination'} defaultValue ={hotel.destination_id}>
               {destinations.map((destination) => (
                 <option value={destination.id}>
                   {destination.country}
@@ -69,32 +78,53 @@ function EditHotel({editHotel,destinations}) {
                 height: 300,
                 fontSize: "1.2em",
               }}
+              defaultValue={hotel.description}
             />
           </div>
           <div className="hotel_price">
             <h4>Price:</h4>
-            <input type="number" id={'price'} />
+            <input 
+            type="number" 
+            id={'price'} 
+            defaultValue={hotel.price}
+            />
           </div>
           <div className="hotel_url">
             <h4>Url:</h4>
-            <input type="text" id={'url'} />
+            <input 
+            type="text" 
+            id={'url'} 
+            defaultValue={hotel.url}
+            />
           </div>
           <div className="hotel_rating">
             <h4>Rating:</h4>
-            <input type="number" id={'rating'} />
+            <input 
+            type="number"
+             id={'rating'} 
+             defaultValue={hotel.rating}
+             />
           </div>
           <div className="hotel_review">
             <h4>Review:</h4>
-            <input type="number" id={'review'} />
+            <input 
+            type="number" 
+            id={'review'}
+            defaultValue={hotel.reviews}
+            />
           </div>
 
           <div className="hotelBackgroungImg">
-            <h4>Background Image:</h4>
-            <input type="text" id={'backgroundImage'} />
+            <h4>{hotel.image_id ? "Hotel Image Id": "Hotel Image Url"}</h4>
+            <input 
+            type={hotel.image_id ? "number": "text"}
+             id={'backgroundImgField'} 
+             defaultValue={hotel.image_id ? hotel.image_id : hotel.image_url}
+             />
           </div>
 
           <div className="createBtn">
-            <button type="submit">Create Hotel</button>
+            <button type="submit">Save</button>
           </div>
         </form>
       </Container>

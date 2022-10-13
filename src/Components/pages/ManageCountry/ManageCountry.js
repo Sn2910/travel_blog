@@ -46,7 +46,7 @@ function ManageCountry({ destinations, addDestination, token }) {
         </div>
         <div className="manageCountryBTN">
           <button>
-            <Link to="/managecountry/addcountry/addhotel">Add Hotel</Link>
+            <Link to="/managehotel/addhotel">Add Hotel</Link>
           </button>
           <div className="link">
             <Link

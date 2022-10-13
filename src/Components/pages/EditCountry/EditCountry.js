@@ -2,36 +2,21 @@ import React from "react";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { Link } from "react-router-dom";
-import { getAsset } from "../../../controllers/api";
+
 
 function EditCountry({ destinations, editDestination }) {
-  const [assets, setAssets] = useState();
+
   // "" is used if assets is a String, null is to be used if assets is an Object, [] can be used if its an array, if you don't want to initialize use useState()
   const { id } = useParams();
   //   console.log("params ID", id); // should output 'params ID1'
-  useEffect(() => {
-    getAsset().then((asset) => {
-      setAssets(asset);
-    });
-  }, []);
-  if (!assets) {
-    return <div>Loading...</div>;
-  }
 
   /**
    * this will only be used if you implement a dropdown list to select a asset(id) or limit your options
    */
-  function getAssetUrl(assetId) {
-    const found = assets.find((e) => e.id === assetId);
 
-    if (!found) {
-      return "";
-    }
-    return found.img_url;
-  }
   const destination = destinations.find((destination) => {
     return destination.id === parseInt(id);
   });
