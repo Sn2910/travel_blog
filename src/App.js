@@ -17,12 +17,20 @@ import {
   editBlogByID,
   getDestinations,
   postDestination,
+  editDestinationByID,
+  getHotels,
   postHotel,
   editHotelByID,
+  getRestaurants,
   postRestaurant,
+  editRestaurantByID,
+  getShops,
   postShop,
-  getHotels,
-  editDestinationByID,
+  editShopByID,
+ 
+ 
+ 
+ 
 } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
@@ -48,13 +56,15 @@ import AllCountries from "./Components/pages/ManageCountry/AllCountries";
 import AllHotels from "./Components/pages/ManageCountry/AllHotels";
 import AllRestaurants from "./Components/pages/ManageCountry/AllRestaurants";
 import AllShops from "./Components/pages/ManageCountry/AllShops";
+import EditRestaurant from "./Components/pages/Add Restaurant/EditRestaurant";
+import EditShop from "./Components/pages/Add Shop/EditShop";
 
 function App() {
   const [getInfo, setGetInfo] = useState("");
   const [destinations, setDestinations] = useState("");
   const [hotels, setHotels] = useState("");
-  const [restaurants, setRestaurant] = useState("");
-  const [shops, setShop] = useState("");
+  const [restaurants, setRestaurants] = useState("");
+  const [shops, setShops] = useState("");
   const [blog, setBlog] = useState({
     blogs: [],
   });
@@ -63,6 +73,7 @@ function App() {
     token: null,
     userName: null,
   });
+  
 
   const readBlog = async (token) => {
     const blogs = await getBlogs(token);
@@ -107,6 +118,7 @@ function App() {
     const destinationCopy = {
       ...destination,
     };
+    console.log(destinationCopy)
     delete destinationCopy.id;
     const destinations = await editDestinationByID(
       destination.id,
@@ -129,17 +141,48 @@ function App() {
     const hotelCopy = {
       ...hotel,
     };
-    delete hotelCopy.id;
-    const hotels = await editHotelByID(hotel.id, hotelCopy);
-    console.log("New Hotel", hotels);
+    console.log(hotelCopy)
+    delete hotelCopy.id
+    const updatehotel = await editHotelByID(hotel.id ,hotelCopy);
+    console.log("New Hotel", updatehotel);
+  };
+
+  const readRestaurants = async() => {
+    const restaurantArr = await getRestaurants();
+    // console.log(destinationArr);
+    setRestaurants(restaurantArr);
   };
   const addRestaurant = async (restaurant) => {
     const newRestaurant = await postRestaurant(restaurant);
-    setRestaurant(newRestaurant);
+    setRestaurants(newRestaurant);
+  };
+  const editRestaurant = async (restaurant) => {
+    
+    const restaurantCopy = {
+      ...restaurant,
+    };
+    delete restaurantCopy.id
+    const updateRestaurant = await editRestaurantByID(restaurant.id ,restaurantCopy);
+    console.log("New Restaurant", updateRestaurant);
+  };
+  const readShops = async() => {
+    const shopArr = await getShops();
+    // console.log(destinationArr);
+    setShops(shopArr);
   };
   const addShop = async (shop) => {
     const newShop = await postShop(shop);
-    setShop(newShop);
+    setShops(newShop);
+  };
+  const editShop= async (shop) => {
+    
+    const shopCopy = {
+      ...shop,
+    };
+   
+    delete shopCopy.id
+    const updateShop = await editShopByID(shop.id ,shopCopy);
+    console.log("New Shop", updateShop);
   };
 
   const signin = async (username, password) => {
@@ -193,10 +236,12 @@ function App() {
     readBlog(data.token);
 
     readDestinations();
-    readHotels() 
+    readHotels();
+    readRestaurants();
+    readShops();
   }, [data.token]);
 
-  if (!blog || !destinations || !hotels) {
+  if (!blog || !destinations || !hotels || !restaurants || !shops) {
     return <div className="loading">Loading...</div>;
   }
   /*   const destinations = getInfo.items.filter(
@@ -267,10 +312,20 @@ function App() {
             />
           }
         />
+         <Route
+          path="/managerestaurant/editrestaurant/:id"
+          element={<EditRestaurant restaurants={restaurants} destinations={destinations} editRestaurant={editRestaurant} />}
+        />
+        
         <Route
           path="/manageshop/addshop"
           element={<AddShop addShop={addShop} destinations={destinations} />}
         />
+         <Route
+          path="/manageshop/addshop/:id"
+          element={<EditShop shops={shops} destinations={destinations} editShop={editShop} />}
+        />
+        
 
         <Route
           path="/blog"

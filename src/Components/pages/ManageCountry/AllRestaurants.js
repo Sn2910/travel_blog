@@ -29,9 +29,9 @@ export default function AllRestaurants({ restuarants }) {
             <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
                 <Item key={`item_${index}`}>
-                  {restaurant.country}
+                  {restaurant.name}
                   <Link
-                    to={`/managecountry/editcountry/${restaurant.id}`}
+                    to={`/managerestaurant/editrestaurant/${restaurant.id}`}
                     className="editBlog"
                     title="Edit"
                   >

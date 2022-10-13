@@ -29,9 +29,9 @@ export default function AllShops({ shops }) {
             <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
                 <Item key={`item_${index}`}>
-                  {shop.country}
+                  {shop.name}
                   <Link
-                    to={`/managecountry/editcountry/${shop.id}`}
+                    to={`/manageshop/editshop/${shop.id}`}
                     className="editBlog"
                     title="Edit"
                   >

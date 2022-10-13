@@ -1,18 +1,16 @@
 import React from "react";
-import { useState } from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { useParams } from "react-router-dom";
 import Container from "@mui/material/Container";
 
-function EditHotel({editHotel,destinations,hotels}) {
+function EditRestaurant({editRestaurant,destinations,restaurants}) {
   const { id } = useParams();
   console.log(id)
-  const [value, setValue] = useState("");
-  const hotel = hotels.find((hotel) => {
-    return hotel.id === parseInt(id);
+  const restaurant = restaurants.find((restaurant) => {
+    return restaurant.id === parseInt(id);
   });
 
-  const editdestinationHotel = (e) => {
+  const editdestinationRestaurant = (e) => {
     e.preventDefault();
     const {
       name,
@@ -25,7 +23,7 @@ function EditHotel({editHotel,destinations,hotels}) {
       backgroundImgField,
     } = e.target;
 
-    const newHotel = {
+    const newRestaurant = {
       id:id,
       name: name.value,
       description: description.value,
@@ -34,31 +32,31 @@ function EditHotel({editHotel,destinations,hotels}) {
       rating: rating.value,
       reviews: review.value,
       destinationID: destination.value,
-      imageID: hotel.image_id ? backgroundImgField.value :null,
-      imageUrl: hotel.image_id === null ? backgroundImgField.value : "",
+      imageID: restaurant.image_id ? backgroundImgField.value :null,
+      imageUrl: restaurant.image_id === null ? backgroundImgField.value : "",
     };
 
-    editHotel(newHotel);
+    editRestaurant(newRestaurant);
   };
 
   return (
   
-    <div className="addhotel">
+    <div className="addrestaurant">
       <Container maxWidth="sm" sx={{ background: "#fff" }}>
-        <form onSubmit={editdestinationHotel} className="addhotelWrap">
-          <h2>Edit Hotel Details</h2>
+        <form onSubmit={editdestinationRestaurant} className="addrestaurantWrap">
+          <h2>Edit Restaurant Details</h2>
 
-          <div className="hotel_name">
+          <div className="restaurant_name">
             <h4>Name:</h4>
             <input 
             type="text"
              id="name"
-             defaultValue={hotel.name}
+             defaultValue={restaurant.name}
              
              />
           </div>
           <div className="destination_dropdown">
-            <select id={'destination'} defaultValue ={hotel.destination_id}>
+            <select id={'destination'} defaultValue ={restaurant.destination_id}>
               {destinations.map((destination) => (
                 <option value={destination.id}>
                   {destination.country}
@@ -66,7 +64,7 @@ function EditHotel({editHotel,destinations,hotels}) {
               ))}
             </select>
           </div>
-          <div className="hotel_desc">
+          <div className="restaurant_desc">
             <h4>Description:</h4>
             <TextareaAutosize
               className="textArea"
@@ -79,48 +77,48 @@ function EditHotel({editHotel,destinations,hotels}) {
                 height: 300,
                 fontSize: "1.2em",
               }}
-              defaultValue={hotel.description}
+              defaultValue={restaurant.description}
             />
           </div>
-          <div className="hotel_price">
+          <div className="restaurant_price">
             <h4>Price:</h4>
             <input 
             type="number" 
             id={'price'} 
-            defaultValue={hotel.price}
+            defaultValue={restaurant.price}
             />
           </div>
-          <div className="hotel_url">
+          <div className="restaurant_url">
             <h4>Url:</h4>
             <input 
             type="text" 
             id={'url'} 
-            defaultValue={hotel.url}
+            defaultValue={restaurant.url}
             />
           </div>
-          <div className="hotel_rating">
+          <div className="restaurant_rating">
             <h4>Rating:</h4>
             <input 
             type="number"
              id={'rating'} 
-             defaultValue={hotel.rating}
+             defaultValue={restaurant.rating}
              />
           </div>
-          <div className="hotel_review">
+          <div className="restaurant_review">
             <h4>Review:</h4>
             <input 
             type="number" 
             id={'review'}
-            defaultValue={hotel.reviews}
+            defaultValue={restaurant.reviews}
             />
           </div>
 
-          <div className="hotelBackgroungImg">
-            <h4>{hotel.image_id ? "Hotel Image Id": "Hotel Image Url"}</h4>
+          <div className="restaurantBackgroungImg">
+            <h4>{restaurant.image_id ? "Restaurant Image Id": "Restaurant Image Url"}</h4>
             <input 
-            type={hotel.image_id ? "number": "text"}
+            type={restaurant.image_id ? "number": "text"}
              id={'backgroundImgField'} 
-             defaultValue={hotel.image_id ? hotel.image_id : hotel.image_url}
+             defaultValue={restaurant.image_id ? restaurant.image_id : restaurant.image_url}
              />
           </div>
 
@@ -133,4 +131,4 @@ function EditHotel({editHotel,destinations,hotels}) {
   );
 }
 
-export default EditHotel;
+export default EditRestaurant;

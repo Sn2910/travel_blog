@@ -1,5 +1,3 @@
-const contentfulApi = "https://cdn.contentful.com";
-
 const apiUrl = "https://travel-blog-backend-2022.herokuapp.com";
 const apiUrl1 = "http://localhost:5000";
 
@@ -37,9 +35,9 @@ const postDestination = async (destination) => {
     return getDestinations();
   }
 };
-async function editDestination(destinationdata) {
+/* async function editDestination(destinationdata) {
   editDestinationByID(destinationdata.id, destinationdata);
-}
+} */
 async function editDestinationByID(id, destination) {
   console.log(id, destination);
   const url = `${apiUrl}/api/destinations/${id}`;
@@ -92,9 +90,7 @@ const postHotel = async (hotel) => {
   });
   return response;
 };
-async function editHotel(hoteldata) {
-  editHotelByID(hoteldata.id, hoteldata);
-}
+
  async function editHotelByID(id, hotel) {
 
   const url = `${apiUrl}/api/hotel/${id}`;
@@ -124,6 +120,13 @@ async function editHotel(hoteldata) {
   }
  
 } 
+const getRestaurants = async () => {
+  const url = `${apiUrl}/api/restaurants`;
+  const response = await fetch(url);
+  const result = await response.json();
+  return result;
+};
+
 
 const postRestaurant = async (restaurant) => {
   const url = `${apiUrl}/api/restaurant`;
@@ -136,6 +139,30 @@ const postRestaurant = async (restaurant) => {
   });
   return response;
 };
+async function editRestaurantByID(id, restaurant) {
+
+  const url = `${apiUrl}/api/restaurant/${id}`;
+  const response = await fetch(url, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+    body: JSON.stringify(restaurant),
+  });
+  console.log(response)
+  if (response.ok) {
+    return getRestaurants();
+  }
+ 
+} 
+const getShops = async () => {
+  const url = `${apiUrl}/api/shops`;
+  const response = await fetch(url);
+  const result = await response.json();
+  return result;
+};
+
 const postShop = async (shop) => {
   const url = `${apiUrl}/api/shop`;
   const response = await fetch(url, {
@@ -147,10 +174,26 @@ const postShop = async (shop) => {
   });
   return response;
 };
+async function editShopByID(id, shop) {
 
-/* const getBlogs = async () => {
-  const url = `${apiUrl}/api/blog`;
-  const response = await fetch(url); */
+  const url = `${apiUrl}/api/shop/${id}`;
+  const response = await fetch(url, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+    body: JSON.stringify(shop),
+  });
+  console.log(response)
+  if (response.ok) {
+    return getShops();
+  }
+ 
+} 
+
+
+
 
 //Token from cookies
 const getBlogs = async (token) => {
@@ -215,15 +258,19 @@ export {
   getBlogs,
   postBlog,
   getBlogByID,
+  editBlogByID,
   getDestinations,
   getDestinationsById,
-  postDestination,
-  postHotel,
-  getHotels,
-  postRestaurant,
-  postShop,
-  editBlogByID,
+  postDestination, 
   editDestinationByID,
   deleteDestinationsById,
+  postHotel,
+  getHotels,
   editHotelByID,
+  getRestaurants,
+  postRestaurant,
+  editRestaurantByID,
+  getShops,
+  postShop,
+  editShopByID,
 };
