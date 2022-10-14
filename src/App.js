@@ -45,6 +45,7 @@ import {
   validateUser,
   getVerifiedUsers,
   signUpUser,
+  adminCheck,
 } from "./controlMongodbUsers/api_operations";
 import Users from "./Components/pages/Users";
 import NotPermitted from "./Components/pages/NotPermitted";
