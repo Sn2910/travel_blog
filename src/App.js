@@ -28,6 +28,9 @@ import {
   postShop,
   editShopByID,
   deleteDestinationsById,
+  deleteHotelById,
+  deleteRestaurantById,
+  deleteShopById
  
  
  
@@ -113,6 +116,7 @@ function App() {
     const newDestination = await postDestination(destination);
     console.log(newDestination);
     setDestinations(newDestination);
+    
   };
 
   const editDestination = async (destination) => {
@@ -153,6 +157,12 @@ function App() {
     const updatehotel = await editHotelByID(hotel.id ,hotelCopy);
     console.log("New Hotel", updatehotel);
   };
+  const deleteHotel =async(id)=>{
+  
+    const hotelsafterdelete = await deleteHotelById(id)
+    setHotels(hotelsafterdelete)
+   
+  }
 
   const readRestaurants = async() => {
     const restaurantArr = await getRestaurants();
@@ -172,6 +182,12 @@ function App() {
     const updateRestaurant = await editRestaurantByID(restaurant.id ,restaurantCopy);
     console.log("New Restaurant", updateRestaurant);
   };
+  const deleteRestaurant =async(id)=>{
+  
+    const restaurantsafterdelete = await deleteRestaurantById(id)
+    setRestaurants(restaurantsafterdelete)
+   
+  }
   const readShops = async() => {
     const shopArr = await getShops();
     // console.log(destinationArr);
@@ -191,6 +207,12 @@ function App() {
     const updateShop = await editShopByID(shop.id ,shopCopy);
     console.log("New Shop", updateShop);
   };
+  const deleteShop =async(id)=>{
+  
+    const shopsafterdelete = await deleteShopById(id)
+    setShops(shopsafterdelete)
+   
+  }
 
   const signin = async (username, password) => {
     const token = await validateUser(username, password);
@@ -278,12 +300,12 @@ function App() {
           path="/all_countries"
           element={<AllCountries destinations={destinations} deleteDestination ={deleteDestination} />}
         />
-        <Route path="/all_hotels" element={<AllHotels hotels={hotels} />} />
+        <Route path="/all_hotels" element={<AllHotels hotels={hotels} deleteHotel = {deleteHotel} />} />
         <Route
           path="/all_restaurants"
-          element={<AllRestaurants restaurants={restaurants} />}
+          element={<AllRestaurants restaurants={restaurants} deleteRestaurant={deleteRestaurant} />}
         />
-        <Route path="/all_shops" element={<AllShops shops={shops} />} />
+        <Route path="/all_shops" element={<AllShops shops={shops} deleteShop={deleteShop}/>} />
         <Route
           path="/managecountry/addcountry"
           element={

@@ -17,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function AllHotels({ hotels }) {
+export default function AllHotels({ hotels,deleteHotel }) {
   return (
     <div>
       {hotels.map((hotel, index) => {
@@ -37,7 +37,9 @@ export default function AllHotels({ hotels }) {
                     title="Edit"
                   >
                     <EditIcon />
+                    
                   </Link>
+                  <DeleteIcon onClick={()=>deleteHotel(hotel.id)}/>
                 </Item>
               </Stack>
             </Box>

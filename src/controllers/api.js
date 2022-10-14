@@ -129,6 +129,22 @@ const postHotel = async (hotel) => {
   }
  
 } 
+const deleteHotelById = async (id) => {
+  const url = `${apiUrl}/api/hotel/${id}`;
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+   
+  });
+  console.log(response)
+  if (response.ok) {
+    return getHotels();
+  }
+};
+
 const getRestaurants = async () => {
   const url = `${apiUrl}/api/restaurants`;
   const response = await fetch(url);
@@ -165,6 +181,21 @@ async function editRestaurantByID(id, restaurant) {
   }
  
 } 
+const deleteRestaurantById = async (id) => {
+  const url = `${apiUrl}/api/restaurant/${id}`;
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+   
+  });
+  console.log(response)
+  if (response.ok) {
+    return getRestaurants();
+  }
+};
 const getShops = async () => {
   const url = `${apiUrl}/api/shops`;
   const response = await fetch(url);
@@ -200,6 +231,21 @@ async function editShopByID(id, shop) {
   }
  
 } 
+const deleteShopById = async (id) => {
+  const url = `${apiUrl}/api/shop/${id}`;
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+   
+  });
+  console.log(response)
+  if (response.ok) {
+    return getShops();
+  }
+};
 
 
 
@@ -276,10 +322,13 @@ export {
   postHotel,
   getHotels,
   editHotelByID,
+  deleteHotelById,
   getRestaurants,
   postRestaurant,
   editRestaurantByID,
+  deleteRestaurantById,
   getShops,
   postShop,
   editShopByID,
+  deleteShopById
 };

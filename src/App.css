@@ -11,9 +11,18 @@
   padding: 5px;
 }
 
-.home {
-  /* background-color: #282c34; */
-  /* height: 100vh; */
+.createBtn button {
+  padding: 5px 10px;
+  font-size: 1em;
+  background: #008000;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.createBtn button:hover {
+  background: #05bb05;
+  cursor: pointer;
 }
 
 .App-logo {

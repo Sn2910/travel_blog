@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -16,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function AllRestaurants({ restaurants }) {
+export default function AllRestaurants({ restaurants,deleteRestaurant }) {
   return (
     <div>
       {restaurants.map((restaurant, index) => {
@@ -37,6 +38,7 @@ export default function AllRestaurants({ restaurants }) {
                   >
                     <EditIcon />
                   </Link>
+                  <DeleteIcon onClick={()=>deleteRestaurant(restaurant.id)}/>
                 </Item>
               </Stack>
             </Box>
