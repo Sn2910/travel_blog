@@ -1,9 +1,7 @@
-
 const contentfulApi = "https://cdn.contentful.com";
 
 const apiUrl = "https://travel-blog-backend-2022.herokuapp.com";
 const apiUrl1 = "https://travel-blog-project-2022.herokuapp.com";
-
 
 const getAsset = async () => {
   const url = `${apiUrl}/api/assets`;
@@ -78,13 +76,11 @@ const deleteDestinationsById = async (id) => {
       Accept: "application/json",
       "content-Type": "application/json",
     },
-   
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getDestinations();
   }
-
 };
 
 const getHotels = async () => {
@@ -106,7 +102,7 @@ const postHotel = async (hotel) => {
   return response;
 };
 
- async function editHotelByID(id, hotel) {
+async function editHotelByID(id, hotel) {
   const url = `${apiUrl}/api/hotel/${id}`;
   const replacerFunc = () => {
     const visited = new WeakSet();
@@ -126,14 +122,13 @@ const postHotel = async (hotel) => {
       Accept: "application/json",
       "content-Type": "application/json",
     },
-    body: JSON.stringify(hotel,replacerFunc()),
+    body: JSON.stringify(hotel, replacerFunc()),
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getHotels();
   }
- 
-} 
+}
 const getRestaurants = async () => {
   const url = `${apiUrl}/api/restaurants`;
   const response = await fetch(url);
@@ -153,7 +148,6 @@ const postRestaurant = async (restaurant) => {
   return response;
 };
 async function editRestaurantByID(id, restaurant) {
-
   const url = `${apiUrl}/api/restaurant/${id}`;
   const response = await fetch(url, {
     method: "PATCH",
@@ -163,12 +157,11 @@ async function editRestaurantByID(id, restaurant) {
     },
     body: JSON.stringify(restaurant),
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getRestaurants();
   }
- 
-} 
+}
 const getShops = async () => {
   const url = `${apiUrl}/api/shops`;
   const response = await fetch(url);
@@ -188,7 +181,6 @@ const postShop = async (shop) => {
   return response;
 };
 async function editShopByID(id, shop) {
-
   const url = `${apiUrl}/api/shop/${id}`;
   const response = await fetch(url, {
     method: "PATCH",
@@ -198,15 +190,11 @@ async function editShopByID(id, shop) {
     },
     body: JSON.stringify(shop),
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getShops();
   }
- 
-} 
-
-
-
+}
 
 //Token from cookies
 const getBlogs = async (token) => {
@@ -266,6 +254,22 @@ const postBlog = async (blog) => {
   }
 };
 
+const deleteBlog = async (id) => {
+  const url = `${apiUrl1}/api/blog/${id}`;
+
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+  });
+  console.log(response);
+  if (response.ok) {
+    return getBlogs();
+  }
+};
+
 export {
   getAsset,
   getBlogs,
@@ -274,7 +278,7 @@ export {
   editBlogByID,
   getDestinations,
   getDestinationsById,
-  postDestination, 
+  postDestination,
   editDestinationByID,
   deleteDestinationsById,
   postHotel,
@@ -286,4 +290,5 @@ export {
   getShops,
   postShop,
   editShopByID,
+  deleteBlog,
 };
