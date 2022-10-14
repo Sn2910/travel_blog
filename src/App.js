@@ -15,6 +15,7 @@ import {
   postBlog,
   getBlogByID,
   editBlogByID,
+  deleteBlog,
   getDestinations,
   postDestination,
   editDestinationByID,
@@ -51,6 +52,7 @@ import {
   validateUser,
   getVerifiedUsers,
   signUpUser,
+  adminCheck,
 } from "./controlMongodbUsers/api_operations";
 import Users from "./Components/pages/Users";
 import NotPermitted from "./Components/pages/NotPermitted";
@@ -77,7 +79,6 @@ function App() {
     token: null,
     userName: null,
   });
-  
 
   const readBlog = async (token) => {
     const blogs = await getBlogs(token);
@@ -99,11 +100,17 @@ function App() {
       ...blog,
     };
     delete blogCopy.id;
-    const blogs = await editBlogByID(blog.id, blogCopy);
+    const blogs = await editBlogByID(blog._id, blogCopy);
     console.log(blogs);
     setBlog((prev) => {
       return { ...prev, blogs };
     });
+  };
+
+  const deleteBlogById = async (id) => {
+    const deletedBlog = await deleteBlog(id);
+    setBlog(deletedBlog);
+    console.log(deletedBlog);
   };
 
   const readDestinations = async (destinations) => {
@@ -123,20 +130,19 @@ function App() {
     const destinationCopy = {
       ...destination,
     };
-    console.log(destinationCopy)
+    console.log(destinationCopy);
     delete destinationCopy.id;
     const destinations = await editDestinationByID(
       destination.id,
       destinationCopy
     );
   };
-  const deleteDestination =async(id)=>{
-  
-    const destinationsafterdelete = await deleteDestinationsById(id)
-    setDestinations(destinationsafterdelete)
-    console.log(destinationsafterdelete)
-  }
-  const readHotels = async() => {
+  const deleteDestination = async (id) => {
+    const destinationsafterdelete = await deleteDestinationsById(id);
+    setDestinations(destinationsafterdelete);
+    console.log(destinationsafterdelete);
+  };
+  const readHotels = async () => {
     const hotelArr = await getHotels();
     // console.log(destinationArr);
     setHotels(hotelArr);
@@ -148,7 +154,6 @@ function App() {
     setHotels(newHotel);
   };
   const editHotel = async (hotel) => {
-    
     const hotelCopy = {
       ...hotel,
     };
@@ -164,7 +169,9 @@ function App() {
    
   }
 
-  const readRestaurants = async() => {
+   
+
+  const readRestaurants = async () => {
     const restaurantArr = await getRestaurants();
     // console.log(destinationArr);
     setRestaurants(restaurantArr);
@@ -174,12 +181,14 @@ function App() {
     setRestaurants(newRestaurant);
   };
   const editRestaurant = async (restaurant) => {
-    
     const restaurantCopy = {
       ...restaurant,
     };
-    delete restaurantCopy.id
-    const updateRestaurant = await editRestaurantByID(restaurant.id ,restaurantCopy);
+    delete restaurantCopy.id;
+    const updateRestaurant = await editRestaurantByID(
+      restaurant.id,
+      restaurantCopy
+    );
     console.log("New Restaurant", updateRestaurant);
   };
   const deleteRestaurant =async(id)=>{
@@ -197,14 +206,13 @@ function App() {
     const newShop = await postShop(shop);
     setShops(newShop);
   };
-  const editShop= async (shop) => {
-    
+  const editShop = async (shop) => {
     const shopCopy = {
       ...shop,
     };
-   
-    delete shopCopy.id
-    const updateShop = await editShopByID(shop.id ,shopCopy);
+
+    delete shopCopy.id;
+    const updateShop = await editShopByID(shop.id, shopCopy);
     console.log("New Shop", updateShop);
   };
   const deleteShop =async(id)=>{
@@ -261,7 +269,7 @@ function App() {
   useEffect(() => {
     console.log("Reading Blogs");
     /*  getData(); */
-    readBlog();
+    // readBlog();
     readBlog(data.token);
 
     readDestinations();
@@ -295,10 +303,15 @@ function App() {
             <ManageCountry destinations={destinations} token={data.token} />
           }
         />
-        
+
         <Route
           path="/all_countries"
-          element={<AllCountries destinations={destinations} deleteDestination ={deleteDestination} />}
+          element={
+            <AllCountries
+              destinations={destinations}
+              deleteDestination={deleteDestination}
+            />
+          }
         />
         <Route path="/all_hotels" element={<AllHotels hotels={hotels} deleteHotel = {deleteHotel} />} />
         <Route
@@ -330,7 +343,13 @@ function App() {
         />
         <Route
           path="/managehotel/edithotel/:id"
-          element={<EditHotel hotels ={hotels} destinations={destinations} editHotel={editHotel} />}
+          element={
+            <EditHotel
+              hotels={hotels}
+              destinations={destinations}
+              editHotel={editHotel}
+            />
+          }
         />
         <Route
           path="/managerestaurant/addrestaurant"
@@ -341,24 +360,50 @@ function App() {
             />
           }
         />
-         <Route
+        <Route
           path="/managerestaurant/editrestaurant/:id"
-          element={<EditRestaurant restaurants={restaurants} destinations={destinations} editRestaurant={editRestaurant} />}
+          element={
+            <EditRestaurant
+              restaurants={restaurants}
+              destinations={destinations}
+              editRestaurant={editRestaurant}
+            />
+          }
         />
-        
+
+        <Route
+          path="/managecountry/addcountry/addrestaurant"
+          element={
+            <AddRestaurant
+              addRestaurant={addRestaurant}
+              destinations={destinations}
+            />
+          }
+        />
         <Route
           path="/manageshop/addshop"
           element={<AddShop addShop={addShop} destinations={destinations} />}
         />
-         <Route
+        <Route
           path="/manageshop/addshop/:id"
-          element={<EditShop shops={shops} destinations={destinations} editShop={editShop} />}
+          element={
+            <EditShop
+              shops={shops}
+              destinations={destinations}
+              editShop={editShop}
+            />
+          }
         />
-        
 
         <Route
           path="/blog"
-          element={<Blog blogs={blog.blogs} token={data.token} />}
+          element={
+            <Blog
+              blogs={blog.blogs}
+              token={data.token}
+              deleteBlog={deleteBlogById}
+            />
+          }
         />
         {/* <Route
           path="/"

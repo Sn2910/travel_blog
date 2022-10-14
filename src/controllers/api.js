@@ -1,3 +1,5 @@
+const contentfulApi = "https://cdn.contentful.com";
+
 const apiUrl = "https://travel-blog-backend-2022.herokuapp.com";
 const apiUrl1 = "https://travel-blog-project-2022.herokuapp.com";
 
@@ -67,15 +69,15 @@ async function editDestinationByID(id, destination) {
 }
 const deleteDestinationsById = async (id) => {
   const url = `${apiUrl}/api/destinations/${id}`;
+
   const response = await fetch(url, {
     method: "DELETE",
     headers: {
       Accept: "application/json",
       "content-Type": "application/json",
     },
-   
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getDestinations();
   }
@@ -100,8 +102,7 @@ const postHotel = async (hotel) => {
   return response;
 };
 
- async function editHotelByID(id, hotel) {
-
+async function editHotelByID(id, hotel) {
   const url = `${apiUrl}/api/hotel/${id}`;
   const replacerFunc = () => {
     const visited = new WeakSet();
@@ -121,9 +122,9 @@ const postHotel = async (hotel) => {
       Accept: "application/json",
       "content-Type": "application/json",
     },
-    body: JSON.stringify(hotel,replacerFunc()),
+    body: JSON.stringify(hotel, replacerFunc()),
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getHotels();
   }
@@ -152,7 +153,6 @@ const getRestaurants = async () => {
   return result;
 };
 
-
 const postRestaurant = async (restaurant) => {
   const url = `${apiUrl}/api/restaurant`;
   const response = await fetch(url, {
@@ -165,7 +165,6 @@ const postRestaurant = async (restaurant) => {
   return response;
 };
 async function editRestaurantByID(id, restaurant) {
-
   const url = `${apiUrl}/api/restaurant/${id}`;
   const response = await fetch(url, {
     method: "PATCH",
@@ -175,7 +174,7 @@ async function editRestaurantByID(id, restaurant) {
     },
     body: JSON.stringify(restaurant),
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getRestaurants();
   }
@@ -215,7 +214,6 @@ const postShop = async (shop) => {
   return response;
 };
 async function editShopByID(id, shop) {
-
   const url = `${apiUrl}/api/shop/${id}`;
   const response = await fetch(url, {
     method: "PATCH",
@@ -225,7 +223,7 @@ async function editShopByID(id, shop) {
     },
     body: JSON.stringify(shop),
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getShops();
   }
@@ -270,8 +268,8 @@ const getBlogs = async (token) => {
   return result;
 };
 
-async function getBlogByID(_id) {
-  const url = `${apiUrl1}/api/blog/${_id}`;
+async function getBlogByID(id) {
+  const url = `${apiUrl1}/api/blog/${id}`;
   const response = await fetch(url);
   const result = await response.json();
   console.log(result);
@@ -308,6 +306,22 @@ const postBlog = async (blog) => {
   }
 };
 
+const deleteBlog = async (id) => {
+  const url = `${apiUrl1}/api/blog/${id}`;
+
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "content-Type": "application/json",
+    },
+  });
+  console.log(response);
+  if (response.ok) {
+    return getBlogs();
+  }
+};
+
 export {
   getAsset,
   getBlogs,
@@ -316,7 +330,7 @@ export {
   editBlogByID,
   getDestinations,
   getDestinationsById,
-  postDestination, 
+  postDestination,
   editDestinationByID,
   deleteDestinationsById,
   postHotel,
@@ -330,5 +344,5 @@ export {
   getShops,
   postShop,
   editShopByID,
-  deleteShopById
+  deleteShopById,deleteBlog
 };

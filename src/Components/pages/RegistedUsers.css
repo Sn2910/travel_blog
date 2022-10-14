@@ -1,3 +1,9 @@
+.overFlowControl {
+  display: flex;
+  height: 60.1vh;
+  flex-direction: column;
+  overflow-y: scroll;
+}
 .regUsersCont {
   display: flex;
   height: 60.1vh;
@@ -20,8 +26,8 @@
 }
 .seperate {
   border: 1px solid #696969;
-  height: 92px;
-  margin: 0 10px;
+  height: 65px;
+  margin: auto 10px;
 }
 .userInfo p {
   text-align: left;
@@ -35,4 +41,7 @@
 }
 .userFlex2 p {
   margin-left: 0;
+}
+.addPadding {
+  padding-top: 20px;
 }
