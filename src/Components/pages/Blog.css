@@ -59,12 +59,21 @@
   cursor: pointer;
   color: orange;
 }
-.blogPostTitle .deteleBlog:hover {
-  text-decoration: underline;
-  cursor: pointer;
-  color: red;
+
+.deteleBlog button {
+  background: transparent;
+  border: none;
+  color: #696969;
+  font-size: 0.9em;
+  /* margin-bottom: -7px;
+  text-decoration: none;
+  color: #696969;
+  margin-left: 15px;
+  align-items: center;
+  transition: 0.4s; */
 }
-.blogPostTitle .deteleBlog:hover {
+
+.deteleBlog button:hover {
   text-decoration: underline;
   cursor: pointer;
   color: red;

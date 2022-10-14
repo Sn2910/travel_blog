@@ -1,6 +1,7 @@
 const API_ENDPOINT =
   process.env.API_ENDPOINT || "https://travel-blog-project-2022.herokuapp.com";
 
+//Logging In Users
 export const validateUser = async (username, password) => {
   const response = await fetch(API_ENDPOINT + "/api/login", {
     method: "POST",
@@ -14,6 +15,7 @@ export const validateUser = async (username, password) => {
   return result?.token;
 };
 
+//Getting All Users === Only Admins
 export const getVerifiedUsers = async (token) => {
   const response = await fetch(API_ENDPOINT + "/api/signedup-users", {
     method: "GET",
@@ -28,6 +30,7 @@ export const getVerifiedUsers = async (token) => {
   return result;
 };
 
+//Signing Up Users
 export const signUpUser = async (
   firstName,
   lastName,
@@ -59,4 +62,9 @@ export const signUpUser = async (
   return result?.token;
 };
 
+//Users Role
+export const adminCheck = () => {
+  const isAdmin = getVerifiedUsers.findOne({ userRole: "admin" });
+  return isAdmin;
+};
 // export { validateUser, getVerifiedUsers, signUpUser };

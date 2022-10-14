@@ -19,9 +19,9 @@ export default function EditBlog({ blogItems, editBlog }) {
   });
   const [editTitle, setEditTitle] = useState(blogItem.title);
   const [editText, setEditText] = useState(blogItem.richText);
-  // const [editDate, setEditDate] = useState(blogItem.blog_date);
   const [editImage, setEditImage] = useState(blogItem.blogImage);
-  const [editUserName, setEditUserName] = useState(blogItem.userName);
+  // const [editDate, setEditDate] = useState(blogItem.blog_date);
+  // const [editUserName, setEditUserName] = useState(blogItem.userName);
 
   // const date = Moment().format("MMM Do YY");
   // const date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
@@ -30,7 +30,7 @@ export default function EditBlog({ blogItems, editBlog }) {
   function saveEditedBlog() {
     editBlog({
       _id: id,
-      userName: editUserName,
+      // userName: editUserName,
       // blogDate: editDate,
       title: editTitle,
       richText: editText,
@@ -39,11 +39,6 @@ export default function EditBlog({ blogItems, editBlog }) {
     if (editBlog) {
       return <Navigate to="/blog" />;
     }
-    // setEditTitle("");
-    // setEditText("");
-    // setEditDate("");
-    // setEditImage("");
-    // setEditUserName("");
   }
 
   return (
@@ -51,7 +46,7 @@ export default function EditBlog({ blogItems, editBlog }) {
       <Container maxWidth="sm" sx={{ background: "#fff" }}>
         <div className="blogWrap">
           <h2>Edit Your Blog</h2>
-          <div className="user-date">
+          {/* <div className="user-date">
             <div className="username">
               <h4>Username:</h4>
               <input
@@ -60,7 +55,7 @@ export default function EditBlog({ blogItems, editBlog }) {
                 onChange={(e) => setEditUserName(e.target.value)}
               />
             </div>
-            {/* <div>
+            <div>
               <h4>Date:</h4>
               <input
                 type="date"
@@ -70,8 +65,8 @@ export default function EditBlog({ blogItems, editBlog }) {
               <p className="dateInfo">
                 <em>Just click the icon and select today!</em>
               </p>
-            </div> */}
-          </div>
+            </div>
+          </div> */}
           <div>
             <div className="blogTitle">
               <h4>Title:</h4>

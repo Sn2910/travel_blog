@@ -28,6 +28,7 @@ import {
   postShop,
   editShopByID,
   deleteDestinationsById,
+  deleteBlog,
 } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
@@ -44,6 +45,7 @@ import {
   validateUser,
   getVerifiedUsers,
   signUpUser,
+  adminCheck,
 } from "./controlMongodbUsers/api_operations";
 import Users from "./Components/pages/Users";
 import NotPermitted from "./Components/pages/NotPermitted";
@@ -96,6 +98,12 @@ function App() {
     setBlog((prev) => {
       return { ...prev, blogs };
     });
+  };
+
+  const deleteBlogById = async (id) => {
+    const deletedBlog = await deleteBlog(id);
+    setBlog(deletedBlog);
+    console.log(deletedBlog);
   };
 
   const readDestinations = async (destinations) => {
@@ -245,7 +253,7 @@ function App() {
   useEffect(() => {
     console.log("Reading Blogs");
     /*  getData(); */
-    readBlog();
+    // readBlog();
     readBlog(data.token);
 
     readDestinations();
@@ -373,7 +381,13 @@ function App() {
 
         <Route
           path="/blog"
-          element={<Blog blogs={blog.blogs} token={data.token} />}
+          element={
+            <Blog
+              blogs={blog.blogs}
+              token={data.token}
+              deleteBlog={deleteBlogById}
+            />
+          }
         />
         {/* <Route
           path="/"
