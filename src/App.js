@@ -371,21 +371,13 @@ function App() {
           }
         />
 
-        <Route
-          path="/managecountry/addcountry/addrestaurant"
-          element={
-            <AddRestaurant
-              addRestaurant={addRestaurant}
-              destinations={destinations}
-            />
-          }
-        />
+      
         <Route
           path="/manageshop/addshop"
           element={<AddShop addShop={addShop} destinations={destinations} />}
         />
         <Route
-          path="/manageshop/addshop/:id"
+          path="/manageshop/editshop/:id"
           element={
             <EditShop
               shops={shops}
