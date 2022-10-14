@@ -4,7 +4,7 @@ import { Container } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function SignUp({ signup }) {
+export default function SignUp({ signup, token }) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
@@ -13,6 +13,7 @@ export default function SignUp({ signup }) {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [profileImage, setProfileImage] = useState("");
   const [userRole, setUserRole] = useState("");
+  const [user, setUser] = useState("");
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
@@ -67,7 +68,8 @@ export default function SignUp({ signup }) {
     }
   };
 
-  const createAccount = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(
       firstName,
       lastName,
@@ -88,34 +90,14 @@ export default function SignUp({ signup }) {
       profileImage,
       userRole
     );
-    if (
-      !firstName ||
-      !lastName ||
-      !userName ||
-      !email ||
-      !password ||
-      !confirmPassword ||
-      //|| !profileImage
-      !userRole
-    ) {
-      alert("Please complete the fields...!😒");
-      return null;
-    } else {
-      navigate("/");
-      setFirstName("");
-      setLastName("");
-      setUserName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-      setProfileImage("");
+    if (signup) {
+      navigate("/sign-up");
     }
   };
 
   const handleKeypress = (e) => {
-    //it triggers by pressing the enter key
     if (e.keyCode === 13) {
-      createAccount();
+      handleSubmit();
     }
   };
 
@@ -123,7 +105,7 @@ export default function SignUp({ signup }) {
     <div className="singUpForm-Cont">
       <Container maxWidth="sm" className="signUpWrap">
         <p>Kindly fill in all fields to create your new account!</p>
-        <form className="singUpForm" action="/" method="post">
+        <form className="singUpForm" onSubmit={handleSubmit}>
           <div className="userFullName">
             <div>
               <h4>First Name:</h4>
@@ -134,6 +116,7 @@ export default function SignUp({ signup }) {
                 name="firstName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setFirstName(e.target.value)}
+                required
               />
             </div>
             <div>
@@ -145,6 +128,7 @@ export default function SignUp({ signup }) {
                 name="lastName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setLastName(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -158,6 +142,7 @@ export default function SignUp({ signup }) {
                 name="userName"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setUserName(e.target.value)}
+                required
               />
             </div>
             <div>
@@ -169,6 +154,7 @@ export default function SignUp({ signup }) {
                 name="email"
                 onKeyPress={handleKeypress}
                 onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
           </div>
@@ -241,11 +227,12 @@ export default function SignUp({ signup }) {
                 autoComplete="off"
                 name="userRole"
                 onChange={(e) => setUserRole(e.target.value)}
+                required
               ></input>
             </div>
           </div>
           <div className="createAcc">
-            <button onClick={createAccount}>Create New Account</button>
+            <button>Create New Account</button>
           </div>
         </form>
       </Container>

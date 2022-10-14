@@ -10,6 +10,7 @@ import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
 import EditBlog from "./Components/pages/EditBlog";
+import { Navigate } from "react-router-dom";
 import {
   getBlogs,
   postBlog,
@@ -210,6 +211,10 @@ function App() {
     const token = await validateUser(username, password);
     setData((prev) => ({ ...prev, token: token }));
   };
+  const checkUser = async (userRole) => {
+    const user = await adminCheck({ userRole: "admin" });
+    return user;
+  };
   const signup = async (
     firstName,
     lastName,
@@ -220,7 +225,7 @@ function App() {
     profileImage,
     userRole
   ) => {
-    const token = await signUpUser(
+    const newUser = await signUpUser(
       firstName,
       lastName,
       username,
@@ -230,7 +235,13 @@ function App() {
       profileImage,
       userRole
     );
-    setData((prev) => ({ ...prev, token: token }));
+    if (!newUser) {
+      // alert("Please complete the fields...!😒");
+      setData((prev) => ({ ...prev, token: null }));
+    } else {
+      setData((prev) => ({ ...prev, token: newUser }));
+      // return;
+    }
   };
 
   const getUsers = async (token) => {
@@ -284,7 +295,11 @@ function App() {
         <Route
           path="/managecountry"
           element={
-            <ManageCountry destinations={destinations} token={data.token} />
+            <ManageCountry
+              destinations={destinations}
+              token={data.token}
+              checkUser={checkUser}
+            />
           }
         />
 

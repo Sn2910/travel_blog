@@ -16,8 +16,8 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function ManageCountry({ destinations, addDestination, token }) {
-  if (!token) {
+function ManageCountry({ destinations, addDestination, token, checkUser }) {
+  if (!token && checkUser) {
     return <Navigate to="/unauthorized" />;
   }
   return (
