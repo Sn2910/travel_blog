@@ -8,6 +8,9 @@ import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import { Link, NavLink, Navigate } from "react-router-dom";
 import "./ManageCountry.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -38,7 +41,14 @@ export default function AllShops({ shops, deleteShop }) {
                   >
                     <EditIcon />
                   </Link>
-                  <DeleteIcon onClick={()=>deleteShop(shop.id)}/>
+                  <DeleteIcon onClick={()=>{
+                    deleteShop(shop.id)
+                    toast.success('Shops Deleted Successfully', {
+                      position: toast.POSITION.TOP_RIGHT,
+                      className: 'toast-message'
+                  });
+                  }}/>
+                    <ToastContainer />
                 </Item>
               </Stack>
             </Box>

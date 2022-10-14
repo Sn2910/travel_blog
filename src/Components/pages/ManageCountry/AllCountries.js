@@ -8,6 +8,9 @@ import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import { Link, NavLink, Navigate } from "react-router-dom";
 import "./ManageCountry.css";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -18,6 +21,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function AllCountries({ destinations ,deleteDestination }) {
+ 
+
   return (
     <div>
       {destinations.map((destination, index) => {
@@ -38,7 +43,14 @@ export default function AllCountries({ destinations ,deleteDestination }) {
                   >
                     <EditIcon />
                   </Link>
-                  <DeleteIcon onClick={()=>deleteDestination(destination.id)}/>
+                  <DeleteIcon onClick={()=>{
+                    deleteDestination(destination.id)
+                    toast.success('Country Deleted Successfully', {
+                      position: toast.POSITION.TOP_RIGHT,
+                      className: 'toast-message'
+                  });
+                  }}/>              
+                  <ToastContainer />
                 </Item>
               </Stack>
             </Box>

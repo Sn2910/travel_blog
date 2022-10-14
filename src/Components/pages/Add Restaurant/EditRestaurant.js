@@ -2,6 +2,8 @@ import React from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { useParams } from "react-router-dom";
 import Container from "@mui/material/Container";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function EditRestaurant({editRestaurant,destinations,restaurants}) {
   const { id } = useParams();
@@ -35,8 +37,11 @@ function EditRestaurant({editRestaurant,destinations,restaurants}) {
       imageID: restaurant.image_id ? backgroundImgField.value :null,
       imageUrl: restaurant.image_id === null ? backgroundImgField.value : "",
     };
-
     editRestaurant(newRestaurant);
+    toast.success('Restaurant Details Created Successfully', {
+      position: toast.POSITION.TOP_RIGHT,
+      className: 'toast-message'
+  });
   };
 
   return (
@@ -52,7 +57,8 @@ function EditRestaurant({editRestaurant,destinations,restaurants}) {
             type="text"
              id="name"
              defaultValue={restaurant.name}
-             
+             placeholder="Add Restaurant Name"
+             required
              />
           </div>
           <div className="destination_dropdown">
@@ -78,6 +84,7 @@ function EditRestaurant({editRestaurant,destinations,restaurants}) {
                 fontSize: "1.2em",
               }}
               defaultValue={restaurant.description}
+              placeholder="Write Something about Restaurant"
             />
           </div>
           <div className="restaurant_price">
@@ -86,6 +93,8 @@ function EditRestaurant({editRestaurant,destinations,restaurants}) {
             type="number" 
             id={'price'} 
             defaultValue={restaurant.price}
+            placeholder ="Add Starting Price"
+            required
             />
           </div>
           <div className="restaurant_url">
@@ -94,6 +103,8 @@ function EditRestaurant({editRestaurant,destinations,restaurants}) {
             type="text" 
             id={'url'} 
             defaultValue={restaurant.url}
+            placeholder ="Add Restaurant Website"
+            required
             />
           </div>
           <div className="restaurant_rating">
@@ -102,6 +113,8 @@ function EditRestaurant({editRestaurant,destinations,restaurants}) {
             type="number"
              id={'rating'} 
              defaultValue={restaurant.rating}
+             placeholder ="Add Rating"
+            required
              />
           </div>
           <div className="restaurant_review">
@@ -110,6 +123,8 @@ function EditRestaurant({editRestaurant,destinations,restaurants}) {
             type="number" 
             id={'review'}
             defaultValue={restaurant.reviews}
+            placeholder ="Add Reviews"
+            required 
             />
           </div>
 
@@ -119,11 +134,14 @@ function EditRestaurant({editRestaurant,destinations,restaurants}) {
             type={restaurant.image_id ? "number": "text"}
              id={'backgroundImgField'} 
              defaultValue={restaurant.image_id ? restaurant.image_id : restaurant.image_url}
+             placeholder ="Add Image Url"
+             required 
              />
           </div>
 
           <div className="createBtn">
             <button type="submit">Save</button>
+            <ToastContainer />
           </div>
         </form>
       </Container>
