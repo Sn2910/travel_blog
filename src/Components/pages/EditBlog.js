@@ -36,7 +36,7 @@ export default function EditBlog({ blogItems, editBlog }) {
       richText: editText,
       blogImage: editImage,
     });
-    console.log(id)
+    console.log(id);
     if (editBlog) {
       return <Navigate to="/blog" />;
     }

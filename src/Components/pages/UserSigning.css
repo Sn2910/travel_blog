@@ -27,7 +27,6 @@
   flex-direction: column;
   justify-content: center;
   text-align: left;
-  min-height: 45vh;
 }
 .singInForm {
   margin-bottom: 10px;

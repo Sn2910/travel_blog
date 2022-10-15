@@ -48,6 +48,7 @@ export default function SignIn({ signin }) {
   };
 
   const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
     if (e.keyCode === 13) {
       handleSubmit();
     }

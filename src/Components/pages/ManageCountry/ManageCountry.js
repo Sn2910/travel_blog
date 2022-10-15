@@ -16,10 +16,10 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-function ManageCountry({ destinations, addDestination, token}) {
-  if (!token) {
+function ManageCountry({ destinations, addDestination, token }) {
+ /*  if (!token) {
     return <Navigate to="/unauthorized" />;
-  } 
+  } */
   return (
     <div className="manageCountryWrap">
       <h1>Country Management Zone</h1>
