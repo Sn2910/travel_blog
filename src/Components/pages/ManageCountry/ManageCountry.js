@@ -26,78 +26,75 @@ function ManageCountry({ destinations, addDestination, token }) {
       <p>Please double check your work before saving!</p>
       <div className="placeCenter">
         <div className="manageCountryBTN">
-          <button>
-            <Link to="/managecountry/addcountry">Add Country</Link>
-          </button>
+          
           <div className="link">
             <Link
               to="/all_countries"
               className="manageCountryEditBTN"
-              title="Edit a country"
+              title="List of Countries"
             >
-              <EditIcon
+               <button className="createBtn">List of all Countries</button>
+             {/*  <EditIcon
                 sx={{
                   fontSize: "2.5em",
                   color: "#696969",
                 }}
-              />
+              /> */}
             </Link>
           </div>
         </div>
         <div className="manageCountryBTN">
-          <button>
-            <Link to="/managehotel/addhotel">Add Hotel</Link>
-          </button>
+          
           <div className="link">
             <Link
               to="/all_hotels"
               className="manageCountryEditBTN"
-              title="Edit a hotel"
+              title="List of hotels"
             >
-              <EditIcon
+               <button className="createBtn">List of all Hotels</button>
+              {/* <EditIcon
                 sx={{
                   fontSize: "2.5em",
                   color: "#696969",
                 }}
-              />
+              /> */}
             </Link>
           </div>
         </div>
         <div className="manageCountryBTN">
-          <button>
-            <Link to="/manageshop/addshop">Add Shop</Link>
-          </button>
+        
           <div className="link">
             <Link
               to="/all_shops"
               className="manageCountryEditBTN"
-              title="Edit a shop"
+              title="List of Shops"
+              
             >
-              <EditIcon
+               <button className="createBtn">List of all Shops</button>
+             {/*  <EditIcon
                 sx={{
                   fontSize: "2.5em",
                   color: "#696969",
                 }}
-              />
+              /> */}
             </Link>
           </div>
         </div>
         <div className="manageCountryBTN">
-          <button>
-            <Link to="/managerestaurant/addrestaurant">Add Restaurant</Link>
-          </button>
+        
           <div className="link">
             <Link
               to="/all_restaurants"
               className="manageCountryEditBTN"
-              title="Edit a restaurant"
+              title="List of restaurants"
             >
-              <EditIcon
+               <button className="createBtn">List of all Restaurants</button>
+             {/*  <EditIcon
                 sx={{
                   fontSize: "2.5em",
                   color: "#696969",
                 }}
-              />
+              /> */}
             </Link>
           </div>
         </div>

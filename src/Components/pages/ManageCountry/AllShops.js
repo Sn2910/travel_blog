@@ -1,7 +1,5 @@
 import React from "react";
 import { Container } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
@@ -33,21 +31,27 @@ export default function AllShops({ shops, deleteShop }) {
             <Box sx={{ width: "100%" }}>
               <Stack spacing={2}>
                 <Item key={`item_${index}`}>
+                <div className="listflexcontainer">
+                  <div className="listflex">
                   {shop.name}
+                  </div>
+                  <div className="listwrapbtn">
                   <Link
                     to={`/manageshop/editshop/${shop.id}`}
                     className="editBlog"
                     title="Edit"
                   >
-                    <EditIcon />
+                     <button className="generalbutton">Edit</button>
                   </Link>
-                  <DeleteIcon onClick={()=>{
+                  <button className="deletebutton" onClick={()=>{
                     deleteShop(shop.id)
                     toast.success('Shops Deleted Successfully', {
                       position: toast.POSITION.TOP_RIGHT,
                       className: 'toast-message'
                   });
-                  }}/>
+                  }}>Delete</button>
+                   </div>
+                    </div>
                     <ToastContainer />
                 </Item>
               </Stack>
@@ -55,6 +59,9 @@ export default function AllShops({ shops, deleteShop }) {
           </Container>
         );
       })}
+          <button className="generalbutton">
+            <Link to="/manageshop/addshop">Add Shop</Link>
+          </button>
     </div>
   );
 }
