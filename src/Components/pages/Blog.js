@@ -43,7 +43,7 @@ function Blog({ blogs = [], token, deleteBlog }) {
             <img src={authorImg} alt="" width="50px" height="40px" />
             <h4>Created by: @{blog.userName}</h4>
             <h4>|</h4>
-            <h4>Dated: {blog.updatedAt}.</h4>
+            <h4>Dated: {blog.created}.</h4>
           </div>
           <img src={blog.blogImage} alt="" width="500px" height="300px" />
           <p className="blogText">{blog.richText}</p>
@@ -276,6 +276,9 @@ function Blog({ blogs = [], token, deleteBlog }) {
               <p>
                 It is a long established fact that a reader will be distracted
                 by the readable content of a page when looking at its layout.
+                The point of using Lorem Ipsum is that it has a more-or-less
+                normal distribution of letters, as opposed to using 'Content
+                here, content here', making it look like readable English.
               </p>
               <p className="authorName">Noemi Ahinsah</p>
             </div>
