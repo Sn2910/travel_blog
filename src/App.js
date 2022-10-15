@@ -31,11 +31,7 @@ import {
   deleteDestinationsById,
   deleteHotelById,
   deleteRestaurantById,
-  deleteShopById
- 
- 
- 
- 
+  deleteShopById,
 } from "./controllers/api";
 import BlogOverview from "./Components/pages/BlogOverview";
 import AddCounty from "./Components/pages/AddCountry/AddCounty";
@@ -123,7 +119,6 @@ function App() {
     const newDestination = await postDestination(destination);
     console.log(newDestination);
     setDestinations(newDestination);
-    
   };
 
   const editDestination = async (destination) => {
@@ -157,19 +152,15 @@ function App() {
     const hotelCopy = {
       ...hotel,
     };
-    console.log(hotelCopy)
-    delete hotelCopy.id
-    const updatehotel = await editHotelByID(hotel.id ,hotelCopy);
+    console.log(hotelCopy);
+    delete hotelCopy.id;
+    const updatehotel = await editHotelByID(hotel.id, hotelCopy);
     console.log("New Hotel", updatehotel);
   };
-  const deleteHotel =async(id)=>{
-  
-    const hotelsafterdelete = await deleteHotelById(id)
-    setHotels(hotelsafterdelete)
-   
-  }
-
-   
+  const deleteHotel = async (id) => {
+    const hotelsafterdelete = await deleteHotelById(id);
+    setHotels(hotelsafterdelete);
+  };
 
   const readRestaurants = async () => {
     const restaurantArr = await getRestaurants();
@@ -191,13 +182,11 @@ function App() {
     );
     console.log("New Restaurant", updateRestaurant);
   };
-  const deleteRestaurant =async(id)=>{
-  
-    const restaurantsafterdelete = await deleteRestaurantById(id)
-    setRestaurants(restaurantsafterdelete)
-   
-  }
-  const readShops = async() => {
+  const deleteRestaurant = async (id) => {
+    const restaurantsafterdelete = await deleteRestaurantById(id);
+    setRestaurants(restaurantsafterdelete);
+  };
+  const readShops = async () => {
     const shopArr = await getShops();
     // console.log(destinationArr);
     setShops(shopArr);
@@ -215,12 +204,10 @@ function App() {
     const updateShop = await editShopByID(shop.id, shopCopy);
     console.log("New Shop", updateShop);
   };
-  const deleteShop =async(id)=>{
-  
-    const shopsafterdelete = await deleteShopById(id)
-    setShops(shopsafterdelete)
-   
-  }
+  const deleteShop = async (id) => {
+    const shopsafterdelete = await deleteShopById(id);
+    setShops(shopsafterdelete);
+  };
 
   const signin = async (username, password) => {
     const token = await validateUser(username, password);
@@ -313,12 +300,23 @@ function App() {
             />
           }
         />
-        <Route path="/all_hotels" element={<AllHotels hotels={hotels} deleteHotel = {deleteHotel} />} />
+        <Route
+          path="/all_hotels"
+          element={<AllHotels hotels={hotels} deleteHotel={deleteHotel} />}
+        />
         <Route
           path="/all_restaurants"
-          element={<AllRestaurants restaurants={restaurants} deleteRestaurant={deleteRestaurant} />}
+          element={
+            <AllRestaurants
+              restaurants={restaurants}
+              deleteRestaurant={deleteRestaurant}
+            />
+          }
         />
-        <Route path="/all_shops" element={<AllShops shops={shops} deleteShop={deleteShop}/>} />
+        <Route
+          path="/all_shops"
+          element={<AllShops shops={shops} deleteShop={deleteShop} />}
+        />
         <Route
           path="/managecountry/addcountry"
           element={
@@ -371,7 +369,6 @@ function App() {
           }
         />
 
-      
         <Route
           path="/manageshop/addshop"
           element={<AddShop addShop={addShop} destinations={destinations} />}
