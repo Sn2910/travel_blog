@@ -128,8 +128,7 @@ async function editHotelByID(id, hotel) {
   if (response.ok) {
     return getHotels();
   }
- 
-} 
+}
 const deleteHotelById = async (id) => {
   const url = `${apiUrl}/api/hotel/${id}`;
   const response = await fetch(url, {
@@ -138,9 +137,8 @@ const deleteHotelById = async (id) => {
       Accept: "application/json",
       "content-Type": "application/json",
     },
-   
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getHotels();
   }
@@ -178,8 +176,7 @@ async function editRestaurantByID(id, restaurant) {
   if (response.ok) {
     return getRestaurants();
   }
- 
-} 
+}
 const deleteRestaurantById = async (id) => {
   const url = `${apiUrl}/api/restaurant/${id}`;
   const response = await fetch(url, {
@@ -188,9 +185,8 @@ const deleteRestaurantById = async (id) => {
       Accept: "application/json",
       "content-Type": "application/json",
     },
-   
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getRestaurants();
   }
@@ -227,8 +223,7 @@ async function editShopByID(id, shop) {
   if (response.ok) {
     return getShops();
   }
- 
-} 
+}
 const deleteShopById = async (id) => {
   const url = `${apiUrl}/api/shop/${id}`;
   const response = await fetch(url, {
@@ -237,16 +232,12 @@ const deleteShopById = async (id) => {
       Accept: "application/json",
       "content-Type": "application/json",
     },
-   
   });
-  console.log(response)
+  console.log(response);
   if (response.ok) {
     return getShops();
   }
 };
-
-
-
 
 //Token from cookies
 const getBlogs = async (token) => {
@@ -344,5 +335,6 @@ export {
   getShops,
   postShop,
   editShopByID,
-  deleteShopById,deleteBlog
+  deleteShopById,
+  deleteBlog,
 };
