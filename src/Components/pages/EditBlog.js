@@ -27,8 +27,8 @@ export default function EditBlog({ blogItems, editBlog }) {
   // const date = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
   const date = moment().format("MMM. Do YYYY. - h:mm a");
 
-  function saveEditedBlog() {
-    
+  function handleSubmit(e) {
+    e.preventDefault();
     editBlog({
       _id: id,
       // userName: editUserName,
@@ -46,7 +46,7 @@ export default function EditBlog({ blogItems, editBlog }) {
   return (
     <div className="blogBg">
       <Container maxWidth="sm" sx={{ background: "#fff" }}>
-        <div className="blogWrap">
+        <form className="blogWrap" onSubmit={handleSubmit}>
           <h2>Edit Your Blog</h2>
           {/* <div className="user-date">
             <div className="username">
@@ -117,10 +117,10 @@ export default function EditBlog({ blogItems, editBlog }) {
               />
             </div>
             <div className="createBtn">
-              <button onClick={saveEditedBlog}>Save</button>
+              <button>Save</button>
             </div>
           </div>
-        </div>
+        </form>
       </Container>
     </div>
   );
