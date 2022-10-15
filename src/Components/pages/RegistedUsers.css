@@ -7,7 +7,7 @@
 .regUsersCont {
   display: flex;
   height: 60.1vh;
-  width: 600px;
+  width: 650px;
   flex-direction: column;
   margin: auto;
 }
@@ -27,10 +27,15 @@
 .seperate {
   border: 1px solid #696969;
   height: 65px;
-  margin: auto 10px;
+  margin: auto 20px;
 }
 .userInfo p {
   text-align: left;
+}
+.userFlex1,
+.userFlex2 {
+  width: 240px;
+  padding-top: 20px;
 }
 .userInfoText1 {
   margin: 0 10px;

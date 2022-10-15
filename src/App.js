@@ -100,9 +100,20 @@ function App() {
       return { ...prev, blogs };
     });
   };
+  const deleteOneBlog = async (blog) => {
+    const blogCopy = {
+      ...blog,
+    };
+    delete blogCopy.id;
+    const blogs = await deleteBlog(blog._id, blogCopy);
+    console.log(blogs);
+    setBlog((prev) => {
+      return { ...prev, blogs };
+    });
+  };
 
-  const deleteBlogById = async (id) => {
-    const deletedBlog = await deleteBlog(id);
+  const deleteBlogById = async (_id) => {
+    const deletedBlog = await deleteBlog(_id);
     setBlog(deletedBlog);
     console.log(deletedBlog);
   };
