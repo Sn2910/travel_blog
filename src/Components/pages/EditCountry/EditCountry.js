@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 function EditCountry({ destinations, editDestination }) {
@@ -48,28 +50,37 @@ function EditCountry({ destinations, editDestination }) {
         destination.background_img_id === null ? backgroundImgField.value : "",
     };
     editDestination(savedCountry);
+    toast.success('Country Edited Successfully', {
+      position: toast.POSITION.TOP_RIGHT,
+      className: 'toast-message'
+  });
   };
 
   return (
     <div className="addcountry">
       <Container maxWidth="sm" sx={{ background: "#fff" }}>
         <form onSubmit={editCountry} className="addcountryWrap">
-          <h2>Create a Destination</h2>
+          <h2>Edit Destination</h2>
 
           <div className="country_name">
             <h4>Country:</h4>
-
-            
-
             <input
               type="text"
               id={"country"}
               defaultValue={destination.country}
+              placeholder = "Add Country Name"
+              required
             />
           </div>
           <div className="cityName">
             <h4>City:</h4>
-            <input type="text" id={"city"} defaultValue={destination.city} />
+            <input 
+            type="text" 
+            id={"city"} 
+            defaultValue={destination.city} 
+            placeholder = "Add City Name"
+            required
+            />
           </div>
           <div className="countryBackgroungImg">
             <h4>
@@ -85,6 +96,10 @@ function EditCountry({ destinations, editDestination }) {
                   ? destination.background_img_id
                   : destination.background_img_url
               }
+              placeholder = {destination.background_img_id
+                ? "Add Destination Id"
+                : "Add Destination Url"}
+                required
             />
           </div>
           <div className="cityInfoTextArea">
@@ -94,7 +109,7 @@ function EditCountry({ destinations, editDestination }) {
               id={"cityInfo"}
               maxRows={4}
               aria-label="maximum height"
-              // placeholder="Maximum 10 rows"
+              placeholder = "Add City Info"
               style={{
                 width: 555,
                 height: 300,
@@ -109,6 +124,7 @@ function EditCountry({ destinations, editDestination }) {
               type="text"
               id={"language"}
               defaultValue={destination.language}
+              placeholder = "Add Language Spoken"
             />
           </div>
           <div className="cords">
@@ -117,17 +133,20 @@ function EditCountry({ destinations, editDestination }) {
               type="text"
               id={"countryCoords"}
               defaultValue={destination.country_coords}
+              placeholder = "Add Country Coords"
+              required
             />
             <p className="cordsInfo">
               <em>
                 generate Country Coordinates{" "}
-                <a href="https://www.image-map.net/">here</a>!
+                <a href="https://www.image-map.net/" target="_blank" rel="noopener noreferrer">here</a>!
               </em>
             </p>
           </div>
 
           <div className="createBtn">
             <button type="submit">Save</button>
+            <ToastContainer />
           </div>
         </form>
       </Container>
