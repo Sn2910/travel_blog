@@ -58,13 +58,13 @@ export const signUpUser = async (
     }),
   });
   const result = await response.json();
-  console.log(result);
-  return result;
+  console.log(result.token);
+  return result?.token;
 };
 
 //Users Role
 export const adminCheck = () => {
-  const isAdmin = getVerifiedUsers.find({ userRole: "admin" });
+  const isAdmin = getVerifiedUsers.findOne({ userRole: "admin" });
   return isAdmin;
 };
 // export { validateUser, getVerifiedUsers, signUpUser };

@@ -27,7 +27,6 @@
   flex-direction: column;
   justify-content: center;
   text-align: left;
-  min-height: 45vh;
 }
 .singInForm {
   margin-bottom: 10px;
@@ -129,14 +128,4 @@
 .signIn-Btn button:hover {
   cursor: pointer;
   background: #06ab06;
-}
-
-@media screen and (min-width: 1280px) {
-  .signUp-passwords i {
-    left: 47%;
-  }
-  .confirmPassword i {
-    top: 50.5%;
-    left: 68%;
-  }
 }

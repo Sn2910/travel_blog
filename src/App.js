@@ -10,7 +10,6 @@ import Contact from "./Components/pages/Contact";
 import Blog from "./Components/pages/Blog";
 import CreateBlog from "./Components/pages/CreateBlog";
 import EditBlog from "./Components/pages/EditBlog";
-import { Navigate } from "react-router-dom";
 import {
   getBlogs,
   postBlog,
@@ -107,20 +106,9 @@ function App() {
       return { ...prev, blogs };
     });
   };
-  const deleteOneBlog = async (blog) => {
-    const blogCopy = {
-      ...blog,
-    };
-    delete blogCopy.id;
-    const blogs = await deleteBlog(blog._id, blogCopy);
-    console.log(blogs);
-    setBlog((prev) => {
-      return { ...prev, blogs };
-    });
-  };
 
-  const deleteBlogById = async (_id) => {
-    const deletedBlog = await deleteBlog(_id);
+  const deleteBlogById = async (id) => {
+    const deletedBlog = await deleteBlog(id);
     setBlog(deletedBlog);
     console.log(deletedBlog);
   };
@@ -238,10 +226,6 @@ function App() {
     const token = await validateUser(username, password);
     setData((prev) => ({ ...prev, token: token }));
   };
-  const checkUser = async (userRole) => {
-    const user = await adminCheck({ userRole: "admin" });
-    return user;
-  };
   const signup = async (
     firstName,
     lastName,
@@ -252,7 +236,7 @@ function App() {
     profileImage,
     userRole
   ) => {
-    const newUser = await signUpUser(
+    const token = await signUpUser(
       firstName,
       lastName,
       username,
@@ -262,13 +246,7 @@ function App() {
       profileImage,
       userRole
     );
-    if (!newUser) {
-      // alert("Please complete the fields...!😒");
-      setData((prev) => ({ ...prev, token: null }));
-    } else {
-      setData((prev) => ({ ...prev, token: newUser }));
-      // return;
-    }
+    setData((prev) => ({ ...prev, token: token }));
   };
 
   const getUsers = async (token) => {
@@ -322,11 +300,7 @@ function App() {
         <Route
           path="/managecountry"
           element={
-            <ManageCountry
-              destinations={destinations}
-              token={data.token}
-              checkUser={checkUser}
-            />
+            <ManageCountry destinations={destinations} token={data.token} />
           }
         />
 
