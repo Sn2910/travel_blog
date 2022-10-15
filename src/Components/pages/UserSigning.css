@@ -129,25 +129,3 @@
   cursor: pointer;
   background: #06ab06;
 }
-
-@media screen and (min-width: 1280px) {
-  .passwords i {
-    position: absolute;
-    top: 52%;
-    left: 62%;
-  }
-  .signUp-passwords i {
-    position: absolute;
-    top: 50.5%;
-    left: 47%;
-  }
-  .close-password,
-  .closeConfirm-password {
-    display: none;
-  }
-  .confirmPassword i {
-    position: absolute;
-    top: 50.5%;
-    left: 68%;
-  }
-}
