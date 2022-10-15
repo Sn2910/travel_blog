@@ -5,7 +5,7 @@ export default function RegistedUsersButton() {
   return (
     <div>
       <Link to="registed-users">
-        <button>Registed Users</button>
+        <button>Registered Users</button>
       </Link>
     </div>
   );

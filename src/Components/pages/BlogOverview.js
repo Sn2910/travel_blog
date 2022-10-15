@@ -41,7 +41,7 @@ export default function BlogOverview({ blogItems = [] }) {
             <img src={authorImg} alt="" width="50px" height="40px" />
             <h4>Created by: @{blogItem.userName}</h4>
             <h4>|</h4>
-            <h4>Dated: {blogItem.created}.</h4>
+            <h4>Dated: {blogItem.updatedAt}.</h4>
           </div>
           <img src={blogItem.blogImage} alt="" width="500px" height="300px" />
           <p className="blogText">{blogItem.richText}</p>
