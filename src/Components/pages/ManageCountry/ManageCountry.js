@@ -17,9 +17,9 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 function ManageCountry({ destinations, addDestination, token }) {
- /*  if (!token) {
+    if (!token) {
     return <Navigate to="/unauthorized" />;
-  } */
+  }  
   return (
     <div className="manageCountryWrap">
       <h1>Country Management Zone</h1>
