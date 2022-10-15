@@ -3,6 +3,8 @@ import { useState } from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { useParams } from "react-router-dom";
 import Container from "@mui/material/Container";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function EditHotel({editHotel,destinations,hotels}) {
   const { id } = useParams();
@@ -39,6 +41,10 @@ function EditHotel({editHotel,destinations,hotels}) {
     };
 
     editHotel(newHotel);
+    toast.success('Hotel Details Edited Successfully', {
+      position: toast.POSITION.TOP_RIGHT,
+      className: 'toast-message'
+  });
   };
 
   return (
@@ -54,6 +60,8 @@ function EditHotel({editHotel,destinations,hotels}) {
             type="text"
              id="name"
              defaultValue={hotel.name}
+             placeholder="Add Hotel Name"
+            required
              
              />
           </div>
@@ -72,7 +80,7 @@ function EditHotel({editHotel,destinations,hotels}) {
               className="textArea"
               maxRows={4}
               aria-label="maximum height"
-              // placeholder="Maximum 10 rows"
+              placeholder="Enter Hotel Description"
               id={'description'}
               style={{
                 width: 555,
@@ -88,6 +96,8 @@ function EditHotel({editHotel,destinations,hotels}) {
             type="number" 
             id={'price'} 
             defaultValue={hotel.price}
+            placeholder="Add Starting Price"
+            required
             />
           </div>
           <div className="hotel_url">
@@ -96,6 +106,8 @@ function EditHotel({editHotel,destinations,hotels}) {
             type="text" 
             id={'url'} 
             defaultValue={hotel.url}
+            placeholder="Add Hotel Website"
+            required
             />
           </div>
           <div className="hotel_rating">
@@ -104,6 +116,8 @@ function EditHotel({editHotel,destinations,hotels}) {
             type="number"
              id={'rating'} 
              defaultValue={hotel.rating}
+             placeholder="Add Rating"
+             required
              />
           </div>
           <div className="hotel_review">
@@ -112,6 +126,8 @@ function EditHotel({editHotel,destinations,hotels}) {
             type="number" 
             id={'review'}
             defaultValue={hotel.reviews}
+            placeholder="Add Reviews"
+            required
             />
           </div>
 
@@ -121,11 +137,14 @@ function EditHotel({editHotel,destinations,hotels}) {
             type={hotel.image_id ? "number": "text"}
              id={'backgroundImgField'} 
              defaultValue={hotel.image_id ? hotel.image_id : hotel.image_url}
+             placeholder="Add Image Url"
+             required 
              />
           </div>
 
           <div className="createBtn">
             <button type="submit">Save</button>
+            <ToastContainer />
           </div>
         </form>
       </Container>

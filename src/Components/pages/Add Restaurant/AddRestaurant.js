@@ -4,6 +4,8 @@ import TextareaAutosize from "@mui/base/TextareaAutosize";
 import Container from "@mui/material/Container";
 import {Link} from "react-router-dom"
 import EditIcon from '@mui/icons-material/Edit';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function AddRestaurant({ destinations, addRestaurant }) {
   const [value, setValue] = useState("");
@@ -33,10 +35,13 @@ function AddRestaurant({ destinations, addRestaurant }) {
       imageID: imageID,
       imageUrl: backgroundImage.value,
     };
-
     console.log(destination.value);
-
     addRestaurant(newRestaurant);
+    toast.success('Restaurant Details Created Successfully', {
+      position: toast.POSITION.TOP_RIGHT,
+      className: 'toast-message'
+  });
+  
   };
 
   return (
@@ -45,10 +50,14 @@ function AddRestaurant({ destinations, addRestaurant }) {
         <form onSubmit={createRestaurant} className="addhotelWrap">
           <h2>Add Restaurant Details</h2>
          
-
           <div className="hotel_name">
             <h4>Name:</h4>
-            <input type="text" id="name"/>
+            <input 
+            type="text" 
+            id="name"
+            placeholder="Enter Restaurant Name"
+            required
+            />
           </div>
           <div className="destination_dropdown">
             <select id={'destination'}>
@@ -65,7 +74,8 @@ function AddRestaurant({ destinations, addRestaurant }) {
               className="textArea"
               maxRows={4}
               aria-label="maximum height"
-              // placeholder="Maximum 10 rows"
+              placeholder="Write Something about Restaurant"
+             
               id={'description'}
               style={{
                 width: 555,
@@ -76,28 +86,54 @@ function AddRestaurant({ destinations, addRestaurant }) {
           </div>
           <div className="hotel_price">
             <h4>Price:</h4>
-            <input type="number" id={'price'} />
+            <input 
+            type="number" 
+            id={'price'} 
+            placeholder ="Enter Starting Price"
+            required
+            />
           </div>
           <div className="hotel_url">
             <h4> Restaurant Url:</h4>
-            <input type="text" id={'url'} />
+            <input 
+            type="text" 
+            id={'url'} 
+            placeholder ="Enter Restaurant Website"
+            required
+            />
           </div>
           <div className="hotel_rating">
             <h4>Rating:</h4>
-            <input type="number" id={'rating'} />
+            <input 
+            type="number" 
+            id={'rating'} 
+            placeholder ="Enter Rating"
+            required
+            />
           </div>
           <div className="hotel_review">
             <h4>Review:</h4>
-            <input type="number" id={'review'} />
+            <input 
+            type="number" 
+            id={'review'}
+            placeholder ="Enter Reviews"
+            required 
+            />
           </div>
 
           <div className="hotelBackgroungImg">
             <h4>Restaurant Image:</h4>
-            <input type="text" id={'backgroundImage'} />
+            <input 
+            type="text" 
+            id={'backgroundImage'} 
+            placeholder ="Paste Image Url"
+            required 
+            />
           </div>
 
           <div className="createBtn">
             <button type="submit">Create Restaurant</button>
+            <ToastContainer />
           </div>
          
         

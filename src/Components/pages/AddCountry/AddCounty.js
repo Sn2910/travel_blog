@@ -3,6 +3,9 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function AddCounty({ addDestination, destinations }) {
 
@@ -34,9 +37,12 @@ function AddCounty({ addDestination, destinations }) {
       backgroundImgId: backgroundImgId,
       backgroundImgUrl: backgroundImage.value,
     };
-    console.log(country);
     addDestination(newCountry);
-    alert("Form Submitted Successfully")
+    toast.success('Country Created Successfully', {
+      position: toast.POSITION.TOP_RIGHT,
+      className: 'toast-message'
+  });
+  
   };
 
   return (
@@ -47,16 +53,16 @@ function AddCounty({ addDestination, destinations }) {
 
           <div className="country_name">
             <h4>Country:</h4>
-            <input type="text" id={"country"} required/>
+            <input type="text" id={"country"} placeholder="Enter Country Name" required/>
           </div>
           <div className="cityName">
             <h4>City:</h4>
-            <input type="text" id={"city"} />
+            <input type="text" id={"city"} placeholder="Enter City Name" required />
           </div>
 
           <div className="countryBackgroungImg">
             <h4>Background Image Url:</h4>
-            <input type="text" id={"backgroundImage"} required/>
+            <input type="text" id={"backgroundImage"} placeholder="Paste Image Link" required/>
           </div>
 
           <div className="cityInfoTextArea">
@@ -64,6 +70,7 @@ function AddCounty({ addDestination, destinations }) {
             <TextareaAutosize
               className="textArea"
               id={"cityInfo"}
+              placeholder="Enter City Description"
               maxRows={4}
               aria-label="maximum height"
               // placeholder="Maximum 10 rows"
@@ -76,21 +83,22 @@ function AddCounty({ addDestination, destinations }) {
           </div>
           <div className="language">
             <h4>Language:</h4>
-            <input type="text" id={"language"} required />
+            <input type="text" id={"language"} placeholder="Language Spoken"required />
           </div>
           <div className="cords">
             <h4>County cords:</h4>
-            <input type="text" id={"countryCoords"} required/>
+            <input type="text" id={"countryCoords"} placeholder="Enter Country Coords" required/>
             <p className="cordsInfo">
               <em>
                 generate Country Coordinates{" "}
-                <a href="https://www.image-map.net/">here</a>!
+                <a href="https://www.image-map.net/" target="_blank" rel="noopener noreferrer">here</a>!
               </em>
             </p>
           </div>
 
           <div className="createBtn">
             <button>Create New Destination</button>
+            <ToastContainer />
           </div>
         
         </form>

@@ -2,6 +2,8 @@ import React from "react";
 import TextareaAutosize from "@mui/base/TextareaAutosize";
 import { useParams } from "react-router-dom";
 import Container from "@mui/material/Container";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function EditShop({editShop,destinations,shops}) {
   const { id } = useParams();
@@ -37,6 +39,10 @@ function EditShop({editShop,destinations,shops}) {
     };
 
     editShop(newShop);
+    toast.success('Shop Details Edited Successfully', {
+      position: toast.POSITION.TOP_RIGHT,
+      className: 'toast-message'
+  });
   };
 
   return (
@@ -44,7 +50,7 @@ function EditShop({editShop,destinations,shops}) {
     <div className="addshop">
       <Container maxWidth="sm" sx={{ background: "#fff" }}>
         <form onSubmit={editdestinationShop} className="addshopWrap">
-          <h2>Edit shop Details</h2>
+          <h2>Edit Shop Details</h2>
 
           <div className="shop_name">
             <h4>Name:</h4>
@@ -52,7 +58,8 @@ function EditShop({editShop,destinations,shops}) {
             type="text"
              id="name"
              defaultValue={shop.name}
-             
+             placeholder="Add Shop Name"
+             required
              />
           </div>
           <div className="destination_dropdown">
@@ -70,6 +77,7 @@ function EditShop({editShop,destinations,shops}) {
               className="textArea"
               maxRows={4}
               aria-label="maximum height"
+              placeholder="Add Shop Description"
               // placeholder="Maximum 10 rows"
               id={'description'}
               style={{
@@ -86,6 +94,8 @@ function EditShop({editShop,destinations,shops}) {
             type="number" 
             id={'price'} 
             defaultValue={shop.price}
+            placeholder =" Enter Starting Price" 
+            required
             />
           </div>
           <div className="shop_url">
@@ -94,6 +104,8 @@ function EditShop({editShop,destinations,shops}) {
             type="text" 
             id={'url'} 
             defaultValue={shop.url}
+            placeholder ="Add Shop Website" 
+            required 
             />
           </div>
           <div className="shop_rating">
@@ -102,6 +114,8 @@ function EditShop({editShop,destinations,shops}) {
             type="number"
              id={'rating'} 
              defaultValue={shop.rating}
+             placeholder ="Add Rating" 
+             required
              />
           </div>
           <div className="shop_review">
@@ -110,6 +124,8 @@ function EditShop({editShop,destinations,shops}) {
             type="number" 
             id={'review'}
             defaultValue={shop.reviews}
+            placeholder ="Add Review" 
+            required
             />
           </div>
 
@@ -119,11 +135,14 @@ function EditShop({editShop,destinations,shops}) {
             type={shop.image_id ? "number": "text"}
              id={'backgroundImgField'} 
              defaultValue={shop.image_id ? shop.image_id : shop.image_url}
+             placeholder ="Add the Image Url" 
+             required
              />
           </div>
 
           <div className="createBtn">
             <button type="submit">Save</button>
+            <ToastContainer />
           </div>
         </form>
       </Container>

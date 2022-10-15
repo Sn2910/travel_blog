@@ -52,3 +52,40 @@
   margin-top: 5px;
   margin-left: 15px;
 }
+.generalbutton  {
+  padding: 5px 10px;
+  font-size: 1em;
+  background: #008000;
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+.deletebutton{
+  padding: 5px 10px;
+  font-size: 1em;
+  background: hsl(0, 100%, 25%);
+  border: none;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  color: #fff;
+
+}
+.generalbutton a{
+ 
+  color: #fff;
+  text-decoration: none;
+  
+}
+.listflexcontainer{
+  display:flex;
+  justify-content: flex;
+}
+ .listflex{
+  flex-grow: 1;
+
+}
+.listwrapbtn a{
+  margin-right: 20px;
+}
+
