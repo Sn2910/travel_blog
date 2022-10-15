@@ -28,7 +28,6 @@ export default function EditBlog({ blogItems, editBlog }) {
   const date = moment().format("MMM. Do YYYY. - h:mm a");
 
   function saveEditedBlog() {
-    
     editBlog({
       _id: id,
       // userName: editUserName,
@@ -37,7 +36,7 @@ export default function EditBlog({ blogItems, editBlog }) {
       richText: editText,
       blogImage: editImage,
     });
-    console.log(id)
+    console.log(id);
     if (editBlog) {
       return <Navigate to="/blog" />;
     }
